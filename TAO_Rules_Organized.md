@@ -66,17 +66,17 @@ Keys `TP-` designate the initial F (IPA `f`)
 
 Keys `-PB` designate the final N (IPA `n`)
 
-Keys `AE` designate the sound "ié" (IPA `je`) (pied)
+Vowel: Keys `AE` designate the sound "ié" (IPA `je`) (pied)
 
-Keys `AE` followed by a consonant designate the sound "iè" (IPA `jɛ`) (tiers `TAER`, hier `HAER`, pierre `PAER`, Pierre `PA*ER`)
+Vowel: Keys `AE` followed by a consonant designate the sound "iè" (IPA `jɛ`) (tiers `TAER`, hier `HAER`, pierre `PAER`, Pierre `PA*ER`)
 
-The `R-` key can also be read "i" (IPA `i`) in front of "a" or "o".
+Vowel: The `R-` key can also be read "i" (IPA `i`) in front of "a" or "o".
 
 Keys `PH-` designate the initial M (IPA `m`)
 
-The `OEU` keys designate the "oi" sound (IPA `wa`)(roi `ROI`, bois `BOI`, loi `LOI`, boîte `BOIT`)
+Vowel: The `OEU` keys designate the "oi" sound (IPA `wa`)(roi `ROI`, bois `BOI`, loi `LOI`, boîte `BOIT`)
 
-The `OEUN` keys designate the "oin" sound (IPA `wɛ̃`)(soin `SOIN`, coin `KOIN`, poindre `POINDZ`)
+Vowel: The `OEUN` keys designate the "oin" sound (IPA `wɛ̃`)(soin `SOIN`, coin `KOIN`, poindre `POINDZ`)
 
 Keys `*N` are used for the "on" ending (IPA `ɔ̃`) (Caron `KAR/*N`, melon `M-L/*N`)
 
@@ -200,7 +200,7 @@ Keys `-FRKS` designate the sound "cre" (IPA `~kʁ`)
 
 Keys `-FRBG` designate the "nqu" sound (IPA `~k`)
 
-Keys `-FRBLG` designate the "nqu" sound (IPA `~kl`)
+Keys `-FRBLG` designate the "nqul" sound (IPA `~kl`)
 
 Keys `-FRLG` designate the "ngl" sound (IPA `~gl`)
 
