@@ -25,6 +25,7 @@ VOWELS = {
     "O": "O",       # mort
     "y": "U",       # cru
     "u": "OU",      # mou
+    "5": "EUFR",    # vin
     # *N is used for "on" (§) endings. # TODO this is a vowel, but only on word endings
 
 }
@@ -33,7 +34,6 @@ DIPHTONGS = {
     "8i": "AU",     # pluie
     "j2": "AOEU",   # vieux
     "je": "AE",     # pied
-    "jE": "AE",     # hier  # TODO IN FRONT OF A CONSONANT
     "ja": "RA",     # cria
     "jo": "RO",     # bio
     "jO": "ROE",    # fjord # TODO unsure
@@ -74,7 +74,13 @@ CONSONANT_PAIRS_LHS = {
     "gz": "KP",
     "ps": "S",
     "pn": "TPH",
+    "kw": "KW",
     "tS": "SK",         # TODO: I'd rather deviate and use KH if possible
+}
+
+SOUNDS_LHS = {
+    "de": "STK",
+    "def": "STKW",
 }
 
 CONSONANTS_RHS = {
@@ -86,10 +92,9 @@ CONSONANTS_RHS = {
     "d": "D",
     "z": "Z",
     "k": "BG",
-    "l": "FL",
+    "l": "FL",      # TODO When is "l" FL or L?
     "m": "PL",
-    "n": "PB",     # TODO This doubles the "n" = "B" from earlier. Might be in only certain pre-defined cases like AIB = "aine"
-    "§": "*N",     # TODO Not really a consonant, but an ending nontheless?
+    "n": "PB",      # TODO This doubles the "n" = "B" from earlier. Might be in only certain pre-defined cases like AIB = "aine"
     "Z": "G",
     "S": "FP",
     "N": "PG",
@@ -117,7 +122,41 @@ CONSONANT_PAIRS_RHS = {
 }
 
 SOUNDS_RHS = {
-
+    "En": "AIB",
+    "wan": "OIB",
+    "jEn": "AEB",
+    "win": "AOUB",
+    "zj§": "GZ",
+    "sj§": "GZ",
+    "z§": "GZ",
+    "sjOn": "GZ",   # TODO This might conflict with "zj§" just above. The rule says "either `-GS/*B` or `-GZ`*
+    "zjOn": "GZ",
+    "@b": "AFRB",   # jambe
+    "5b": "EUFRB",  # limbe
+    "§b": "OFRB",   # tombe
+    "@bl": "AFRBL", # tremble
+    "1bl": "EUFRBL",  # humble
+    "§bl": "OFRBL",  # comble
+    "@bR": "AFRBS",   # ambre
+    "5bR": "EUFRBS",  # timbre
+    "§bR": "OFRBS",   # ombre
+    "@pR": "AFRPS",
+    "5pR": "EUFRPS",
+    "§pR": "OFRPS",
+    "@sj§": "APBGS",    # p_ension_
+    "5sj§": "EUPBGS",    # p_incions_
+    "§sj§": "OPBGS",    # pron_oncions_
+    "@ksj§": "APBGS",    # san_ction_
+    "5ksj§": "EUPBGS",    # dist_inction_
+    "§ksj§": "OPBGS",    # j_onction_
+    "ksj§": "*BGS",     # a_ction_
+    "isjOn": "EUGZ",
+    "tR": "TS",
+    "tER": "TS",
+    "tyR": "TS",
+    #  "Et": "*T",      # TODO: "Et" is covered by `AIT`, I don't get this. Maybe orthographic for "ette".
+    "isjOn": "EUGZ",
+    "isjOn": "EUGZ",
 }
 
 
@@ -140,9 +179,7 @@ for line in corpus:
    words.append(word)
 
 # Here we start doing stuff with Word objects
-syllables = []
+
 for word in words:
-    for syll in word.syll:
-        syllables.append(syll)
-print(len(set(syllables)))
-print(set(syllables))
+    if "@pR" in word.phonetics:
+        print(word.word)
