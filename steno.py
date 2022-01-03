@@ -30,7 +30,7 @@ class Steno:
                 "sje" : "AE" , #caissIER
                 "sjER" : "AER" , #caissiERE
                 "jasm" : "-/KWRAFPL",
-
+                "jEn": "AEB",
                 "-sj§" : "-GS",
                 "-pid" : "-PD",
                 "-fis" : "-WEUS",
@@ -41,7 +41,7 @@ class Steno:
                 "lo-Zik" : "LOIK",
                 "lO-Zist" : "-/HRO*EUS",
                 "-lOg" : "LO*EG",
-
+                "d9R" : "-RD",
                 "abl" : "ABL",
                 "jEm" : "-A*EM",
                 
@@ -57,7 +57,9 @@ class Steno:
 
                 "@-S°" : "-AFRPBLG",
                 "tEkt" : "T*K",
+                "EtR" : "--TS",
                 "RS" : "-FRPB",
+
                 "@S" : "-AFRPBLG",
                 "S" : "-FRPBLG",
                 "m@" : "-PLT",
@@ -70,7 +72,8 @@ class Steno:
                 "1bl": "-EUFRBL",  # humble
                 "dR" : "DZ" ,# ajoin-dre
                 "@b": "-AFRB",   # jambe
-                "E" : "AEU"
+                "E" : "AEU",
+                "n" : "-B"
 
                 
                 
@@ -82,7 +85,9 @@ class Steno:
                 "@-sj§" : "-@sj§",
                 "d-ZEk": "-dZ",
                 "d-Z": "-dZ",
-                "S°-" : "S°"
+                "S°-" : "S°",
+                "vo-l": "vl-",
+                "-y-" : "-y"
         }
 
 
@@ -234,6 +239,7 @@ class Syllabe:
                 "V": "F",
                 "I": "EU",
                 "F":"FL",
+                "J" : "G"
 
                 }
 
@@ -245,33 +251,27 @@ class Syllabe:
                 "B" : "PW",
                 "M" : "PH",
                 "L" : "HR",
-                "Y" : "KWR"
+                "Y" : "KWR",
+                "G" : "TKPW",
+                "J" : "SKWR",
+                "N" : "TPH",
+                "Q" : "KW"
         }
 
 
         SOUND_RHS_EXTRA = {
                 "En": "AIB",
                 "wan": "OIB",
-                "jEn": "AEB",
+
                 "win": "AOUB",
                 "zj§": "GZ",
                 "sj§": "GZ",
                 "z§": "GZ",
                 "sjOn": "GZ",   # TODO This might conflict with "zj§" just above. The rule says "either `-GS/*B` or `-GZ`*
                 "zjOn": "GZ",
-                "@b": "AFRB",   # jambe
-                "5b": "EUFRB",  # limbe
-                "§b": "OFRB",   # tombe
-                "@bl": "AFRBL", # tremble
-                "1bl": "EUFRBL",  # humble
-                "§bl": "OFRBL",  # comble
-                "@bR": "AFRBS",   # ambre
-                "5bR": "EUFRBS",  # timbre
-                "§bR": "OFRBS",   # ombre
                 "@pR": "AFRPS",
                 "5pR": "EUFRPS",
                 "§pR": "OFRPS",
-                "@sj§": "APBGS",    # p_ension
                 "5sj§": "EUPBGS",    # p_incions_
                 "§sj§": "OPBGS",    # pron_oncions_
                 "@ksj§": "APBGS",    # san_ction_
@@ -399,7 +399,7 @@ class Syllabe:
                 if self.syllabe.startswith('-'):
                         if self.is_left_hand():
                                 self.syllabe= self.syllabe+"/"
-                        self.encoded_hand = self.syllabe.replace('-','')
+                        self.encoded_hand = self.syllabe[1:]
                         return self.encoded_hand
                  
                 self.consume_woyels = 'AOEU'
@@ -449,12 +449,14 @@ class Syllabe:
 class Steno_Encoding:
         DIPHTONGS = {
                 # without i
-                "di" : "D",
-                "mi" : "M",
+
                 "djO": "OD",
                 "RSi" : "VRPB",
                 "RS" : "VRPB",
                 "dZ" : "PBLG",
+                "jEn": "AEB",
+                "di" : "D",
+                "mi" : "M",
                 "8i": "AU",     # pluie
                 "j2": "AOEU",   # vieux
                 "je": "AE",     # pied
@@ -478,7 +480,7 @@ class Steno_Encoding:
                 "a": "A",       # chat
                 "°" : "",
                 "e": "E",       # clé
-                "2": "AO",      # eux
+                "2": "AO*",      # eux
                 "9": "AO",      # seul
              #  "E": "AEU",     # père
 #                "E" : "",

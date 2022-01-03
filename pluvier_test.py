@@ -19,7 +19,9 @@ class TestPluvier:
         "KE" : "quai",
         "WAG" : "vague",
         "KOD" : "code",
-        "TPEUL" : "fil"
+        "TPEUL" : "fil",
+        "-TS" : "être",
+        "PHAEB": "mienne",
 
     }
     i_words = {
@@ -39,6 +41,7 @@ class TestPluvier:
 
     suffix_word = {
         "WLOUR" : "velours",
+        "TPROEURD": "froideur",
         #    "WLOEFS" : "voulez-vous"
         "PWAER" : "bière",
         "PAE" : "pied",
@@ -53,11 +56,15 @@ class TestPluvier:
         "PAPBGS" : "pension",
         "TERBL" : "terrible",
         "THR-PLT" : "tellement",
-        #    "ATS/LO*EG" : "astrologue", marche pas mauvaise casse des syllabes
+        "PAB" : "panne",
+        # -ne
+#        "ATS/LO*EG" : "astrologue", 
         #    "HAER" : "hier",
         #    "TLOIK" : "technologique",
         #    "SLO*IG" : "psychologie",
-    "PAER" : "pierre",
+        "PAER" : "pierre",
+        "WHRUPL": "volume",
+        "WHRUPL/TPHAO*": "volumineux",
     }
 
     right_ch_sound = {
