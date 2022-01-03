@@ -26,7 +26,8 @@ class TestPluvier:
         "RAPD" : "rapide",
         "TKWEUS" : "édifice",
         "TPORPL/TKABL" : "formidable",
-
+        "APBLG/TEUFL" : "adjectif",
+#        "APBLG/OEUPBDZ": "adjoindre",
     }
 
 
@@ -42,8 +43,8 @@ class TestPluvier:
         "PWAER" : "bière",
         "PAE" : "pied",
         "RAOD/HRO*EUS" : "radiologiste",
-        "SPWOUZ/YAFPL" : "enthousiasme",
-        "SPWOUZ/YA*S" : "enthousiaste",
+        "SPWOUZ/KWRAFPL" : "enthousiasme",
+        "SPWOUZ/KWRA*S" : "enthousiaste",
         "AFRS" : "avoir",
         "POUFRS" : "pouvoir" ,
         "RURL" : "rural",
@@ -64,7 +65,10 @@ class TestPluvier:
         "TOFRPB" : "torche",
         "AFRPB/T*K" : "architecte",
         "PHAFRPBLG" : "manche",
-        "PWHRAFRPBLG" : "blanche"
+        "PWHRAFRPBLG" : "blanche",
+
+#        "SKHRAEU": "chalet",
+#        "SKWAL" : "cheval",
     }
 
 
