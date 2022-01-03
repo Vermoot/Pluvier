@@ -10,17 +10,25 @@ class Word:
             self.number = number
             self.info_verb = info_verb
             self.syll = syll
-            
-
+        def __str__(self):
+                print("word", self.word)
+                print("phonetics", self.phonetics)
+                print("lemme", self.lemme)
+                print('cgram',  self.cgram)
+                print('number', self.number)
+                print('syll', self.syll)
+                return self.syll
+        def is_verb(self):
+                return self.cgram == "VER"
 class Steno:
         PREFIXES = {
-                "s2": "S",
-                "@-t" :"SPW",
-                "5-t" :"SPW",
-                "e-" : "",
-                "tEk-no" : "T",
-                "tE-l" : "THR-",
-                "R°-" : "R-",
+#                "s2": "S", # ce mais pas ceux
+                "@t" :"SPW",
+                "5t" :"SPW",
+                "e" : "",
+                "tEkno" : "T",
+                "tEl" : "THR-",
+                "R°" : "R-",
                 "S°" : "SK",
                 "Sa" : "SK"
         }
@@ -31,24 +39,25 @@ class Steno:
                 "sjER" : "AER" , #caissiERE
                 "jasm" : "-/KWRAFPL",
                 "jEn": "AEB",
-                "-sj§" : "-GS",
-                "-pid" : "-PD",
-                "-fis" : "-WEUS",
+                "sj§" : "GS",
+                "pid" : "-PD",
+                "fis" : "-WEUS",
                 'kE' : 'KE',
                 "jER" : "AER",
                 "je" : "AE",
                 "jER" : "AER",
-                "lo-Zik" : "LOIK",
-                "lO-Zist" : "-/HRO*EUS",
-                "-lOg" : "LO*EG",
-                "d9R" : "-RD",
+                "loZik" : "LOIK",
+                "lOZist" : "-/HRO*EUS",
+                "lOg" : "LO*EG",
+                "d9R" : "RD",
+                "dabl" : "-/TKABL",
                 "abl" : "ABL",
                 "jEm" : "-A*EM",
                 
                 "jast" : "YA*S",
                 "vwaR" : "-FRS",
-                "-Ral" : "-RL",
-                "-Ribl" : "-RBL",
+                "Ral" : "-RL",
+                "Ribl" : "-RBL",
                 "§bl": "-OFRBL",  # comble
                 "@bR": "-AFRBS",   # ambre
                 "5bR": "-EUFRBS",  # timbre
@@ -56,7 +65,7 @@ class Steno:
                 "@sj§": "APBGS",    # p_ension_
 
                 "@-S°" : "-AFRPBLG",
-                "tEkt" : "T*K",
+                "tEkt" : "-/T*K",
                 "EtR" : "--TS",
                 "RS" : "-FRPB",
 
@@ -87,7 +96,9 @@ class Steno:
                 "d-Z": "-dZ",
                 "S°-" : "S°",
                 "vo-l": "vl-",
-                "-y-" : "-y"
+                "-y-" : "-y",
+                "@-t" :"@t-",
+                "5-t" :"5t-",
         }
 
 
@@ -135,13 +146,31 @@ class Steno:
         def __init__(self, corpus):
                 self.words = corpus
                 
+        def find_all_same_syll(self, myword) :
+                same_words = []
+                for word in self.words:
+                        if ((word.syll == myword.syll) and (word.word != myword.word) and not word.word.endswith('nt') and not word.word.endswith('s') and not word.word.endswith('he')):
+                                same_words.append(word)
+                
+                for word in same_words:
+                        print(word.word)
+                return same_words
 
+        def has_homophone(self, word) :
+                return self.find_all_same_syll(word)
+        
         def find(self,find_word):
+                finds = []
                 for word in self.words:
                         if (word.word == find_word):
-                                return word
+                                finds.append(word)
+                for find_word in finds:
+                        if find_word.cgram != "VER":
+                                return find_word
 
-
+                if finds:
+                        return finds[0]
+                return False
 
         def change_syllabes(self, word):
                 new_word=word
@@ -155,7 +184,8 @@ class Steno:
                 for prefix in  self.PREFIXES.items():
                         if len(re.split("^"+prefix[0], new_word))>1:
                                 self.prefix = prefix[1]
-                                return re.split("^"+prefix[0], new_word)[1] 
+                                return re.split("^"+prefix[0], new_word)[1]
+
                 return new_word
 
 
@@ -164,30 +194,40 @@ class Steno:
                 for suffix in  self.SUFFIXES.items():
                         if len(re.split(suffix[0]+"$", new_word))>1:
                                 self.suffix = suffix[1]
-                                return re.split(suffix[0]+"$", new_word)[0] 
+                                return re.split(suffix[0]+"$", new_word)[0]
+                
                 return new_word
 
-
+        def add_star(self,word):
+                return word+"*"
+        
         def transform(self,word):
                 myword = self.find(word)
                 if not myword:
                         return ""
                 print(vars(myword))
-                return self.transform_word(myword)
+                if self.has_homophone(myword) and myword.is_verb():
+                        return self.add_star(self.transform_word(myword))
+                myword = self.transform_word(myword)
+
+                return myword
          
         def transform_word(self,word):
                 word_str = self.change_syllabes(word.syll)
+                word_str  = word_str.replace('-','') #word_str.split('-')
+
+                if (word.word.startswith('h')):
+                        word_str = 'h'+word_str
+
                 word_str = self.prefixes(word_str)
-
                 word_str = self.suffixes(word_str)
-
-
-                self.syllabes = word_str.split('-')
+                self.syllabes = [word_str]
+#                return Steno_Encoding(self.syllabes, self.prefix, self.suffix).encode()
                 return Steno_Encoding(self.syllabes, self.prefix, self.suffix).encode()
 
 
 class Syllabe:
-        hand = 'R'
+        hand = 'L'
         CONSONANTS_RHS = {
                 "v": "F",
                 "l": "L",
@@ -233,7 +273,7 @@ class Syllabe:
                 "K": "BG",
 #                "L": "FL",      # TODO When is "l" FL or L?
                 "N": "PB",      # TODO This doubles the "n" = "B" from earlier. Might be in only certain pre-defined cases like AIB = "aine"
-                "Z": "Z",
+#                "Z": "G",
 #                "S": "FP",
 #                "N": "PG",
                 "V": "F",
@@ -255,7 +295,8 @@ class Syllabe:
                 "G" : "TKPW",
                 "J" : "SKWR",
                 "N" : "TPH",
-                "Q" : "KW"
+                "Q" : "KW",
+
         }
 
 
@@ -284,34 +325,42 @@ class Syllabe:
                 "tyR": "TS",
                 #  "Et": "*T",      # TODO: "Et" is covered by `AIT`, I don't get this. Maybe orthographic for "ette".
                 "isjOn": "EUGZ",
-                "isjOn": "EUGZ",
+
         }
 
-        LEFT_KEYS = 'STKPWHR*'
-        RIGHT_KEYS = '*FRPBLGTSDZ'
+        LEFT_KEYS = '*STKPWHRAO*'
+        RIGHT_KEYS = '*EUFRPBLGTSDZ*'
         consume_woyels = 'AOEU'
         keys_left = ''
+        position = 1
+        encoded_hand = ''
         def __init__(self, syllabe, previous):
                 self.previous = previous
                 self.syllabe = syllabe
-                if syllabe =="":
-                        return None
-                if self.syllabe.endswith('-'):
-                        self.hand='R'
-                        self.position = 2
-                        return None
-                if self.syllabe.startswith('-'):
-                        self.hand='R'
-                        self.position = 2
-                        return None
-
                 self.hand = 'L'
                 self.position = 1
-                if (previous is not None) and previous.is_left_hand():
+                if (previous is not None) and previous.is_right_hand():
                         self.hand='R'
 
                 if previous is not None:
-                        self.position = previous.position
+                        self.position = previous.position +1
+                        self.keys_left = previous.keys_left
+
+                if syllabe =="":
+                        self.init_keys_left()
+                        return None
+
+                if self.syllabe.endswith('-'):
+                        self.hand='R'
+                        self.position = 2
+                        self.keys_left = ''
+                        return None
+                if self.syllabe.startswith('-'):
+#                        self.hand='R'
+                        self.keys_left = ''
+                        return None
+
+
                 self.init_keys_left()
 
 #                if (self.both_hand):
@@ -349,8 +398,8 @@ class Syllabe:
                 print('syll',syllabe)
                 print('hand',self.hand)
                 for key in syllabe:
-                        if self.is_left_hand() and "E" not in self.consume_woyels and "U" not in self.consume_woyels :
-                                not_found.append(key)
+#                        if self.is_left_hand() and "E" not in self.consume_woyels and "U" not in self.consume_woyels :
+#                                not_found.append(key)
                         
                         if not_found:
                                 rest=rest+key
@@ -358,16 +407,19 @@ class Syllabe:
                         key_trans = key
                         if key in sounds.keys():
                                 key_trans = sounds[key]
-                        if key_trans in self.consume_woyels:
-                                self.consume_woyels = self.consume_woyels.replace(key_trans,'')
-                                self.encoded_hand=self.encoded_hand + key_trans
-                                continue
+#                        if key_trans in self.consume_woyels:
+#                                self.consume_woyels = self.consume_woyels.replace(key_trans,'')
+#                                self.encoded_hand=self.encoded_hand + key_trans
+#                                continue
 
                         print('key_trans', key_trans)
                         for key_trans_char in key_trans:
                                 print('key_trans_char', keys)
+
                                 if key_trans_char in keys :
-                                        keys = keys.replace(key_trans_char,'')
+                                        keys = keys.split(key_trans_char)[1]
+                                        print('qui qui reste',keys)
+#                                        keys = keys.replace(key_trans_char,'')
                                 else:
                                         rest=rest+key
                                         not_found.append(key)
@@ -397,17 +449,23 @@ class Syllabe:
                         self.encoded_hand = self.syllabe
                         return self.syllabe
                 if self.syllabe.startswith('-'):
-                        if self.is_left_hand():
-                                self.syllabe= self.syllabe+"/"
+
                         self.encoded_hand = self.syllabe[1:]
+
+#                        if (self.previous and self.previous.is_right_hand()):
+
+                         #       self.encoded_hand= "/"+self.encoded_hand
+                        self.position = self.position + 1
                         return self.encoded_hand
                  
                 self.consume_woyels = 'AOEU'
                 self.init_keys_left()
 
-                # if (self.previous is not None) and  self.both_hand:
-                #         self.hand=self.previous.hand
-                #         self.keys_left = self.previous.keys_left
+                if (self.previous is not None) :
+                        if "PBLG" in self.previous.encoded_hand:
+                                self.change_hand()
+                        else:
+                                self.keys_left = self.previous.keys_left       
                 #         if (self.is_right_hand()):
                 #                 self.consume_woyels = self.previous.consume_woyels.replace("A","")
                 #                 self.consume_woyels = self.consume_woyels.replace("O","")               
@@ -420,10 +478,11 @@ class Syllabe:
 
                 rest = self.syllabe
                 count = 1
-                
-                while rest and count<10:
+                cpt = (self.previous and self.previous.encoded_hand and self.position > 3)
+                while rest and count<30:
 
-                        if self.previous is not None and  self.is_left_hand():
+                        if  self.is_left_hand() and cpt :
+                                cpt = False
                                 piece = piece+"/"
                         (rest, not_found) = self.need_both_hand(rest)
                         piece = piece + self.encoded_hand
@@ -431,11 +490,10 @@ class Syllabe:
 
                         if rest :
                                 self.change_hand()
-
-
-
-                        self.init_keys_left()
+                                self.init_keys_left()
+                                cpt = True
                         count= count +1
+                        self.position = self.position +1 
                         print('reste'+rest+":")
                 return piece
 #                   print('left_hand',piece+self.replace_hand(self.syllabe,self.SOUNDS_LH.items()))
@@ -449,12 +507,11 @@ class Syllabe:
 class Steno_Encoding:
         DIPHTONGS = {
                 # without i
-
+                "jEn": "AEB",
                 "djO": "OD",
                 "RSi" : "VRPB",
                 "RS" : "VRPB",
                 "dZ" : "PBLG",
-                "jEn": "AEB",
                 "di" : "D",
                 "mi" : "M",
                 "8i": "AU",     # pluie
@@ -479,8 +536,9 @@ class Steno_Encoding:
         VOWELS = {
                 "a": "A",       # chat
                 "°" : "",
+                "Z" : "G",
                 "e": "E",       # clé
-                "2": "AO*",      # eux
+                "2": "AO",      # eux
                 "9": "AO",      # seul
              #  "E": "AEU",     # père
 #                "E" : "",
@@ -502,7 +560,7 @@ class Steno_Encoding:
         def diphtongs(self, word):
                 new_word=word
                 for diphtong in self.DIPHTONGS.items():
-                        new_word = new_word.replace(diphtong[0], diphtong[1])
+                        new_word = new_word.replace(diphtong[0], "+"+diphtong[1]+"+")
                 return new_word
 
 
@@ -521,15 +579,18 @@ class Steno_Encoding:
                 for piece in self.syllabes:
                         if piece == "":
                                 continue
+                        print('piece',piece)
                         piece = self.diphtongs(piece)
+                        print('dif',piece)
                         piece = self.voyels(piece)
+                        print('voyel',piece)
                         if piece == "":
                                 continue
-                        print('syllabe',piece)
-                        syllabe = self.force_right_hand(piece, previous)
-
-                        self.word_encoded = self.word_encoded+ syllabe.encoded()
-                        previous = syllabe
+                        for new_piece in piece.split('+'):
+                                print('syllabe',new_piece)
+                                syllabe = self.force_right_hand(new_piece, previous)
+                                self.word_encoded = self.word_encoded+ syllabe.encoded()
+                                previous = syllabe
                         
 
                 syllabe = self.force_right_hand(self.suffix, previous)
