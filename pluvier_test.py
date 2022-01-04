@@ -7,8 +7,7 @@ class TestPluvier:
 
     one_syllabe_words = {
         "TAS" : "tasse",
-        "PAU" : "puis",
-        "KAUT" : "cuite",
+
 #        "SUS" : "suce",
 #        "S" : "ce",
         "WEU" : "vie",
@@ -90,10 +89,12 @@ class TestPluvier:
                             phonetics = entry[1],
                             lemme = entry[2],
                             cgram = entry[3],
+                            cgramortho = entry[28],
                             genre = entry[4],
                             number = entry[5],
                             info_verb = entry[10],
                             syll = entry[22],
+                            orthosyll = entry[27]
                             )
                 words.append(word)
         return words
@@ -200,6 +201,46 @@ class TestPluvier:
         self.assertSame({ 'HREUR' : 'lire',
                           'PHRABG' : 'plaque',
 #                          'HRAEUS' : 'laisse'
+                         })
+    def test_lesson11_TK_for_d_FL_for_F(self):
+        self.assertSame({ 'TK' : 'de',
+                          'TKU' : 'du',
+                          'TKOUT' : 'doute',
+                          'WEUFL' : 'vif',
+                          'WEUF' : 'vive'
+
+                         })
+        
+    def test_lesson11_AU_for_ui(self):
+        self.assertSame({ "PAU" : "puis",
+                          "KAUT" : "cuite",
+                          'KAUS' : 'cuisse',
+                          'SAUFR' : 'suivre'
+                         })
+
+    def test_lesson12_PW_for_Binit_PL_for_Mfinal(self):
+        self.assertSame({ # 'PWO' : 'beau',
+                          'PWOR' : 'bord',
+                          'KAPL' : 'came',
+#                          'AEUPL*' : 'aime'
+                         })
+
+    def test_lesson12_ortho_aSem_for_ieme(self):
+        self.assertSame({'AUT/A*EPL': 'huitième',
+                         "SEZ/A*EPL": "seizième",
+                         # should be "SAEUZ/A*EPL": "seizième",
+                         })
+        
+    def test_lesson12_AOEU_for_ieu(self):
+        self.assertSame({'WAOEU' : 'vieux',
+                         'HRAOEU' : 'lieu',
+                         'AOEU' : 'yeux',
+#                         'KRAOEU' : 'curieux' kur/aoeu
+                         })
+
+
+    def test_lesson12_ortho_rightR_infinitif(self):
+        self.assertSame({'PARL/-R' : 'parler'
                          })
 
     def test_prefixWords(self):

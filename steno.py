@@ -1,15 +1,17 @@
 import sys
 import re
 class Word:
-        def __init__(self, word, phonetics, lemme, cgram, genre, number, info_verb, syll):
+        def __init__(self, word, phonetics, lemme, cgram, cgramortho,genre, number, info_verb, syll, orthosyll):
             self.word = word
             self.phonetics = phonetics
             self.lemme = lemme
             self.cgram = cgram
+            self.cgramortho = cgramortho
             self.genre = genre
             self.number = number
             self.info_verb = info_verb
             self.syll = syll
+            self.orthosyll = orthosyll
         def __str__(self):
                 print("word", self.word)
                 print("phonetics", self.phonetics)
@@ -18,8 +20,12 @@ class Word:
                 print('number', self.number)
                 print('syll', self.syll)
                 return self.syll
+        
         def is_verb(self):
-                return self.cgram == "VER"
+                return "VER" in self.cgram  and "AUX" not in self.cgramortho
+        
+        def is_infinitif(self):
+                return 'inf' in self.info_verb
 class Steno:
         PREFIXES = {
 #                "s2": "S", # ce mais pas ceux
@@ -31,10 +37,12 @@ class Steno:
                 "R°" : "R-",
                 "S°" : "SK",
                 "Sa" : "SK"
-        }
+        } 
+
 
         # if start with - then dont convert 
         SUFFIXES = {
+                "jEm" : "-/A*EPL",
                 "sje" : "AE" , #caissIER
                 "sjER" : "AER" , #caissiERE
                 "jasm" : "-/KWRAFPL",
@@ -52,7 +60,7 @@ class Steno:
                 "d9R" : "RD",
                 "dabl" : "-/TKABL",
                 "abl" : "ABL",
-                "jEm" : "-A*EM",
+
                 
                 "jast" : "YA*S",
                 "vwaR" : "-FRS",
@@ -143,19 +151,65 @@ class Steno:
         prefix = ""
         steno_word = ""
         syllabes = []
+        ending = ""
         def __init__(self, corpus):
                 self.words = corpus
-                
+
+        def ortho_ending(self, word, init_word) :
+                return (word != init_word) and not word.endswith('nt') and not word.endswith('s') and not word.endswith('he')
+        
         def find_all_same_syll(self, myword) :
                 same_words = []
                 for word in self.words:
-                        if ((word.syll == myword.syll) and (word.word != myword.word) and not word.word.endswith('nt') and not word.word.endswith('s') and not word.word.endswith('he')):
+                        if ((word.syll == myword.syll) and self.ortho_ending(word.word, myword.word)):
                                 same_words.append(word)
                 
                 for word in same_words:
                         print(word.word)
                 return same_words
 
+        def find_same_word_verb(self, myword) :
+                same_words = []
+                for word in self.words:
+                        if word.word == myword.word and word.is_verb():
+                                return word
+                return myword
+
+
+        def remove_last_syll(self, syll):
+                sylls = syll.split('-')
+                sylls.pop()
+                return "-".join(sylls)
+
+
+        def ortho_add_aloneR_infinitif_firstgroup(self, word):
+                verb_word = self.find_same_word_verb(word)
+                if verb_word.is_verb() and verb_word.is_infinitif()  and verb_word.word.endswith('er'):
+                        self.ending = "/-R"
+                        if verb_word.syll.endswith('e') :
+                                verb_word.syll = verb_word.syll[:-1]
+                        return verb_word
+                return word
+        
+        def try_to_remove_woyel(self, myword) :
+                sylls = myword.syll
+                same_words=[]
+                print('remove last syll',self.remove_last_syll(sylls))
+                if ('8i' in self.remove_last_syll(sylls)) or ('i' not in self.remove_last_syll(sylls)):
+                        return myword.syll
+
+                sylls = sylls.replace('i','',1)
+                        
+                for word in self.words:
+                        if (self.ortho_ending(word.word, myword.word) and (word.syll.replace('i','',1)==sylls or word.syll.replace('e','',1)==sylls)):
+                                same_words.append(word)
+
+                for word in same_words:
+                        print('found word same vowel:',word.word)
+                if same_words:
+                        return myword.syll
+                return sylls
+        
         def has_homophone(self, word) :
                 return self.find_all_same_syll(word)
         
@@ -206,6 +260,8 @@ class Steno:
                 if not myword:
                         return ""
                 print(vars(myword))
+                myword.syll = self.try_to_remove_woyel(myword)
+                print('after remove vowyel', myword.syll)
                 if self.has_homophone(myword) and myword.is_verb():
                         return self.add_star(self.transform_word(myword))
                 myword = self.transform_word(myword)
@@ -213,17 +269,20 @@ class Steno:
                 return myword
          
         def transform_word(self,word):
+                word = self.ortho_add_aloneR_infinitif_firstgroup(word)
                 word_str = self.change_syllabes(word.syll)
                 word_str  = word_str.replace('-','') #word_str.split('-')
 
-                if (word.word.startswith('h')):
+                if word.word.startswith('h') and not word.syll.startswith('8'):
                         word_str = 'h'+word_str
 
                 word_str = self.prefixes(word_str)
                 word_str = self.suffixes(word_str)
                 self.syllabes = [word_str]
+
+                print('ending',self.ending)
 #                return Steno_Encoding(self.syllabes, self.prefix, self.suffix).encode()
-                return Steno_Encoding(self.syllabes, self.prefix, self.suffix).encode()
+                return Steno_Encoding(self.syllabes, self.prefix, self.suffix).encode()+self.ending
 
 
 class Syllabe:
@@ -258,8 +317,8 @@ class Syllabe:
                 "st": "*S",
                 "bZ": "PBLG",
                 "kR": "RBG",
-                "vR": "FR",
-                "fR": "FR",
+                "vR": "VR",
+                "fR": "VR",
                 "rS": "FRPB",
                 "kR": "RBG",
                 "kR": "RBG",
@@ -440,7 +499,15 @@ class Syllabe:
                 print('keys_left',self.keys_left)
                 return self.consume(syllabe, self.keys_left, sounds)
                 
- 
+        def has_previous_R_and_L(self):
+                previous = self.previous
+                consume = 'R'
+                while previous:
+                        if previous.encoded_hand:
+                                consume.replace(previous.hand, '')
+                        previous = previous.previous
+                return consume ==''
+
         def encoded(self):
                 piece = ""
                 if self.syllabe == "":
@@ -451,21 +518,18 @@ class Syllabe:
                 if self.syllabe.startswith('-'):
 
                         self.encoded_hand = self.syllabe[1:]
-
+#                        if self.has_previous_R_and_L() :
+#                                self.encoded_hand= "/"+self.encoded_hand
 #                        if (self.previous and self.previous.is_right_hand()):
 
-                         #       self.encoded_hand= "/"+self.encoded_hand
+                         #       
                         self.position = self.position + 1
                         return self.encoded_hand
                  
                 self.consume_woyels = 'AOEU'
                 self.init_keys_left()
 
-                if (self.previous is not None) :
-                        if "PBLG" in self.previous.encoded_hand:
-                                self.change_hand()
-                        else:
-                                self.keys_left = self.previous.keys_left       
+
                 #         if (self.is_right_hand()):
                 #                 self.consume_woyels = self.previous.consume_woyels.replace("A","")
                 #                 self.consume_woyels = self.consume_woyels.replace("O","")               
@@ -478,10 +542,16 @@ class Syllabe:
 
                 rest = self.syllabe
                 count = 1
-                cpt = (self.previous and self.previous.encoded_hand and self.position > 3)
+                cpt = (self.has_previous_R_and_L())
+                if (self.previous is not None) :
+                        if "PBLG" in self.previous.encoded_hand:
+                                self.change_hand()
+                                cpt = True
+                        else:
+                                self.keys_left = self.previous.keys_left       
                 while rest and count<30:
 
-                        if  self.is_left_hand() and cpt :
+                        if  self.is_left_hand() and cpt:
                                 cpt = False
                                 piece = piece+"/"
                         (rest, not_found) = self.need_both_hand(rest)
@@ -512,7 +582,7 @@ class Steno_Encoding:
                 "RSi" : "VRPB",
                 "RS" : "VRPB",
                 "dZ" : "PBLG",
-                "di" : "D",
+#                "di" : "D",
                 "mi" : "M",
                 "8i": "AU",     # pluie
                 "j2": "AOEU",   # vieux
@@ -528,7 +598,7 @@ class Steno_Encoding:
                 "wi": "AOU",    # oui
                 "j5": "AEPB",   # chien
                 "ey": "EU",     # r_éu_nion
-                "vR": "FR",
+                "vR": "VR",
                 "ya": "WA",     # suave
                 "ij": "LZ",    # bille # TODO Maybe not a diphtong, but a word ending/consonant thing
                 "@": "AN",     # pluie
@@ -548,6 +618,7 @@ class Steno_Encoding:
                 "y": "U",       # cru
                 "u": "OU",      # mou
                 "5": "EUFR",    # vin
+                "8": "W",       # huit
                 # *N is used for "on" (§) endings. # TODO this is a vowel, but only on word endings
 
         }
