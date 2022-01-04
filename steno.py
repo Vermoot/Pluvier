@@ -39,22 +39,64 @@ class Word:
         def is_participe_present(self):
                 return 'par' in self.info_verb and self.word.endswith('ant')
 
+        def is_vous_ind_present(self):
+                return 'ind' in self.info_verb and self.word.endswith('ez')
+
+
+class Ortho:
+
+        sound = ''
+        replace_by = ''
+        steno =''
+        def __init__(self,sound, replace_by):
+                self.sound = sound
+                self.replace_by = replace_by
+
+        def steno(self):
+                return self.steno
+        
+        def matches(self,word, pattern) :
+                return  word.word.endswith(pattern)
+
+        def convert(self,word) :
+                print('lalalal',word.syll)
+                                
+                if word.syll.endswith(self.sound) :
+                        word.syll = word.syll[:-len(self.sound)]
+                        self.steno = self.replace_by
+                        print('lala',word.syll)
+                return word
+                
 class Steno:
         PREFIXES = {
 #                "s2": "S", # ce mais pas ceux
                 "@t" :"SPW",
                 "5t" :"SPW",
-                "e" : "",
                 "tEkno" : "T",
                 "tEl" : "THR-",
                 "R°" : "R-",
                 "S°" : "SK",
                 "Sa" : "SK",
                 'ke' : 'K',
+                "e" : "",
+                "Z" : "J",
+                'z' : 'Z',
                 
         }
+        ORTHO_SUFFIXES = {
+                "ène" : Ortho("En","-*EB"),
+                "ué" : Ortho("8e","-W*E"),
+                "uel" : Ortho("8El","-W*EL"),
+        }
+
+        REAL_SUFFIXES = {
+                "En" : "A*IB",
+#                "wE": "-/W*E",
+                "a" : "-*Z",
+                
 
 
+        }
 
         # if start with - then dont convert 
         SUFFIXES = {
@@ -63,6 +105,7 @@ class Steno:
                 "jasm" : "-/KWRAFPL",
                 "jEn": "AEB",
                 "sj§" : "GS",
+                "ks": "-BGS",
                 "pid" : "-PD",
                 "fis" : "-WEUS",
                 "kEl" : "-BLG",
@@ -90,11 +133,13 @@ class Steno:
                 "tEkt" : "-/T*K",
                 "EtR" : "--TS",
                 "RS" : "-FRPB",
-
+                "Re":"-/R*E",
                 "@S" : "-AFRPBLG",
+                "st" : "-*S",
+                "ZE" : "G",
                 "S" : "-FRPBLG",
                 "m@" : "-PLT",
-
+                "En" : "AIB",
                 "sm" : "-FPL",
                 "@d" :"APBD",
                 "5b": "-EUFRB",  # limbe
@@ -103,8 +148,10 @@ class Steno:
                 "1bl": "-EUFRBL",  # humble
                 "dR" : "DZ" ,# ajoin-dre
                 "@b": "-AFRB",   # jambe
+
                 "E" : "AEU",
-                "n" : "-B"
+                "n" : "B",
+                "§" : "-*PB"
 
                 
                 
@@ -115,13 +162,15 @@ class Steno:
                 "R-Si" : "-RSi",
                 "@-sj§" : "-@sj§",
                 "d-ZEk": "-dZ",
+                "b-ZEk": "-bZ",
                 "d-Z": "-dZ",
                 "S°-" : "S°",
                 "vo-l": "vl-",
                 "-y-" : "-y",
                 "@-t" :"@t-",
                 "5-t" :"5t-",
-                'i-j' : 'i'
+                'i-j' : 'i',
+                'de' : 'd'
         }
 
 
@@ -167,26 +216,38 @@ class Steno:
         steno_word = ""
         syllabes = []
         ending = ""
+        homophones = False
+        pronoun = ""
         def __init__(self, corpus):
                 self.words = corpus
 
         def ortho_ending(self, word, init_word) :
-                return (word != init_word) and not word.endswith('nt') and not word.endswith('s') and not word.endswith('he')
+                return (word != init_word) and not word.endswith('nt') and not word.endswith('s') and not word.endswith('he') #and not word.endswith('lle')
         
         def find_all_same_syll(self, myword) :
                 same_words = []
+                if self.homophones:
+                        return self.homophones
                 for word in self.words:
                         if ((word.syll == myword.syll) and self.ortho_ending(word.word, myword.word)):
                                 same_words.append(word)
                 
                 for word in same_words:
                         print(word.word)
+                self.homophones = same_words
                 return same_words
 
         def find_same_word_verb(self, myword) :
                 same_words = []
                 for word in self.words:
                         if word.word == myword.word and word.is_verb():
+                                return word
+                return myword
+
+        def find_same_word_not_verb(self, myword) :
+                same_words = []
+                for word in self.words:
+                        if word.word == myword.word and not word.is_verb():
                                 return word
                 return myword
 
@@ -202,7 +263,13 @@ class Steno:
                 if word.endswith('ier') and not pattern.endswith('R'):
                         return pattern+'R'
                 return pattern
-                
+
+        def orth_write_ending_d(self,word):
+                if word.word.endswith('d') and self.has_homophone(word):
+                        self.ending = 'D'
+                return word
+
+                        
         def ortho_add_aloneR_infinitif_firstgroup(self, word):
                 verb_word = self.find_same_word_verb(word)
                 if verb_word.is_verb() and verb_word.is_infinitif()  and verb_word.word.endswith('er'):
@@ -212,21 +279,44 @@ class Steno:
                         return verb_word
                 return word
 
-        def ortho_add_aloneD_past_tense(self,word):
+        def ortho_add_alone_keys_on_noun(self,word):
+                if word.is_verb():
+                        return word
+                if word.word.endswith('ette'):
+                        self.ending = "/*T"
+                        if word.syll.endswith('Et') :
+                                print('fini par et')
+                                word.syll = word.syll[:-2]
+                        return word
+                return word
+
+        def ortho_suffixes(self,word):
+                for orth in self.ORTHO_SUFFIXES.items():
+                        if word.word.endswith(orth[0]):
+                                print(vars(orth[1]))
+                                ortho = orth[1]
+                                word = ortho.convert(word)
+                                self.suffix = ortho.steno
+                return word
+
+        
+        def ortho_add_alone_keys_on_verb(self,word):
                 verb_word = self.find_same_word_verb(word)
-                if verb_word.is_verb() and verb_word.is_passe_compose():
+                if not word.is_verb():
+                        return word
+                if  verb_word.is_passe_compose():
                         self.ending = "/-D"
                         if verb_word.syll.endswith('e') :
                                 verb_word.syll = verb_word.syll[:-1]
                         return verb_word
 
-                if verb_word.is_verb() and verb_word.is_imparfait():
+                if verb_word.is_imparfait():
                         self.ending = "/-S"
                         if verb_word.syll.endswith('E') :
                                 verb_word.syll = verb_word.syll[:-1]
                         return verb_word
 
-                if verb_word.is_verb() and verb_word.is_conditionnel():
+                if verb_word.is_conditionnel():
                         self.ending = "/-RS"
                         if verb_word.word.endswith('rrait') and verb_word.syll.endswith('E') :
                                 verb_word.syll = verb_word.syll[:-1]
@@ -234,9 +324,19 @@ class Steno:
                         if verb_word.syll.endswith('RE') :
                                 verb_word.syll = verb_word.syll[:-2]
                         return verb_word
-                if verb_word.is_verb() and verb_word.is_participe_present():
-                        self.ending = "/-G"
 
+                if verb_word.is_vous_ind_present():
+                        self.ending = "/*EZ"
+
+                        if verb_word.syll.endswith('Re') :
+                                self.ending = "/R*EZ"
+                                verb_word.syll = verb_word.syll[:-2]
+                                return verb_word
+                        if verb_word.syll.endswith('e') :
+                                verb_word.syll = verb_word.syll[:-1]
+                                return verb_word
+                if verb_word.is_participe_present():
+                        self.ending = "/-G"
 #                        if verb_word.syll.endswith('j@')  :
 #                                verb_word.syll = verb_word.syll[:-2]
 #                                return verb_word
@@ -244,6 +344,7 @@ class Steno:
                                 verb_word.syll = verb_word.syll[:-1]
                                 return verb_word
                         return verb_word
+                
                 return word
                 
         def try_to_remove_woyel(self, myword) :
@@ -257,6 +358,7 @@ class Steno:
                         
                 for word in self.words:
                         if (self.ortho_ending(word.word, myword.word) and (word.syll.replace('i','',1)==sylls or word.syll.replace('e','',1)==sylls)):
+                        #or word.syll.replace('E','',1)==sylls)):
                                 same_words.append(word)
 
                 for word in same_words:
@@ -270,6 +372,11 @@ class Steno:
         
         def find(self,find_word):
                 finds = []
+                self.pronoun = ''
+                if ' ' in find_word:
+                        self.pronoun = find_word.split(' ')[0]
+                        find_word = find_word.split(' ')[1]
+                        
                 for word in self.words:
                         if (word.word == find_word):
                                 finds.append(word)
@@ -288,8 +395,16 @@ class Steno:
                 return new_word
 
 
-        def prefixes(self, word):
+        def prefixes(self, word, word_class):
+                if (word_class.word.startswith('y') and word.startswith('j')):
+                        self.prefix ='KWR'
+                        new_word = word.replace('j','',1)
+                        return new_word
+                
                 new_word=word
+                if  self.pronoun:
+                        self.prefix='Y'
+                        return word
                 for prefix in  self.PREFIXES.items():
                         if len(re.split("^"+prefix[0], new_word))>1:
                                 self.prefix = prefix[1]
@@ -301,6 +416,15 @@ class Steno:
         def suffixes(self, word):
                 new_word=word
                 for suffix in  self.SUFFIXES.items():
+                        if len(re.split(suffix[0]+"$", new_word))>1:
+                                self.suffix = suffix[1]
+                                return re.split(suffix[0]+"$", new_word)[0]
+                
+                return new_word
+
+        def real_suffixes(self, word):
+                new_word=word
+                for suffix in  self.REAL_SUFFIXES.items():
                         if len(re.split(suffix[0]+"$", new_word))>1:
                                 self.suffix = suffix[1]
                                 return re.split(suffix[0]+"$", new_word)[0]
@@ -320,23 +444,33 @@ class Steno:
                 print(vars(myword))
                 myword.syll = self.try_to_remove_woyel(myword)
                 print('after remove vowyel', myword.syll)
+                self.orth_write_ending_d(myword)
                 if self.has_homophone(myword) and myword.is_verb():
                         return self.add_star(self.transform_word(myword))
                 myword = self.transform_word(myword)
                 myword = self.orth_ending_iere(word, myword)
+
                 return myword
          
         def transform_word(self,word):
+                word = self.ortho_suffixes(word)
                 word = self.ortho_add_aloneR_infinitif_firstgroup(word)
-                word = self.ortho_add_aloneD_past_tense(word)
+                word = self.ortho_add_alone_keys_on_verb(word)
+                word = self.ortho_add_alone_keys_on_noun(word)
+
                 word_str = self.change_syllabes(word.syll)
                 word_str  = word_str.replace('-','') #word_str.split('-')
 
-                if word.word.startswith('h') and not word.syll.startswith('8'):
+                if word.word.startswith('h') and not word.syll.startswith('8') and not word.syll.startswith('a') :
                         word_str = 'h'+word_str
 
-                word_str = self.prefixes(word_str)
-                word_str = self.suffixes(word_str)
+                word_str = self.prefixes(word_str, word)
+
+                if not self.suffix and '-' in word.syll:
+                        word_str = self.real_suffixes(word_str)
+                if not self.suffix:
+                        word_str = self.suffixes(word_str)
+
                 self.syllabes = [word_str]
 
                 print('ending',self.ending)
@@ -414,6 +548,7 @@ class Syllabe:
                 "J" : "SKWR",
                 "N" : "TPH",
                 "Q" : "KW",
+                "Z" : "SWR"
 
         }
 
@@ -469,12 +604,12 @@ class Syllabe:
                         return None
 
                 if self.syllabe.endswith('-'):
-                        self.hand='R'
+                        self.hand='L'
                         self.position = 2
                         self.keys_left = ''
                         return None
                 if self.syllabe.startswith('-'):
-#                        self.hand='R'
+                        self.hand='R'
                         self.keys_left = ''
                         return None
 
@@ -577,6 +712,8 @@ class Syllabe:
                 if self.syllabe.startswith('-'):
 
                         self.encoded_hand = self.syllabe[1:]
+                        if self.previous is not None and self.previous.hand =="R" and not self.encoded_hand.startswith('/'):
+                                self.encoded_hand = "/"+self.encoded_hand
 #                        if self.has_previous_R_and_L() :
 #                                self.encoded_hand= "/"+self.encoded_hand
 #                        if (self.previous and self.previous.is_right_hand()):
@@ -639,10 +776,15 @@ class Steno_Encoding:
                 "jEn": "AEB",
                 "djO": "OD",
                 "RSi" : "VRPB",
+                'Egze' : 'KP',
+                'Egz' : 'KP',
                 "RS" : "VRPB",
                 "dZ" : "PBLG",
+                "bZ" : "PBLG",
+                'En' : 'AIB',
+
 #                "di" : "D",
-                "mi" : "M",
+#                "mi" : "M",
                 "8i": "AU",     # pluie
                 "j2": "AOEU",   # vieux
                 "je": "AE",     # pied
@@ -653,14 +795,19 @@ class Steno_Encoding:
                 "jo": "AO",     # bio # TODO Some conflict there. "-R can be read as i" (above), but the diphtongs are more important I guess?
                 "jO": "RO",     # fjord
                 "j§": "AO",     # av_ion_
+                "kw": "KW",
+                "wE": "WAEU",
+
                 "wa": "OEU",    # froid
                 "w5": "OEUPB",  # loin
                 "wi": "AOU",    # oui
                 "j5": "AEPB",   # chien
                 "ey": "EU",     # r_éu_nion
                 "vR": "VR",
+                'oo' : 'O',    #zoo
                 "ya": "WA",     # suave
                 "ij": "LZ",    # bille # TODO Maybe not a diphtong, but a word ending/consonant thing
+
                 "@": "AN",     # pluie
         }
         VOWELS = {
@@ -738,3 +885,4 @@ class Steno_Encoding:
                         if char in self.VOWELS:
                                 new_word = new_word.replace(char, self.VOWELS[char])
                 return new_word
+
