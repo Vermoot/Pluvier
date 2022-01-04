@@ -26,6 +26,19 @@ class Word:
         
         def is_infinitif(self):
                 return 'inf' in self.info_verb
+
+        def is_passe_compose(self):
+                return 'pas' in self.info_verb and self.word.endswith('é')
+
+        def is_imparfait(self):
+                return 'imp' in self.info_verb and self.word.endswith('ait')
+
+        def is_conditionnel(self):
+                return 'cnd' in self.info_verb and self.word.endswith('rait')
+
+        def is_participe_present(self):
+                return 'par' in self.info_verb and self.word.endswith('ant')
+
 class Steno:
         PREFIXES = {
 #                "s2": "S", # ce mais pas ceux
@@ -36,32 +49,33 @@ class Steno:
                 "tEl" : "THR-",
                 "R°" : "R-",
                 "S°" : "SK",
-                "Sa" : "SK"
-        } 
+                "Sa" : "SK",
+                'ke' : 'K',
+                
+        }
+
 
 
         # if start with - then dont convert 
         SUFFIXES = {
                 "jEm" : "-/A*EPL",
-                "sje" : "AE" , #caissIER
-                "sjER" : "AER" , #caissiERE
+                "jER" : "AER" , #caissiERE
                 "jasm" : "-/KWRAFPL",
                 "jEn": "AEB",
                 "sj§" : "GS",
                 "pid" : "-PD",
                 "fis" : "-WEUS",
+                "kEl" : "-BLG",
                 'kE' : 'KE',
-                "jER" : "AER",
-                "je" : "AE",
-                "jER" : "AER",
+#                "je" : "AER" , #caissIER
                 "loZik" : "LOIK",
                 "lOZist" : "-/HRO*EUS",
                 "lOg" : "LO*EG",
+                "p9R" : "-RP",
+                "l9R" : "-RL",
                 "d9R" : "RD",
                 "dabl" : "-/TKABL",
-                "abl" : "ABL",
 
-                
                 "jast" : "YA*S",
                 "vwaR" : "-FRS",
                 "Ral" : "-RL",
@@ -71,7 +85,7 @@ class Steno:
                 "5bR": "-EUFRBS",  # timbre
                 "§bR": "-OFRBS",   # ombre
                 "@sj§": "APBGS",    # p_ension_
-
+                "bl" : "-BL",
                 "@-S°" : "-AFRPBLG",
                 "tEkt" : "-/T*K",
                 "EtR" : "--TS",
@@ -107,6 +121,7 @@ class Steno:
                 "-y-" : "-y",
                 "@-t" :"@t-",
                 "5-t" :"5t-",
+                'i-j' : 'i'
         }
 
 
@@ -181,7 +196,13 @@ class Steno:
                 sylls.pop()
                 return "-".join(sylls)
 
-
+        def orth_ending_iere(self,word, pattern):
+                if word.endswith('ière'):
+                        return pattern.replace('AER', 'A*ER')
+                if word.endswith('ier') and not pattern.endswith('R'):
+                        return pattern+'R'
+                return pattern
+                
         def ortho_add_aloneR_infinitif_firstgroup(self, word):
                 verb_word = self.find_same_word_verb(word)
                 if verb_word.is_verb() and verb_word.is_infinitif()  and verb_word.word.endswith('er'):
@@ -190,7 +211,41 @@ class Steno:
                                 verb_word.syll = verb_word.syll[:-1]
                         return verb_word
                 return word
-        
+
+        def ortho_add_aloneD_past_tense(self,word):
+                verb_word = self.find_same_word_verb(word)
+                if verb_word.is_verb() and verb_word.is_passe_compose():
+                        self.ending = "/-D"
+                        if verb_word.syll.endswith('e') :
+                                verb_word.syll = verb_word.syll[:-1]
+                        return verb_word
+
+                if verb_word.is_verb() and verb_word.is_imparfait():
+                        self.ending = "/-S"
+                        if verb_word.syll.endswith('E') :
+                                verb_word.syll = verb_word.syll[:-1]
+                        return verb_word
+
+                if verb_word.is_verb() and verb_word.is_conditionnel():
+                        self.ending = "/-RS"
+                        if verb_word.word.endswith('rrait') and verb_word.syll.endswith('E') :
+                                verb_word.syll = verb_word.syll[:-1]
+                                return verb_word
+                        if verb_word.syll.endswith('RE') :
+                                verb_word.syll = verb_word.syll[:-2]
+                        return verb_word
+                if verb_word.is_verb() and verb_word.is_participe_present():
+                        self.ending = "/-G"
+
+#                        if verb_word.syll.endswith('j@')  :
+#                                verb_word.syll = verb_word.syll[:-2]
+#                                return verb_word
+                        if verb_word.syll.endswith('@') :
+                                verb_word.syll = verb_word.syll[:-1]
+                                return verb_word
+                        return verb_word
+                return word
+                
         def try_to_remove_woyel(self, myword) :
                 sylls = myword.syll
                 same_words=[]
@@ -253,6 +308,9 @@ class Steno:
                 return new_word
 
         def add_star(self,word):
+                if (self.ending):
+                        return word
+                
                 return word+"*"
         
         def transform(self,word):
@@ -265,11 +323,12 @@ class Steno:
                 if self.has_homophone(myword) and myword.is_verb():
                         return self.add_star(self.transform_word(myword))
                 myword = self.transform_word(myword)
-
+                myword = self.orth_ending_iere(word, myword)
                 return myword
          
         def transform_word(self,word):
                 word = self.ortho_add_aloneR_infinitif_firstgroup(word)
+                word = self.ortho_add_aloneD_past_tense(word)
                 word_str = self.change_syllabes(word.syll)
                 word_str  = word_str.replace('-','') #word_str.split('-')
 
@@ -587,11 +646,12 @@ class Steno_Encoding:
                 "8i": "AU",     # pluie
                 "j2": "AOEU",   # vieux
                 "je": "AE",     # pied
+                "jE": "AE",     # ciel
                 "ja": "RA",     # cria
                 "jo": "RO",     # bio
-                "jO": "ROE",    # fjord # TODO unsure
+#                "jO": "ROE",    # fjord # TODO unsure
                 "jo": "AO",     # bio # TODO Some conflict there. "-R can be read as i" (above), but the diphtongs are more important I guess?
-                "jO": "AO",     # fjord
+                "jO": "RO",     # fjord
                 "j§": "AO",     # av_ion_
                 "wa": "OEU",    # froid
                 "w5": "OEUPB",  # loin
@@ -606,6 +666,7 @@ class Steno_Encoding:
         VOWELS = {
                 "a": "A",       # chat
                 "°" : "",
+                'j' : 'i',
                 "Z" : "G",
                 "e": "E",       # clé
                 "2": "AO",      # eux
@@ -618,7 +679,8 @@ class Steno_Encoding:
                 "y": "U",       # cru
                 "u": "OU",      # mou
                 "5": "EUFR",    # vin
-                "8": "W",       # huit
+                "8": "U",       # huit
+                "§": "ON"
                 # *N is used for "on" (§) endings. # TODO this is a vowel, but only on word endings
 
         }

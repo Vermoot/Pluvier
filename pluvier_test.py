@@ -33,15 +33,14 @@ class TestPluvier:
     prefix_word = {
         "SPWAPBD" : "entende",
         "SPWAPBGS" : "intention",
-        "R-/TPHRU": "reflux" ,
+
     }
 
     suffix_word = {
         "WHROUR" : "velours",
         "TPROEURD": "froideur",
         #    "WLOEFS" : "voulez-vous"
-        "PWAER" : "bière",
-        "PAE" : "pied",
+#        "PWAER" : "bière", abbrev
         "RAOD/HRO*EUS" : "radiologiste",
         "SPWOUZ/KWRAFPL" : "enthousiasme",
         "SPWOUZ/KWRA*S" : "enthousiaste",
@@ -75,8 +74,11 @@ class TestPluvier:
 #        "SKWAL" : "cheval",
     }
 
-
+    corpus = False
     def read_corpus(self):
+        if self.corpus:
+            return self.corpus
+        print('read corpus')
         words = []
         source = "resources/Lexique383.tsv"
         with open(source) as f:
@@ -241,6 +243,94 @@ class TestPluvier:
 
     def test_lesson12_ortho_rightR_infinitif(self):
         self.assertSame({'PARL/-R' : 'parler'
+                         })
+
+    def test_lesson12_ortho_rightD_passe_compose(self):
+        self.assertSame({'PARL/-D' : 'parlé',
+                         'SU/-D' : 'sué'
+                         })
+        
+    def test_lesson13_TP_for_F_init_PB_for_N_final(self):
+        self.assertSame({"TPEUL": "fil",
+                         "TPAUT": "fuite",
+                         "TPRAEU": "frais",
+                         "TPOPB": "fond",
+                         "TOPB": "ton",
+                         "POPBT": "ponte",
+                         })
+
+    def test_lesson13_RE_prefix(self):
+        self.assertSame({ "R-/TPHRU": "reflux" ,
+#                          "R-FR": "refaire",
+#                          "R-L/WE": "relevé",
+#                          "R-LGS": "relation",
+#                          "R-LT": "réalité",
+
+                         })
+    def test_lesson13_AE_for_ie(self):
+        self.assertSame({ "PAE" : "pied",
+                          "HAER": "hier",
+                          "SAEL" : "ciel",
+                          "PAES": "pièce",
+                          "TAERS": "tierce",
+                         })
+
+    def test_lesson13_AER_ier_iere(self):
+        self.assertSame({"KS/A*ER": "caissière", # should be K-S/A*ER : - is required ?
+                         "WOEUL/AER": "voilier",
+                         "TE/A*ER": "théière",
+                         })
+
+    #TODO
+    def test_lesson13_inversion_ses_son(self):
+        return True 
+
+    def test_lesson13_LEFT_R_can_be_read_as_i_infrontof_a_or_o(self):
+        self.assertSame({ 'WROL' : 'viol',
+                          'TKRABL' : 'diable'
+                         })
+
+    # H- COTE gauche pour les groupement -> not to todo ?
+
+    def test_lesson13_S_alone_for_imparfait(self):
+        self.assertSame({"KRABG/-S": "craquait",
+                         "PAS/-S": "passait",
+                         "KOUR/-S": "courait",
+                         })
+        
+    def test_lesson13_RS_alone_for_conditionnel(self):
+        self.assertSame({
+                         "KRABG/-RS": "craquerait",
+                         "KOUR/-RS": "courrait",
+                         "PAS/-RS": "passerait",
+                         })
+
+    def test_lesson13_AI_alone_for_nom_ai(self):
+        self.assertSame({
+            "TEUR/AEU": "tiret",
+            "TEUR/-S": "tirait",
+            "SORB/AEU": "sorbet",
+            "TPEUL/AEU": "filet",
+                         })
+    def test_lesson13_G_alone_for_ant_partice_present(self):
+        self.assertSame({"KREU/-G": "criant",
+                         "TKEUZ/-G": "disant",
+                         "REU/-G": "riant",
+                         "KOUR/-G": "courant",
+                         })
+
+    def test_lesson13_BLG_alone_for_quel(self):
+        self.assertSame({
+            "SEBLG": "séquelle",
+            "HRBLG": "lequel",
+#                        "HR-BLG": "lequel",
+                         })
+
+        
+
+    def test_lesson13_RP_for_peur_RL_for_leur(self):
+        self.assertSame({"TRARP": "trappeur",
+                         "WRL": "voleur", #should be WORL ?
                          })
 
     def test_prefixWords(self):
