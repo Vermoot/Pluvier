@@ -739,7 +739,9 @@ class TestPluvier:
         self.assertSame({
             # 2 ways to write KPAR
             "K*/PAR": "compare", #'k§-paR'
+            "KPAR": "compare", #'k§-paR'
             "K*/PHROE": "complot",
+            "KPHROE": "complot",
             "K*/PABGT": "compact",
             "K*/PWATS": "combattre",
 #            "K*/PA*": "compas",
@@ -830,9 +832,6 @@ class TestPluvier:
         self.assertSame({})
     def test_lesson25_KH_for_sound_mne(self):
         self.assertSame({})                    
-    def test_prefixWords(self):
-       for elem in self.prefix_word.items():
-           assert elem[0] == self.steno(elem[1])
 
 
     def test_suffixWords(self):
@@ -843,8 +842,15 @@ class TestPluvier:
 
 
     def assertSame(self, words):
+        found = False
+
         for elem in words.items():
-           assert elem[0] == self.steno(elem[1])
+            first_elem =""
+            for sten_str in self.steno(elem[1]):
+                first_elem = sten_str
+                if  elem[0] == sten_str:
+                    assert elem[0] == sten_str
+            assert elem[0] == first_elem
 
 
            
@@ -861,7 +867,7 @@ class TestPluvier:
 
         print("FOUND: ",found)
         print("\nNOT FOUND: ",not_found)
-        assert false
+        assert False
 
             
 

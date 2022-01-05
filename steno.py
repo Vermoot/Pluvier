@@ -53,6 +53,7 @@ class Ortho:
                 self.sounds = sound.split('|')
                 self.replace_by = replace_by
 
+
         def steno(self):
                 return self.steno_str
         
@@ -113,7 +114,7 @@ class Steno:
 
         ORTHO_PREFIXES = {
                 "comm" : OrthoPrefix('ko-m|kOm','KM'),
-                "com" : OrthoPrefix('k§','K*-'),
+                "com" : OrthoPrefix('k§','K*-|KP'),
                 'ind' : OrthoPrefix('5-d', 'SPW'),
                 'end' : OrthoPrefix('@-d', 'SPW'),
                 
@@ -258,8 +259,10 @@ class Steno:
         ending = ""
         homophones = False
         pronoun = ""
+        final_encoded = []
         def __init__(self, corpus):
                 self.words = corpus
+
 
         def ortho_ending(self, word, init_word) :
                 return (word != init_word) and not word.endswith('nt') and not word.endswith('s') and not word.endswith('he') #and not word.endswith('lle')
@@ -506,6 +509,7 @@ class Steno:
                 return word+"*"
         
         def transform(self,word):
+                self.final_encoded = []
                 myword = self.find(word)
                 if not myword:
                         return ""
@@ -513,12 +517,14 @@ class Steno:
                 myword.syll = self.try_to_remove_woyel(myword)
                 print('after remove vowyel', myword.syll)
                 self.orth_write_ending_d(myword)
-                if self.has_homophone(myword) and myword.is_verb():
-                        return self.add_star(self.transform_word(myword))
-                myword = self.transform_word(myword)
-                myword = self.orth_ending_iere(word, myword)
 
-                return myword
+                self.transform_word(myword)
+                for final_word in  self.final_encoded:
+                        if self.has_homophone(myword) and myword.is_verb():
+                                final_word = self.add_star(final_word)
+                        final_word = self.orth_ending_iere(word, final_word)
+
+                return self.final_encoded
          
         def transform_word(self,word):
                 word = self.ortho_suffixes(word)
@@ -546,7 +552,13 @@ class Steno:
                 self.syllabes = [word_str]
 
                 print('ending',self.ending)
-                return Steno_Encoding(self.syllabes, self.prefix, self.suffix).encode()+self.ending
+                for  one_prefix in self.prefix.split('|'):
+                        self.final_encoded.append(Steno_Encoding(self.syllabes, one_prefix, self.suffix.split('|')[0]).encode()+self.ending)
+                for  one_suffix in self.suffix.split('|'):
+                        self.final_encoded.append(Steno_Encoding(self.syllabes, self.prefix.split('|')[0], one_suffix).encode()+self.ending)
+
+                return self.final_encoded
+        
 
 
 class Syllabe:
