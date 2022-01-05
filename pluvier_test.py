@@ -134,7 +134,9 @@ class TestPluvier:
                          })
 
     def test_lesson4_w_f(self):
-        self.assertSame({'WA' : 'va',
+        self.assertSame({
+
+            #'WA' : 'va', #contradiction lesson 19
 #                         'WU' : 'vue',
                          'WOT' : 'vote',
                          'RAF' : 'rave',
@@ -405,7 +407,7 @@ class TestPluvier:
             "KWROT": "yacht", #mistake in lesson : kwrat
 #            "KWRAT/US": "hiatus", strange hier is not kwr...
             "PAG": "page",
-            "PHARG": "marge",
+            "PHARG": "marge", #'maRZ'
                          })
 
 
@@ -442,7 +444,7 @@ class TestPluvier:
 #should works too "POPLT": "pommette",
                          })
 
-    def test_lesson18_TKPW_for_gue_initial_KW_for_qwe(self):
+    def test_lesson18_TKPW_for_sound_gue_initial_KW_for_qwe(self):
         self.assertSame({"TKPWOU": "goût",
                          "TKPWAPB": "gant",
                          "TKPWAFL": "gaffe",
@@ -487,7 +489,8 @@ class TestPluvier:
                          })
 
     def test_lesson19_WstarE_ending_ue_oue(self):
-        self.assertSame({"TKEUL/W*E": "dilué",
+        self.assertSame({
+            "TKEUL/W*E": "dilué",
                          "AF/W*E": "avoué",
                          })
 
@@ -498,14 +501,335 @@ class TestPluvier:
                          })
 
     def test_lesson19_separate_starZ_ending_a_sound(self):
-        self.assertSame({"R-P/*Z": "repas",
+        self.assertSame({
+#            "R-P/*Z": "repas",
                          "SAG/*Z": "saga",
                          "KOUP/*Z": "coupa",
 #                         "WOBGZ": "avocat",
 #                         "WEUFR/*Z": "vivra",#removed i
                          })
 
+    def test_lesson21_CH_init_is_SH_final_is_FP(self):
+        self.assertSame({
+            "SHOEU": "choix",
+#            "SHO": "chaud",
+            "KAFP": "cache",
+#            "RUFP": "ruche",
+            "SHE": "chez",
+
+                         })
         
+    def test_lesson21_starEL_el_ortho_final(self):
+        self.assertSame({
+            "KRU/*EL": "cruel",
+#            "K-PB/*EL": "conditionnel",
+#            "K-PBL": "conditionnel",
+            "TPEUS/*EL": "ficelle",
+                         })
+
+    def test_lesson21_RT_RTS_for_ortho_teur_trice(self):
+        self.assertSame({
+#            "HRAEURT": "lecteur",
+            "ABG/RT": "acteur", # should be ABG/*RT
+            "ABG/RTS": "actrice", # ABG/*RTS
+#            "HRAEUBG/RTS": "lectrice",
+#            "HRAEURTS": "lectrice",
+                         })
+
+    def test_lesson22_B_is_final_ne(self):
+        self.assertSame({
+            "PWOB": "bonne",
+            "SKWROEB": "jaune",
+            "SKWRAOB": "jeune",
+            "SKWRAOBS": "jeunesse",
+        })
+
+
+    def test_lesson22_OIB_for_sound_oine_and_starOIB_for_suffixe_oine(self):
+        self.assertSame({
+            "TKWOEUB": "douane",
+# also work            "TKWAB": "douane",
+            #"PHOEUB": "moine",
+            "PEU/O*EUB": "pivoine",
+                         })
+
+    def test_lesson22_AEN_ien_sound_AEB_for_ienne_sound_star_for_suffix(self):
+        self.assertSame({"PHAEPB": "mien",
+                         "PHAEB": "mienne",
+                         "HRAEPB": "lien",
+
+#                         "SWAEPB": "souvient",
+#                         "KWA*EPB": "convient",
+                         })
+
+    def test_lesson22_AOUB_for_sound_ouine(self):
+        self.assertSame({
+            "TPAOUB": "fouine",
+#            "STKPWAOUB": "égoïne",
+                         })
+
+    def test_lesson22_GZ_for_sound_zion_and_zon(self):
+        self.assertSame({
+#            "OGZ": "occasion",
+            "TPUGZ": "fusion",
+#            "SAEUGZ": "saison",
+                         })
+
+    def test_lesson23_natural_combo_initial_consonne(self):
+        self.assertSame({
+#            "STKPWOPB": "second",
+            "STPAEUR": "sphère", #'sfER'
+            "STRAT": "strate",
+            "STEUL": "style",
+            "SKRUT": "scrute",
+            "STPAEUR": "sphère","STRAT": "strate",
+            "STEUL": "style",
+            "SKRUT": "scrute",
+            "SKOUR": "secours",
+#            "SPHREUD": "splendide",
+#            "SPH-": "semaine",
+            "SPREUPBT": "sprint",
+#            "SRA": "sera",
+            "TKPWHRAS": "glace",
+            "TKPWREU": "gris",
+            "TKREUPB": "drain", #'dR5'
+            "TPHRAOR": "fleur", #'fl9R'
+#            "TPRAEUL": "frêle",#'fREl'
+            "TROU": "trou",
+            "KHRAS": "classe",
+            "KRAPB": "cran",
+            "PWHROBG": "bloc",
+            "PWREUPB": "brin",
+            "PHRUPL": "plume",
+            "PREUZ": "prise",
+            "WHROUR": "velours",
+            "WRAEU": "vrai",
+
+                         })
+
+    def test_lesson22_final_natural_consonnes(self):
+        self.assertSame({
+            "SOLD": "solde",
+            "TORS": "torse",
+            "TPORPL": "forme",
+            "TKOUBL": "double", #'dubl'
+            "TART": "tarte",
+            "KARP": "carpe",
+#            "KOFR": "coffre", 
+            "KORB": "corne",
+            "KULT": "culte",
+            "KOPBT": "conte",
+            "SOPBD": "sonde","PARBG": "parc",
+            "PARL": "parle",
+            "PABGT": "pacte",
+            "PHORG": "morgue",
+#            "HRAPS/R-R": "laps",
+            "HROPBG": "longue",
+            "SOUFL": "souffle",
+            "AEURB": "herbe",
+#            "AFPT": "achète", # a-SEt
+#             "ORPBLG": "orge", #'ORZ'
+            "OPT": "opte", 
+#            "APBL/W*E": "enlevé",
+
+
+        })
+
+    def test_lesson25_KH_for_sound_mne(self):
+        self.assertSame({
+            "KHAS": "menace", #m°-nas
+            "KHU": "menu",
+            "KHAOR": "mineur",
+            "KHUT": "minute",
+            "KHAUZ/AER": "menuisier",
+        })
+        
+    def test_lesson25_AE_for_starting_letter_a_word(self):
+        self.assertSame({
+#            "AE/WEUD": "avide",
+            "AE/TKOR": "adore",
+            "AE/TKAOEU": "adieu",
+            "AE/PHORS": "amorce",
+            "AE/TKOPT": "adopte",
+
+            })
+
+        #TODO  il y a et preposition lesson 26
+    def test_lesson26_AEN_for_sound_ian(self):
+        self.assertSame({
+            "SAEPBS": "science", #'sj@s'
+        })
+        
+    def test_lesson26_final_NS_for_ortho_ance_or_ence(self):
+        self.assertSame({
+#            "KROEUPBS": "croissance",
+            "SPHREPBS": "suppléance",
+#            "STPRAPBS": "souffrance",
+#            "SAURPBS": "assurance",
+
+        })
+
+        
+    def test_lesson26_final_ND_for_ortho_ande(self):
+        self.assertSame({
+            "WEUPBD": "viande",
+            "TPREUPBD": "friande",
+#            "TPREUPBDZ": "friandise",
+        })
+
+    def test_lesson26_KT_for_ortho_cte(self):
+        self.assertSame({
+            "ABGT": "acte",
+            "TKEUBGT": "dicte",
+            "PABGT": "pacte",
+            "TRABGT": "tract",
+#            "KHRAEUBGT": "collecte",
+        })
+    def test_lesson26_KEOEN_for_prefix_con(self):
+        self.assertSame({
+#            "KOEPB/SAEPBS": "conscience",
+            "KOEPB/KAF": "concave",
+
+            "KOEPB/KHRUR": "conclure",
+# ordre du slash            "KOEPB/TOUR": "contour",
+        })            
+    def test_lesson27_STK_for_starting_des_and_dec_following_by_woyel(self):
+        self.assertSame({
+#            "TKAEUS/*EUPB": "dessin",
+            "STKEUR": "désir",
+            "STKAPBDZ": "descendre",
+            "STKU": "dessus",
+            "STKOU": "dessous",
+            "STKAEUR": "désert",
+            #"STK*EUR": "désire",
+
+        })
+        
+        
+    def test_lesson27_DAOE_for_starting_ortho_de(self):
+        self.assertSame({
+            #"TKAOE/KOUDZ": "découdre",
+#                         "TKAOE/KOFP/-R": "décocher",
+#                         "TKAOE/PREPB": "déprend",
+            #lesson 56
+    
+                         })
+    def test_lesson27_ending_sounds_tre_ntre_rtre_dre_ndre_bre_rbre_pre_rpre(self):
+        self.assertSame({
+            "ATS": "astre",
+#            "KOPBTS": "contre",
+#            "REPBDZ": "rendre",
+            "SOBS": "sobre",
+            "PHARBS": "marbre",
+            "POURPS": "pourpre",
+#            "SHREUPBDZ": "cylindre",
+            "SKWREUFR": "givre",
+            "WEUTS": "vitre",
+            "TARTS": "tartre",
+            "PHOUDZ": "moudre",
+            "PHORDZ": "mordre",
+            "ARBS": "arbre",
+            "PROPS": "propre",
+            "HREUTS": "litre",
+            "ORDZ": "ordre",
+            "KADZ": "cadre",
+        })
+        
+    def test_lesson28_Kstar_for_prefix_com_and_KM_for_comm(self):
+        self.assertSame({
+            # 2 ways to write KPAR
+            "K*/PAR": "compare", #'k§-paR'
+            "K*/PHROE": "complot",
+            "K*/PABGT": "compact",
+            "K*/PWATS": "combattre",
+#            "K*/PA*": "compas",
+ #          "KPHEUBG": "communique",
+            "KPH": "comme",
+#            "KPHA": "comment",
+            "KPHAEURS": "commerce",
+
+
+        })
+
+        
+        
+    def test_lesson28_FBG_for_sound_fic_and_fec(self):
+        self.assertSame({"TRAFBG": "trafic",
+#                         "AFBG/TE": "affecté"
+                         })
+
+        
+    def test_lesson29_STPH_for_sound_sne(self):
+        self.assertSame({
+            "STPHOB": "snob",
+            "STPHABG": "snack",
+ #           "STPHEUPL": "synonyme",
+#            "SPHA": "cinéma",
+            "STPHEUTS": "sinistre",
+ #           "STPHOPB": "sinon",
+ 
+        })
+
+    def test_lesson29_GSstarB_or_GZ_for_sound_tionne_and_zionne(self):
+        self.assertSame({
+            #"TPOPBGS": "fonction",
+ #                        "STAGS/*B": "stationne",
+            "STAGZ": "stationne",
+ #                        "PAGS": "passion",
+                         "PAGZ": "passionne",
+ #                        "POEGZ": "positionne",
+                         })
+    def test_lesson29_GZ_for_sound_zion(self):
+        self.assertSame({
+            #"TKWEUGZ": "division",
+                         "WEUGZ": "vision",
+                         "TPUGZ": "fusion",
+                #         "TPUGZ/*B": "fusionne",
+                         })
+    def test_lesson29_GS_for_cien_and_GZ_for_cienne(self):
+        self.assertSame({
+            "PHAG/EUGS": "magicien",
+            "PHAG/EUGZ": "magicienne",
+#            "POL/TEUGS": "politicien",
+        })
+
+    def test_lesson29_BGS_suffix_for_cation(self):
+        self.assertSame({
+            "WEFRBGS": "vérification",
+            "KPHEUBGS": "communication",
+                         })
+
+    def test_lesson29_AO_for_diphtong_io(self):
+        self.assertSame({
+            "PWRAOFP": "brioche",
+            "PHAOP": "myope",
+            "PAOFP": "pioche",
+#            "HRAOPB": "lion",
+#            "KPHAOPB": "camion",
+
+        })
+    def test_lesson30_SPW_for_prefix_ent_int_end_ind(self):
+        self.assertSame({
+            "SPWAPBDZ": "entendre",
+            "SPWORS": "entorse",
+            "SPWAPBT": "entente",
+            "SPWAPBGS": "intention",
+#            "SPWEUBG": "indique",
+            "SPWUR": "endure",
+#            "SPWRER": "entrer",
+            "SPWREUG": "intrigue",
+            "SPWAEPB": "indien",
+
+        })
+
+    def test_lesson25_KH_for_sound_mne(self):
+        self.assertSame({})
+    def test_lesson25_KH_for_sound_mne(self):
+        self.assertSame({})
+    def test_lesson25_KH_for_sound_mne(self):
+        self.assertSame({})
+    def test_lesson25_KH_for_sound_mne(self):
+        self.assertSame({})                    
     def test_prefixWords(self):
        for elem in self.prefix_word.items():
            assert elem[0] == self.steno(elem[1])
@@ -524,7 +848,7 @@ class TestPluvier:
 
 
            
-    def all_tao_entry(self):
+    def test_all_tao_entry(self):
         with open('resources/tao_la_salle.json') as json_file:
             data = json.load(json_file)
         found = []

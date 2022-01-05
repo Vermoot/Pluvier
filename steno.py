@@ -45,69 +45,131 @@ class Word:
 
 class Ortho:
 
-        sound = ''
+        sounds = ''
         replace_by = ''
-        steno =''
+        steno_str =''
+        prefix = False
         def __init__(self,sound, replace_by):
-                self.sound = sound
+                self.sounds = sound.split('|')
                 self.replace_by = replace_by
 
         def steno(self):
-                return self.steno
+                return self.steno_str
         
         def matches(self,word, pattern) :
                 return  word.word.endswith(pattern)
 
+
+
+class OrthoSuffix(Ortho):
         def convert(self,word) :
-                print('lalalal',word.syll)
-                                
-                if word.syll.endswith(self.sound) :
-                        word.syll = word.syll[:-len(self.sound)]
-                        self.steno = self.replace_by
-                        print('lala',word.syll)
+                for sound in self.sounds:
+                        if word.syll.endswith(sound) :
+                                word.syll = word.syll[:-len(sound)]
+                                self.steno_str = self.replace_by
+#                                print('ortho suffix convert',word.syll)
+                                return word
                 return word
-                
+
+class OrthoPrefix(Ortho):
+        def convert(self,word):
+                for sound in self.sounds:
+                        if word.syll.startswith(sound) :
+                                word.syll = word.syll[len(sound):]
+                                self.steno_str = self.replace_by
+#                                print('ortho prefix convert',word.syll)
+                                return word
+                return word
 class Steno:
         PREFIXES = {
 #                "s2": "S", # ce mais pas ceux
-                "@t" :"SPW",
-                "5t" :"SPW",
+
                 "tEkno" : "T",
                 "tEl" : "THR-",
+                'ade' : 'AD-', # sound
+                'm°n' : "KH",#men
+                'min' : "KH",#min
+                'm2n' : 'KH', #men
+                "@t" :"SPW",
+                "5t" :"SPW",
                 "R°" : "R-",
                 "S°" : "SK",
                 "Sa" : "SK",
                 'ke' : 'K',
+                'dR' : 'DR',
+                'sin' : 'STPH',
+                'sn' : 'STPH',
+                'k§' : 'KON', # conte
+#                'k§' : 'KOEN', # con
+                'du' : 'DOU',
+                'S' : 'SH',
                 "e" : "",
+                'ad' : 'AD-', # sound 
                 "Z" : "J",
+#                'd' : 'DAOE',
                 'z' : 'Z',
                 
         }
+
+        ORTHO_PREFIXES = {
+                "comm" : OrthoPrefix('ko-m|kOm','KM'),
+                "com" : OrthoPrefix('k§','K*-'),
+                'ind' : OrthoPrefix('5-d', 'SPW'),
+                'end' : OrthoPrefix('@-d', 'SPW'),
+                
+#                "a" : OrthoPrefix('a-','AE-'), # sound
+
+                }
+
+        
         ORTHO_SUFFIXES = {
-                "ène" : Ortho("En","-*EB"),
-                "ué" : Ortho("8e","-W*E"),
-                "uel" : Ortho("8El","-W*EL"),
+                'cation' : OrthoSuffix('ka-sj§','-BGS'),
+                'ance' : OrthoSuffix('@s', '-NS'),
+                'ence' : OrthoSuffix('@s', '-NS'),
+                'ande' : OrthoSuffix('@d', '-ND'),
+                "elle" : OrthoSuffix("El", "-/*EL"),
+                "teur" : OrthoSuffix("t9R", "-/RT") ,
+                "trice" : OrthoSuffix("tRis", "-/RTS") ,
+                'cienne' : OrthoSuffix('sjEn', '-GZ'),
+                'cien' : OrthoSuffix('sj5', '-GS'),
+                "ain" : OrthoSuffix("5", "IN"),
+                'cte' : OrthoSuffix('kt', 'KT'),
+                "ène" : OrthoSuffix("En","-/*EB"),
+                "uel" : OrthoSuffix("8El","-/W*EL"),
+                "che" : OrthoSuffix("S","-/FP"),
+                "ué" : OrthoSuffix("8e","-/W*E"),
+                "el" : OrthoSuffix("El", "-/*EL"),
+
+                "a" : OrthoSuffix("a", "-/*Z"),
+                
+
         }
+                
 
         REAL_SUFFIXES = {
                 "En" : "A*IB",
-#                "wE": "-/W*E",
-                "a" : "-*Z",
-                
+                "wE": "-/W*E",
 
 
         }
 
         # if start with - then dont convert 
         SUFFIXES = {
+                "zj§": "-GZ",
+                'sjOn' :'-GZ',
+
+#second option                'sjOn' :'-/GS/*B',
+                
                 "jEm" : "-/A*EPL",
                 "jER" : "AER" , #caissiERE
                 "jasm" : "-/KWRAFPL",
                 "jEn": "AEB",
                 "sj§" : "GS",
-                "ks": "-BGS",
+
                 "pid" : "-PD",
                 "fis" : "-WEUS",
+                "fik" : "-/FBG",
+                "fEk" : "-/FBG",
                 "kEl" : "-BLG",
                 'kE' : 'KE',
 #                "je" : "AER" , #caissIER
@@ -115,31 +177,42 @@ class Steno:
                 "lOZist" : "-/HRO*EUS",
                 "lOg" : "LO*EG",
                 "p9R" : "-RP",
-                "l9R" : "-RL",
+#                "l9R" : "-RL",
                 "d9R" : "RD",
                 "dabl" : "-/TKABL",
-
+                
                 "jast" : "YA*S",
                 "vwaR" : "-FRS",
+                "ks": "-BGS",
                 "Ral" : "-RL",
                 "Ribl" : "-RBL",
+                "@tR" : "-NTS", #-ntre
+                "stR" : "-TS", #-ntre
+                "RtR" : "-RTS", #-rtre
                 "§bl": "-OFRBL",  # comble
                 "@bR": "-AFRBS",   # ambre
                 "5bR": "-EUFRBS",  # timbre
                 "§bR": "-OFRBS",   # ombre
                 "@sj§": "APBGS",    # p_ension_
-                "bl" : "-BL",
-                "@-S°" : "-AFRPBLG",
                 "tEkt" : "-/T*K",
                 "EtR" : "--TS",
+                "SEt" : "-/FPT" , # achete
+#                "RZ" : "-/RPBLG",
+                "RZ" : "RG",
+                "bl" : "-BL",
+                "@-S°" : "-AFRPBLG",
+                "fR" : "-/FR", #souffre
+                "fl" : "-/FL", #souffle
                 "RS" : "-FRPB",
                 "Re":"-/R*E",
+                'z§':'-GZ',
                 "@S" : "-AFRPBLG",
                 "st" : "-*S",
                 "ZE" : "G",
-                "S" : "-FRPBLG",
+                "S" : "-/FRPBLG",
                 "m@" : "-PLT",
                 "En" : "AIB",
+                "ER" : "AIR",
                 "sm" : "-FPL",
                 "@d" :"APBD",
                 "5b": "-EUFRB",  # limbe
@@ -148,11 +221,14 @@ class Steno:
                 "1bl": "-EUFRBL",  # humble
                 "dR" : "DZ" ,# ajoin-dre
                 "@b": "-AFRB",   # jambe
-
+                "tR": "-TS", #tre
+                "bR":"-BS",  #-bre
+                "pR":"-PS", #-pre
                 "E" : "AEU",
                 "n" : "B",
-                "§" : "-*PB"
-
+                "nEs" : "BS",
+                "§" : "-*PB",
+                "sm" : "-/FP",
                 
                 
         }
@@ -169,44 +245,8 @@ class Steno:
                 "-y-" : "-y",
                 "@-t" :"@t-",
                 "5-t" :"5t-",
-                'i-j' : 'i',
+#                'i-j' : 'i',
                 'de' : 'd'
-        }
-
-
-
-        CONSONANTS_LHS = {
-                "b": "PW",      # bonjour
-                "d": "TK",      # dans
-                "f": "TP",      # faire, phare
-                "g": "TKPW",    # gare
-                "k": "K",       # quoi, car
-                "l": "HR",      # la
-                "m": "PH",      # mais
-                "n": "TPH",     # ne
-                "p": "P",       # père
-                "R": "R",       # rouge
-                "s": "S",       # super
-                "S": "SH",      # chien
-                "t": "T",       # toi
-                "v": "W",       # vous
-                "8": "W",       # huit
-                "j": "KWR",     # hier
-                "z": "SWR",     # zone
-                "Z": "SKWR",    # je
-        }
-
-        CONSONANT_PAIRS_LHS = {
-                "gz": "KP",
-                "ps": "S",
-                "pn": "TPH",
-                "kw": "KW",
-                "tS": "SK",         # TODO: I'd rather deviate and use KH if possible
-        }
-
-        SOUNDS_LHS = {
-                "de": "STK",
-                "def": "STKW",
         }
 
 
@@ -269,7 +309,23 @@ class Steno:
                         self.ending = 'D'
                 return word
 
-                        
+        def ortho_starting_with_des(self,word):
+                syll = word.syll.replace('-','')
+                print('sp', syll)
+#                if not syll.startswith('dez') and not syll.startswith('des') and not syll.startswith('d°s'):
+                if not word.word.startswith('de') and not word.word.startswith('dé'):
+                        return word
+                next_letter = syll[:4].upper()
+                print('next letter', next_letter)
+                if (next_letter.endswith('O') or next_letter.endswith('E') or next_letter.endswith('I') or next_letter.endswith('A') or next_letter.endswith('U') or next_letter.endswith('@') or next_letter.endswith('Y')) :
+                        self.prefix = 'STK'
+                        word.syll = word.syll.replace('de-z', '')
+                        word.syll = word.syll.replace('de-s', '')
+                        word.syll = word.syll.replace('d°-s', '')
+                        print('syll repl', word.syll)
+                
+                return word
+                
         def ortho_add_aloneR_infinitif_firstgroup(self, word):
                 verb_word = self.find_same_word_verb(word)
                 if verb_word.is_verb() and verb_word.is_infinitif()  and verb_word.word.endswith('er'):
@@ -296,7 +352,18 @@ class Steno:
                                 print(vars(orth[1]))
                                 ortho = orth[1]
                                 word = ortho.convert(word)
-                                self.suffix = ortho.steno
+                                self.suffix = ortho.steno()
+                return word
+
+        def ortho_prefixes(self,word):
+                for orth in self.ORTHO_PREFIXES.items():
+                        if word.word.startswith(orth[0]):
+                                print(vars(orth[1]))
+                                ortho = orth[1]
+                                ortho.prefix = True
+                                word = ortho.convert(word)
+                                self.prefix = ortho.steno()
+                                return word
                 return word
 
         
@@ -351,7 +418,8 @@ class Steno:
                 sylls = myword.syll
                 same_words=[]
                 print('remove last syll',self.remove_last_syll(sylls))
-                if ('8i' in self.remove_last_syll(sylls)) or ('i' not in self.remove_last_syll(sylls)):
+                print('number of i ',len(myword.word.split('i')))
+                if ('8i' in self.remove_last_syll(sylls)) or ('i' not in self.remove_last_syll(sylls)) or (len(myword.syll.split('i'))<3):
                         return myword.syll
 
                 sylls = sylls.replace('i','',1)
@@ -454,18 +522,22 @@ class Steno:
          
         def transform_word(self,word):
                 word = self.ortho_suffixes(word)
+                word = self.ortho_prefixes(word)
+                print('syllabe',word.syll)
                 word = self.ortho_add_aloneR_infinitif_firstgroup(word)
                 word = self.ortho_add_alone_keys_on_verb(word)
                 word = self.ortho_add_alone_keys_on_noun(word)
-
+                if not self.prefix:
+                        word = self.ortho_starting_with_des(word)
                 word_str = self.change_syllabes(word.syll)
                 word_str  = word_str.replace('-','') #word_str.split('-')
 
-                if word.word.startswith('h') and not word.syll.startswith('8') and not word.syll.startswith('a') :
+                if word.word.startswith('h') and not word.syll.startswith('8') and not word.syll.startswith('a') and not word.syll.startswith('E') :
                         word_str = 'h'+word_str
-
-                word_str = self.prefixes(word_str, word)
-
+                print('before prefix', word_str)
+                if not self.prefix:
+                        word_str = self.prefixes(word_str, word)
+                print('after prefix', word_str)
                 if not self.suffix and '-' in word.syll:
                         word_str = self.real_suffixes(word_str)
                 if not self.suffix:
@@ -474,7 +546,6 @@ class Steno:
                 self.syllabes = [word_str]
 
                 print('ending',self.ending)
-#                return Steno_Encoding(self.syllabes, self.prefix, self.suffix).encode()
                 return Steno_Encoding(self.syllabes, self.prefix, self.suffix).encode()+self.ending
 
 
@@ -581,22 +652,21 @@ class Syllabe:
 
         }
 
-        LEFT_KEYS = '*STKPWHRAO*'
-        RIGHT_KEYS = '*EUFRPBLGTSDZ*'
+        LEFT_KEYS = '-/*STKPWHRAO*'
+        RIGHT_KEYS = '-/EU*FRPBLGTSDZ'
         consume_woyels = 'AOEU'
         keys_left = ''
-        position = 1
         encoded_hand = ''
+        already_encoded = False
         def __init__(self, syllabe, previous):
                 self.previous = previous
                 self.syllabe = syllabe
                 self.hand = 'L'
-                self.position = 1
+
                 if (previous is not None) and previous.is_right_hand():
                         self.hand='R'
 
                 if previous is not None:
-                        self.position = previous.position +1
                         self.keys_left = previous.keys_left
 
                 if syllabe =="":
@@ -604,21 +674,16 @@ class Syllabe:
                         return None
 
                 if self.syllabe.endswith('-'):
-                        self.hand='L'
-                        self.position = 2
+                        self.hand='R'
                         self.keys_left = ''
                         return None
                 if self.syllabe.startswith('-'):
-                        self.hand='R'
-                        self.keys_left = ''
+#                        self.hand='R'
+#                        self.keys_left = ''
                         return None
 
 
                 self.init_keys_left()
-
-#                if (self.both_hand):
-#                        self.hand='R'
-#                        self.position = self.position+1
 
         def init_keys_left(self):
                 self.consume_woyels = 'AOEU'
@@ -651,28 +716,17 @@ class Syllabe:
                 print('syll',syllabe)
                 print('hand',self.hand)
                 for key in syllabe:
-#                        if self.is_left_hand() and "E" not in self.consume_woyels and "U" not in self.consume_woyels :
-#                                not_found.append(key)
-                        
                         if not_found:
                                 rest=rest+key
                                 continue
                         key_trans = key
-                        if key in sounds.keys():
+                        if not self.already_encoded and ( key in sounds.keys()):
                                 key_trans = sounds[key]
-#                        if key_trans in self.consume_woyels:
-#                                self.consume_woyels = self.consume_woyels.replace(key_trans,'')
-#                                self.encoded_hand=self.encoded_hand + key_trans
-#                                continue
 
                         print('key_trans', key_trans)
                         for key_trans_char in key_trans:
-                                print('key_trans_char', keys)
-
                                 if key_trans_char in keys :
                                         keys = keys.split(key_trans_char)[1]
-                                        print('qui qui reste',keys)
-#                                        keys = keys.replace(key_trans_char,'')
                                 else:
                                         rest=rest+key
                                         not_found.append(key)
@@ -701,39 +755,31 @@ class Syllabe:
                                 consume.replace(previous.hand, '')
                         previous = previous.previous
                 return consume ==''
-
+        def matching_syll(self, syllabe, keys) :
+                for car in syllabe:
+                        if car not in keys:
+                                return False
+                        keys = keys.replace(car,'')
+                return True
+                
         def encoded(self):
                 piece = ""
                 if self.syllabe == "":
                         return piece
                 if self.syllabe.endswith('-'):
                         self.encoded_hand = self.syllabe
+                        self.change_hand
+                        self.keys_left=''
+                        self.syllabe = self.syllabe[:-1]                    
                         return self.syllabe
+                
                 if self.syllabe.startswith('-'):
+                        self.syllabe = self.syllabe[1:]
+                        if self.syllabe.startswith('/'):
+                                self.already_encoded = True
+                                self.syllabe = self.syllabe[1:]          
 
-                        self.encoded_hand = self.syllabe[1:]
-                        if self.previous is not None and self.previous.hand =="R" and not self.encoded_hand.startswith('/'):
-                                self.encoded_hand = "/"+self.encoded_hand
-#                        if self.has_previous_R_and_L() :
-#                                self.encoded_hand= "/"+self.encoded_hand
-#                        if (self.previous and self.previous.is_right_hand()):
-
-                         #       
-                        self.position = self.position + 1
-                        return self.encoded_hand
-                 
-                self.consume_woyels = 'AOEU'
                 self.init_keys_left()
-
-
-                #         if (self.is_right_hand()):
-                #                 self.consume_woyels = self.previous.consume_woyels.replace("A","")
-                #                 self.consume_woyels = self.consume_woyels.replace("O","")               
-                #         else:
-                #                 self.consume_woyels = self.previous.consume_woyels.replace("E","")
-                 #               self.consume_woyels = self.consume_woyels.replace("O","")               
-                 
-
 
 
                 rest = self.syllabe
@@ -759,11 +805,8 @@ class Syllabe:
                                 self.init_keys_left()
                                 cpt = True
                         count= count +1
-                        self.position = self.position +1 
                         print('reste'+rest+":")
                 return piece
-#                   print('left_hand',piece+self.replace_hand(self.syllabe,self.SOUNDS_LH.items()))
-#                        return piece+self.replace_hand(self.syllabe,self.SOUNDS_LH.items())
 
         def replace_hand(self, syllabe, items):
                 for sound in items:
@@ -775,17 +818,25 @@ class Steno_Encoding:
                 # without i
                 "jEn": "AEB",
                 "djO": "OD",
+                "zj§": "GZ",
+                "sj§": "GZ",
+                "fik" : "-/FBG",
+                "fEk" : "-/FBG",
+                'j@' : 'AEN' , # son ian
                 "RSi" : "VRPB",
                 'Egze' : 'KP',
+                'ijO' : 'AO',
                 'Egz' : 'KP',
                 "RS" : "VRPB",
                 "dZ" : "PBLG",
                 "bZ" : "PBLG",
                 'En' : 'AIB',
-
+                "ER" : "AIR",
 #                "di" : "D",
 #                "mi" : "M",
                 "8i": "AU",     # pluie
+                'ij': 'AO', # before jO
+                'jO' : 'AO',
                 "j2": "AOEU",   # vieux
                 "je": "AE",     # pied
                 "jE": "AE",     # ciel
@@ -793,7 +844,7 @@ class Steno_Encoding:
                 "jo": "RO",     # bio
 #                "jO": "ROE",    # fjord # TODO unsure
                 "jo": "AO",     # bio # TODO Some conflict there. "-R can be read as i" (above), but the diphtongs are more important I guess?
-                "jO": "RO",     # fjord
+#                "jO": "RO",     # fjord
                 "j§": "AO",     # av_ion_
                 "kw": "KW",
                 "wE": "WAEU",
@@ -806,19 +857,25 @@ class Steno_Encoding:
                 "vR": "VR",
                 'oo' : 'O',    #zoo
                 "ya": "WA",     # suave
-                "ij": "LZ",    # bille # TODO Maybe not a diphtong, but a word ending/consonant thing
+#                "ij": "LZ",    # bille # TODO Maybe not a diphtong, but a word ending/consonant thing
+
+                'fl': "FL",
+                "5" : "IN",
+                'u' : 'OU',
 
                 "@": "AN",     # pluie
+
         }
         VOWELS = {
                 "a": "A",       # chat
                 "°" : "",
                 'j' : 'i',
                 "Z" : "G",
-                "e": "E",       # clé
+
                 "2": "AO",      # eux
                 "9": "AO",      # seul
-             #  "E": "AEU",     # père
+#                "E": "AEU",     # père
+                "e": "E",       # clé
 #                "E" : "",
                 "i": "EU",      # lit
                 "o": "OE",      # haut
