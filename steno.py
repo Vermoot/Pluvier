@@ -84,8 +84,10 @@ class OrthoPrefix(Ortho):
 class Steno:
         PREFIXES = {
 #                "s2": "S", # ce mais pas ceux
-
+                "sypER" : "SP-R/",
                 "tEkno" : "T",
+                "tR@s" : "TRANS/",
+                "tR@z" : "TRANS/",
                 "tEl" : "THR-",
                 'ade' : 'AD-', # sound
                 'm°n' : "KH",#men
@@ -113,10 +115,14 @@ class Steno:
         }
 
         ORTHO_PREFIXES = {
+                'corr' : OrthoPrefix('ko-R', 'KR'),
+                'coll' : OrthoPrefix('ko-l', 'KHR'),
                 "comm" : OrthoPrefix('ko-m|kOm','KM'),
                 "com" : OrthoPrefix('k§','K*-|KP'),
+                "con" : OrthoPrefix('k§','KOEN/'),
                 'ind' : OrthoPrefix('5-d', 'SPW'),
                 'end' : OrthoPrefix('@-d', 'SPW'),
+                'réu' : OrthoPrefix('Re-y', 'REU'),
                 
 #                "a" : OrthoPrefix('a-','AE-'), # sound
 
@@ -125,22 +131,51 @@ class Steno:
         
         ORTHO_SUFFIXES = {
                 'cation' : OrthoSuffix('ka-sj§','-BGS'),
+
+                'lation' : OrthoSuffix('la-sj§', '-/LGS'),
+                'bilité' : OrthoSuffix('bi-li-te','-BLT'),
+                'ilité' : OrthoSuffix('i-li-te','ILT'),
+                'lité' : OrthoSuffix('li-te','-LT'),
+                'rité' : OrthoSuffix('Ri-te', '-RT'), # securite
+                'bité' : OrthoSuffix('bi-te','-BT'),
+                'vité': OrthoSuffix('vi-te', '-/FT'),
+                'cité': OrthoSuffix('si-te', '-/FT'),
                 'ance' : OrthoSuffix('@s', '-NS'),
                 'ence' : OrthoSuffix('@s', '-NS'),
                 'ande' : OrthoSuffix('@d', '-ND'),
-                "elle" : OrthoSuffix("El", "-/*EL"),
+                'ité' : OrthoSuffix('i-te','ITD'),
+                'gueur' : OrthoSuffix('g9R' , '-RG'),
+                'deur' : OrthoSuffix('d9R' , '-RD'),
                 "teur" : OrthoSuffix("t9R", "-/RT") ,
+                "nheur" : OrthoSuffix("n9R", "-RN") ,
+                "neur" : OrthoSuffix("n9R", "-RN") ,
+                "rtion" : OrthoSuffix("R-sj§", "-RGS"),
+                "ration" : OrthoSuffix("Ra-sj§", "-RGS"),
                 "trice" : OrthoSuffix("tRis", "-/RTS") ,
                 'cienne' : OrthoSuffix('sjEn', '-GZ'),
+                "telle" : OrthoSuffix("tEl" , "-/LGTS"),
+                "tel" : OrthoSuffix("tEl" , "-/LGTS"),
+                "velle" : OrthoSuffix("v-El", "-/FL"),
+                "elle" : OrthoSuffix("El", "-/*EL"),
+                'ive' : OrthoSuffix('i-v|i-ve|iv', '-/*EUF'),
+                'if' : OrthoSuffix('if', '-/*EUFL'),
                 'cien' : OrthoSuffix('sj5', '-GS'),
                 "ain" : OrthoSuffix("5", "IN"),
                 'cte' : OrthoSuffix('kt', 'KT'),
                 "ène" : OrthoSuffix("En","-/*EB"),
+                "eur" : OrthoSuffix("9R","-AO*R"),
                 "uel" : OrthoSuffix("8El","-/W*EL"),
+                "anche" : OrthoSuffix("@S","-/AFRPBLG"),
+                "rche" : OrthoSuffix("RS","-/FRPB"),
                 "che" : OrthoSuffix("S","-/FP"),
                 "ué" : OrthoSuffix("8e","-/W*E"),
+                "cis" :OrthoSuffix("si", "-/RB"),
+                "cise" :OrthoSuffix("siz", "-/RBZ"),
+                "ssis" :OrthoSuffix("si", "-/RB"),
+                "ci" : OrthoSuffix("si", "-/RB"),
                 "el" : OrthoSuffix("El", "-/*EL"),
-
+                "th" : OrthoSuffix("t", "-GT"),
+                "the" : OrthoSuffix("t", "-/GT"),
                 "a" : OrthoSuffix("a", "-/*Z"),
                 
 
@@ -156,82 +191,123 @@ class Steno:
 
         # if start with - then dont convert 
         SUFFIXES = {
+                't82' : '-/TWAO*', # fru-ctu-eux
+                'sjasj§': 'SRAGS', #ciation
+                '@sjOn' : "ANGZ", #mentionne
+                '5ksj§' : "PBGS", #distinction
+                '§ksjOn' : "-/OPBGS/*B", #fo-nctionne
+                'ksj§' : "*BGS", #friction
                 "zj§": "-GZ",
+                "vwaR" : "-/FRS",
+                "val" : "-/FL",
+                "vaj" : "-/FL",
+                "vEl" : "-/FL",
+
                 'sjOn' :'-GZ',
+                't8ER' : 'TW*R', # portuaire
+
 
 #second option                'sjOn' :'-/GS/*B',
-                
+                "tER": "-TS",  #notaire
+                "EtR" : "-TS" , #fenetre
                 "jEm" : "-/A*EPL",
                 "jER" : "AER" , #caissiERE
                 "jasm" : "-/KWRAFPL",
                 "jEn": "AEB",
                 "sj§" : "GS",
-
+                "loZik" : "LOIK",
+                "lOZist" : "-/HRO*EUS",
+                "lOZi" : "LO*IG",
+                "lOg" : "LO*EG",
+                "p9R" : "-RP",
                 "pid" : "-PD",
                 "fis" : "-WEUS",
                 "fik" : "-/FBG",
                 "fEk" : "-/FBG",
                 "kEl" : "-BLG",
-                'kE' : 'KE',
+
 #                "je" : "AER" , #caissIER
-                "loZik" : "LOIK",
-                "lOZist" : "-/HRO*EUS",
-                "lOg" : "LO*EG",
-                "p9R" : "-RP",
+
 #                "l9R" : "-RL",
-                "d9R" : "RD",
+#                "d9R" : "RD",
                 "dabl" : "-/TKABL",
-                
+                "v°m@" : "-/FPLT",
+                "@sj§": "APBGS",    # p_ension_
                 "jast" : "YA*S",
-                "vwaR" : "-FRS",
-                "ks": "-BGS",
-                "Ral" : "-RL",
+                "vwaR" : "-/FRS",
+
                 "Ribl" : "-RBL",
                 "@tR" : "-NTS", #-ntre
                 "stR" : "-TS", #-ntre
                 "RtR" : "-RTS", #-rtre
-                "§bl": "-OFRBL",  # comble
-                "@bR": "-AFRBS",   # ambre
-                "5bR": "-EUFRBS",  # timbre
-                "§bR": "-OFRBS",   # ombre
-                "@sj§": "APBGS",    # p_ension_
+                "§pR" : '-/OFRPS',
+                "@b": "-/AFRBL",   # tremble
+                "§bl": "-/OFRBL",  # comble
+                "1bl": "-/UFRBL",  # comble
+                "@bR": "-/AFRBS",   # ambre
+                "5bR": "-/EUFRBS",  # timbre
+                "§bR": "-/OFRBS",   # ombre
+                "5b": "-EUFRB",  # limbe
+                "§b": "-/OFRB",  # comble
+                "ks": "-BGS",
+                "§t" : "-/OFRPT", # prompte
+                "5p" : "-/EUFRP",
+                '@pl' : "-/AFRPL",
+                '@p' : '-/AFRP' , #campe
+                '§p' : '-/OFRP', # trompe
+                'Ribl' : '-RBL',
+                'Rbal' : '-RBL' , #verbal
+                'bal' : '-BR' , #global
+                "Ral" : "-RL",
+                'kE' : 'KE',
+                'vERs' : '-/FRBS', # diverses
+                'ERv' : '-/FRB', #v-erve
+                'vEr' : '-/FRB', # cou-vert
+                'vER' : '-/FRB', # travers
+                'REj' : '-RLZ' , #reille
+                'fER' : '-/FRB', #o-ffert
+                'vR' : '-/FR', # iv-re
+                'fR' : '-/FR' , #sou-fre
+
+                'zm' : '-/FPL',
+                'sm' : '-/FPL',
                 "tEkt" : "-/T*K",
                 "EtR" : "--TS",
                 "SEt" : "-/FPT" , # achete
 #                "RZ" : "-/RPBLG",
                 "RZ" : "RG",
                 "bl" : "-BL",
-                "@-S°" : "-AFRPBLG",
+                "@S°" : "-AFRPBLG",
                 "fR" : "-/FR", #souffre
                 "fl" : "-/FL", #souffle
-                "RS" : "-FRPB",
+
                 "Re":"-/R*E",
                 'z§':'-GZ',
                 "@S" : "-AFRPBLG",
                 "st" : "-*S",
                 "ZE" : "G",
+                'ij' : '-LZ', #ille
+
                 "S" : "-/FRPBLG",
-                "m@" : "-PLT",
+                "m@" : "-/PLT",
                 "En" : "AIB",
                 "ER" : "AIR",
-                "sm" : "-FPL",
                 "@d" :"APBD",
-                "5b": "-EUFRB",  # limbe
-                "§b": "-OFRB",   # tombe
-                "@bl": "-AFRBL", # tremble
-                "1bl": "-EUFRBL",  # humble
+
                 "dR" : "DZ" ,# ajoin-dre
                 "@b": "-AFRB",   # jambe
                 "tR": "-TS", #tre
                 "bR":"-BS",  #-bre
                 "pR":"-PS", #-pre
+                "nEs" : "BS",
                 "E" : "AEU",
                 "n" : "B",
-                "nEs" : "BS",
+
                 "§" : "-*PB",
-                "sm" : "-/FP",
-                
-                
+#                "sm" : "-/FP",
+                'o' : 'OE',
+                'N' : 'PG',
+                "Z" : "LG",
         }
 
         SYLLABE_PLACES = {
@@ -247,7 +323,8 @@ class Steno:
                 "@-t" :"@t-",
                 "5-t" :"5t-",
 #                'i-j' : 'i',
-                'de' : 'd'
+                'de' : 'd',
+
         }
 
 
@@ -318,13 +395,18 @@ class Steno:
 #                if not syll.startswith('dez') and not syll.startswith('des') and not syll.startswith('d°s'):
                 if not word.word.startswith('de') and not word.word.startswith('dé'):
                         return word
-                next_letter = syll[:4].upper()
+                next_letter = word.word[:4].upper()
                 print('next letter', next_letter)
                 if (next_letter.endswith('O') or next_letter.endswith('E') or next_letter.endswith('I') or next_letter.endswith('A') or next_letter.endswith('U') or next_letter.endswith('@') or next_letter.endswith('Y')) :
+                        
                         self.prefix = 'STK'
                         word.syll = word.syll.replace('de-z', '')
                         word.syll = word.syll.replace('de-s', '')
                         word.syll = word.syll.replace('d°-s', '')
+                        if (word.syll.startswith('de-f')):
+                                self.prefix = 'STKV'
+                                word.syll = word.syll.replace('de-f', '')
+                        
                         print('syll repl', word.syll)
                 
                 return word
@@ -356,6 +438,7 @@ class Steno:
                                 ortho = orth[1]
                                 word = ortho.convert(word)
                                 self.suffix = ortho.steno()
+                                return word
                 return word
 
         def ortho_prefixes(self,word):
@@ -514,7 +597,7 @@ class Steno:
                 if not myword:
                         return ""
                 print(vars(myword))
-                myword.syll = self.try_to_remove_woyel(myword)
+#                myword.syll = self.try_to_remove_woyel(myword)
                 print('after remove vowyel', myword.syll)
                 self.orth_write_ending_d(myword)
 
@@ -538,16 +621,19 @@ class Steno:
                 word_str = self.change_syllabes(word.syll)
                 word_str  = word_str.replace('-','') #word_str.split('-')
 
-                if word.word.startswith('h') and not word.syll.startswith('8') and not word.syll.startswith('a') and not word.syll.startswith('E') :
+                if word.word.startswith('h') and not word.syll.startswith('8') and not word.syll.startswith('a') and not word.syll.startswith('E') and not word.syll.startswith('1') :
                         word_str = 'h'+word_str
                 print('before prefix', word_str)
                 if not self.prefix:
                         word_str = self.prefixes(word_str, word)
                 print('after prefix', word_str)
+                print('suffix', self.suffix)
+
                 if not self.suffix and '-' in word.syll:
                         word_str = self.real_suffixes(word_str)
                 if not self.suffix:
                         word_str = self.suffixes(word_str)
+                print('suffix', self.suffix)
 
                 self.syllabes = [word_str]
 
@@ -670,11 +756,12 @@ class Syllabe:
         keys_left = ''
         encoded_hand = ''
         already_encoded = False
-        def __init__(self, syllabe, previous):
+        next_sylls = []
+        def __init__(self, syllabe, previous, next_sylls):
                 self.previous = previous
                 self.syllabe = syllabe
                 self.hand = 'L'
-
+                self.next_sylls = next_sylls
                 if (previous is not None) and previous.is_right_hand():
                         self.hand='R'
 
@@ -727,6 +814,7 @@ class Syllabe:
                 self.encoded_hand = ''
                 print('syll',syllabe)
                 print('hand',self.hand)
+                print('already_encoded',self.already_encoded)
                 for key in syllabe:
                         if not_found:
                                 rest=rest+key
@@ -787,9 +875,10 @@ class Syllabe:
                 
                 if self.syllabe.startswith('-'):
                         self.syllabe = self.syllabe[1:]
-                        if self.syllabe.startswith('/'):
-                                self.already_encoded = True
-                                self.syllabe = self.syllabe[1:]          
+
+                if self.syllabe.startswith('/'):
+                        self.already_encoded = True
+                        self.syllabe = self.syllabe[1:]          
 
                 self.init_keys_left()
 
@@ -828,26 +917,43 @@ class Syllabe:
 class Steno_Encoding:
         DIPHTONGS = {
                 # without i
+                't8' : 'TW', # fru-ctu-eux
+                'Egze' : 'KP',
+                'sjasj§': 'SRAGS', #ciation
                 "jEn": "AEB",
+                'bRe': '-BS',
                 "djO": "OD",
                 "zj§": "GZ",
                 "sj§": "GZ",
+                'vul': 'WHR',
                 "fik" : "-/FBG",
                 "fEk" : "-/FBG",
                 'j@' : 'AEN' , # son ian
                 "RSi" : "VRPB",
-                'Egze' : 'KP',
+                'REj' : '-RLZ' , #reille
+                
+                "tER": "-TS",  #notaire
+                "EtR" : "-TS" , #fenetre
                 'ijO' : 'AO',
-                'Egz' : 'KP',
-                "RS" : "VRPB",
+                "RS" : "VRPB",# -rche
                 "dZ" : "PBLG",
                 "bZ" : "PBLG",
                 'En' : 'AIB',
+                "vaj" : "-FL",
+                "vEj" : "-FL",
                 "ER" : "AIR",
+                "kR" : "RK", #can-cre
+                "ks": "-BGS",
+                '8a' : 'WA' , # ua in situation
+#                "kR" : "RK",
+                
 #                "di" : "D",
 #                "mi" : "M",
+                'gR' : '-GS',
+                
                 "8i": "AU",     # pluie
-                'ij': 'AO', # before jO
+#                'ij': 'AO', # before jO
+                'ij' : '-LZ', #ille
                 'jO' : 'AO',
                 "j2": "AOEU",   # vieux
                 "je": "AE",     # pied
@@ -860,13 +966,20 @@ class Steno_Encoding:
                 "j§": "AO",     # av_ion_
                 "kw": "KW",
                 "wE": "WAEU",
-
+                "§t" : "OFRPT",
+                "@S" : "-AFRPBLG",
+                "5S" : "-EUFRPBLG",
+                '@p' : 'AFRP' , #campe
+                '§p' : 'OFRP', # trompe
+                'pl' : 'PL',
+                
+                'gl' : '-FRLG',
                 "wa": "OEU",    # froid
                 "w5": "OEUPB",  # loin
                 "wi": "AOU",    # oui
                 "j5": "AEPB",   # chien
                 "ey": "EU",     # r_éu_nion
-                "vR": "VR",
+#                "vR": "VR",
                 'oo' : 'O',    #zoo
                 "ya": "WA",     # suave
 #                "ij": "LZ",    # bille # TODO Maybe not a diphtong, but a word ending/consonant thing
@@ -874,8 +987,10 @@ class Steno_Encoding:
                 'fl': "FL",
                 "5" : "IN",
                 'u' : 'OU',
-
+                '1' : 'U',
                 "@": "AN",     # pluie
+                "E" : "AEU", #collecte
+                'N' : 'PG',
 
         }
         VOWELS = {
@@ -908,45 +1023,61 @@ class Steno_Encoding:
 
         def diphtongs(self, word):
                 new_word=word
+                self.found_sound = ''
                 for diphtong in self.DIPHTONGS.items():
+                        self.found_sound=diphtong[1]
                         new_word = new_word.replace(diphtong[0], "+"+diphtong[1]+"+")
                 return new_word
 
-
-        def force_right_hand(self, piece, previous):
-                return Syllabe(piece.upper(), previous)
 
 
                 
         def encode(self):
                 self.word_encoded = ""
                 previous = None
+                count_syll = 1
+                next_syll = self.syllabes
                 if self.prefix:
-                        previous = Syllabe(self.prefix, None)
+                        previous = Syllabe(self.prefix, None, self.syllabes[1:])
                         self.word_encoded = previous.encoded()
+                        count_syll = 2
                 
                 for piece in self.syllabes:
                         if piece == "":
                                 continue
                         print('piece',piece)
+
                         piece = self.diphtongs(piece)
+                        print('word encoded' , self.word_encoded)
+                        print('found sound dif' , self.found_sound)
+
                         print('dif',piece)
                         piece = self.voyels(piece)
                         print('voyel',piece)
+                        
                         if piece == "":
                                 continue
                         for new_piece in piece.split('+'):
                                 print('syllabe',new_piece)
-                                syllabe = self.force_right_hand(new_piece, previous)
-                                self.word_encoded = self.word_encoded+ syllabe.encoded()
+                                syllabe = Syllabe(new_piece.upper(), previous,next_syll)
+                                encoded = syllabe.encoded()
+                                if self.found_sound and self.found_sound.endswith("RK") and self.word_encoded.endswith('PB'):
+                                        print('found blg', encoded)
+                                        print('found sound', self.found_sound)
+                                        self.word_encoded = self.word_encoded[:2]
+                                        encoded = 'KS'
+#b                                         or self.found_sound.endswith("BGS")) 
+                                
+                                self.word_encoded = self.word_encoded+ encoded
                                 previous = syllabe
-                        
-
-                syllabe = self.force_right_hand(self.suffix, previous)
+                        next_syll = self.syllabes[count_syll:]
+                        count_syll = count_syll+1
+                                                
+                syllabe = Syllabe(self.suffix,previous, next_syll)
                 self.word_encoded = self.word_encoded + syllabe.encoded()
                 if self.word_encoded.startswith('/'):
                         self.word_encoded = self.word_encoded[1:]
-                return  self.word_encoded
+                return  self.word_encoded.replace('//','/')
 
         def voyels(self, word):
                 new_word=word

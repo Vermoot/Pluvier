@@ -41,7 +41,6 @@ class TestPluvier:
         "TPROEURD": "froideur",
         #    "WLOEFS" : "voulez-vous"
 #        "PWAER" : "bière", abbrev
-        "RAOD/HRO*EUS" : "radiologiste",
         "SPWOUZ/KWRAFPL" : "enthousiasme",
         "SPWOUZ/KWRA*S" : "enthousiaste",
         "AFRS" : "avoir",
@@ -824,26 +823,899 @@ class TestPluvier:
 
         })
 
-    def test_lesson25_KH_for_sound_mne(self):
-        self.assertSame({})
-    def test_lesson25_KH_for_sound_mne(self):
-        self.assertSame({})
-    def test_lesson25_KH_for_sound_mne(self):
-        self.assertSame({})
-    def test_lesson25_KH_for_sound_mne(self):
-        self.assertSame({})                    
+    def test_lesson30_SP_R_for_prefix_super_and_MULT_for_multi(self):
+        self.assertSame({
+#            "SP-R/TPHRU": "superflu",
+#            "STPEUGS": "superficiel",
+            "PHULT/PHR*EU": "multiplie",
+            "PHULT/TKPWREUPB": "multigrains",
+            "PHULT/TPORPL": "multiforme"})
+        
+    def test_lesson30_INTS_for_prefix_inter(self):
+        self.assertSame({"SPWAEURD": "interdit",
+                         "SPWAEURDZ": "interdire",})
+    def test_lesson30_W_for_F_initial(self):
+        self.assertSame({"WHEU": "fini",
+                         "WHEUS": "finisse",
+                         "WHAL": "final",
+                         "WHEUGS": "finition",
+                         })
+        
+    def test_lesson30_I_for_y(self):
+        self.assertSame({ "EU" : "y" })                    
 
 
-    def test_suffixWords(self):
-        self.assertSame(self.suffix_word)
+    def test_lesson31_FT_for_ending_vite_or_cite(self):
+        self.assertSame({ "ABG/TEUFT": "activité",
+                          "PAS/EUFT": "passivité",
+                          "EBG/TREUFT": "électricité",
+                         })
 
-    def test_rightSound(self):
-        self.assertSame(self.right_ch_sound)
+    def test_lesson31_ending_RD_for_deur_RG_for_gueur_RN_for_neur_AOstorR_for_eur(self):
+        self.assertSame({
+            "TPROEURD": "froideur",
+            "REURG": "rigueur",
+# 2 ways ?            "ARD/AO*R": "ardeur",
+            "STKEURD": "décideur",
+            "PWORPB": "bonheur",
+            "WEURG": "vigueur",
+        })
+
+    def test_lesson31_rightW_is_F_after_SD(self):
+        self.assertSame({"STKWOE": "défaut",
+                         "STKWAPB": "défend",
+                         "STKWOUL": "défoule",
+                         "STKWAEURL": "déferle",
+#                         "STKWEURB": "définir",
+
+        })
+    def test_lesson32_WHR_for_sound_vle(self):
+        self.assertSame({
+            "WHROUR": "velours",
+#            "WHRAE": "vouliez",
+            "WHROEUR": "vouloir",
+
+        })
+    def test_lesson32_sounds_FRB_mbe_FRBL_mble_FRBS_mbre_FRPS_mpre(self):
+        self.assertSame({
+            "TOFRB": "tombe",
+#            "HREUFRB/R-R": "limbe",
+            "PHAFRBS": "membre",
+#            "KOFRBL": "comble",
+            "PWOFRB": "bombe",
+#            "TRAFRBL": "tremble",
+            "UFRBL": "humble",
+            "TEUFRBS": "timbre",
+            "PHROFRB": "plombe",
+            "ROFRPS": "rompre",
+            
+        })
+    def test_lesson32_suffix_starIFL_for_if_and_starIF_for_ive(self):
+        self.assertSame({
+            "PAS/*EUFL": "passif",
+            "PHAS/*EUFL": "massif",
+#            "PAS/*EUF": "passive",
+#            "PHOEUF": "motive",
+            "SPORT/*EUF": "sportive",
+
+        })
+
+    def  test_lesson33_sounds_PBGS_ntion_and_onction_starBGS_ction_PBGSstarB_or_GZ_ntionne_and_nctionne_PBGSR_ntionner_IGZ_itionne(self):
+        self.assertSame({
+            "PHAPBGS": "mention",
+            "TAPBGS": "tension",
+
+            "PHAPBGZ": "mentionne",
+#            "TPOPBGS/*B": "fonctionne",
+#            "SPWAPBGS": "intention",
+#            "TKEUS/TEUPBGS": "distinction",
+#            "TPR*EUBGS": "friction",
+#            "SATS/TPA*BGS": "satisfaction",
+
+        }
+                        )
+        
+    def test_lesson33_TS_sound_tre_taire_or_ture_starT_sound_ette_and_AstarAIR_ortho_aire_EBS_sound_ener(self):
+        self.assertSame({
+            "TPHOTS": "notaire",
+            "KREUTS": "critère",
+#            "TPHEURG": "énergie",
+#            "EPLTS": "émettre",
+#            "WHAEUTS": "fenêtre",
+            "WHROPBTS": "volontaire",
+
+        })
+    def test_lesson33_RGS_ending_rtion_or_ration(self):
+        self.assertSame({"PORGS": "portion",
+#                         "OERPGS": "opération",
+#                         "APL/HRAORGS": "amélioration",
+                         "HREUB/ERGS": "libération",
+#                         "PHOD/ERGS": "modération",
+#                         "PHOD/RAGS": "modération",
+#                         "SHRAB/RAGS": "élaboration",
+#                         "RERGS": "rémunération",
+
+        })        
+    def test_lesson34_sounds_SW_swe_TW_twe_STW_stwe_DW_dwe_and_dve_FPL_sme(self):
+        self.assertSame({
+            "SWAEU": "souhait",
+            "SWAEUT": "souhaite",
+
+#"TKWORS": "divorce",
+            "PORT/W*R": "portuaire",
+            "PREUFPL": "prisme",
+            "SARBG/AFPL": "sarcasme",
+            #            "TPRUBG/TWAO*": "fructueux",
+
+        })
+    def test_lesson35_sounds_FRP_mpe_FRPL_mple_FRPT_mpte_PL_ple(self):
+        self.assertSame({
+            "KAFRP": "campe",
+# not in lexique :             "STAFRP": "étampe",
+            "TRAFRP": "trempe",
+            "TROFRP": "trompe",
+            "SOUPL": "souple",
+            "PROFRPT": "prompte",
+            "TAFRP": "tempe",
+            "HRAFRP": "lampe",
+            "TKPWREUFRP": "grimpe",
+            "TAFRPL": "temple",
+            "AFRPL": "ample",
+            "KOUPL": "couple",
+            "POFRP": "pompe",
+
+        })
+
+    def test_lesson38_starL_suffixe_elle(self):
+        self.assertSame({
+#            "TKEPBLGTS": "dentelle",
+#            "AT/*EL": "attelle",
+            "HOELGTS": "hôtel",
+            "KARLGTS": "cartel",
+            "PHOELGTS": "motel",
+            "PHORLGTS": "mortel",
+
+        })
+    def test_lesson38_RB_ending_cis_ci_rbe_and_rne(self):
+        self.assertSame({
+            "PRERB": "précis",
+            "ARB": "assis",
+            "WOEURB": "voici",
+#            "STPEURB": "superficie",
+            "PRERBZ": "précise",
+#            "S-RB": "ceci",
+#            "SKAEURB": "concerne",
+            "PHORB": "morne",
+            "PWORB": "borne",
+            "PWARB": "barbe",
+
+        })
+
+    def test_lesson39_KOEN_starting_con(self):
+        self.assertSame({
+            "KOEPB/TAPB": "content",
+            "KOEPB/TAPBT": "contente",
+        })
+
+    def test_lesson40_start_by_co_followed_by_rr_or_ll_then_o_omitted(self):
+        self.assertSame({
+#            "KROB/O*R": "corrobore",
+            "KHROBG": "colloque",
+            "KHRAEUBGT/*EUFL": "collectif",
+#            "KRUPGS": "corruption",
+#            "KR-BGT": "correct",
+            "KHRAEUBGT": "collecte",
+
+        })
+    def test_lesson40_FL_sound_val_vail_vel(self):
+        self.assertSame({
+            "AFL": "aval",
+            "TRAFL": "travail",
+            "TPHOUFL": "nouvelle",
+#            "TRA*FL": "travaille",
+
+        })
+
+    def test_lesson40_EU_for_eu(self):
+        self.assertSame({
+#            "REUS/*EUR": "réussir",
+            "REUS/EU": "réussi",
+#            "RAOPB": "réunion",
+
+        })
+
+    def test_lesson41_PLT_for_sound_ment_FPLT_for_sound_vement(self):
+        self.assertSame({
+#            "THR-PLT": "tellement",
+#            "TKOPLT": "document",
+#            "TKPW-PLT": "gouvernement",
+            "WEUFPLT": "vivement",
+            "TKPWRAFPLT": "gravement",
+
+        })
+    def test_lesson41_RK_sound_cre_and_FRKS_for_ncre(self):
+        self.assertSame({
+#            "AURBG": "acre",
+            "TPHARBG": "nacre",  
+#            "AFRBGS": "ancre",
+#            "SKARBG": "consacre",
+#            "EFRBGS": "encre",
+            "KAFRBGS": "cancre",
+            "SARBG": "sacre",
+
+        })
+
+#    def test_lesson41_FR_infrontof_BGS_is_n(self):
+#        self.assertSame({
+#        })
+
+    def test_lesson41_FRPB_sound_nqu_FRBLG_ncle(self):
+        self.assertSame({
+#            "KEPBT": "enquête",
+#            "KPAOEU": "anxieux",
+            "OFRBLG": "oncle",
+            "EUFRBG/A*E": "inquiet",
+            "PET/OFRBG": "pétoncle",
+
+        })
+    def test_lesson41_FRLG_sound_ngl(self):
+        #same pb upper transfor FR as n
+        self.assertSame({
+            "OFRLG": "ongle",
+            "SKWRUFRLG": "jungle",
+            "TREUFRLG": "tringle",
+            "AFRLG": "angle",
+
+        })
+
+    def test_lesson42_NG_sound_ngue(self):
+        self.assertSame({
+            "HRAPBG": "langue",
+            "TKEUS/TEUPBG": "distingue",
+            "HROPBG": "longue",
+
+        })
+
+    def test_lesson42_PBLG_sound_final_nge(self):
+        self.assertSame({
+            "APBLG": "ange",
+            "RAPBLG": "range",
+            "HREUPBLG": "linge",
+            "PHAPBLG": "mange",
+            "HRAPBLG": "lange",
+
+        })
+        
+    def test_lesson42_PG_final_sound_gne(self):
+        self.assertSame({
+            "PAEUPG": "peigne",
+            "SEUPG": "signe",
+            "SAEUPG": "saigne",
+            "HREUPG": "ligne",
+#            "PHAPG/TPEUBG": "magnifique",
+
+        })
+
+    def test_lesson43_endingFR_sound_fre_and_vre_FRB_sound_fer_vaire_erve(self):
+        self.assertSame({
+            "OFR": "offre",
+            "HREUFR": "livre",
+#            "SFR-": "souffre",
+#            "OFRB": "offert",
+            "TRAFRB": "travers",
+            "EUFR": "ivre",
+            "WEUFR": "vivre",
+            "SOUFR": "soufre",
+            "KOUFRB": "couvert",
+#            "WAEUFRB": "verve",
+#            "AFRB": "arrive",
+#            "UFRB": "univers",
+            "KOUFR": "couvre",
+            "TKEUFRBS": "diverses",
+
+            })
+
+    def test_lesson43_TRANS_prefix_trans(self):
+        self.assertSame({
+            "TRAPBS/PEUR": "transpire",
+#            "TR*EUT": "transite",
+            "TRAPBS/PAEURS": "transperce",
 
 
+            })
+
+    def test_lesson44_final_FRPB_sound_rche(self):
+        self.assertSame({
+#            "AFRPB": "arche",
+   #         "TOFRPB": "torche",
+#            "AFRPB/*EUF": "archives",
+            "PHAFRPB": "marche",
+#            "AFRPB/T*BG": "architecte",
+            "TPOUFRPB": "fourche",
+
+
+            })
+
+    def test_lesson44_final_FRPB_sound_anche(self):
+        self.assertSame({
+            "HAFRPBLG": "hanche",
+#            "PHAFRPBLG/*T": "manchette",
+            "TRAFRPBLG": "tranche",
+            "TPRAFRPBLG": "franche",
+            "PHAFRPBLG": "manche",
+#            "PWHRAFRPBLG": "blanche",
+            "TKPWREUFRPBLG/AO*": "grincheux",
+            "SPAFRPBLG/-R": "épancher",
+            "HRUFRPBLG": "lunch",
+# TODO nch transfo voyelles
+            })
+
+
+    def test_lesson44_SRAGS_sound_ciation(self):
+        self.assertSame({
+#            "AORBGS": "association",
+#            "EUB/EUGS": "initial",
+            "TPHEGS": "négociation",
+
+
+            })
+
+    def test_lesson45_ending_ITD_ite_LT_ilite_BT_bite_BLT_bilite(self):
+        self.assertSame({
+#            "K-PBT": "quantité",
+#            "AELGT": "égalité",
+#            "PROBT": "probité",
+#            "TKWALT": "dualité",
+#            "HUPL/EULT": "humilité",
+#            "ROBLT": "responsabilité",
+            "PROBLT": "probabilité",
+            "POBLT": "possibilité",
+
+            })
+
+    def test_lesson45_WA_sound_ua(self):
+        self.assertSame({
+            "STWAGS": "situation",
+#            "TPHRUBG/TWAGS": "fluctuation",
+            "PHAPBS/WALT": "mensualité",
+            })
+
+    def test_lesson46_ending_RL_rural_BL_bla_ble_RBL_rbal_rible_RT_rite(self):
+        self.assertSame({
+            "RURL": "rural",
+#            "TKPWHROBL": "global",
+            "PHURL": "mural",
+            "WEURL": "viral",
+            "WAEURBL": "verbal",
+#            "RABL": "raisonnable",
+#            "ORBL": "honorable",
+#            "HOR/*EUBL": "horrible",
+            "WAEURBL": "verbal",
+
+#            "PRAORT": "priorité",
+            "SKURT": "sécurité",
+            "OBS/KURT": "obscurité",
+
+
+            })
+
+
+    def test_lesson47_GS_sound_gr_BS_sound_bre(self):
+        self.assertSame({
+#            "AGS/KOL": "agricole",
+#            "AGS/KURT": "agriculteur",
+#            "AGS/TPHOPL": "agronome",
+            "ABS/WRAGS": "abréviation",
+
+
+            })
+
+    def test_lesson47_FRS_ending_voir(self):
+        self.assertSame({
+            "AFRS": "avoir",
+#            "R-FRS": "revoir",
+            "POUFRS": "pouvoir",
+            "SAFRS": "savoir",
+
+
+            })
+#todo : 
+    def test_lesson47_DAOEZ_for_starting_des_ont_followed_by_steno_woyel(self):
+        self.assertSame({
+            "STKHREUBS": "déséquilibre",
+            "TKAOEZ/SPWEG/R*E": "désintégré",
+            "TKAOEZ/KHREUBS": "déséquilibre",
+
+            })
+
+    def test_lesson48_KWR_for_i(self):
+        self.assertSame({
+            "WR*EU": "varie",
+            "WRAGS": "variation",
+            "AZ/KWRAEUBG": "asiatique",
+            })
+
+
+    def test_lesson48_GT_ending_th(self):
+        self.assertSame({
+            "PHEUGT": "mythe",
+            })
+
+    def test_lesson49_LOstarEG_logue_LOstarIG_logie_LOstarIS_logiste_LOstarIK_logique(self):
+        self.assertSame({
+            "RAOD/HRO*EUS" : "radiologiste",
+            "PWHROEUG": "biologie",
+            "SHRO*EUBG": "psychologique",
+            "TPHAOP/HRO*EG": "pneumologue",
+            })
+
+    def test_lesson49_LGS_ending_lation(self):
+        self.assertSame({
+#            "R-LGS": "relation",
+            "WROLGS": "violation",
+            })
+
+    def test_lesson50_LZ_sound_ille_RLZ_sound_reille(self):
+        self.assertSame({
+            "ABLZ": "habille",
+#            "AEUG/AULZ": "aiguille",
+            "AB/AEULZ": "abeille",
+            "PWEULZ": "bille",
+            "TPEULZ": "fille",
+            "ORLZ": "oreille",
+            "SAOLZ": "seuil",
+            "PALZ": "paille",
+
+
+            })
+
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+    def test_lesson4_(self):
+        self.assertSame({
+
+            })
+
+        
+
+        
     def assertSame(self, words):
         found = False
-
+        self.assertSounds(words)
         for elem in words.items():
             first_elem =""
             for sten_str in self.steno(elem[1]):
@@ -853,8 +1725,13 @@ class TestPluvier:
             assert elem[0] == first_elem
 
 
-           
-    def test_all_tao_entry(self):
+    def  assertSounds(self,words):
+        steno_class=Steno(self.corpus)
+        for elem in words.items():
+            word = steno_class.find(elem[1])
+            print(elem[1],vars(word))
+            
+    def all_tao_entry(self):
         with open('resources/tao_la_salle.json') as json_file:
             data = json.load(json_file)
         found = []
