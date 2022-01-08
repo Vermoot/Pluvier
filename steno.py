@@ -49,6 +49,9 @@ class Ortho:
         replace_by = ''
         steno_str =''
         prefix = False
+        check_alternative = False
+        alternative_str = ''
+        
         def __init__(self,sound, replace_by):
                 self.sounds = sound.split('|')
                 self.replace_by = replace_by
@@ -60,7 +63,13 @@ class Ortho:
         def matches(self,word, pattern) :
                 return  word.word.endswith(pattern)
 
+        def alternative(self, string) :
+                self.check_alternative = True
+                self.alternative_str = string
+                return self
 
+        def get_alternative_str(self, word, suffix_str) :
+                return word.replace(suffix_str, self.alternative_str)
 
 class OrthoSuffix(Ortho):
         def convert(self,word) :
@@ -206,7 +215,7 @@ class Steno:
                 "ssis" :OrthoSuffix("si", "-/RB"),
                 "ci" : OrthoSuffix("si", "-/RB"),
                 "cet" : OrthoSuffix("sE", "-SZAEU"),
-                "ce" : OrthoSuffix("s", "-SZ"),
+                "ce" : OrthoSuffix("s", "-SZ").alternative('ss'),
                 "el" : OrthoSuffix("El", "-/*EL"),
                 "th" : OrthoSuffix("t", "-GT"),
                 "the" : OrthoSuffix("t", "-/GT"),
@@ -414,6 +423,12 @@ class Steno:
                                 return word
                 return myword
 
+        def find_spelled_word(self,string):
+                for word in self.words:
+                        if word.word==string:
+                                return word
+                return False
+                        
 
         def remove_last_syll(self, syll):
                 sylls = syll.split('-')
@@ -476,9 +491,13 @@ class Steno:
 
         def ortho_suffixes(self,word):
                 for orth in self.ORTHO_SUFFIXES.items():
-                        if word.word.endswith(orth[0]):
-                                print(vars(orth[1]))
+                        if word.word.endswith(orth[0]) :
                                 ortho = orth[1]
+                                if ortho.check_alternative :
+                                        if not self.find_spelled_word(ortho.get_alternative_str(word.word,orth[0])):
+                                                continue
+                                print(vars(orth[1]))
+
                                 word = ortho.convert(word)
                                 self.suffix = ortho.steno()
                                 return word
