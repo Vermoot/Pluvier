@@ -126,7 +126,7 @@ class Steno:
                 'dR' : 'DR',
                 'sin' : 'STPH',
                 'sn' : 'STPH',
-                'k§' : 'KON', # conte
+                'k§' : '-KON', # conte
 #                'k§' : 'KOEN', # con
                 'du' : 'DOU',
                 "pn" : "N",
@@ -149,7 +149,7 @@ class Steno:
                 'coll' : OrthoPrefix('ko-l', 'KHR'),
                 "comm" : OrthoPrefix('ko-m|kOm','KM'),
                 "com" : OrthoPrefix('k§','K*-|KP'),
-                "con" : OrthoPrefix('k§','KOEN/'),
+                "con" : OrthoPrefix('k§','KON'),
                 'ind' : OrthoPrefix('5-d', 'SPW'),
                 'end' : OrthoPrefix('@-d', 'SPW'),
                 'réu' : OrthoPrefix('Re-y', 'REU'),
@@ -179,6 +179,7 @@ class Steno:
                 'sité': OrthoSuffix('si-te', '-ST*E'),
                 'igé': OrthoSuffix('i-Ze', 'EG'),
                 'iger': OrthoSuffix('i-ZeR', '-*EG'),
+                'ience' : OrthoSuffix('j@s', '-AENS'),
                 'ance' : OrthoSuffix('@s', '-NS'),
                 'ence' : OrthoSuffix('@s', '-NS'),
                 'ande' : OrthoSuffix('@d', '-ND'),
@@ -186,6 +187,8 @@ class Steno:
                 'ité' : OrthoSuffix('i-te','ITD'),
                 'gueur' : OrthoSuffix('g9R' , '-RG'),
                 'deur' : OrthoSuffix('d9R' , '-RD'),
+                'lheur' : OrthoSuffix('l9R' , '-RL'),
+                'leur' : OrthoSuffix('l9R' , '-RL'),
                 "teur" : OrthoSuffix("t9R", "-/RT") ,
                 "nheur" : OrthoSuffix("n9R", "-RN") ,
                 "neur" : OrthoSuffix("n9R", "-RN") ,
@@ -196,6 +199,7 @@ class Steno:
                 "telle" : OrthoSuffix("tEl" , "-/LGTS"),
                 "tel" : OrthoSuffix("tEl" , "-/LGTS"),
                 "velle" : OrthoSuffix("v-El", "-/FL"),
+                "quelle" : OrthoSuffix("kEl", "-BLG"),
                 "elle" : OrthoSuffix("El", "-/*EL"),
                 'ive' : OrthoSuffix('i-v|i-ve|iv', '-/*EUF'),
                 'if' : OrthoSuffix('if', '-/*EUFL'),
@@ -203,7 +207,7 @@ class Steno:
                 "ain" : OrthoSuffix("5", "IN"),
                 'cte' : OrthoSuffix('kt', 'KT'),
                 "ène" : OrthoSuffix("En","-/*EB"),
-                "eur" : OrthoSuffix("9R","-AO*R"),
+#                "eur" : OrthoSuffix("9R","-AO*R"),
                 "uel" : OrthoSuffix("8El","-/W*EL"),
                 "anche" : OrthoSuffix("@S","-/AFRPBLG"),
                 "rche" : OrthoSuffix("RS","-/FRPB"),
@@ -272,7 +276,7 @@ class Steno:
                 "fis" : "-WEUS",
                 "fik" : "-/FBG",
                 "fEk" : "-/FBG",
-                "kEl" : "-BLG",
+                "kEl" : "-/BLG",
 
 #                "je" : "AER" , #caissIER
 
@@ -301,6 +305,7 @@ class Steno:
                 "§t" : "-/OFRPT", # prompte
                 "5p" : "-/EUFRP",
                 '@pl' : "-/AFRPL",
+                "9R":"-AO*R",
                 '@p' : '-/AFRP' , #campe
                 '§p' : '-/OFRP', # trompe
                 'Ribl' : '-RBL',
@@ -332,7 +337,7 @@ class Steno:
                 'sk°'  : '-/FBG', #puisque
                 'sk' : '-/FBG',
 
-                "Re":"-/R*E",
+                "Re":"-/R*E|-RE",
                 'z§':'-GZ',
                 "@S" : "-AFRPBLG",
                 "st" : "-*S",
@@ -352,13 +357,15 @@ class Steno:
                 "pR":"-PS", #-pre
                 "nEs" : "BS",
                 "E" : "AEU",
+                "e" : "AEU",
                 "n" : "B",
                 'j' : '-LZ',
                 "§" : "-*PB",
 #                "sm" : "-/FP",
                 'o' : 'OE',
+                
                 'N' : 'PG',
-                "Z" : "LG",
+                "Z" : "G", # rage
                 'u' : 'O*U',
         }
 
@@ -650,7 +657,8 @@ class Steno:
         def add_star(self,word):
                 if (self.ending):
                         return word
-                
+                if ('*' in word):
+                        return word
                 return word+"*"
         
         def transform(self,word):
@@ -660,15 +668,23 @@ class Steno:
                         return ""
                 print(vars(myword))
 #                myword.syll = self.try_to_remove_woyel(myword)
-                print('after remove vowyel', myword.syll)
+
                 self.orth_write_ending_d(myword)
 
                 self.transform_word(myword)
-                for final_word in  self.final_encoded:
-                        if self.has_homophone(myword) and myword.is_verb():
+                print('is verb' , myword.is_verb())
+                has_homophone = self.has_homophone(myword)
+                print('has homophone' , has_homophone)
+                finals = self.final_encoded
+                for final_word in  finals:
+                        self.final_encoded.remove(final_word)
+                        if has_homophone and myword.is_verb():
                                 final_word = self.add_star(final_word)
                         final_word = self.orth_ending_iere(word, final_word)
-
+                        
+                        print('final_word' , final_word)
+                        self.final_encoded.append(final_word)
+                print('final_encoded' , self.final_encoded)
                 return self.final_encoded
          
         def transform_word(self,word):
@@ -1023,9 +1039,9 @@ class Steno_Encoding:
                 '8a' : 'WA' , # ua in situation
 #                "kR" : "RK",
                 'Ne'  : '-PGR',
-
+                'on' : 'ON',
 #                "di" : "D",
-#                "mi" : "M",
+#                "mi" : "M",k§t
                 'gR' : '-GS',
 #                "tR": "-TS", #tre
                 "8i": "AU",     # pluie
@@ -1067,8 +1083,9 @@ class Steno_Encoding:
                 '1' : 'U',
                 "@": "AN",     # pluie
                 "E" : "AEU", #collecte
-                "e" : "AEU", #collecte
+#                "e" : "AEU", #collecte
                 'N' : 'PG',
+                "y": "U",       # cru
 
         }
         VOWELS = {
@@ -1076,16 +1093,19 @@ class Steno_Encoding:
                 "°" : "",
                 'j' : 'i',
                 "Z" : "G",
-                "E" : "AEU", #collecte
+
                 "2": "AO",      # eux
                 "9": "AO",      # seul
 #                "E": "AEU",     # père
                 "e": "E",       # clé
+
 #                "E" : "",
                 "i": "EU",      # lit
                 "o": "OE",      # haut
+                "o": "OE",      # haut
                 "O": "O",       # mort
-                "y": "U",       # cru
+
+#                "y" : "",
                 "u": "OU",      # mou
                 "5": "EUFR",    # vin
                 "8": "U",       # huit
