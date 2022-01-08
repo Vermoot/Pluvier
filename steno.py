@@ -101,7 +101,7 @@ class Steno:
                 'Eksp' : "-/BGSP",
                 'Ekst' : "-/BGST",
                 'EksK' : "-/BGST",
-                'ade' : 'AD-', # sound
+                'ade' : 'ATK', # sound
                 'm°n' : "KH",#men
                 'min' : "KH",#min
                 'm2n' : 'KH', #men
@@ -117,30 +117,33 @@ class Steno:
                 '5si' : 'STPHI',
                 '5sa' : 'STPHA',
                 '5se' : 'STPHE',
+                
                 "@t" :"SPW",
                 "5t" :"SPW",
                 "R°" : "R-",
+                "Z°" : "SKW-", #gelé
                 "S°" : "SK",
                 "Sa" : "SK",
                 'ke' : 'K',
-                'dR' : 'DR',
+                'dR' : 'TKR',
                 'sin' : 'STPH',
                 'sn' : 'STPH',
-                'k§' : '-KON', # conte
-#                'k§' : 'KOEN', # con
-                'du' : 'DOU',
+#                'k§' : '-KON', # conte
+                'k§' : 'KOEN', # content
+                'du' : 'TKOU',
                 "pn" : "N",
                 "@p" : "KPW",
                 "5p" : "KPW",
                 "@b" : "KPW",
                 "5b" : "KPW",
-                
+
                 'S' : 'SH',
 #                "e" : "",
-                'ad' : 'AD-', # sound 
+#                'ad' : 'A-D', # sound 
                 "Z" : "J",
 #                'd' : 'DAOE',
                 'z' : 'Z',
+                'a':'AE-',
                 
         }
 
@@ -256,7 +259,7 @@ class Steno:
                 'tyR' : 'TS', #ture
 
                 'nal' : '-NL', #canal
-                
+
 
 
 #second option                'sjOn' :'-/GS/*B',
@@ -277,7 +280,8 @@ class Steno:
                 "fik" : "-/FBG",
                 "fEk" : "-/FBG",
                 "kEl" : "-/BLG",
-
+                "§kl" : "-/OFRBLG", # oncle
+                "akl" : "-/AFRBLG", 
 #                "je" : "AER" , #caissIER
 
 #                "l9R" : "-RL",
@@ -302,6 +306,8 @@ class Steno:
                 "5b": "-EUFRB",  # limbe
                 "§b": "-/OFRB",  # comble
                 "ks": "-BGS",
+                "ve": "-WE",
+                "@Z" :"-/APBLG", # ange
                 "§t" : "-/OFRPT", # prompte
                 "5p" : "-/EUFRP",
                 '@pl' : "-/AFRPL",
@@ -319,7 +325,8 @@ class Steno:
                 'vER' : '-/FRB', # travers
                 'REj' : '-RLZ' , #reille
                 
-                'fER' : '-/FRB', #o-ffert
+#                'fER' : '-/FRB', #o-ffert
+                'fER' : '-/FR', #faire
                 'vR' : '-/FR', # iv-re
                 'fR' : '-/FR' , #sou-fre
                 '@l' : '-ANL', #branle
@@ -363,7 +370,7 @@ class Steno:
                 "§" : "-*PB",
 #                "sm" : "-/FP",
                 'o' : 'OE',
-                
+#                't' : 'T',
                 'N' : 'PG',
                 "Z" : "G", # rage
                 'u' : 'O*U',
@@ -687,7 +694,9 @@ class Steno:
                 print('final_encoded' , self.final_encoded)
                 return self.final_encoded
          
-        def transform_word(self,word):
+        def transform_word(self,initial_word):
+                word = initial_word
+                all_sylls = [initial_word.syll.replace('-','')]
                 word = self.ortho_suffixes(word)
                 word = self.ortho_prefixes(word)
                 print('syllabe',word.syll)
@@ -721,6 +730,11 @@ class Steno:
                 for  one_suffix in self.suffix.split('|'):
                         self.final_encoded.append(Steno_Encoding(self.syllabes, self.prefix.split('|')[0], one_suffix).encode()+self.ending)
 
+                self.prefix =""
+                
+
+                print('> syl',initial_word.syll)
+                self.final_encoded.append(Steno_Encoding(all_sylls, self.prefix, self.prefix.split('|')[0]).encode()+self.ending)                        
                 return self.final_encoded
         
 
@@ -854,7 +868,7 @@ class Syllabe:
                         return None
 
                 if self.syllabe.endswith('-'):
-                        self.hand='R'
+#                        self.hand='R'
                         self.keys_left = ''
                         return None
                 if self.syllabe.startswith('-'):
@@ -888,6 +902,17 @@ class Syllabe:
         def is_left_hand(self):
                 return self.hand == 'L'
 
+        def add_hyphen(self, word):
+                if self.hand == 'L':
+                        return word
+                if self.previous is None:
+                        return word
+                if  ("A" in self.previous.encoded_hand or "O" in self.previous.encoded_hand ) or ("A" in word or "O" in word or "E" in word or "U" in word):
+                        return word
+                print('add hyphen',self.previous.encoded_hand)
+                print('add hyphen word',word)
+                return "-"+word
+                
         def consume(self,syllabe, keys, sounds):
                 keys = keys
                 not_found = []
@@ -948,7 +973,7 @@ class Syllabe:
                 if self.syllabe == "":
                         return piece
                 if self.syllabe.endswith('-'):
-                        self.encoded_hand = self.syllabe
+#                        self.encoded_hand = self.syllabe+'-'
                         self.change_hand
                         self.keys_left=''
                         self.syllabe = self.syllabe[:-1]                    
@@ -984,6 +1009,7 @@ class Syllabe:
 
                         if rest :
                                 self.change_hand()
+                                self.encoded_hand = self.add_hyphen(self.encoded_hand)
                                 self.init_keys_left()
                                 cpt = True
                         count= count +1
@@ -1025,7 +1051,9 @@ class Steno_Encoding:
                 "EtR" : "-TS" , #fenetre
                 'ijO' : 'AO',
                 "RS" : "VRPB",# -rche
+                "dZEk" : "PBLG",
                 "dZ" : "PBLG",
+                "bZEk" : "PBLG",
                 "bZ" : "PBLG",
                 "ps" : "S",
                 'En' : 'AIB',
@@ -1047,7 +1075,8 @@ class Steno_Encoding:
                 "8i": "AU",     # pluie
 #                'ij': 'AO', # before jO
                 'ij' : '-LZ', #ille
-                'jO' : 'AO',
+#                'jO' : 'AO',
+                'jO' : 'RO', #viol
                 "j2": "AOEU",   # vieux
                 "je": "AE",     # pied
                 "jE": "AE",     # ciel
@@ -1058,7 +1087,9 @@ class Steno_Encoding:
 #                "jO": "RO",     # fjord
                 "j§": "AO",     # av_ion_
                 "kw": "KW",
-                "wE": "WAEU",
+                'k§' : 'KOEPB-', # content
+#                "wE": "WAEU",
+                "wE" : "WE",
                 "§t" : "OFRPT",
                 "@S" : "-AFRPBLG",
                 "5S" : "-EUFRPBLG",
@@ -1081,10 +1112,12 @@ class Steno_Encoding:
                 "5" : "IN",
                 'u' : 'OU',
                 '1' : 'U',
+#                'e' : '',
                 "@": "AN",     # pluie
                 "E" : "AEU", #collecte
 #                "e" : "AEU", #collecte
                 'N' : 'PG',
+                'd' : 'D',
                 "y": "U",       # cru
 
         }
@@ -1109,7 +1142,7 @@ class Steno_Encoding:
                 "u": "OU",      # mou
                 "5": "EUFR",    # vin
                 "8": "U",       # huit
-                "§": "ON"
+                "§": "ON",
                 # *N is used for "on" (§) endings. # TODO this is a vowel, but only on word endings
 
         }

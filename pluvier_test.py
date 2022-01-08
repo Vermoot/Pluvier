@@ -266,9 +266,9 @@ class TestPluvier:
 
     def test_lesson13_RE_prefix(self):
         self.assertSame({ #"R-/TPHRU": "reflux" ,
-#                          "R-FR": "refaire",
+                          "R-FR": "refaire",
                           "R-L/WE": "relevé",
-#                          "R-LGS": "relation",
+                          "R-LGS": "relation",
 #                          "R-LT": "réalité",
 
                          })
@@ -281,7 +281,7 @@ class TestPluvier:
                          })
 
     def test_lesson13_AER_ier_iere(self):
-        self.assertSame({"KS/A*ER": "caissière", # should be K-S/A*ER : - is required ?
+        self.assertSame({"K-S/A*ER": "caissière", # should be K-S/A*ER : - is required ?
                          "WOEUL/AER": "voilier",
                          "TE/A*ER": "théière",
                          })
@@ -407,8 +407,8 @@ class TestPluvier:
 
     def test_lesson16_KWR_for_y_and_G_for_j(self):
         self.assertSame({
-            "KWROT": "yacht", #mistake in lesson : kwrat
-#            "KWRAT/US": "hiatus", strange hier is not kwr...
+#            "KWROT": "yacht", #mistake in lesson : kwrat
+#            "KWRAT/US": "hiatus", #strange hier is not kwr...
             "PAG": "page",
             "PHARG": "marge", #'maRZ'
                          })
@@ -430,7 +430,8 @@ class TestPluvier:
     def test_lesson17_SKWR_for_J_initial_and_SWR_for_Z_initial(self):
         self.assertSame({
 #should be ?            "SKWR-L/-D": "gelé",
-            "SKWRL/-D": "gelé",
+ #           "SKWR-LD": "gelée",
+ #           "SKWRL/-D": "gelé",
             "SKWROEUPB": "joint",
             "SWRO": "zoo",
 #            "SKWRA*EUT": "jette",
@@ -1002,8 +1003,11 @@ class TestPluvier:
             "KOEPB/TAPBT": "contente",
         })
         
-    def test_K_starting_con(self):
+    def test_K_starting_con_2_ways_to_write(self):
         self.assertSame({
+#            "STAPB": "content",
+            "KOPBT/APB": "content",
+            "KOPBT/APBT": "contente",
             "KOEPB/TAPB": "content",
             "KOEPB/TAPBT": "contente",
         })
@@ -1291,7 +1295,7 @@ class TestPluvier:
     def test_lesson51_NL_for_nl_nal(self):
         self.assertSame({
 #            "TPHRAEUF": "enlève",
-#            "APBL/W*E": "enlevé",
+            "APBL/W*E": "enlevé",
             "PWAPBL": "banal",
             "KAPBL": "canal",
             "PWRAPBL": "branle",
@@ -1312,7 +1316,7 @@ class TestPluvier:
 
     def test_lesson51_STstarE_ending_site(self):
         self.assertSame({
-#            "UFRB/ST*E": "université",
+#en            "UFRB/ST*E": "université",
             "TKEUFRB/ST*E" :"diversité",
             "TKWAEURS/EUTD": "diversité",
 
@@ -1467,7 +1471,7 @@ class TestPluvier:
 
 #            "R-LZ": "réalise",
 #            "TEULZ": "utilise",
-            "PHOBLZ": "mobilise",
+ #           "PHOBLZ": "mobilise",
             "STRALZ": "centralise",
 #            "EUBLZ": "immobilise",
 #            "HRERLZ": "libéralise",
