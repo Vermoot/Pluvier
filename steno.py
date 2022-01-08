@@ -89,10 +89,25 @@ class Steno:
                 "tR@s" : "TRANS/",
                 "tR@z" : "TRANS/",
                 "tEl" : "THR-",
+                'Eksp' : "-/BGSP",
+                'Ekst' : "-/BGST",
+                'EksK' : "-/BGST",
                 'ade' : 'AD-', # sound
                 'm°n' : "KH",#men
                 'min' : "KH",#min
                 'm2n' : 'KH', #men
+                't°n' : 'TH', #tenace
+                'ten' : 'TH', #tenace
+                'ina' : 'TPHA',
+                'inE' : 'TPHAEU',
+                'ini' : 'TPHI',
+                'in§' : 'TPHON',
+                'ino' : 'TPHO',
+                'iny' : 'TPHU',
+                '5sy' : 'STPHU',
+                '5si' : 'STPHI',
+                '5sa' : 'STPHA',
+                '5se' : 'STPHE',
                 "@t" :"SPW",
                 "5t" :"SPW",
                 "R°" : "R-",
@@ -105,8 +120,14 @@ class Steno:
                 'k§' : 'KON', # conte
 #                'k§' : 'KOEN', # con
                 'du' : 'DOU',
+                "pn" : "N",
+                "@p" : "KPW",
+                "5p" : "KPW",
+                "@b" : "KPW",
+                "5b" : "KPW",
+                
                 'S' : 'SH',
-                "e" : "",
+#                "e" : "",
                 'ad' : 'AD-', # sound 
                 "Z" : "J",
 #                'd' : 'DAOE',
@@ -123,6 +144,8 @@ class Steno:
                 'ind' : OrthoPrefix('5-d', 'SPW'),
                 'end' : OrthoPrefix('@-d', 'SPW'),
                 'réu' : OrthoPrefix('Re-y', 'REU'),
+                'fin'  : OrthoPrefix('fi-n', 'WH'),
+                'fen'  :OrthoPrefix('f°-n', 'WH'),
                 
 #                "a" : OrthoPrefix('a-','AE-'), # sound
 
@@ -136,13 +159,21 @@ class Steno:
                 'bilité' : OrthoSuffix('bi-li-te','-BLT'),
                 'ilité' : OrthoSuffix('i-li-te','ILT'),
                 'lité' : OrthoSuffix('li-te','-LT'),
+                'bilise' : OrthoSuffix('bi-liz','-BLZ'),
+                'ralise' : OrthoSuffix('Ra-liz','-BLZ'),
+                'lise' : OrthoSuffix('liz','-LZ'),
+
                 'rité' : OrthoSuffix('Ri-te', '-RT'), # securite
                 'bité' : OrthoSuffix('bi-te','-BT'),
                 'vité': OrthoSuffix('vi-te', '-/FT'),
                 'cité': OrthoSuffix('si-te', '-/FT'),
+                'sité': OrthoSuffix('si-te', '-ST*E'),
+                'igé': OrthoSuffix('i-Ze', 'EG'),
+                'iger': OrthoSuffix('i-ZeR', '-*EG'),
                 'ance' : OrthoSuffix('@s', '-NS'),
                 'ence' : OrthoSuffix('@s', '-NS'),
                 'ande' : OrthoSuffix('@d', '-ND'),
+                'aux' : OrthoSuffix('o', '-O*EX'),
                 'ité' : OrthoSuffix('i-te','ITD'),
                 'gueur' : OrthoSuffix('g9R' , '-RG'),
                 'deur' : OrthoSuffix('d9R' , '-RD'),
@@ -169,10 +200,13 @@ class Steno:
                 "rche" : OrthoSuffix("RS","-/FRPB"),
                 "che" : OrthoSuffix("S","-/FP"),
                 "ué" : OrthoSuffix("8e","-/W*E"),
-                "cis" :OrthoSuffix("si", "-/RB"),
                 "cise" :OrthoSuffix("siz", "-/RBZ"),
+                "cis" :OrthoSuffix("si", "-/RB"),
+
                 "ssis" :OrthoSuffix("si", "-/RB"),
                 "ci" : OrthoSuffix("si", "-/RB"),
+                "cet" : OrthoSuffix("sE", "-SZAEU"),
+                "ce" : OrthoSuffix("s", "-SZ"),
                 "el" : OrthoSuffix("El", "-/*EL"),
                 "th" : OrthoSuffix("t", "-GT"),
                 "the" : OrthoSuffix("t", "-/GT"),
@@ -191,6 +225,7 @@ class Steno:
 
         # if start with - then dont convert 
         SUFFIXES = {
+                'pasj§' :  '-PGS', # preocuppation
                 't82' : '-/TWAO*', # fru-ctu-eux
                 'sjasj§': 'SRAGS', #ciation
                 '@sjOn' : "ANGZ", #mentionne
@@ -202,9 +237,13 @@ class Steno:
                 "val" : "-/FL",
                 "vaj" : "-/FL",
                 "vEl" : "-/FL",
-
+                'Rnal' :'-RBL',
                 'sjOn' :'-GZ',
                 't8ER' : 'TW*R', # portuaire
+                'tyR' : 'TS', #ture
+
+                'nal' : '-NL', #canal
+                
 
 
 #second option                'sjOn' :'-/GS/*B',
@@ -265,10 +304,11 @@ class Steno:
                 'vEr' : '-/FRB', # cou-vert
                 'vER' : '-/FRB', # travers
                 'REj' : '-RLZ' , #reille
+                
                 'fER' : '-/FRB', #o-ffert
                 'vR' : '-/FR', # iv-re
                 'fR' : '-/FR' , #sou-fre
-
+                '@l' : '-ANL', #branle
                 'zm' : '-/FPL',
                 'sm' : '-/FPL',
                 "tEkt" : "-/T*K",
@@ -280,6 +320,8 @@ class Steno:
                 "@S°" : "-AFRPBLG",
                 "fR" : "-/FR", #souffre
                 "fl" : "-/FL", #souffle
+                'sk°'  : '-/FBG', #puisque
+                'sk' : '-/FBG',
 
                 "Re":"-/R*E",
                 'z§':'-GZ',
@@ -302,12 +344,13 @@ class Steno:
                 "nEs" : "BS",
                 "E" : "AEU",
                 "n" : "B",
-
+                'j' : '-LZ',
                 "§" : "-*PB",
 #                "sm" : "-/FP",
                 'o' : 'OE',
                 'N' : 'PG',
                 "Z" : "LG",
+                'u' : 'O*U',
         }
 
         SYLLABE_PLACES = {
@@ -397,7 +440,7 @@ class Steno:
                         return word
                 next_letter = word.word[:4].upper()
                 print('next letter', next_letter)
-                if (next_letter.endswith('O') or next_letter.endswith('E') or next_letter.endswith('I') or next_letter.endswith('A') or next_letter.endswith('U') or next_letter.endswith('@') or next_letter.endswith('Y')) :
+                if word.word.startswith('dé') or ((next_letter.endswith('O') or next_letter.endswith('E') or next_letter.endswith('I') or next_letter.endswith('A') or next_letter.endswith('U') or next_letter.endswith('@') or next_letter.endswith('Y'))) :
                         
                         self.prefix = 'STK'
                         word.syll = word.syll.replace('de-z', '')
@@ -406,7 +449,7 @@ class Steno:
                         if (word.syll.startswith('de-f')):
                                 self.prefix = 'STKV'
                                 word.syll = word.syll.replace('de-f', '')
-                        
+                        word.syll = word.syll.replace('de', '')
                         print('syll repl', word.syll)
                 
                 return word
@@ -700,7 +743,8 @@ class Syllabe:
                 "V": "F",
                 "I": "EU",
                 "F":"FL",
-                "J" : "G"
+                "J" : "G",
+                'X' : 'BGS',
 
                 }
 
@@ -717,6 +761,8 @@ class Syllabe:
                 "J" : "SKWR",
                 "N" : "TPH",
                 "Q" : "KW",
+                'X' : 'KP',
+
                 "Z" : "SWR"
 
         }
@@ -920,17 +966,25 @@ class Steno_Encoding:
                 't8' : 'TW', # fru-ctu-eux
                 'Egze' : 'KP',
                 'sjasj§': 'SRAGS', #ciation
+                '@v°n' : 'ENVH',
+                'v°n' : 'VH',
+                'vin' : 'VH',
                 "jEn": "AEB",
+                'Eks' : 'KP',
+                'Eksi' : 'KP',
                 'bRe': '-BS',
                 "djO": "OD",
                 "zj§": "GZ",
+                'nal' : '-NL', 
+                
                 "sj§": "GZ",
                 'vul': 'WHR',
                 "fik" : "-/FBG",
                 "fEk" : "-/FBG",
                 'j@' : 'AEN' , # son ian
+                '@l' : '-ANL', #enleve
                 "RSi" : "VRPB",
-                'REj' : '-RLZ' , #reille
+                'REj' : '-RLZ' , #oreille
                 
                 "tER": "-TS",  #notaire
                 "EtR" : "-TS" , #fenetre
@@ -938,19 +992,23 @@ class Steno_Encoding:
                 "RS" : "VRPB",# -rche
                 "dZ" : "PBLG",
                 "bZ" : "PBLG",
+                "ps" : "S",
                 'En' : 'AIB',
                 "vaj" : "-FL",
                 "vEj" : "-FL",
+                '@v' : 'ENVH', #envenime
+
                 "ER" : "AIR",
                 "kR" : "RK", #can-cre
                 "ks": "-BGS",
                 '8a' : 'WA' , # ua in situation
 #                "kR" : "RK",
-                
+                'Ne'  : '-PGR',
+
 #                "di" : "D",
 #                "mi" : "M",
                 'gR' : '-GS',
-                
+#                "tR": "-TS", #tre
                 "8i": "AU",     # pluie
 #                'ij': 'AO', # before jO
                 'ij' : '-LZ', #ille
@@ -969,8 +1027,8 @@ class Steno_Encoding:
                 "§t" : "OFRPT",
                 "@S" : "-AFRPBLG",
                 "5S" : "-EUFRPBLG",
-                '@p' : 'AFRP' , #campe
-                '§p' : 'OFRP', # trompe
+                '@p' : '-AFRP' , #campe
+                '§p' : '-OFRP', # trompe
                 'pl' : 'PL',
                 
                 'gl' : '-FRLG',
@@ -990,6 +1048,7 @@ class Steno_Encoding:
                 '1' : 'U',
                 "@": "AN",     # pluie
                 "E" : "AEU", #collecte
+                "e" : "AEU", #collecte
                 'N' : 'PG',
 
         }
@@ -998,7 +1057,7 @@ class Steno_Encoding:
                 "°" : "",
                 'j' : 'i',
                 "Z" : "G",
-
+                "E" : "AEU", #collecte
                 "2": "AO",      # eux
                 "9": "AO",      # seul
 #                "E": "AEU",     # père
@@ -1021,21 +1080,88 @@ class Steno_Encoding:
                 self.prefix = prefix
                 self.suffix = suffix
 
-        def diphtongs(self, word):
+        def diphtongs_try(self, word):
                 new_word=word
-                self.found_sound = ''
+                final_word = ''
+                items = self.DIPHTONGS
+                keys = self.DIPHTONGS.keys()
+#                self.found_sound = ''
+                nb_char = len(word)
+                while new_word != '' :
+                        print(nb_char,word[:nb_char])
+                        if items.get(word[:nb_char]) is not None:
+#                                self.found_sound=diphtong[1]
+                                final_word = final_word + "+"+items[word[:nb_char]]+"+"
+                                break
+                        nb_char = nb_char-1
+                        if new_word :
+                                new_word = new_word[nb_char:]
+                                                        
+
+                return final_word
+
+        def find_matching(self, syll, word) :
+                print('find match word', word)
                 for diphtong in self.DIPHTONGS.items():
-                        self.found_sound=diphtong[1]
-                        new_word = new_word.replace(diphtong[0], "+"+diphtong[1]+"+")
-                return new_word
+                        key = diphtong[0]
+                        if key in word:
+                                print('find key', key)
+#                                self.found_sound = diphtong[1]
+                                if word.startswith(key):
+                                        syll[key] = diphtong[1]
+                                        end = word.replace(key, '')
+                                        if end :
+                                                for  findsyll in self.find_matching(syll,end).items():
+                                                        syll[findsyll[0]] = findsyll[1]
+                                        return syll
+                                if word.endswith(key):
+                                        start = word.replace(key, '')
+                                        if start :
+                                                for  findsyll in self.find_matching(syll,start).items():
+                                                        syll[findsyll[0]] = findsyll[1]
+                                        syll[key] = diphtong[1]
+                                        return syll
+                                splitted = word.split(key)
+                                start  =splitted[0]
+                                for  findsyll in self.find_matching(syll,start).items():
+                                        syll[findsyll[0]] = findsyll[1]
+                                syll[key] = diphtong[1]
+                                
+                                end = splitted[1]
+                                for  findsyll in self.find_matching(syll,end).items():
+                                        syll[findsyll[0]] = findsyll[1]
+                                return syll
+                syll[word] = ""
+                return syll
+                                
+                                
+        def diphtongs(self, word):
+                before = ''
+                after = ''
+                new_word=word
+                syll_dict = {}
+                final_word = word
+                items = self.DIPHTONGS
+                keys = self.DIPHTONGS.keys()
+#                self.found_sound = ''
+                nb_char = len(word)
+                for diphtong in self.DIPHTONGS.items():
+                        
+                        if diphtong[0] in new_word :
+                                final_word = final_word.replace(diphtong[0], "+"+diphtong[1]+"+")
+                                print('final_word',final_word)
 
+                                new_word = new_word.replace(diphtong[1],'')
+                                print('new_word',new_word)
+#                        self.found_sound=diphtong[1]
 
-
+    
                 
         def encode(self):
                 self.word_encoded = ""
                 previous = None
                 count_syll = 1
+
                 next_syll = self.syllabes
                 if self.prefix:
                         previous = Syllabe(self.prefix, None, self.syllabes[1:])
@@ -1046,26 +1172,38 @@ class Steno_Encoding:
                         if piece == "":
                                 continue
                         print('piece',piece)
+                        sylls = {}
+                        sylls = self.find_matching(sylls, piece)
+                        print('sylls' , sylls)
 
-                        piece = self.diphtongs(piece)
+
+
+#                        piece = self.diphtongs(piece)
                         print('word encoded' , self.word_encoded)
-                        print('found sound dif' , self.found_sound)
+#                        print('found sound dif' , self.found_sound)
 
                         print('dif',piece)
-                        piece = self.voyels(piece)
+#                        piece = self.voyels(piece)
                         print('voyel',piece)
                         
                         if piece == "":
                                 continue
-                        for new_piece in piece.split('+'):
+                        for mysyll in sylls.items() :
+                                new_piece = mysyll[0]
+                                if mysyll[1] != "":
+                                        new_piece = mysyll[1]
+                                else:
+                                        new_piece = self.voyels(new_piece)
+                                        new_piece = new_piece.upper()
+#                        for new_piece in piece.split('+'):
                                 print('syllabe',new_piece)
                                 syllabe = Syllabe(new_piece.upper(), previous,next_syll)
                                 encoded = syllabe.encoded()
-                                if self.found_sound and self.found_sound.endswith("RK") and self.word_encoded.endswith('PB'):
-                                        print('found blg', encoded)
-                                        print('found sound', self.found_sound)
-                                        self.word_encoded = self.word_encoded[:2]
-                                        encoded = 'KS'
+#                                if self.found_sound and self.found_sound.endswith("RK") and self.word_encoded.endswith('PB'):
+#                                        print('found blg', encoded)
+#                                        print('found sound', self.found_sound)
+#                                        self.word_encoded = self.word_encoded[:2]
+#                                        encoded = 'KS'
 #b                                         or self.found_sound.endswith("BGS")) 
                                 
                                 self.word_encoded = self.word_encoded+ encoded
