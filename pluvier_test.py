@@ -467,16 +467,16 @@ class TestPluvier:
         self.assertSame({
             "SAEUB": "saine",
             "TKPWAEUB": "gaine",
-#            "TKEUBGS/A*EUB": "dizaine",
-#            "KEUPBZ/A*EUB": "quinzaine",
+            "TKEUBGS/A*EUB": "dizaine",
+            "KEUPBZ/A*EUB": "quinzaine",
                          })
 
     def test_lesson19_KP_for_X_in_egz_sound_followed_by_woyel(self):
         self.assertSame({
             "KPEUL": "exil",
-#            "KPUT": "exécute",
+            "KPUT": "exécute",
             "KPEUG": "exige",
-#            "STRA": "extra",
+            "STRA": "extra",
                          })
 
     def test_lesson19_W_is_we_sound(self):
@@ -499,7 +499,8 @@ class TestPluvier:
                          })
 
     def test_lesson19_WstarEL_ending_uel(self):
-        self.assertSame({"WEUZ/W*EL": "visuel",
+        self.assertSame({
+            #"WEUZ/W*EL": "visuel",
                          "TKPWRAD/W*EL": "graduel",
 #                         "ABT/W*EL": "habituel",
                          })

@@ -149,7 +149,7 @@ class Steno:
                 "Z" : "SKWR",
 #                'd' : 'DAOE',
                 'z' : 'Z',
-                'a':'AE-',
+                'a':'AE/',
                 
         }
 
@@ -219,7 +219,7 @@ class Steno:
                 'cte' : OrthoSuffix('kt', 'KT'),
                 "ène" : OrthoSuffix("En","-/*EB"),
 #                "eur" : OrthoSuffix("9R","-AO*R"),
-                "uel" : OrthoSuffix("8El","-/W*EL"),
+                "uel" : OrthoSuffix("y-El|8El","-/W*EL"),
                 "anche" : OrthoSuffix("@S","-/AFRPBLG"),
                 "rche" : OrthoSuffix("RS","-/FRPB"),
                 "che" : OrthoSuffix("S","-/FP"),
@@ -499,7 +499,7 @@ class Steno:
                 if verb_word.is_verb() and verb_word.is_infinitif()  and verb_word.word.endswith('er'):
                         self.ending = "/-R"
                         if verb_word.syll.endswith('e') :
-                                verb_word.syll = verb_word.syll[:-1]
+                                self.ending_syll = verb_word.syll[:-1]
                         return verb_word
                 return word
 
@@ -510,7 +510,7 @@ class Steno:
                         self.ending = "/*T"
                         if word.syll.endswith('Et') :
                                 print('fini par et')
-                                word.syll = word.syll[:-2]
+                                self.ending_syll = word.syll[:-2]
                         return word
                 return word
 
@@ -1115,14 +1115,16 @@ class Steno_Encoding:
         DIPHTONGS = {
                 # without i
                 't8' : 'TW', # fru-ctu-eux
-                'Egze' : 'KP',
                 'sjasj§': 'SRAGS', #ciation
                 '@v°n' : 'ENVH',
                 'v°n' : 'VH',
                 'vin' : 'VH',
                 "jEn": "AEB",
-                'Eks' : 'KP',
+                'Egze' : 'KP',
+                'Egzi' : 'KPEU',
                 'Eksi' : 'KP',
+                'Eks' : 'KP',
+
                 'bRe': '-BS',
                 "djO": "OD",
                 "zj§": "GZ",
@@ -1136,7 +1138,7 @@ class Steno_Encoding:
                 '@l' : '-ANL', #enleve
                 "RSi" : "VRPB",
                 'REj' : '-RLZ' , #oreille
-                
+
                 "tER": "-TS",  #notaire
                 "EtR" : "-TS" , #fenetre
                 'ijO' : 'AO',
@@ -1160,7 +1162,7 @@ class Steno_Encoding:
                 'on' : 'ON',
 #                "di" : "D",
 #                "mi" : "M",k§t
-                'gR' : '-GS',
+                'gR' : 'GR',
 #                "tR": "-TS", #tre
                 "8i": "AU",     # pluie
 #                'ij': 'AO', # before jO
