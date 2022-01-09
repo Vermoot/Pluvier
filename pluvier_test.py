@@ -357,9 +357,9 @@ class TestPluvier:
     def test_lesson14_e_never_inside_word_and_star_for_re_suffix(self):
         self.assertSame({
 
-#            "R-L/WE": "relevé",
-#            "TK-G/R*E": "degré",
-            "TKG/R*E": "degré",
+            "R-L/WE": "relevé",
+            "TK-G/R*E": "degré",
+#            "TKG/R*E": "degré",
 #            "TKRE": "degré",
                          })
 
@@ -1594,7 +1594,7 @@ class TestPluvier:
         self.assertSame({
 #            "SHOPB": "champion",
 #            "SHO*PB": "champignon",
-            "SHAFRP/HO*PB": "champignon",
+ #           "SHAFRP/HO*PB": "champignon",
             "PWOURG/HO*PB": "bourguignon",
 
             })

@@ -146,7 +146,7 @@ class Steno:
                 'S' : 'SH',
 #                "e" : "",
 #                'ad' : 'A-D', # sound 
-                "Z" : "J",
+                "Z" : "SKWR",
 #                'd' : 'DAOE',
                 'z' : 'Z',
                 'a':'AE-',
@@ -159,7 +159,7 @@ class Steno:
                 'coll' : OrthoPrefix('ko-l', 'KHR'),
                 "comm" : OrthoPrefix('ko-m|kOm','KPH'),
                 "com" : OrthoPrefix('k§','K*/|K'),
-                "con" : OrthoPrefix('k§','KOPB'),
+                "con" : OrthoPrefix('k§','KOEPB|KOPB'),
                 'ind' : OrthoPrefix('5-d', 'SPW'),
                 'end' : OrthoPrefix('@-d', 'SPW'),
                 'réu' : OrthoPrefix('Re-y', 'REU'),
@@ -242,6 +242,7 @@ class Steno:
 
         REAL_SUFFIXES = {
                 "En" : "A*IB",
+                
                 "wE": "-/W*E",
 
 
@@ -314,7 +315,8 @@ class Steno:
                 "5b": "-EUFRB",  # limbe
                 "§b": "-/OFRB",  # comble
                 "ks": "-BGS",
-                "ve": "-WE",
+                "ve": "-WE", # releve
+                "N§" : "-/HO*PB", #bourguignon
                 "@Z" :"-/APBLG", # ange
                 "§t" : "-/OFRPT", # prompte
                 "5p" : "-/EUFRP",
@@ -411,6 +413,7 @@ class Steno:
         homophones = False
         pronoun = ""
         final_encoded = []
+        ending_syll = ''
         def __init__(self, corpus):
                 self.words = corpus
 
@@ -545,22 +548,22 @@ class Steno:
                 if  verb_word.is_passe_compose():
                         self.ending = "/-D"
                         if verb_word.syll.endswith('e') :
-                                verb_word.syll = verb_word.syll[:-1]
+                                self.ending_syll = verb_word.syll[:-1]
                         return verb_word
 
                 if verb_word.is_imparfait():
                         self.ending = "/-S"
                         if verb_word.syll.endswith('E') :
-                                verb_word.syll = verb_word.syll[:-1]
+                                self.ending_syll = verb_word.syll[:-1]
                         return verb_word
 
                 if verb_word.is_conditionnel():
                         self.ending = "/-RS"
                         if verb_word.word.endswith('rrait') and verb_word.syll.endswith('E') :
-                                verb_word.syll = verb_word.syll[:-1]
+                                self.ending_syll = verb_word.syll[:-1]
                                 return verb_word
                         if verb_word.syll.endswith('RE') :
-                                verb_word.syll = verb_word.syll[:-2]
+                                self.ending_syll = verb_word.syll[:-2]
                         return verb_word
 
                 if verb_word.is_vous_ind_present():
@@ -568,19 +571,19 @@ class Steno:
 
                         if verb_word.syll.endswith('Re') :
                                 self.ending = "/R*EZ"
-                                verb_word.syll = verb_word.syll[:-2]
+                                self.ending_syll = verb_word.syll[:-2]
                                 return verb_word
                         if verb_word.syll.endswith('e') :
-                                verb_word.syll = verb_word.syll[:-1]
+                                self.ending_syll = verb_word.syll[:-1]
                                 return verb_word
                 if verb_word.is_participe_present():
                         print('participe present')
                         self.ending = "/-G"
                         if verb_word.syll.endswith('j@')  :
-                                verb_word.syll = verb_word.syll[:-2]
+                                self.ending_syll = verb_word.syll[:-2]
                                 return verb_word
                         if verb_word.syll.endswith('@') :
-                                verb_word.syll = verb_word.syll[:-1]
+                                self.ending_syll = verb_word.syll[:-1]
                                 return verb_word
                         return verb_word
                 
@@ -735,10 +738,21 @@ class Steno:
                 self.syllabes = [word_str]
 
                 print('ending',self.ending)
+                print('ending_syll',self.ending_syll)
                 for  one_prefix in self.prefix.split('|'):
-                        self.final_encoded.append(Steno_Encoding(self.syllabes, one_prefix, self.suffix.split('|')[0]).encode()+self.ending)
+                        self.final_encoded.append(Steno_Encoding(self.syllabes, one_prefix, self.suffix.split('|')[0]).encode())
+
+                        if self.ending :
+                                suffix ='' 
+                                self.final_encoded.append(Steno_Encoding(self.ending_syll.split('-'), one_prefix, suffix).encode()+self.ending)
+
                 for  one_suffix in self.suffix.split('|'):
-                        self.final_encoded.append(Steno_Encoding(self.syllabes, self.prefix.split('|')[0], one_suffix).encode()+self.ending)
+                        self.final_encoded.append(Steno_Encoding(self.syllabes, self.prefix.split('|')[0], one_suffix).encode())
+                        if self.ending :
+                                suffix ='' 
+                                self.final_encoded.append(Steno_Encoding([self.ending_syll.replace('-', '')], self.prefix.split('|')[0], suffix).encode()+self.ending)
+
+
 
                 self.prefix =""
                 
