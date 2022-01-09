@@ -53,7 +53,7 @@ class Ortho:
         check_alternative = False
         alternative_str = ''
         one_hand = False
-        
+        converted_syll = False
         def __init__(self,sound, replace_by):
                 self.sounds = sound.split('|')
                 self.replace_by = replace_by
@@ -79,23 +79,29 @@ class Ortho:
 
 class OrthoSuffix(Ortho):
         def convert(self,word) :
+                if self.converted_syll :
+                        return self.converted_syll
                 for sound in self.sounds:
                         if word.syll.endswith(sound) :
                                 word.syll = word.syll[:-len(sound)]
                                 self.steno_str = self.replace_by
-#                                print('ortho suffix convert',word.syll)
+                                print('ortho suffix convert',word.syll)
+                                self.converted_syll=word
                                 return word
-                return word
+                return False
 
 class OrthoPrefix(Ortho):
         def convert(self,word):
+                if self.converted_syll :
+                        return self.converted_syll
                 for sound in self.sounds:
                         if word.syll.startswith(sound) :
                                 word.syll = word.syll[len(sound):]
                                 self.steno_str = self.replace_by
-#                                print('ortho prefix convert',word.syll)
+                                print('ortho prefix convert',word.syll)
+                                self.converted_syll=word
                                 return word
-                return word
+                return False
 class Steno:
         PREFIXES = {
 #                "s2": "S", # ce mais pas ceux
@@ -115,20 +121,21 @@ class Steno:
                 'ten' : 'TH', #tenace
                 'ina' : 'TPHA',
                 'inE' : 'TPHAEU',
-                'ini' : 'TPHI',
+                'ini' : 'TPHEU',
                 'in§' : 'TPHOPB',
                 'ino' : 'TPHO',
                 'iny' : 'TPHU',
                 '5sy' : 'STPHU',
-                '5si' : 'STPHI',
+                '5si' : 'STPHEU',
                 '5sa' : 'STPHA',
                 '5se' : 'STPHE',
-                
+                '5k' : '/EUFRPB',
+                "S°" : "SK",
                 "@t" :"SPW",
                 "5t" :"SPW",
-                "R°" : "R-",
+                "R°" : "R",
                 "Z°" : "SKW-", #gelé
-                "S°" : "SK",
+
                 "Sa" : "SK",
                 'ke' : 'K',
                 'dR' : 'TKR',
@@ -142,7 +149,7 @@ class Steno:
                 "5p" : "KPW",
                 "@b" : "KPW",
                 "5b" : "KPW",
-
+                "tR": "TR", #trappeur
                 'S' : 'SH',
 #                "e" : "",
 #                'ad' : 'A-D', # sound 
@@ -209,7 +216,7 @@ class Steno:
                 'cienne' : OrthoSuffix('sjEn', '-GZ'),
                 "telle" : OrthoSuffix("tEl" , "-/LGTS"),
                 "tel" : OrthoSuffix("tEl" , "-/LGTS"),
-                "velle" : OrthoSuffix("v-El", "-/FL"),
+                "velle" : OrthoSuffix("vEl", "-/FL"),
                 "quelle" : OrthoSuffix("kEl", "-BLG"),
                 "elle" : OrthoSuffix("El", "-/*EL"),
                 'ive' : OrthoSuffix('i-v|i-ve|iv', '-/*EUF'),
@@ -219,7 +226,8 @@ class Steno:
                 'cte' : OrthoSuffix('kt', 'KT'),
                 "ène" : OrthoSuffix("En","-/*EB"),
 #                "eur" : OrthoSuffix("9R","-AO*R"),
-                "uel" : OrthoSuffix("y-El|8El","-/W*EL"),
+                "uel" : OrthoSuffix("y-El","-/U*EL"),
+                "uel" : OrthoSuffix("8El","-/W*EL"),
                 "anche" : OrthoSuffix("@S","-/AFRPBLG"),
                 "rche" : OrthoSuffix("RS","-/FRPB"),
                 "che" : OrthoSuffix("S","-/FP"),
@@ -231,7 +239,7 @@ class Steno:
                 "ci" : OrthoSuffix("si", "-/RB"),
                 "cet" : OrthoSuffix("sE", "-SZAEU"),
                 "ce" : OrthoSuffix("s", "-SZ").alternative('ss'),
-                "el" : OrthoSuffix("El", "-/*EL"),
+#                "el" : OrthoSuffix("El", "-/*EL"),
                 "th" : OrthoSuffix("t", "-GT"),
                 "the" : OrthoSuffix("t", "-/GT"),
                 "a" : OrthoSuffix("a", "-/*Z"),
@@ -265,8 +273,10 @@ class Steno:
                 'Rnal' :'-RBL',
                 'sjOn' :'-GZ',
                 't8ER' : 'TW*R', # portuaire
-                'tyR' : 'TS', #ture
-
+                'tyR' : '-TS', #ture
+                '@gl' : '-/AFRLG',
+                '§gl' : '-/OFRLG',
+                '5gl' : '-/EUFRLG',
                 'nal' : '-NL', #canal
 
 
@@ -343,7 +353,7 @@ class Steno:
                 'zm' : '-/FPL',
                 'sm' : '-/FPL',
                 "tEkt" : "-/T*K",
-                "EtR" : "--TS",
+                "EtR" : "-TS",
                 "SEt" : "-/FPT" , # achete
 #                "RZ" : "-/RPBLG",
                 "RZ" : "RG",
@@ -369,7 +379,7 @@ class Steno:
 
                 "dR" : "DZ" ,# ajoin-dre
                 "@b": "-AFRB",   # jambe
-                "tR": "-TS", #tre
+                "tR": "-TS", #tre 
                 "bR":"-BS",  #-bre
                 "pR":"-PS", #-pre
                 "nEs" : "BS",
@@ -382,6 +392,7 @@ class Steno:
                 'o' : 'OE',
 #                't' : 'T',
                 'N' : 'PG',
+                'El' :'-FL',
                 "Z" : "G", # rage
                 'u' : 'O*U',
         }
@@ -415,6 +426,17 @@ class Steno:
         final_encoded = []
         ending_syll = ''
         def __init__(self, corpus):
+                
+                self.suffix = ""
+                self.prefix = ""
+                self.steno_word = ""
+                self.syllabes = []
+                self.ending = ""
+                self.homophones = False
+                self.pronoun = ""
+                self.ending_syll = ''
+                self.suffix = ''
+                self.final_encoded = []
                 self.words = corpus
 
 
@@ -520,12 +542,14 @@ class Steno:
                                 ortho = orth[1]
                                 if ortho.check_alternative :
                                         if not self.find_spelled_word(ortho.get_alternative_str(word.word,orth[0])):
+                                                print('cotinue check alternative')
                                                 continue
                                 print(vars(orth[1]))
-
-                                word = ortho.convert(word)
-                                self.suffix = ortho.steno()
-                                return word
+                                if (ortho.convert(word)):
+                                        print('converted ok')
+                                        word = ortho.convert(word)
+                                        self.suffix = ortho.steno()
+                                        return word
                 return word
 
         def ortho_prefixes(self,word):
@@ -534,9 +558,11 @@ class Steno:
                                 print(vars(orth[1]))
                                 ortho = orth[1]
                                 ortho.prefix = True
-                                word = ortho.convert(word)
-                                self.prefix = ortho.steno()
-                                return word
+                                print('prefix test' , ortho)
+                                if (ortho.convert(word)):
+                                        word = ortho.convert(word)
+                                        self.prefix = ortho.steno()
+                                        return word
                 return word
 
         
@@ -743,7 +769,8 @@ class Steno:
                         self.final_encoded.append(Steno_Encoding(self.syllabes, one_prefix, self.suffix.split('|')[0]).encode())
 
                         if self.ending :
-                                suffix ='' 
+                                suffix =''
+#                                self.prefixes(self.ending_syll, word)
                                 self.final_encoded.append(Steno_Encoding(self.ending_syll.split('-'), one_prefix, suffix).encode()+self.ending)
 
                 for  one_suffix in self.suffix.split('|'):
@@ -870,7 +897,7 @@ class Syllabe:
         }
 
         LEFT_KEYS = '-/*STKPWHRAO*'
-        RIGHT_KEYS = '-/EU*FRPBLGTSDZ'
+        RIGHT_KEYS = '-/*EUFRPBLGTSDZ'
         consume_woyels = 'AOEU'
         keys_left = ''
         encoded_hand = ''
@@ -956,7 +983,9 @@ class Syllabe:
                         return word
                 print('hand', self.hand)
                 print('word', word)
-
+                if self.previous is None and self.hand == 'R'  and self.already_encoded == "" :
+                        return '-'+word
+                
                 if self.previous is None :
                         return word
                 previous_encoded = self.previous.encoded_hand
@@ -983,8 +1012,9 @@ class Syllabe:
                 print('syll',syllabe)
                 print('hand',self.hand)
                 print('already_encoded',self.already_encoded)
+
                 if (self.already_encoded and self.previous):
-                        if  not self.contains_woyels( self.previous.encoded_hand) and not self.contains_woyels(self.syllabe):
+                        if  not self.contains_woyels( self.previous.encoded_hand) and not self.contains_woyels(self.syllabe) and '-' not in self.encoded_hand:
                                 self.encoded_hand =self.encoded_hand+ '-'
                 for key in syllabe:
                         if not_found:
@@ -1091,15 +1121,8 @@ class Syllabe:
                         print('piece',self.encoded_hand)
 
                         if rest :
-#                                piece = piece + self.encoded_hand
                                 self.change_hand()
-
-#                                self.init_keys_left()
                                 cpt = True
-                        
-#                        else:
-#                                piece = piece + self.encoded_hand
-
                         count= count +1
                         print('reste'+rest+":")
                         print('encoded_hand', self.encoded_hand)
@@ -1114,7 +1137,7 @@ class Syllabe:
 class Steno_Encoding:
         DIPHTONGS = {
                 # without i
-                't8' : 'TW', # fru-ctu-eux
+
                 'sjasj§': 'SRAGS', #ciation
                 '@v°n' : 'ENVH',
                 'v°n' : 'VH',
@@ -1124,12 +1147,13 @@ class Steno_Encoding:
                 'Egzi' : 'KPEU',
                 'Eksi' : 'KP',
                 'Eks' : 'KP',
-
+                'ist' : '*EUS',
+                
                 'bRe': '-BS',
                 "djO": "OD",
                 "zj§": "GZ",
                 'nal' : '-NL', 
-                
+                '@kR' : '-FRKS', #cancre
                 "sj§": "GZ",
                 'vul': 'WHR',
                 "fik" : "-/FBG",
@@ -1153,17 +1177,17 @@ class Steno_Encoding:
                 "vEj" : "-FL",
                 '@v' : 'ENVH', #envenime
 
-                "ER" : "AIR",
-                "kR" : "KR", #can-cre
+                't8' : 'TW', # fru-ctu-eux
+#                "kR" : "KR", 
                 "ks": "-BGS",
                 '8a' : 'WA' , # ua in situation
-#                "kR" : "RK",
+                "kR" : "RK",#can-cre
                 'Ne'  : '-PGR',
                 'on' : 'ON',
 #                "di" : "D",
 #                "mi" : "M",k§t
                 'gR' : 'GR',
-#                "tR": "-TS", #tre
+                "tR": "-TS", #tre
                 "8i": "AU",     # pluie
 #                'ij': 'AO', # before jO
                 'ij' : '-LZ', #ille
@@ -1188,7 +1212,7 @@ class Steno_Encoding:
                 '@p' : '-AFRP' , #campe
                 '§p' : '-OFRP', # trompe
                 'pl' : 'PL',
-                
+                "ER" : "AIR",
                 'gl' : '-FRLG',
                 "wa": "OEU",    # froid
                 "w5": "OEUPB",  # loin

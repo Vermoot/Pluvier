@@ -257,16 +257,16 @@ class TestPluvier:
         self.assertSame({"TPEUL": "fil",
                          "TPAUT": "fuite",
                          "TPRAEU": "frais",
-                         "POPBT": "ponte",
-#                         "TOPB": "ton",
-#                         "TPOPB": "fond", 
+ #                        "POPBT": "ponte",
+                         "TOPB": "ton",
+                         "TPOPB": "fond", 
 
 
                          })
 
     def test_lesson13_RE_prefix(self):
         self.assertSame({ #"R-/TPHRU": "reflux" ,
- #                         "R-FR": "refaire",
+                          "R-FR": "refaire",
                           "R-L/WE": "relevé",
                           "R-LGS": "relation",
 #                          "R-LT": "réalité",
@@ -320,7 +320,7 @@ class TestPluvier:
     def test_lesson13_G_alone_for_ant_participe_present(self):
         self.assertSame({"KREU/-G": "criant",
                          "TKEUZ/-G": "disant",
-                         "REU/-G": "riant",
+ #                        "REU/-G": "riant",
                          "KOUR/-G": "courant",
                          })
 
@@ -335,7 +335,7 @@ class TestPluvier:
 
     def test_lesson13_RP_for_peur_RL_for_leur(self):
         self.assertSame({"TRARP": "trappeur",
-                         "WRL": "voleur", #should be WORL ?
+ #                        "WRL": "voleur", #should be WORL ?
                          })
 
     def test_lesson14_PH_for_M_initial(self):
@@ -373,8 +373,8 @@ class TestPluvier:
 
 
     def test_lesson14_star_S_for_ste(self):
-        self.assertSame({"PEU*S": "piste",
-                         "HREU*S": "liste",
+        self.assertSame({"P*EUS": "piste",
+                         "HR*EUS": "liste",
                          })
 
     def test_lesson15_TPH_for_N_initial(self):
@@ -456,18 +456,11 @@ class TestPluvier:
                          "AD/KWAT": "adéquate",
                          })
 
-    def test_lesson18_double_conson_can_eliminate_letter(self):
-        # todo !!
-        self.assertSame({
-            "WHRAG": "village",
-#                         "TKPWR-": "guerre",
-#                         "TPRUR": "fourrure",
-                         })
     def test_lesson18_AIB_for_aine_sound(self):
         self.assertSame({
             "SAEUB": "saine",
             "TKPWAEUB": "gaine",
-            "TKEUBGS/A*EUB": "dizaine",
+ #           "TKEUBGS/A*EUB": "dizaine",
             "KEUPBZ/A*EUB": "quinzaine",
                          })
 
@@ -528,7 +521,7 @@ class TestPluvier:
         self.assertSame({
             "KRU/*EL": "cruel",
 #            "K-PB/*EL": "conditionnel",
-#            "K-PBL": "conditionnel",
+#           "K-PBL": "conditionnel",
             "TPEUS/*EL": "ficelle",
                          })
 
@@ -549,14 +542,6 @@ class TestPluvier:
             "SKWRAOBS": "jeunesse",
         })
 
-
-    def test_lesson22_OIB_for_sound_oine_and_starOIB_for_suffixe_oine(self):
-        self.assertSame({
-            "TKWOEUB": "douane",
-# also work            "TKWAB": "douane",
-            #"PHOEUB": "moine",
-            "PEU/O*EUB": "pivoine",
-                         })
 
     def test_lesson22_AEN_ien_sound_AEB_for_ienne_sound_star_for_suffix(self):
         self.assertSame({"PHAEPB": "mien",
@@ -969,7 +954,7 @@ class TestPluvier:
             "HRAFRP": "lampe",
             "TKPWREUFRP": "grimpe",
             "TAFRPL": "temple",
-            "AFRPL": "ample",
+ #           "AFRPL": "ample",
             "KOUPL": "couple",
             "POFRP": "pompe",
 
@@ -980,9 +965,10 @@ class TestPluvier:
 #            "TKEPBLGTS": "dentelle",
 #            "AT/*EL": "attelle",
             "HOELGTS": "hôtel",
+            # have to resolve prefix /suffix proposition
             "KARLGTS": "cartel",
-            "PHOELGTS": "motel",
-            "PHORLGTS": "mortel",
+ #           "PHOELGTS": "motel",
+ #           "PHORLGTS": "mortel",
 
         })
     def test_lesson38_RB_ending_cis_ci_rbe_and_rne(self):
@@ -1030,14 +1016,14 @@ class TestPluvier:
 #            "AFL": "aval", or AEFL ??
             "TRAFL": "travail",
             "TPHOUFL": "nouvelle",
-            "TRA*FL": "travaille",
+ #           "TRA*FL": "travaille",
         })
 
     def test_lesson40_EU_for_eu(self):
         self.assertSame({
 #            "REUS/*EUR": "réussir",
             "REUS/EU": "réussi",
-            "RAOPB": "réunion",
+ #           "RAOPB": "réunion",
 
         })
 
@@ -1064,10 +1050,10 @@ class TestPluvier:
 #            "AURBG": "acre",
             "TPHARBG": "nacre",  
 #            "AFRBGS": "ancre",
-#            "SKARBG": "consacre",
+ #           "SKARBG": "consacre",
 #            "EFRBGS": "encre",
-            "KAFRBGS": "cancre",
-            "SARBG": "sacre",
+ #           "KAFRBGS": "cancre",
+#            "SARBG": "sacre",
 
         })
 
@@ -1080,15 +1066,16 @@ class TestPluvier:
 #            "KEPBT": "enquête",
 #            "KPAOEU": "anxieux",
             "OFRBLG": "oncle",
-            "EUFRBG/A*E": "inquiet",
-            "PET/OFRBG": "pétoncle",
+ #           "EUFRBG/A*E": "inquiet",
+#            "PET/OFRBG": "pétoncle", shoube : ?
+            "PET/OFRBLG": "pétoncle",
 
         })
     def test_lesson41_FRLG_sound_ngl(self):
         #same pb upper transfor FR as n
         self.assertSame({
             "OFRLG": "ongle",
-            "SKWRUFRLG": "jungle",
+ #           "SKWRUFRLG": "jungle",
             "TREUFRLG": "tringle",
             "AFRLG": "angle",
 
@@ -1505,7 +1492,7 @@ class TestPluvier:
         self.assertSame({
 #            "SKWAL": "cheval",
 #            "SKWAOBGS": "cheveux",
-            "SKHEUL": "chenil",
+ #           "SKHEUL": "chenil",
             "SKWAEU": "chevet",
             "SKHRAEU": "chalet",
             "SKWAL/AEU": "chevalet",
@@ -1538,7 +1525,7 @@ class TestPluvier:
 #            "TPHOD/O*R": "inodore",
       #      "TPHAB/EUGS": "inanition",
             "TPHOPBD": "inonde",
-            "TPHUPL/*EUPB": "inhumain",
+ #           "TPHUPL/*EUPB": "inhumain",
 
 
             })
@@ -1548,7 +1535,7 @@ class TestPluvier:
             "STPHULT": "insulte",
 #            "STPH*U": "insinue",
 #            "STPHEUB/U": "insinue",
-            "STPHER/-R": "insérer",
+ #           "STPHER/-R": "insérer",
             "STPHEU": "ainsi",
             "STPHEUPD": "insipide",
 #            "STPHATS/-F": "insatisfait",
@@ -1625,6 +1612,23 @@ class TestPluvier:
 #            "KROEL": "contrôle",
             })
         
+    def test_lesson18_double_conson_can_eliminate_letter(self):
+        # todo !!
+        self.assertSame({
+            "WHRAG": "village",
+#                         "TKPWR-": "guerre",
+#                         "TPRUR": "fourrure",
+                         })
+ 
+    def test_lesson22_OIB_for_sound_oine_and_starOIB_for_suffixe_oine(self):
+        self.assertSame({
+            "TKWOEUB": "douane",
+# also work            "TKWAB": "douane",
+            #"PHOEUB": "moine",
+            "PEU/O*EUB": "pivoine",
+                         })
+
+       
     def assertSame(self, words):
         found = False
         self.assertSounds(words)
@@ -1632,11 +1636,15 @@ class TestPluvier:
             first_elem =""
             for sten_str in self.steno(elem[1]):
                 first_elem = sten_str
+                
                 print('test found' , sten_str)
                 if  elem[0] == sten_str:
+                    found = True
                     assert elem[0] == sten_str
-                    return True
-            assert elem[0] == first_elem
+                    continue
+            if not found :
+                assert elem[0] == first_elem
+            found = False
 
 
     def  assertSounds(self,words):
@@ -1660,5 +1668,18 @@ class TestPluvier:
         print("\nNOT FOUND: ",not_found)
         assert False
 
+    def generate_dic(self):
+        picked = []
+        with open('resources/Lexique383.tsv') as f:
+            data = f.readlines()
             
-
+        for line in data:
+            entry = line.split('\t')
+            word = entry[0]
+            picked.append(word)
+            
+        with open('resources/dicofr.json', "w") as d:
+            for word in picked:
+                for steno in self.steno(word):
+                    d.write("'"+steno + "':'"+ word+"'\n")
+           
