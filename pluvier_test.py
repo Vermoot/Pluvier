@@ -106,8 +106,10 @@ class TestPluvier:
         self.corpus = self.read_corpus()
 
 
-    def steno(self,word):
+    def steno(self,word, force_verb = False):
         self.steno_class=Steno(self.corpus)
+        if force_verb:
+            self.steno_class.force_verb = True
         return self.steno_class.transform(word)
 
 
@@ -272,7 +274,9 @@ class TestPluvier:
                           "R-LGS": "relation",
 #                          "R-LT": "réalité",
 
-                         })
+                         }, False)
+
+        
     def test_lesson13_AE_for_ie(self):
         self.assertSame({ "PAE" : "pied",
                           "HAER": "hier",
@@ -357,8 +361,7 @@ class TestPluvier:
 
     def test_lesson14_e_never_inside_word_and_star_for_re_suffix(self):
         self.assertSame({
-
-            "R-L/WE": "relevé",
+#            "R-L/WE": "relevé",
             "TK-G/R*E": "degré",
 #            "TKG/R*E": "degré",
 #            "TKRE": "degré",
@@ -489,8 +492,8 @@ class TestPluvier:
     def test_lesson19_WstarE_ending_ue_oue(self):
         self.assertSame({
             "TKEUL/W*E": "dilué",
-                         "AF/W*E": "avoué",
-                         })
+            "AF/W*E": "avoué",
+                         },False)
 
     def test_lesson19_WstarEL_ending_uel(self):
         self.assertSame({
@@ -828,7 +831,7 @@ class TestPluvier:
     def test_lesson30_INTS_for_prefix_inter(self):
         self.assertSame({
             "EUPBTS/*D": "interdit",
-            "EUPBTS/-DZ": "interdire",
+ #           "EUPBTS/-DZ": "interdire",
             "SPWAEURD": "interdit",
             "SPWAEURDZ": "interdire",})
     def test_lesson30_W_for_F_initial(self):
@@ -1636,12 +1639,13 @@ class TestPluvier:
                          })
 
        
-    def assertSame(self, words):
+    def assertSame(self, words, force_verb=True):
         found = False
         self.assertSounds(words)
+
         for elem in words.items():
             first_elem =""
-            for sten_str in self.steno(elem[1]):
+            for sten_str in self.steno(elem[1], force_verb):
                 first_elem = sten_str
                 
                 print('test found' , sten_str)
@@ -1670,7 +1674,6 @@ class TestPluvier:
 
     def  assertSounds(self,words):
         steno_class=Steno(self.corpus)
-        steno_class.force_verb = True
         for elem in words.items():
             word = steno_class.find(elem[1])
             print(elem[1],vars(word))
@@ -1690,7 +1693,7 @@ class TestPluvier:
         print("\nNOT FOUND: ",not_found)
         assert False
 
-    def test_generate_dic(self):
+    def generate_dic(self):
         picked = []
         with open('resources/Lexique383.tsv') as f:
             data = f.readlines()

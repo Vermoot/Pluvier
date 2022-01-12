@@ -84,7 +84,7 @@ class Ortho:
                 return word.replace(suffix_str, self.alternative_str)
 
 class Log:
-        activate = False
+        activate = True
         def __init__(self, message, value = '') :
                 if self.activate: 
                         print(message, value)
@@ -381,6 +381,7 @@ class Steno:
                 '@l' : '-ANL', #branle
                 'zm' : '-/FPL',
                 'sm' : '-/FPL',
+                'di' : '-/*D',  #interdit ?
                 "tEkt" : "-/T*K",
                 "EtR" : "-TS",
                 "SEt" : "-/FPT" , # achete
@@ -621,7 +622,10 @@ class Steno:
                 if not verb_word.is_verb():
                         return word
                 if  verb_word.is_passe_compose():
-                        self.ending = "/-D"
+                        if verb_word.syll.endswith('ué') :
+                                self.ending = "/W*E"
+                                self.ending_syll = verb_word.syll[:-2]
+                                return verb_word
                         if verb_word.syll.endswith('e') :
                                 self.ending_syll = verb_word.syll[:-1]
                         return verb_word
@@ -1101,14 +1105,26 @@ class Syllabe:
                 Log('syll',syllabe)
                 Log('hand',self.hand)
                 Log('already_encoded',self.already_encoded)
+                Log('keys left',keys)
                 if ("|" in syllabe) :
-                        syllabe = syllabe.split('|')[0]
+                        syllabe_split = syllabe.split('|')[0]
                         if self.is_right_hand() and len(syllabe.split('|'))>1:
-                                syllabe = syllabe.split('|')[1]
+                                syllabe_split = syllabe.split('|')[1]
+                        if not self.syll_can_enter(syllabe_split, keys):
+                                self.change_hand()
+                                keys =self.keys_left
+                                sounds = self.SOUNDS_LH
+                                if self.is_right_hand() :
+                                        sounds = self.SOUNDS_RH
+                                syllabe_split = syllabe.split('|')[0]
+                                if self.is_right_hand() and len(syllabe.split('|'))>1:
+                                        syllabe_split = syllabe.split('|')[1]
+                        syllabe = syllabe_split
 
                 if (self.already_encoded and self.previous):
                         if  not self.contains_woyels( self.previous.encoded_hand) and not self.contains_woyels(self.syllabe) and '-' not in self.encoded_hand:
                                 self.encoded_hand =self.encoded_hand+ '-'
+                Log('keys left',keys)
                 for key in syllabe:
                         if not_found:
                                 rest=rest+key
@@ -1117,7 +1133,7 @@ class Syllabe:
                         if not self.already_encoded and ( key in sounds.keys()):
                                 key_trans = sounds[key]
 
-#                        Log('key_trans', key_trans)
+                        Log('key_trans', key_trans)
                         for key_trans_char in key_trans:
                                 if key_trans_char in keys :
                                         keys = keys.split(key_trans_char)[1]
@@ -1152,7 +1168,13 @@ class Syllabe:
                                 consume.replace(previous.hand, '')
                         previous = previous.previous
                 return consume ==''
-
+        def syll_can_enter(self, syll, keysleft) :
+                for char in syll:
+                        if not char in keysleft:
+                                Log('have to change')
+                                return False
+                        keysleft = keysleft.split(char)[1]
+                return True
         def get_hand_sound(self, hand, syllabe ,already_encoded):
                 
                 not_found = []
@@ -1300,7 +1322,7 @@ class Steno_Encoding:
                 'Eksi' : 'KPEU',
                 'Eks' : 'KP',
                 'ist' : '*EUS',
-                
+                'wan' : 'WOIB', #douane                
                 'bRe': '-BS',
                 "djO": "OD",
                 "zj§": "GZ",
@@ -1334,12 +1356,13 @@ class Steno_Encoding:
                 "ks": "-BGS",
                 '8a' : 'WA' , # ua in situation
 #                "kR" : "RK",#can-cre
-                 "kR" : "KR",#skrute
+                 "kR" : "KR|RBG",#skrute
                 'Ne'  : '-PGR',
                 'on' : 'ON',
 #                "di" : "D",
 #                "mi" : "M",k§t
-                'gR' : 'GR',
+                'gRi' : 'TKPWR|GS',
+                'gR' : 'TKPWR|GS',
 #                "tR": "-TS", #tre
                 "tR": "TR", #strate
                 "8i": "AU",     # pluie
