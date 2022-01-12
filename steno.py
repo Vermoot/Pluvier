@@ -43,10 +43,13 @@ class Word:
         def is_vous_ind_present(self):
                 return 'ind' in self.info_verb and self.word.endswith('ez')
 
+        def is_plural(self) :
+                return self.number =='p'
 
 class Ortho:
 
         sounds = ''
+        sound = ''
         replace_by = ''
         steno_str =''
         prefix = False
@@ -54,10 +57,13 @@ class Ortho:
         alternative_str = ''
         one_hand = False
         converted_syll = False
-        def __init__(self,sound, replace_by):
+        def __new__(cls,sound, replace_by):
+                return super().__new__(cls)
+        
+        def __init__(self,sound,replace_by):
+                self.converted_syll = False
                 self.sounds = sound.split('|')
                 self.replace_by = replace_by
-
 
         def steno(self):
                 return self.steno_str
@@ -77,30 +83,48 @@ class Ortho:
         def get_alternative_str(self, word, suffix_str) :
                 return word.replace(suffix_str, self.alternative_str)
 
+class Log:
+        activate = False
+        def __init__(self, message, value = '') :
+                if self.activate: 
+                        print(message, value)
+
 class OrthoSuffix(Ortho):
+        
         def convert(self,word) :
-                if self.converted_syll :
-                        return self.converted_syll
                 for sound in self.sounds:
                         if word.syll.endswith(sound) :
                                 word.syll = word.syll[:-len(sound)]
                                 self.steno_str = self.replace_by
-                                print('ortho suffix convert',word.syll)
-                                self.converted_syll=word
+                                Log('ortho suffix convert',word.syll)
                                 return word
+                return False
+
+        def can_be_converted(self, word):
+                for sound in self.sounds:
+                        if word.syll.endswith(sound) :
+                                self.sound = sound
+                                return True
+                                
                 return False
 
 class OrthoPrefix(Ortho):
         def convert(self,word):
-                if self.converted_syll :
-                        return self.converted_syll
                 for sound in self.sounds:
+
                         if word.syll.startswith(sound) :
                                 word.syll = word.syll[len(sound):]
                                 self.steno_str = self.replace_by
-                                print('ortho prefix convert',word.syll)
-                                self.converted_syll=word
+                                Log('ortho prefix convert',word.syll)
                                 return word
+                return False
+
+        def can_be_converted(self, word):
+                for sound in self.sounds:
+                        if word.syll.startswith(sound) :
+                                self.sound = sound
+                                return True
+                                
                 return False
 class Steno:
         PREFIXES = {
@@ -130,12 +154,13 @@ class Steno:
                 '5sa' : 'STPHA',
                 '5se' : 'STPHE',
                 '5k' : '/EUFRPB',
+                "kR" : "KR", #craquait
                 "S°" : "SK",
                 "@t" :"SPW",
                 "5t" :"SPW",
                 "R°" : "R",
                 "Z°" : "SKW-", #gelé
-
+#                "gl" : "
                 "Sa" : "SK",
                 'ke' : 'K',
                 'dR' : 'TKR',
@@ -156,12 +181,12 @@ class Steno:
                 "Z" : "SKWR",
 #                'd' : 'DAOE',
                 'z' : 'Z',
-                'a':'AE/',
+                'a':'A|AE/',
                 
         }
 
         ORTHO_PREFIXES = {
-                'multi' :OrthoPrefix('myl-ti', 'PHR*EU'),
+                'multi' :OrthoPrefix('myl-ti', 'PHULT'),
                 'corr' : OrthoPrefix('ko-R', 'KR'),
                 'coll' : OrthoPrefix('ko-l', 'KHR'),
                 "comm" : OrthoPrefix('ko-m|kOm','KPH'),
@@ -207,7 +232,9 @@ class Steno:
                 'deur' : OrthoSuffix('d9R' , '-RD'),
                 'lheur' : OrthoSuffix('l9R' , '-RL'),
                 'leur' : OrthoSuffix('l9R' , '-RL'),
+                "cteur" : OrthoSuffix("k-t9R", "-RT") ,
                 "teur" : OrthoSuffix("t9R", "-/RT") ,
+
                 "nheur" : OrthoSuffix("n9R", "-RN") ,
                 "neur" : OrthoSuffix("n9R", "-RN") ,
                 "rtion" : OrthoSuffix("R-sj§", "-RGS"),
@@ -217,7 +244,7 @@ class Steno:
                 "telle" : OrthoSuffix("tEl" , "-/LGTS"),
                 "tel" : OrthoSuffix("tEl" , "-/LGTS"),
                 "velle" : OrthoSuffix("vEl", "-/FL"),
-                "quelle" : OrthoSuffix("kEl", "-BLG"),
+                "quelle" : OrthoSuffix("kEl", "-/BLG"),
                 "elle" : OrthoSuffix("El", "-/*EL"),
                 'ive' : OrthoSuffix('i-v|i-ve|iv', '-/*EUF'),
                 'if' : OrthoSuffix('if', '-/*EUFL'),
@@ -239,9 +266,9 @@ class Steno:
                 "ci" : OrthoSuffix("si", "-/RB"),
                 "cet" : OrthoSuffix("sE", "-SZAEU"),
                 "ce" : OrthoSuffix("s", "-SZ").alternative('ss'),
-#                "el" : OrthoSuffix("El", "-/*EL"),
+                "el" : OrthoSuffix("El", "-/*EL"),
                 "th" : OrthoSuffix("t", "-GT"),
-                "the" : OrthoSuffix("t", "-/GT"),
+                "the" : OrthoSuffix("t", "-GT"),
                 "a" : OrthoSuffix("a", "-/*Z"),
                 
 
@@ -313,7 +340,7 @@ class Steno:
 
                 "Ribl" : "-RBL",
                 "@tR" : "-NTS", #-ntre
-                "stR" : "-TS", #-ntre
+                "stR" : "-TS", #-stre
                 "RtR" : "-RTS", #-rtre
                 "§pR" : '-/OFRPS',
                 "@b": "-/AFRBL",   # tremble
@@ -325,9 +352,11 @@ class Steno:
                 "5b": "-EUFRB",  # limbe
                 "§b": "-/OFRB",  # comble
                 "ks": "-BGS",
+                "t@" : "/TAPB", #content
                 "ve": "-WE", # releve
                 "N§" : "-/HO*PB", #bourguignon
                 "@Z" :"-/APBLG", # ange
+                "5Z" :"-/EUPBLG", # linge
                 "§t" : "-/OFRPT", # prompte
                 "5p" : "-/EUFRP",
                 '@pl' : "-/AFRPL",
@@ -375,14 +404,15 @@ class Steno:
                 "m@" : "-/PLT",
                 "En" : "AIB",
                 "ER" : "AIR",
-                "@d" :"APBD",
+                "@d" :"PBD",
 
                 "dR" : "DZ" ,# ajoin-dre
                 "@b": "-AFRB",   # jambe
-                "tR": "-TS", #tre 
+                "tR": "-TS", #tre - 
                 "bR":"-BS",  #-bre
                 "pR":"-PS", #-pre
                 "nEs" : "BS",
+                "Et" : "AEUT",
                 "E" : "AEU",
                 "e" : "AEU",
                 "n" : "B",
@@ -395,6 +425,8 @@ class Steno:
                 'El' :'-FL',
                 "Z" : "G", # rage
                 'u' : 'O*U',
+                'k' : 'K',
+
         }
 
         SYLLABE_PLACES = {
@@ -425,6 +457,8 @@ class Steno:
         pronoun = ""
         final_encoded = []
         ending_syll = ''
+        force_verb = False
+        force_noun = False
         def __init__(self, corpus):
                 
                 self.suffix = ""
@@ -452,11 +486,13 @@ class Steno:
                                 same_words.append(word)
                 
                 for word in same_words:
-                        print(word.word)
+                        Log(word.word)
                 self.homophones = same_words
                 return same_words
 
         def find_same_word_verb(self, myword) :
+                if not self.force_verb:
+                        return myword
                 same_words = []
                 for word in self.words:
                         if word.word == myword.word and word.is_verb():
@@ -464,6 +500,8 @@ class Steno:
                 return myword
 
         def find_same_word_not_verb(self, myword) :
+                if not self.force_noun:
+                        return myword
                 same_words = []
                 for word in self.words:
                         if word.word == myword.word and not word.is_verb():
@@ -496,23 +534,29 @@ class Steno:
 
         def ortho_starting_with_des(self,word):
                 syll = word.syll.replace('-','')
-                print('sp', syll)
+                Log('sp', syll)
 #                if not syll.startswith('dez') and not syll.startswith('des') and not syll.startswith('d°s'):
                 if not word.word.startswith('de') and not word.word.startswith('dé'):
                         return word
                 next_letter = word.word[:4].upper()
-                print('next letter', next_letter)
+                Log('next letter', next_letter)
                 if word.word.startswith('dé') or ((next_letter.endswith('O') or next_letter.endswith('E') or next_letter.endswith('I') or next_letter.endswith('A') or next_letter.endswith('U') or next_letter.endswith('@') or next_letter.endswith('Y'))) :
                         
-                        self.prefix = 'STK'
-                        word.syll = word.syll.replace('de-z', '')
-                        word.syll = word.syll.replace('de-s', '')
-                        word.syll = word.syll.replace('d°-s', '')
+                        if 'de-z' in word.syll:
+                                self.prefix = {'STK':'dez'}
+                                word.syll = word.syll.replace('de-z', '')
+                        if 'de-s' in word.syll:
+                                self.prefix = {'STK':'des'}
+                                word.syll = word.syll.replace('de-s', '')
+                        if 'd°-z' in word.syll:
+                                self.prefix = {'STK':'d°s'}                                
+                                word.syll = word.syll.replace('d°-s', '')
                         if (word.syll.startswith('de-f')):
-                                self.prefix = 'STKV'
+                                self.prefix = {'STKW' : 'def'}
+                                
                                 word.syll = word.syll.replace('de-f', '')
                         word.syll = word.syll.replace('de', '')
-                        print('syll repl', word.syll)
+                        Log('syll repl', word.syll)
                 
                 return word
                 
@@ -531,7 +575,7 @@ class Steno:
                 if word.word.endswith('ette'):
                         self.ending = "/*T"
                         if word.syll.endswith('Et') :
-                                print('fini par et')
+                                Log('fini par et')
                                 self.ending_syll = word.syll[:-2]
                         return word
                 return word
@@ -540,14 +584,18 @@ class Steno:
                 for orth in self.ORTHO_SUFFIXES.items():
                         if word.word.endswith(orth[0]) :
                                 ortho = orth[1]
+
                                 if ortho.check_alternative :
                                         if not self.find_spelled_word(ortho.get_alternative_str(word.word,orth[0])):
-                                                print('cotinue check alternative')
+                                                Log('cotinue check alternative')
                                                 continue
-                                print(vars(orth[1]))
-                                if (ortho.convert(word)):
-                                        print('converted ok')
+                                Log(vars(ortho))
+                                Log(vars(word))
+                                Log('can be' , ortho.can_be_converted(word))
+                                if (ortho.can_be_converted(word)):
                                         word = ortho.convert(word)
+                                        Log('converted ok',word)
+                                                                                
                                         self.suffix = ortho.steno()
                                         return word
                 return word
@@ -555,13 +603,14 @@ class Steno:
         def ortho_prefixes(self,word):
                 for orth in self.ORTHO_PREFIXES.items():
                         if word.word.startswith(orth[0]):
-                                print(vars(orth[1]))
+                                Log(vars(orth[1]))
                                 ortho = orth[1]
                                 ortho.prefix = True
-                                print('prefix test' , ortho)
-                                if (ortho.convert(word)):
+
+                                if (ortho.can_be_converted(word)):
                                         word = ortho.convert(word)
-                                        self.prefix = ortho.steno()
+                                        self.prefix = {ortho.steno() : ortho.sound}
+                                        Log('prefix test' , self.prefix)
                                         return word
                 return word
 
@@ -596,6 +645,7 @@ class Steno:
                         self.ending = "/*EZ"
 
                         if verb_word.syll.endswith('Re') :
+                                Log('indic')
                                 self.ending = "/R*EZ"
                                 self.ending_syll = verb_word.syll[:-2]
                                 return verb_word
@@ -603,7 +653,7 @@ class Steno:
                                 self.ending_syll = verb_word.syll[:-1]
                                 return verb_word
                 if verb_word.is_participe_present():
-                        print('participe present')
+                        Log('participe present')
                         self.ending = "/-G"
                         if verb_word.syll.endswith('j@')  :
                                 self.ending_syll = verb_word.syll[:-2]
@@ -618,8 +668,8 @@ class Steno:
         def try_to_remove_woyel(self, myword) :
                 sylls = myword.syll
                 same_words=[]
-                print('remove last syll',self.remove_last_syll(sylls))
-                print('number of i ',len(myword.word.split('i')))
+                Log('remove last syll',self.remove_last_syll(sylls))
+                Log('number of i ',len(myword.word.split('i')))
                 if ('8i' in self.remove_last_syll(sylls)) or ('i' not in self.remove_last_syll(sylls)) or (len(myword.syll.split('i'))<3):
                         return myword.syll
 
@@ -631,7 +681,7 @@ class Steno:
                                 same_words.append(word)
 
                 for word in same_words:
-                        print('found word same vowel:',word.word)
+                        Log('found word same vowel:',word.word)
                 if same_words:
                         return myword.syll
                 return sylls
@@ -666,17 +716,17 @@ class Steno:
 
         def prefixes(self, word, word_class):
                 if (word_class.word.startswith('y') and word.startswith('j')):
-                        self.prefix ='KWR'
+                        self.prefix ={'KWR' : 'j'}
                         new_word = word.replace('j','',1)
                         return new_word
                 
                 new_word=word
                 if  self.pronoun:
-                        self.prefix='Y'
+                        self.prefix={'Y': 'y'}
                         return word
                 for prefix in  self.PREFIXES.items():
                         if len(re.split("^"+prefix[0], new_word))>1:
-                                self.prefix = prefix[1]
+                                self.prefix = {prefix[1] : prefix[0]}
                                 return re.split("^"+prefix[0], new_word)[1]
 
                 return new_word
@@ -712,15 +762,14 @@ class Steno:
                 myword = self.find(word)
                 if not myword:
                         return ""
-                print(vars(myword))
+                Log(vars(myword))
 #                myword.syll = self.try_to_remove_woyel(myword)
-
-                self.orth_write_ending_d(myword)
-
+                self.prefix ={}
+                self.suffix =""
                 self.transform_word(myword)
-                print('is verb' , myword.is_verb())
+                Log('is verb' , myword.is_verb())
                 has_homophone = self.has_homophone(myword)
-                print('has homophone' , has_homophone)
+                Log('has homophone' , has_homophone)
                 finals = self.final_encoded
                 for final_word in  finals:
                         self.final_encoded.remove(final_word)
@@ -728,64 +777,106 @@ class Steno:
                                 final_word = self.add_star(final_word)
                         final_word = self.orth_ending_iere(word, final_word)
                         
-                        print('final_word' , final_word)
+                        Log('final_word' , final_word)
                         self.final_encoded.append(final_word)
-                print('final_encoded' , self.final_encoded)
+                Log('final_encoded' , self.final_encoded)
                 return self.final_encoded
-         
-        def transform_word(self,initial_word):
+        
+        def get_prefix_and_suffix(self, initial_word, check_prefix = True, check_suffix = True ) :
+                Log('Get prefi and suffix', initial_word)
                 word = initial_word
-                all_sylls = [initial_word.syll.replace('-','')]
-                word = self.ortho_suffixes(word)
-                word = self.ortho_prefixes(word)
-                print('syllabe',word.syll)
-                word = self.ortho_add_aloneR_infinitif_firstgroup(word)
-                word = self.ortho_add_alone_keys_on_verb(word)
-                word = self.ortho_add_alone_keys_on_noun(word)
-                if not self.prefix:
+                self.prefix ={}
+                
+                self.suffix =""
+                if check_prefix:
+#                        self.orth_write_ending_d(word)
+                        word = self.ortho_prefixes(word)
+                if check_suffix:
+                        word = self.ortho_suffixes(word)
+                        Log('suffix', self.suffix)
+                        word = self.ortho_add_aloneR_infinitif_firstgroup(word)
+                        word = self.ortho_add_alone_keys_on_verb(word)
+                        word = self.ortho_add_alone_keys_on_noun(word)
+                if check_prefix and not self.prefix:
                         word = self.ortho_starting_with_des(word)
+                Log('suffix', self.suffix)
                 word_str = self.change_syllabes(word.syll)
                 word_str  = word_str.replace('-','') #word_str.split('-')
 
                 if word.word.startswith('h') and not word.syll.startswith('8') and not word.syll.startswith('a') and not word.syll.startswith('E') and not word.syll.startswith('1') :
                         word_str = 'h'+word_str
-                print('before prefix', word_str)
-                if not self.prefix:
+                Log('self prefix', self.prefix)                        
+                Log('before prefix', word_str)
+                if check_prefix and not self.prefix:
                         word_str = self.prefixes(word_str, word)
-                print('after prefix', word_str)
-                print('suffix', self.suffix)
+                Log('after prefix', word_str)
+                Log('suffix', self.suffix)
 
-                if not self.suffix and '-' in word.syll:
+                if check_suffix and (not self.suffix and '-' in word.syll):
                         word_str = self.real_suffixes(word_str)
-                if not self.suffix:
+                if check_suffix and not self.suffix:
                         word_str = self.suffixes(word_str)
-                print('suffix', self.suffix)
+                Log('suffix', self.suffix)
+                return word_str
 
+        def transform_word(self,initial_word):
+                all_sylls = [initial_word.syll.replace('-','')]
+                if initial_word.is_plural() and initial_word.word.endswith('s'):
+                        return []
+
+                word_str = self.get_prefix_and_suffix(initial_word)
                 self.syllabes = [word_str]
+                Log('syllabe',self.syllabes)
+                Log('ending',self.ending)
+                Log('ending_syll',self.ending_syll)
 
-                print('ending',self.ending)
-                print('ending_syll',self.ending_syll)
-                for  one_prefix in self.prefix.split('|'):
-                        self.final_encoded.append(Steno_Encoding(self.syllabes, one_prefix, self.suffix.split('|')[0]).encode())
+                for aprefix, phonem  in self.prefix.items():
+                        for  one_prefix in aprefix.split('|'):
+                                if not self.ending: 
+                                        self.final_encoded.append(Steno_Encoding(self.syllabes, one_prefix, self.suffix.split('|')[0]).encode())
 
-                        if self.ending :
-                                suffix =''
+                                if self.ending :
+                                        myendingword =  initial_word
+                                        myendingword.syll= self.ending_syll
+                                        word_str = self.get_prefix_and_suffix(myendingword,True,True)
+                                        Log('endi : ',word_str)
+                                        suff = ""
+                                        Log('suffix endi', suff)
+#                                self.syllabes = [word_str]
 #                                self.prefixes(self.ending_syll, word)
-                                self.final_encoded.append(Steno_Encoding(self.ending_syll.split('-'), one_prefix, suffix).encode()+self.ending)
+#                                suff =self.suffix.split('|')[0]
+
+
+                                        self.final_encoded.append(Steno_Encoding(re.sub( "^"+ phonem, '', self.ending_syll).split('-'), one_prefix, suff).encode()+self.ending)
+
+#                word_str = self.get_prefix_and_suffix(initial_word)
+#                self.syllabes = [word_str]
 
                 for  one_suffix in self.suffix.split('|'):
-                        self.final_encoded.append(Steno_Encoding(self.syllabes, self.prefix.split('|')[0], one_suffix).encode())
-                        if self.ending :
-                                suffix ='' 
-                                self.final_encoded.append(Steno_Encoding([self.ending_syll.replace('-', '')], self.prefix.split('|')[0], suffix).encode()+self.ending)
+                        prefix = ""
+                        if self.prefix: 
+                                prefix = list(self.prefix.keys())[0].split('|')[0]
+                        if not self.ending :
+                                self.final_encoded.append(Steno_Encoding(self.syllabes, prefix, one_suffix).encode())
+#                        if self.ending :
+#                                word_str = self.get_prefix_and_suffix(initial_word,True,False)
+#                                word_str = self.get_prefix_and_suffix(initial_word,True,False)
+#                                suffix ='' 
+#                                self.final_encoded.append(Steno_Encoding([self.ending_syll.replace('-', '')], self.prefix.split('|')[0], self.suffix).encode()+self.ending)
 
 
 
-                self.prefix =""
+                self.prefix ={}
+                word_str = self.get_prefix_and_suffix(initial_word,True,False)
+                if self.ending :
+                        self.final_encoded.append(Steno_Encoding([self.ending_syll.replace('-', '')], "","").encode()+self.ending)
+
+
+
                 
-
-                print('> syl',initial_word.syll)
-                self.final_encoded.append(Steno_Encoding(all_sylls, self.prefix, self.prefix.split('|')[0]).encode()+self.ending)                        
+                Log('> syl',initial_word.syll)
+                if not self.ending :
+                        self.final_encoded.append(Steno_Encoding(all_sylls, '', '').encode())
                 return self.final_encoded
         
 
@@ -825,9 +916,7 @@ class Syllabe:
                 "vR": "VR",
                 "fR": "VR",
                 "rS": "FRPB",
-                "kR": "RBG",
-                "kR": "RBG",
-                "kR": "RBG",
+
         }
 
         SOUNDS_RH = {
@@ -960,11 +1049,11 @@ class Syllabe:
 
                 if self.is_right_hand():
                         self.hand='L'
-                        print('change_hand to Gauche')
+                        Log('change_hand to Gauche')
                         self.init_keys_left()
                         return self
                 self.hand='R'
-                print('change_hand to droite')
+                Log('change_hand to droite')
                 self.init_keys_left()
                 return self
         
@@ -981,8 +1070,8 @@ class Syllabe:
 
                 if self.already_encoded :
                         return word
-                print('hand', self.hand)
-                print('word', word)
+                Log('hand', self.hand)
+                Log('word', word)
                 if self.previous is None and self.hand == 'R'  and self.already_encoded == "" :
                         return '-'+word
                 
@@ -992,7 +1081,7 @@ class Syllabe:
                 if (self.encoded_hand != '') :
                         previous_encoded = previous_encoded + self.encoded_hand
                 if self.previous is not None:
-                        print('add hyphen previous encod',previous_encoded)
+                        Log('add hyphen previous encod',previous_encoded)
 
                 if not (self.hand == 'R' and (self.previous.hand == 'L')):
                         return word
@@ -1000,7 +1089,7 @@ class Syllabe:
                 if  self.contains_woyels( previous_encoded) or self.contains_woyels(word):
                         return word
 
-                print('added hyphen to word',word)
+                Log('added hyphen to word',word)
 
                 return "-"+word
                 
@@ -1009,9 +1098,13 @@ class Syllabe:
                 not_found = []
                 rest = ''
 #                self.encoded_hand = ''
-                print('syll',syllabe)
-                print('hand',self.hand)
-                print('already_encoded',self.already_encoded)
+                Log('syll',syllabe)
+                Log('hand',self.hand)
+                Log('already_encoded',self.already_encoded)
+                if ("|" in syllabe) :
+                        syllabe = syllabe.split('|')[0]
+                        if self.is_right_hand() and len(syllabe.split('|'))>1:
+                                syllabe = syllabe.split('|')[1]
 
                 if (self.already_encoded and self.previous):
                         if  not self.contains_woyels( self.previous.encoded_hand) and not self.contains_woyels(self.syllabe) and '-' not in self.encoded_hand:
@@ -1024,7 +1117,7 @@ class Syllabe:
                         if not self.already_encoded and ( key in sounds.keys()):
                                 key_trans = sounds[key]
 
-#                        print('key_trans', key_trans)
+#                        Log('key_trans', key_trans)
                         for key_trans_char in key_trans:
                                 if key_trans_char in keys :
                                         keys = keys.split(key_trans_char)[1]
@@ -1038,17 +1131,17 @@ class Syllabe:
                                 self.encoded_hand = self.encoded_hand + self.add_hyphen(key_trans)
 #                                self.encoded_hand=self.encoded_hand + key_trans
 
-                print('not_found', not_found)
-                print('encoded', self.encoded_hand)
-                print('rest', rest)
+                Log('not_found', not_found)
+                Log('encoded', self.encoded_hand)
+                Log('rest', rest)
                 self.keys_left = keys
                 return (rest,not_found)
                 
-        def need_both_hand(self, syllabe):
+        def consume_syll(self, syllabe):
                 sounds = self.SOUNDS_LH
                 if self.is_right_hand():
                         sounds = self.SOUNDS_RH
-                print('keys_left',self.keys_left)
+                Log('keys_left',self.keys_left)
                 return self.consume(syllabe, self.keys_left, sounds)
                 
         def has_previous_R_and_L(self):
@@ -1059,6 +1152,55 @@ class Syllabe:
                                 consume.replace(previous.hand, '')
                         previous = previous.previous
                 return consume ==''
+
+        def get_hand_sound(self, hand, syllabe ,already_encoded):
+                
+                not_found = []
+                rest = ''
+                sounds = self.SOUNDS_LH
+                keys = self.LEFT_KEYS
+                encoded = ''
+                if hand == 'R':
+                        keys = self.RIGHT_KEYS
+                        sounds = self.SOUNDS_RH
+                if ("|" in syllabe) :
+                        syllabe = syllabe.split('|')[0]
+                        if hand == 'R':
+                                syllabe = syllabe.split('|')[1]
+
+
+                for key in syllabe:
+                        if not_found:
+                                rest=rest+key
+                                continue
+                        key_trans = key
+                        
+                        if not self.already_encoded and ( key in sounds.keys()):
+                                key_trans = sounds[key]
+
+#                        Log('key_trans', key_trans)
+                        for key_trans_char in key_trans:
+                                if key_trans_char in keys :
+                                        keys = keys.split(key_trans_char)[1]
+                                else:
+                                        rest=rest+key
+                                        not_found.append(key)
+                                        key_trans=""
+                                        break
+                        if not not_found:
+                                encoded = encoded + self.add_hyphen(key_trans)
+                return (encoded,rest,not_found)
+
+        def needs_hand(self, syllabe, already_encoded) :
+                (encoded,rest,not_found) = self.get_hand_sound('L',syllabe,already_encoded)
+                if not encoded :
+                        return 'R'
+                (encoded,rest,not_found) = self.get_hand_sound('R',syllabe,already_encoded)
+                if not rest:
+                        return 'L'
+                return 'B'
+
+                        
         def matching_syll(self, syllabe, keys) :
                 for car in syllabe:
                         if car not in keys:
@@ -1079,7 +1221,7 @@ class Syllabe:
 #                if self.one_hand or self.syllabe.endswith('-'):
 
 #                        self.encoded_hand = self.syllabe+'-'
-                        print('encoded one_hand', self.syllabe)
+                        Log('encoded one_hand', self.syllabe)
                         if self.one_hand :
                                 return self.syllabe+'/'
                         if self.syllabe.endswith('-'):
@@ -1097,7 +1239,7 @@ class Syllabe:
                         self.already_encoded = True
                         self.syllabe = self.syllabe[1:]          
 
-#                self.init_keys_left()
+            
 
 
                 rest = self.syllabe
@@ -1109,23 +1251,33 @@ class Syllabe:
                                 self.change_hand()
                                 cpt = True
                         else:
-                                self.keys_left = self.previous.keys_left       
+                                self.keys_left = self.previous.keys_left
+                                                                
+                if self.is_suffix :
+                        need_hand = self.needs_hand(self.syllabe, self.already_encoded)
+
+                        if need_hand == 'B' and self.hand == 'R':
+                                Log('need hand' , need_hand)
+                                self.change_hand()
+                                cpt= True
+                        
+
                 while rest and count<30:
 
                         if  self.is_left_hand() and cpt:
                                 cpt = False
                                 self.encoded_hand = self.encoded_hand+'/'
 #                                piece = piece+'/'
-                        (rest, not_found) = self.need_both_hand(rest)
+                        (rest, not_found) = self.consume_syll(rest)
 
-                        print('piece',self.encoded_hand)
+                        Log('piece',self.encoded_hand)
 
                         if rest :
                                 self.change_hand()
                                 cpt = True
                         count= count +1
-                        print('reste'+rest+":")
-                        print('encoded_hand', self.encoded_hand)
+                        Log('reste'+rest+":")
+                        Log('encoded_hand', self.encoded_hand)
 #                self.encoded_hand = self.add_hyphen(self.encoded_hand)
                 return self.encoded_hand #piece
 
@@ -1145,7 +1297,7 @@ class Steno_Encoding:
                 "jEn": "AEB",
                 'Egze' : 'KP',
                 'Egzi' : 'KPEU',
-                'Eksi' : 'KP',
+                'Eksi' : 'KPEU',
                 'Eks' : 'KP',
                 'ist' : '*EUS',
                 
@@ -1181,13 +1333,15 @@ class Steno_Encoding:
 #                "kR" : "KR", 
                 "ks": "-BGS",
                 '8a' : 'WA' , # ua in situation
-                "kR" : "RK",#can-cre
+#                "kR" : "RK",#can-cre
+                 "kR" : "KR",#skrute
                 'Ne'  : '-PGR',
                 'on' : 'ON',
 #                "di" : "D",
 #                "mi" : "M",k§t
                 'gR' : 'GR',
-                "tR": "-TS", #tre
+#                "tR": "-TS", #tre
+                "tR": "TR", #strate
                 "8i": "AU",     # pluie
 #                'ij': 'AO', # before jO
                 'ij' : '-LZ', #ille
@@ -1213,7 +1367,7 @@ class Steno_Encoding:
                 '§p' : '-OFRP', # trompe
                 'pl' : 'PL',
                 "ER" : "AIR",
-                'gl' : '-FRLG',
+                'gl' : 'GL|-FRLG', #glace or angle
                 "wa": "OEU",    # froid
                 "w5": "OEUPB",  # loin
                 "wi": "AOU",    # oui
@@ -1267,6 +1421,7 @@ class Steno_Encoding:
                 self.syllabes = syllabes
                 self.prefix = prefix
                 self.suffix = suffix
+                Log('steno_suffixes' , vars(self))
 
         def diphtongs_try(self, word):
                 new_word=word
@@ -1276,7 +1431,7 @@ class Steno_Encoding:
 #                self.found_sound = ''
                 nb_char = len(word)
                 while new_word != '' :
-                        print(nb_char,word[:nb_char])
+                        Log(nb_char,word[:nb_char])
                         if items.get(word[:nb_char]) is not None:
 #                                self.found_sound=diphtong[1]
                                 final_word = final_word + "+"+items[word[:nb_char]]+"+"
@@ -1289,11 +1444,11 @@ class Steno_Encoding:
                 return final_word
 
         def find_matching(self, syll, word) :
-                print('find match word', word)
+                Log('find match word', word)
                 for diphtong in self.DIPHTONGS.items():
                         key = diphtong[0]
                         if key in word:
-                                print('find key', key)
+                                Log('find key', key)
 #                                self.found_sound = diphtong[1]
                                 if word.startswith(key):
                                         syll[key] = diphtong[1]
@@ -1337,10 +1492,10 @@ class Steno_Encoding:
                         
                         if diphtong[0] in new_word :
                                 final_word = final_word.replace(diphtong[0], "+"+diphtong[1]+"+")
-                                print('final_word',final_word)
+                                Log('final_word',final_word)
 
                                 new_word = new_word.replace(diphtong[1],'')
-                                print('new_word',new_word)
+                                Log('new_word',new_word)
 #                        self.found_sound=diphtong[1]
 
     
@@ -1359,7 +1514,7 @@ class Steno_Encoding:
                         if (one_hand):
                                 previous.set_one_hand()
                         self.word_encoded = previous.encoded()
-                        print('prefix encoded', self.word_encoded)
+                        Log('prefix encoded', self.word_encoded)
                         if (one_hand):
                                 self.hand='L'
                         count_syll = 2
@@ -1367,20 +1522,19 @@ class Steno_Encoding:
                 for piece in self.syllabes:
                         if piece == "":
                                 continue
-                        print('piece',piece)
+                        Log('piece',piece)
                         sylls = {}
                         sylls = self.find_matching(sylls, piece)
-                        print('sylls' , sylls)
-
+                        Log('sylls' , sylls)
 
 
 #                        piece = self.diphtongs(piece)
-                        print('word encoded' , self.word_encoded)
-#                        print('found sound dif' , self.found_sound)
+                        Log('word encoded' , self.word_encoded)
+#                        Log('found sound dif' , self.found_sound)
 
-                        print('dif',piece)
+                        Log('dif',piece)
 #                        piece = self.voyels(piece)
-                        print('voyel',piece)
+                        Log('voyel',piece)
                         
                         if piece == "":
                                 continue
@@ -1392,29 +1546,31 @@ class Steno_Encoding:
                                         new_piece = self.voyels(new_piece)
                                         new_piece = new_piece.upper()
 #                        for new_piece in piece.split('+'):
-                                print('syllabe',new_piece)
+                                Log('syllabe',new_piece)
                                 syllabe = Syllabe(new_piece.upper(), previous,next_syll)
                                 encoded = syllabe.encoded()
 
-                                print('encoded syllabe', encoded)
+                                Log('encoded syllabe', encoded)
 #                                if self.found_sound and self.found_sound.endswith("RK") and self.word_encoded.endswith('PB'):
 
-#                                        print('found sound', self.found_sound)
+#                                        Log('found sound', self.found_sound)
 #                                        self.word_encoded = self.word_encoded[:2]
 #                                        encoded = 'KS'
 #b                                         or self.found_sound.endswith("BGS")) 
                                 
                                 self.word_encoded = self.word_encoded+ encoded
                                 
-                                print('encoded word', self.word_encoded)
+                                Log('encoded word', self.word_encoded)
                                 previous = syllabe
                         next_syll = self.syllabes[count_syll:]
                         count_syll = count_syll+1
-                print('WORD ENCODED BEFORE SUFFIX', self.word_encoded)
-                syllabe = Syllabe(self.suffix,previous, next_syll)
-                self.word_encoded = self.word_encoded + syllabe.encoded()
+                Log('WORD ENCODED BEFORE SUFFIX', self.word_encoded)
+                if self.suffix :
+                        syllabe = Syllabe(self.suffix,previous, next_syll).suffix()
+                        self.word_encoded = self.word_encoded + syllabe.encoded()
                 if self.word_encoded.startswith('/'):
                         self.word_encoded = self.word_encoded[1:]
+                Log('WORD ENCODED ', self.word_encoded)
                 return  self.word_encoded.replace('//','/')
 
         def voyels(self, word):
