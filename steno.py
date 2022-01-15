@@ -1,7 +1,7 @@
 import sys
 import re
 class Word:
-        def __init__(self, word, phonetics, lemme, cgram, cgramortho,genre, number, info_verb, syll, orthosyll):
+        def __init__(self, word, phonetics, lemme, cgram, cgramortho,genre, number, info_verb, syll, orthosyll, frequence = 0):
             self.word = word
             self.phonetics = phonetics
             self.lemme = lemme
@@ -12,6 +12,7 @@ class Word:
             self.info_verb = info_verb
             self.syll = syll
             self.orthosyll = orthosyll
+            self.frequence = float(frequence)
         def __str__(self):
                 print("word", self.word)
                 print("phonetics", self.phonetics)
@@ -627,6 +628,7 @@ class Steno:
                                 self.ending_syll = verb_word.syll[:-2]
                                 return verb_word
                         if verb_word.syll.endswith('e') :
+                                self.ending = "/-D"
                                 self.ending_syll = verb_word.syll[:-1]
                         return verb_word
 
@@ -757,8 +759,30 @@ class Steno:
         def add_star(self,word):
                 if (self.ending):
                         return word
+
+                Log('add star', word)                
                 if ('*' in word):
                         return word
+                splitted = word.split('E')
+                if len( splitted) > 1:
+                         splitted[len(splitted)-2] = splitted[len(splitted)-2]+"*"
+                         return 'E'.join(splitted)
+                splitted = word.split('U')
+                Log('add star', word)                
+                if len( splitted) > 1:
+                         splitted[len(splitted)-2] = splitted[len(splitted)-2]+"*"
+                         return 'U'.join(splitted)
+                splitted = word.split('O')
+                if len( splitted) > 1:
+                         splitted[len(splitted)-1] = "*"+splitted[len(splitted)-1]
+                         return 'O'.join(splitted)
+
+                splitted = word.split('A')
+                if len( splitted) > 1:
+                         splitted[len(splitted)-1] = "*"+splitted[len(splitted)-1]
+                         Log('splitted "A"',splitted)
+                         return 'A'.join(splitted)
+                
                 return word+"*"
         
         def transform(self,word):
@@ -775,14 +799,6 @@ class Steno:
                 has_homophone = self.has_homophone(myword)
                 Log('has homophone' , has_homophone)
                 finals = self.final_encoded
-                for final_word in  finals:
-                        self.final_encoded.remove(final_word)
-                        if has_homophone and myword.is_verb():
-                                final_word = self.add_star(final_word)
-                        final_word = self.orth_ending_iere(word, final_word)
-                        
-                        Log('final_word' , final_word)
-                        self.final_encoded.append(final_word)
                 Log('final_encoded' , self.final_encoded)
                 return self.final_encoded
         
@@ -872,8 +888,12 @@ class Steno:
 
                 self.prefix ={}
                 word_str = self.get_prefix_and_suffix(initial_word,True,False)
+                if self.ending_syll:
+                        print('ending_syll:' , self.ending_syll)
                 if self.ending :
-                        self.final_encoded.append(Steno_Encoding([self.ending_syll.replace('-', '')], "","").encode()+self.ending)
+                        encoded_w = Steno_Encoding([self.ending_syll.replace('-', '')], "","").encode()+self.ending
+                        print('ending encoding: ', encoded_w)
+                        self.final_encoded.append(encoded_w)
 
 
 
@@ -881,6 +901,16 @@ class Steno:
                 Log('> syl',initial_word.syll)
                 if not self.ending :
                         self.final_encoded.append(Steno_Encoding(all_sylls, '', '').encode())
+                has_homophone = self.has_homophone(initial_word)
+                for final_word in  self.final_encoded:
+                        self.final_encoded.remove(final_word)
+                        if has_homophone and initial_word.is_verb():
+                                final_word = self.add_star(final_word)
+                        final_word = self.orth_ending_iere(initial_word.word, final_word)
+                        
+                        Log('final_word' , final_word)
+                        self.final_encoded.append(final_word)
+
                 return self.final_encoded
         
 
