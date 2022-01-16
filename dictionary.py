@@ -58,22 +58,33 @@ class Dictionary:
         self.words.sort(key=lambda x: x.frequence, reverse=True)
 #        for word in self.words :
 #            print(word.frequence)
-#        self.words = self.words[:10000]
+#        self.words = self.words[:5000]
 
 
         translated_word = {}
- 
+        duplicated = []
+        translated_word = self.append_tao(translated_word)
         for word in self.words:
             for steno in np.unique(self.steno(word)):
-                steno = steno.replace("'","\'")
+#                steno = steno.replace("'","\'")
                 #                    print(steno)
-                if steno in translated_word  and translated_word[steno] == word.word: 
+                if steno in translated_word  and (translated_word[steno] == word.word):
                     continue
+                if steno in translated_word and '*' not in steno:
+                    steno = self.steno_class.add_star(steno)
+                    if steno in translated_word :
+                        duplicated.append({steno : word.word})
+                        duplicated.append({steno : translated_word[steno]  })
+                        continue
+                    
                 translated_word[steno] = word.word
 
 #                    d.write("'"+steno + "':'"+ word.word+"',\n")
-        translated_word = self.append_tao(translated_word)
+
         json_object = json.dumps(translated_word, indent = 4, ensure_ascii=False )
+        dup_object = json.dumps(duplicated, indent = 4, ensure_ascii=False )
+        with open('resources/dup.json', "w") as d:
+            d.write(dup_object)
         with open('resources/dicofr.json', "w") as d:
             d.write(json_object)
 

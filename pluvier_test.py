@@ -1639,8 +1639,10 @@ class TestPluvier:
             #"PHOEUB": "moine",
             "PEU/O*EUB": "pivoine",
                          })
-
-       
+    def test_not_appears(self):
+        self.assertSame({
+            "TKWOEUB": "écris",
+       })
     def assertSame(self, words, force_verb=True):
         found = False
         self.assertSounds(words)
@@ -1658,7 +1660,7 @@ class TestPluvier:
             if not found :
                 assert elem[0] == first_elem
             found = False
-            return True
+#            return True
 
     def test_verb_matching(self):
         self.assertAllMatching('parlez' , ["PARL/*EZ"])

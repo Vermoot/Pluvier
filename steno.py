@@ -85,7 +85,7 @@ class Ortho:
                 return word.replace(suffix_str, self.alternative_str)
 
 class Log:
-        activate = True
+        activate = False
         def __init__(self, message, value = '') :
                 if self.activate: 
                         print(message, value)
@@ -889,10 +889,10 @@ class Steno:
                 self.prefix ={}
                 word_str = self.get_prefix_and_suffix(initial_word,True,False)
                 if self.ending_syll:
-                        print('ending_syll:' , self.ending_syll)
+                        Log('ending_syll:' , self.ending_syll)
                 if self.ending :
                         encoded_w = Steno_Encoding([self.ending_syll.replace('-', '')], "","").encode()+self.ending
-                        print('ending encoding: ', encoded_w)
+                        Log('ending encoding: ', encoded_w)
                         self.final_encoded.append(encoded_w)
 
 
@@ -1362,6 +1362,12 @@ class Steno_Encoding:
                 'vul': 'WHR',
                 "fik" : "-/FBG",
                 "fEk" : "-/FBG",
+                                'kE' : 'KE',
+                'vERs' : '-/FRB', # divers
+                'ERv' : '-/FRB', #v-erve
+                'vEr' : '-/FRB', # cou-vert
+                'vER' : '-/FRB', # travers
+
                 'j@' : 'AEN' , # son ian
                 '@l' : '-ANL', #enleve
                 "RSi" : "VRPB",
@@ -1405,8 +1411,9 @@ class Steno_Encoding:
                 "jE": "AE",     # ciel
                 "ja": "RA",     # cria
                 "jo": "RO",     # bio
+
 #                "jO": "ROE",    # fjord # TODO unsure
-                "jo": "AO",     # bio # TODO Some conflict there. "-R can be read as i" (above), but the diphtongs are more important I guess?
+#                "jo": "AO",     # bio # TODO Some conflict there. "-R can be read as i" (above), but the diphtongs are more important I guess?
 #                "jO": "RO",     # fjord
                 "j§": "AO",     # av_ion_
                 "kw": "KW",
