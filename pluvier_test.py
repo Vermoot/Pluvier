@@ -148,7 +148,7 @@ class TestPluvier:
     def test_lesson4_ortho_star_verb(self):
         self.assertSame({
             'WOE' : 'veau',
-            'WOE*' : 'vaut', #star not in the right place
+            'WO*E' : 'vaut', 
                          })
 
     def test_lesson5_K_L(self):
@@ -286,8 +286,8 @@ class TestPluvier:
                           "TAERS": "tierce",
                          })
 
-    def test_lesson13_AER_ier_iere(self):
-        self.assertSame({"K-S/A*ER": "caissière", # should be K-S/A*ER : - is required ?
+    def test_lesson13_AER_suffix_ier_iere(self):
+        self.assertSame({"K-S/A*ER": "caissière",
                          "WOEUL/AER": "voilier",
                          "TE/A*ER": "théière",
                          })
@@ -333,8 +333,7 @@ class TestPluvier:
     def test_lesson13_BLG_alone_for_quel(self):
         self.assertSame({
             "SEBLG": "séquelle",
-            "HRBLG": "lequel",
-#                        "HR-BLG": "lequel",
+            "HR-BLG": "lequel",
         })
 
         
@@ -387,7 +386,7 @@ class TestPluvier:
 #            "TPHU" : "nu",
             "TPHO*EU": "noie",
             "TPHOEU": "noix",
-            "TPHEUD" : "nid",
+#            "TPHEUD" : "nid", TODO if exists put D
                          })
 
     def test_lesson15_GBS_for_final_X(self):
@@ -486,7 +485,7 @@ class TestPluvier:
     def test_lesson19_starEB_ending_ene(self):
         self.assertSame({
             "SEUR/*EB": "sirène",
-            "KPEUG/*EB": "oxygène",
+#            "KPEUG/*EB": "oxygène",
             
                          })
 
@@ -738,7 +737,8 @@ class TestPluvier:
             "K*/PAR": "compare", #'k§-paR'
             "KPAR": "compare", #'k§-paR'
             "K*/PHROE": "complot",
-            "KPHROE": "complot",
+
+ #           "KPHROE": "complot",
             "K*/PABGT": "compact",
             "K*/PWATS": "combattre",
 #            "K*/PA*": "compas",
@@ -1625,11 +1625,10 @@ class TestPluvier:
             })
         
     def test_lesson18_double_conson_can_eliminate_letter(self):
-        # todo !!
         self.assertSame({
             "WHRAG": "village",
-#                         "TKPWR-": "guerre",
-#                         "TPRUR": "fourrure",
+#            "TKPWR-": "guerre",
+            "TPRUR": "fourrure",
                          })
  
     def test_lesson22_OIB_for_sound_oine_and_starOIB_for_suffixe_oine(self):
@@ -1649,16 +1648,24 @@ class TestPluvier:
 
         for elem in words.items():
             first_elem =""
-            for sten_str in self.steno(elem[1], force_verb):
+
+            stenos = self.steno(elem[1], force_verb)
+            assert elem[0] in stenos
+            if elem[0] in stenos:
+#                found = True
+#                assert elem[0] in stenos
+                continue
+
+                print('test found' , sten_str)               
+#            for sten_str in self.steno(elem[1], force_verb):
                 first_elem = sten_str
                 
-                print('test found' , sten_str)
-                if  elem[0] == sten_str:
-                    found = True
-                    assert elem[0] == sten_str
-                    continue
+ 
+#                if  elem[0] == sten_str:
+
             if not found :
-                assert elem[0] == first_elem
+                assert elem[0] in stenos
+
             found = False
 #            return True
 

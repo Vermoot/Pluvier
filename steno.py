@@ -1,4 +1,5 @@
 import sys
+import copy
 import re
 class Word:
         def __init__(self, word, phonetics, lemme, cgram, cgramortho,genre, number, info_verb, syll, orthosyll, frequence = 0):
@@ -85,7 +86,7 @@ class Ortho:
                 return word.replace(suffix_str, self.alternative_str)
 
 class Log:
-        activate = False
+        activate = True
         def __init__(self, message, value = '') :
                 if self.activate: 
                         print(message, value)
@@ -121,11 +122,13 @@ class OrthoPrefix(Ortho):
                 return False
 
         def can_be_converted(self, word):
+                Log('self sounds', self.sounds)
+                Log('word', word)
                 for sound in self.sounds:
                         if word.syll.startswith(sound) :
                                 self.sound = sound
                                 return True
-                                
+                Log('cant be converted ')
                 return False
 class Steno:
         PREFIXES = {
@@ -246,7 +249,10 @@ class Steno:
                 "tel" : OrthoSuffix("tEl" , "-/LGTS"),
                 "velle" : OrthoSuffix("vEl", "-/FL"),
                 "quelle" : OrthoSuffix("kEl", "-/BLG"),
+                "quel" : OrthoSuffix("kEl", "-/BLG"),
                 "elle" : OrthoSuffix("El", "-/*EL"),
+                "ière"  : OrthoSuffix('jER', 'A*ER'),
+                "ier"  : OrthoSuffix('je', 'AER'),
                 'ive' : OrthoSuffix('i-v|i-ve|iv', '-/*EUF'),
                 'if' : OrthoSuffix('if', '-/*EUFL'),
                 'cien' : OrthoSuffix('sj5', '-GS'),
@@ -313,7 +319,7 @@ class Steno:
                 "tER": "-TS",  #notaire
                 "EtR" : "-TS" , #fenetre
                 "jEm" : "-/A*EPL",
-                "jER" : "AER" , #caissiERE
+#                "jER" : "AER" , #caissiERE
                 "jasm" : "-/KWRAFPL",
                 "jEn": "AEB",
                 "sj§" : "GS",
@@ -522,19 +528,20 @@ class Steno:
                 sylls.pop()
                 return "-".join(sylls)
 
-        def orth_ending_iere(self,word, pattern):
-                if word.endswith('ière'):
-                        return pattern.replace('AER', 'A*ER')
-                if word.endswith('ier') and not pattern.endswith('R'):
-                        return pattern+'R'
-                return pattern
+        # def orth_ending_iere(self,word, pattern):
+        #         if word.endswith('ière'):
+        #                 return pattern.replace('AER', 'A*ER')
+        #         if words.endswith('ier') and not pattern.endswith('R'):
+        #                 return pattern+'R'
+        #         return pattern
 
         def orth_write_ending_d(self,word):
                 if word.word.endswith('d') and self.has_homophone(word):
                         self.ending = 'D'
                 return word
 
-        def ortho_starting_with_des(self,word):
+        def ortho_starting_with_des(self,myword):
+                word = myword
                 syll = word.syll.replace('-','')
                 Log('sp', syll)
 #                if not syll.startswith('dez') and not syll.startswith('des') and not syll.startswith('d°s'):
@@ -595,25 +602,27 @@ class Steno:
                                 Log(vars(word))
                                 Log('can be' , ortho.can_be_converted(word))
                                 if (ortho.can_be_converted(word)):
-                                        word = ortho.convert(word)
-                                        Log('converted ok',word)
+                                        myword = ortho.convert(word)
+                                        Log('converted ok',myword)
                                                                                 
                                         self.suffix = ortho.steno()
-                                        return word
+                                        return myword
                 return word
 
         def ortho_prefixes(self,word):
+                Log('ortho_prefixes start')
                 for orth in self.ORTHO_PREFIXES.items():
+                        Log('word',word.word)
                         if word.word.startswith(orth[0]):
                                 Log(vars(orth[1]))
                                 ortho = orth[1]
                                 ortho.prefix = True
 
                                 if (ortho.can_be_converted(word)):
-                                        word = ortho.convert(word)
+                                        myword = ortho.convert(word)
                                         self.prefix = {ortho.steno() : ortho.sound}
                                         Log('prefix test' , self.prefix)
-                                        return word
+                                        return myword
                 return word
 
         
@@ -707,10 +716,10 @@ class Steno:
                                 finds.append(word)
                 for find_word in finds:
                         if find_word.cgram != "VER":
-                                return find_word
+                                return copy.copy(find_word)
 
                 if finds:
-                        return finds[0]
+                        return copy.copy(finds[0])
                 return False
 
         def change_syllabes(self, word):
@@ -756,6 +765,35 @@ class Steno:
                 
                 return new_word
 
+        
+        def double_consonant_remove_woyel(self,word,syll):
+                DOUBLE_CONS = {
+                        'ell' :'El|el',
+
+                        'eill': 'Ej',
+                        'ill': 'ij',
+                        'ill': 'il',
+                        'all' : 'al',
+                        'err'  :'ER|eR',
+                        'urr' : 'uR'
+
+                }
+                Log('double consonant', word)
+                Log('double consonant', syll)
+                for elem in DOUBLE_CONS.items() :
+                        alpha = elem[0]
+                        splitted = elem[1].split('|')
+                        for sound in splitted:
+                                Log('sound',sound)
+                                if alpha in word and  sound in syll :
+
+                                        Log('double syll',sound[1:])
+                                        syll = syll.replace(sound, sound[1:])
+                                        Log('double syll',syll)
+                                        return syll
+                return syll
+
+        
         def add_star(self,word):
                 if (self.ending):
                         return word
@@ -786,14 +824,17 @@ class Steno:
                 return word+"*"
         
         def transform(self,word):
+                                
+
+
                 self.final_encoded = []
                 myword = self.find(word)
                 if not myword:
                         return ""
                 Log(vars(myword))
 #                myword.syll = self.try_to_remove_woyel(myword)
-                self.prefix ={}
-                self.suffix =""
+#                self.prefix ={}
+#                self.suffix =""
                 self.transform_word(myword)
                 Log('is verb' , myword.is_verb())
                 has_homophone = self.has_homophone(myword)
@@ -801,6 +842,12 @@ class Steno:
                 finals = self.final_encoded
                 Log('final_encoded' , self.final_encoded)
                 return self.final_encoded
+
+        def prefix_h(self, word, syll) :
+              
+                if word.startswith('h') and not syll.startswith('8') and not syll.startswith('a') and not syll.startswith('E') and not syll.startswith('1') :
+                        return 'H'
+                return ''
         
         def get_prefix_and_suffix(self, initial_word, check_prefix = True, check_suffix = True ) :
                 Log('Get prefi and suffix', initial_word)
@@ -822,9 +869,8 @@ class Steno:
                 Log('suffix', self.suffix)
                 word_str = self.change_syllabes(word.syll)
                 word_str  = word_str.replace('-','') #word_str.split('-')
+                word_str = self.prefix_h(word.word, word.syll)+word_str
 
-                if word.word.startswith('h') and not word.syll.startswith('8') and not word.syll.startswith('a') and not word.syll.startswith('E') and not word.syll.startswith('1') :
-                        word_str = 'h'+word_str
                 Log('self prefix', self.prefix)                        
                 Log('before prefix', word_str)
                 if check_prefix and not self.prefix:
@@ -837,14 +883,19 @@ class Steno:
                 if check_suffix and not self.suffix:
                         word_str = self.suffixes(word_str)
                 Log('suffix', self.suffix)
+
                 return word_str
 
         def transform_word(self,initial_word):
-                all_sylls = [initial_word.syll.replace('-','')]
-                if initial_word.is_plural() and initial_word.word.endswith('s'):
+                myinitial_word= copy.copy(initial_word)
+                all_sylls = initial_word.syll.replace('-','')
+                all_sylls = self.double_consonant_remove_woyel(initial_word.word, all_sylls)
+                all_sylls =[all_sylls]
+                if myinitial_word.is_plural() and myinitial_word.word.endswith('s'):
                         return []
 
-                word_str = self.get_prefix_and_suffix(initial_word)
+                word_str = self.get_prefix_and_suffix(myinitial_word)
+                
                 self.syllabes = [word_str]
                 Log('syllabe',self.syllabes)
                 Log('ending',self.ending)
@@ -903,10 +954,12 @@ class Steno:
                         self.final_encoded.append(Steno_Encoding(all_sylls, '', '').encode())
                 has_homophone = self.has_homophone(initial_word)
                 for final_word in  self.final_encoded:
+                                                
+                        Log('final_word' , final_word)
                         self.final_encoded.remove(final_word)
                         if has_homophone and initial_word.is_verb():
                                 final_word = self.add_star(final_word)
-                        final_word = self.orth_ending_iere(initial_word.word, final_word)
+#                        final_word = self.orth_ending_iere(initial_word.word, final_word)
                         
                         Log('final_word' , final_word)
                         self.final_encoded.append(final_word)
@@ -1367,6 +1420,8 @@ class Steno_Encoding:
                 'ERv' : '-/FRB', #v-erve
                 'vEr' : '-/FRB', # cou-vert
                 'vER' : '-/FRB', # travers
+                'ijO' : 'AO',
+                'jO' : 'RO|AO',
 
                 'j@' : 'AEN' , # son ian
                 '@l' : '-ANL', #enleve
@@ -1375,7 +1430,6 @@ class Steno_Encoding:
 
                 "tER": "-TS",  #notaire
                 "EtR" : "-TS" , #fenetre
-                'ijO' : 'AO',
                 "RS" : "VRPB",# -rche
                 "dZEk" : "PBLG",
                 "dZ" : "PBLG",
@@ -1405,7 +1459,7 @@ class Steno_Encoding:
 #                'ij': 'AO', # before jO
                 'ij' : '-LZ', #ille
 #                'jO' : 'AO',
-                'jO' : 'RO', #viol
+
                 "j2": "AOEU",   # vieux
                 "je": "AE",     # pied
                 "jE": "AE",     # ciel
