@@ -840,6 +840,7 @@ class TestPluvier:
             "EUPBTS/-DZ": "interdire",
             "SPWAEURD": "interdit",
             "SPWAEURDZ": "interdire",})
+        
     def test_lesson30_W_for_F_initial(self):
         self.assertSame({"WHEU": "fini",
                          "WHEUS": "finisse",
@@ -1605,8 +1606,10 @@ class TestPluvier:
             "PWOURG/HO*PB": "bourguignon",
 
             })
+
     def test_new_rule_imparfait_3p(self):
         self.assertSame({
+            "SRAEUPBT": "seraient", #todo
             "AL/AEUPBT" : "allaient",
         })
 
@@ -1614,6 +1617,7 @@ class TestPluvier:
         self.assertSame({
             "AL/AEUT" : "allait",
         })
+
 
     def test_fightingwith_o(self):
         self.assertSame({
@@ -1662,6 +1666,7 @@ class TestPluvier:
         self.assertSame({
             "TKWOEUB": "écris",
        })
+
     def assertSame(self, words, force_verb=True):
         found = False
         self.assertSounds(words)
