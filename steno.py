@@ -38,7 +38,7 @@ class Word:
         #and self.word.endswith('ait')
 
         def is_conditionnel(self):
-                return 'cnd'
+                return 'cnd' in self.info_verb
 
         def is_third_person_plural(self):
                 return '3p' in self.info_verb
@@ -52,6 +52,9 @@ class Word:
 
         def is_vous_ind_present(self):
                 return 'ind' in self.info_verb and self.word.endswith('ez')
+
+        def is_indicatif(self):
+                return 'ind' in self.info_verb
 
         def is_plural(self) :
                 return self.number =='p'
@@ -94,7 +97,7 @@ class Ortho:
                 return word.replace(suffix_str, self.alternative_str)
 
 class Log:
-        activate = True
+        activate = False
         def __init__(self, message, value = '') :
                 if self.activate: 
                         print(message, value)
@@ -710,7 +713,7 @@ class Steno:
                                 self.ending_syll = verb_word.syll[:-1]
                                 return verb_word
                         return verb_word
-                
+
                 return word
                 
         def try_to_remove_woyel(self, myword) :

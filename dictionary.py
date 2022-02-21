@@ -58,13 +58,15 @@ class Dictionary:
         self.words.sort(key=lambda x: x.frequence, reverse=True)
 #        for word in self.words :
 #            print(word.frequence)
-        self.words = self.words[:80000]
+#        self.words = self.words[:80000]
 
 
         translated_word = {}
-        duplicated = []
+        duplicated = {}
         translated_word = self.append_tao(translated_word)
         for word in self.words:
+            if word.is_verb() and not word.is_infinitif():
+                continue
             for steno in np.unique(self.steno(word)):
 #                steno = steno.replace("'","\'")
                 #                    print(steno)
@@ -73,8 +75,13 @@ class Dictionary:
                 if steno in translated_word and '*' not in steno:
                     steno = self.steno_class.add_star(steno)
                     if steno in translated_word :
-                        duplicated.append({steno : word.word})
-                        duplicated.append({steno : translated_word[steno]  })
+                        if steno not in duplicated:
+                            duplicated[steno] = []
+                    #    duplicated[steno].extend((word.word , translated_word[steno]))
+                        if word.word not in duplicated[steno]:
+                            duplicated[steno].append(word.word)
+                        if translated_word[steno]  not in duplicated[steno]:
+                            duplicated[steno].append(translated_word[steno])
                         continue
                     
                 translated_word[steno] = word.word
