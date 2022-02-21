@@ -58,7 +58,7 @@ class Dictionary:
         self.words.sort(key=lambda x: x.frequence, reverse=True)
 #        for word in self.words :
 #            print(word.frequence)
-#        self.words = self.words[:5000]
+        self.words = self.words[:80000]
 
 
         translated_word = {}

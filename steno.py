@@ -33,10 +33,18 @@ class Word:
                 return 'pas' in self.info_verb and self.word.endswith('é')
 
         def is_imparfait(self):
-                return 'imp' in self.info_verb and self.word.endswith('ait')
+                Log(self.info_verb)
+                return ':imp' in self.info_verb
+        #and self.word.endswith('ait')
 
         def is_conditionnel(self):
                 return 'cnd' in self.info_verb and self.word.endswith('rait')
+
+        def is_third_person_plural(self):
+                return '3p' in self.info_verb
+
+        def is_third_person_singular(self):
+                return '3s' in self.info_verb
 
         def is_participe_present(self):
 #                return 'par' in self.info_verb and
@@ -93,39 +101,39 @@ class Log:
 
 class OrthoSuffix(Ortho):
         
-        def convert(self,word) :
+        def convert(self,phonetic,syll) :
                 for sound in self.sounds:
-                        if word.syll.endswith(sound) :
-                                word.syll = word.syll[:-len(sound)]
+                        if syll.endswith(sound) :
+                                syll = syll[:-len(sound)]
                                 self.steno_str = self.replace_by
-                                Log('ortho suffix convert',word.syll)
-                                return word
+                                Log('ortho suffix convert',syll)
+                                return syll
                 return False
 
-        def can_be_converted(self, word):
+        def can_be_converted(self, syll):
                 for sound in self.sounds:
-                        if word.syll.endswith(sound) :
+                        if syll.endswith(sound) :
                                 self.sound = sound
                                 return True
                                 
                 return False
 
 class OrthoPrefix(Ortho):
-        def convert(self,word):
+        def convert(self,phonetic, syll):
                 for sound in self.sounds:
 
-                        if word.syll.startswith(sound) :
-                                word.syll = word.syll[len(sound):]
+                        if syll.startswith(sound) :
+                                syll = syll[len(sound):]
                                 self.steno_str = self.replace_by
-                                Log('ortho prefix convert',word.syll)
-                                return word
+                                Log('ortho prefix convert',syll)
+                                return syll
                 return False
 
-        def can_be_converted(self, word):
+        def can_be_converted(self, syll):
                 Log('self sounds', self.sounds)
-                Log('word', word)
+                Log('word', syll)
                 for sound in self.sounds:
-                        if word.syll.startswith(sound) :
+                        if syll.startswith(sound) :
                                 self.sound = sound
                                 return True
                 Log('cant be converted ')
@@ -138,9 +146,11 @@ class Steno:
                 "tR@s" : "TRAPBS/",
                 "tR@z" : "TRAPBS/",
                 "tEl" : "THR-",
-                'Eksp' : "-/BGSP",
-                'Ekst' : "-/BGST",
-                'EksK' : "-/BGST",
+                'Egze' : 'KP',
+                'Egzi' : 'KPEU',
+                'Eksi' : 'KPEU',
+
+                'Eks' : "-/BGS",
                 'ade' : 'ATK', # sound
                 'm°n' : "KH",#men
                 'min' : "KH",#min
@@ -190,17 +200,18 @@ class Steno:
         }
 
         ORTHO_PREFIXES = {
-                'multi' :OrthoPrefix('myl-ti', 'PHULT'),
-                'corr' : OrthoPrefix('ko-R', 'KR'),
-                'coll' : OrthoPrefix('ko-l', 'KHR'),
-                "comm" : OrthoPrefix('ko-m|kOm','KPH'),
+                'multi' :OrthoPrefix('mylti', 'PHULT'),
+                'corr' : OrthoPrefix('koR', 'KR'),
+                'coll' : OrthoPrefix('kol', 'KHR'),
+                "comm" : OrthoPrefix('kom|kOm','KPH'),
                 "com" : OrthoPrefix('k§','K*/|K'),
                 "con" : OrthoPrefix('k§','KOEPB|KOPB'),
-                'ind' : OrthoPrefix('5-d', 'SPW'),
-                'end' : OrthoPrefix('@-d', 'SPW'),
-                'réu' : OrthoPrefix('Re-y', 'REU'),
-                'fin'  : OrthoPrefix('fi-n', 'WH'),
-                'fen'  :OrthoPrefix('f°-n', 'WH'),
+                'inter' : OrthoPrefix('5tER', 'EUPBTS'),
+                'ind' : OrthoPrefix('5d', 'SPW'),
+                'end' : OrthoPrefix('@d', 'SPW'),
+                'réu' : OrthoPrefix('Rey', 'REU'),
+                'fin'  : OrthoPrefix('fin', 'WH'),
+                'fen'  :OrthoPrefix('f°n', 'WH'),
                 
 #                "a" : OrthoPrefix('a-','AE-'), # sound
 
@@ -208,41 +219,41 @@ class Steno:
 
         
         ORTHO_SUFFIXES = {
-                'cation' : OrthoSuffix('ka-sj§','-BGS'),
+                'cation' : OrthoSuffix('kasj§','-BGS'),
 
-                'lation' : OrthoSuffix('la-sj§', '-/LGS'),
-                'bilité' : OrthoSuffix('bi-li-te','-BLT'),
-                'ilité' : OrthoSuffix('i-li-te','ILT'),
-                'lité' : OrthoSuffix('li-te','-LT'),
-                'bilise' : OrthoSuffix('bi-liz','-BLZ'),
-                'ralise' : OrthoSuffix('Ra-liz','-BLZ'),
+                'lation' : OrthoSuffix('lasj§', '-/LGS'),
+                'bilité' : OrthoSuffix('bilite','-BLT'),
+                'ilité' : OrthoSuffix('ilite','ILT'),
+                'lité' : OrthoSuffix('lite','-LT'),
+                'bilise' : OrthoSuffix('biliz','BLZ'),
+                'ralise' : OrthoSuffix('Raliz','-BLZ'),
                 'lise' : OrthoSuffix('liz','-LZ'),
 
-                'rité' : OrthoSuffix('Ri-te', '-RT'), # securite
-                'bité' : OrthoSuffix('bi-te','-BT'),
-                'tivité': OrthoSuffix('ti-vi-te', '-/TEUFT'),
-                'vité': OrthoSuffix('vi-te', '-/FT'),
-                'cité': OrthoSuffix('si-te', '-/FT'),
-                'sité': OrthoSuffix('si-te', '-ST*E'),
-                'igé': OrthoSuffix('i-Ze', 'EG'),
-                'iger': OrthoSuffix('i-ZeR', '-*EG'),
+                'rité' : OrthoSuffix('Rite', '-RT'), # securite
+                'bité' : OrthoSuffix('bite','-BT'),
+                'tivité': OrthoSuffix('tivite', '-/TEUFT'),
+                'vité': OrthoSuffix('vite', '-/FT'),
+                'cité': OrthoSuffix('site', '-/FT'),
+                'sité': OrthoSuffix('site', '-ST*E'),
+                'igé': OrthoSuffix('iZe', 'EG'),
+                'iger': OrthoSuffix('iZeR', '-*EG'),
                 'ience' : OrthoSuffix('j@s', '-AENS'),
                 'ance' : OrthoSuffix('@s', '-NS'),
                 'ence' : OrthoSuffix('@s', '-NS'),
                 'ande' : OrthoSuffix('@d', '-ND'),
                 'aux' : OrthoSuffix('o', '-O*EX'),
-                'ité' : OrthoSuffix('i-te','ITD'),
+                'ité' : OrthoSuffix('ite','ITD'),
                 'gueur' : OrthoSuffix('g9R' , '-RG'),
                 'deur' : OrthoSuffix('d9R' , '-RD'),
                 'lheur' : OrthoSuffix('l9R' , '-RL'),
                 'leur' : OrthoSuffix('l9R' , '-RL'),
-                "cteur" : OrthoSuffix("k-t9R", "-RT") ,
+                "cteur" : OrthoSuffix("kt9R", "-RT") ,
                 "teur" : OrthoSuffix("t9R", "-/RT") ,
 
                 "nheur" : OrthoSuffix("n9R", "-RN") ,
                 "neur" : OrthoSuffix("n9R", "-RN") ,
-                "rtion" : OrthoSuffix("R-sj§", "-RGS"),
-                "ration" : OrthoSuffix("Ra-sj§", "-RGS"),
+                "rtion" : OrthoSuffix("Rsj§", "-RGS"),
+                "ration" : OrthoSuffix("Rasj§", "-RGS"),
                 "trice" : OrthoSuffix("tRis", "-/RTS") ,
                 'cienne' : OrthoSuffix('sjEn', '-GZ'),
                 "telle" : OrthoSuffix("tEl" , "-/LGTS"),
@@ -253,18 +264,20 @@ class Steno:
                 "elle" : OrthoSuffix("El", "-/*EL"),
                 "ière"  : OrthoSuffix('jER', 'A*ER'),
                 "ier"  : OrthoSuffix('je', 'AER'),
-                'ive' : OrthoSuffix('i-v|i-ve|iv', '-/*EUF'),
+                'ive' : OrthoSuffix('iv|ive|iv', '-/*EUF'),
                 'if' : OrthoSuffix('if', '-/*EUFL'),
                 'cien' : OrthoSuffix('sj5', '-GS'),
                 "ain" : OrthoSuffix("5", "IN"),
                 'cte' : OrthoSuffix('kt', 'KT'),
                 "ène" : OrthoSuffix("En","-/*EB"),
 #                "eur" : OrthoSuffix("9R","-AO*R"),
-                "uel" : OrthoSuffix("y-El","-/U*EL"),
+                "uel" : OrthoSuffix("yEl","-/U*EL"),
                 "uel" : OrthoSuffix("8El","-/W*EL"),
                 "anche" : OrthoSuffix("@S","-/AFRPBLG"),
                 "rche" : OrthoSuffix("RS","-/FRPB"),
                 "che" : OrthoSuffix("S","-/FP"),
+                "oué" : OrthoSuffix("we|wE","-/W*E"),
+                "way" : OrthoSuffix("we|wE","-/W*E"),
                 "ué" : OrthoSuffix("8e","-/W*E"),
                 "cise" :OrthoSuffix("siz", "-/RBZ"),
                 "cis" :OrthoSuffix("si", "-/RB"),
@@ -549,30 +562,37 @@ class Steno:
                         return word
                 next_letter = word.word[:4].upper()
                 Log('next letter', next_letter)
+                if word.word.startswith('dés') and next_letter[-1] in ['A','E','É','I','O','U', 'Y'] :
+                        self.prefix = {'TKAOEZ|STK' : 'dez'}
+                        word.syll = word.syll[3:]
+                        return word
+
                 if word.word.startswith('dé') or ((next_letter.endswith('O') or next_letter.endswith('E') or next_letter.endswith('I') or next_letter.endswith('A') or next_letter.endswith('U') or next_letter.endswith('@') or next_letter.endswith('Y'))) :
                         
-                        if 'de-z' in word.syll:
+                        if 'dez' in word.syll:
                                 self.prefix = {'STK':'dez'}
-                                word.syll = word.syll.replace('de-z', '')
-                        if 'de-s' in word.syll:
+                                word.syll = word.syll.replace('dez', '')
+                        if 'des' in word.syll:
                                 self.prefix = {'STK':'des'}
-                                word.syll = word.syll.replace('de-s', '')
-                        if 'd°-z' in word.syll:
+                                word.syll = word.syll.replace('des', '')
+                        if 'd°z' in word.syll:
                                 self.prefix = {'STK':'d°s'}                                
-                                word.syll = word.syll.replace('d°-s', '')
-                        if (word.syll.startswith('de-f')):
+                                word.syll = word.syll.replace('d°s', '')
+                        if (word.syll.startswith('def')):
                                 self.prefix = {'STKW' : 'def'}
                                 
-                                word.syll = word.syll.replace('de-f', '')
+                                word.syll = word.syll.replace('def', '')
                         word.syll = word.syll.replace('de', '')
                         Log('syll repl', word.syll)
-                
+                        return word
+
                 return word
                 
         def ortho_add_aloneR_infinitif_firstgroup(self, word):
                 verb_word = self.find_same_word_verb(word)
                 if verb_word.is_verb() and verb_word.is_infinitif()  and verb_word.word.endswith('er'):
                         self.ending = "/-R"
+                        self.ending_syll = verb_word.syll
                         if verb_word.syll.endswith('e') :
                                 self.ending_syll = verb_word.syll[:-1]
                         return verb_word
@@ -589,41 +609,40 @@ class Steno:
                         return word
                 return word
 
-        def ortho_suffixes(self,word):
+        def ortho_suffixes(self,word, syll):
                 for orth in self.ORTHO_SUFFIXES.items():
-                        if word.word.endswith(orth[0]) :
+                        if word.endswith(orth[0]) :
                                 ortho = orth[1]
 
                                 if ortho.check_alternative :
-                                        if not self.find_spelled_word(ortho.get_alternative_str(word.word,orth[0])):
+                                        if not self.find_spelled_word(ortho.get_alternative_str(word,orth[0])):
                                                 Log('cotinue check alternative')
                                                 continue
                                 Log(vars(ortho))
-                                Log(vars(word))
-                                Log('can be' , ortho.can_be_converted(word))
-                                if (ortho.can_be_converted(word)):
-                                        myword = ortho.convert(word)
-                                        Log('converted ok',myword)
+                                Log('can be' , ortho.can_be_converted(syll))
+                                if (ortho.can_be_converted(syll)):
+                                        syll = ortho.convert(word, syll)
+                                        Log('converted ok',syll)
                                                                                 
                                         self.suffix = ortho.steno()
-                                        return myword
-                return word
+                                        return syll
+                return syll
 
-        def ortho_prefixes(self,word):
+        def ortho_prefixes(self,word, syll):
                 Log('ortho_prefixes start')
                 for orth in self.ORTHO_PREFIXES.items():
-                        Log('word',word.word)
-                        if word.word.startswith(orth[0]):
+                        Log('word',word)
+                        if word.startswith(orth[0]):
                                 Log(vars(orth[1]))
                                 ortho = orth[1]
                                 ortho.prefix = True
 
-                                if (ortho.can_be_converted(word)):
-                                        myword = ortho.convert(word)
+                                if (ortho.can_be_converted(syll)):
+                                        syll = ortho.convert(word,syll)
                                         self.prefix = {ortho.steno() : ortho.sound}
                                         Log('prefix test' , self.prefix)
-                                        return myword
-                return word
+                                        return syll
+                return syll
 
         
         def ortho_add_alone_keys_on_verb(self,word):
@@ -631,8 +650,12 @@ class Steno:
 
                 if not verb_word.is_verb():
                         return word
+                Log('Verbe')
+                if (not self.ending_syll):
+                        self.ending_syll = verb_word.syll
+                        
                 if  verb_word.is_passe_compose():
-                        if verb_word.syll.endswith('ué') :
+                        if verb_word.word.endswith('ué') or verb_word.word.endswith('oué') :
                                 self.ending = "/W*E"
                                 self.ending_syll = verb_word.syll[:-2]
                                 return verb_word
@@ -642,7 +665,13 @@ class Steno:
                         return verb_word
 
                 if verb_word.is_imparfait():
+                        Log('imparfait')
                         self.ending = "/-S"
+                        if verb_word.is_third_person_plural():
+                                self.ending = "/AEUPBT"
+                        if verb_word.is_third_person_singular():
+                                self.ending = "/AEUT"
+
                         if verb_word.syll.endswith('E') :
                                 self.ending_syll = verb_word.syll[:-1]
                         return verb_word
@@ -769,7 +798,6 @@ class Steno:
         def double_consonant_remove_woyel(self,word,syll):
                 DOUBLE_CONS = {
                         'ell' :'El|el',
-
                         'eill': 'Ej',
                         'ill': 'ij',
                         'ill': 'il',
@@ -852,39 +880,44 @@ class Steno:
         def get_prefix_and_suffix(self, initial_word, check_prefix = True, check_suffix = True ) :
                 Log('Get prefi and suffix', initial_word)
                 word = initial_word
+
                 self.prefix ={}
                 
                 self.suffix =""
+#                word_str = self.change_syllabes(word.syll)
+                phonetics  = word.syll.replace('-','') #word_str.split('-')
                 if check_prefix:
 #                        self.orth_write_ending_d(word)
-                        word = self.ortho_prefixes(word)
+                        phonetics = self.ortho_prefixes(word.word, phonetics)
                 if check_suffix:
-                        word = self.ortho_suffixes(word)
+                        phonetics = self.ortho_suffixes(word.word, phonetics)
                         Log('suffix', self.suffix)
+                        
                         word = self.ortho_add_aloneR_infinitif_firstgroup(word)
                         word = self.ortho_add_alone_keys_on_verb(word)
                         word = self.ortho_add_alone_keys_on_noun(word)
+                word.syll = phonetics
                 if check_prefix and not self.prefix:
                         word = self.ortho_starting_with_des(word)
                 Log('suffix', self.suffix)
-                word_str = self.change_syllabes(word.syll)
-                word_str  = word_str.replace('-','') #word_str.split('-')
-                word_str = self.prefix_h(word.word, word.syll)+word_str
+
+#                word_str  = word_str.replace('-','') #word_str.split('-')
+                phonetics = self.prefix_h(word.word, word.syll)+word.syll
 
                 Log('self prefix', self.prefix)                        
-                Log('before prefix', word_str)
+                Log('before prefix', phonetics)
                 if check_prefix and not self.prefix:
-                        word_str = self.prefixes(word_str, word)
-                Log('after prefix', word_str)
+                        phonetics = self.prefixes(phonetics, word)
+                Log('after prefix', phonetics)
                 Log('suffix', self.suffix)
 
                 if check_suffix and (not self.suffix and '-' in word.syll):
-                        word_str = self.real_suffixes(word_str)
+                        phonetics = self.real_suffixes(phonetics)
                 if check_suffix and not self.suffix:
-                        word_str = self.suffixes(word_str)
+                        phonetics = self.suffixes(phonetics)
                 Log('suffix', self.suffix)
 
-                return word_str
+                return phonetics
 
         def transform_word(self,initial_word):
                 myinitial_word= copy.copy(initial_word)
@@ -950,6 +983,7 @@ class Steno:
 
                 
                 Log('> syl',initial_word.syll)
+                Log('> all syl',all_sylls)
                 if not self.ending :
                         self.final_encoded.append(Steno_Encoding(all_sylls, '', '').encode())
                 has_homophone = self.has_homophone(initial_word)
