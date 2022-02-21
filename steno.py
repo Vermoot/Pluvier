@@ -24,7 +24,7 @@ class Word:
                 return self.syll
         
         def is_verb(self):
-                return "VER" in self.cgram  and "AUX" not in self.cgramortho
+                return "VER" in self.cgram  or "AUX" in self.cgram #and "AUX" not in self.cgramortho
         
         def is_infinitif(self):
                 return 'inf' in self.info_verb
@@ -38,7 +38,7 @@ class Word:
         #and self.word.endswith('ait')
 
         def is_conditionnel(self):
-                return 'cnd' in self.info_verb and self.word.endswith('rait')
+                return 'cnd'
 
         def is_third_person_plural(self):
                 return '3p' in self.info_verb
@@ -206,7 +206,7 @@ class Steno:
                 "comm" : OrthoPrefix('kom|kOm','KPH'),
                 "com" : OrthoPrefix('k§','K*/|K'),
                 "con" : OrthoPrefix('k§','KOEPB|KOPB'),
-                'inter' : OrthoPrefix('5tER', 'EUPBTS'),
+                'inter' : OrthoPrefix('5tER', 'EUPBTS'), #SPWR
                 'ind' : OrthoPrefix('5d', 'SPW'),
                 'end' : OrthoPrefix('@d', 'SPW'),
                 'réu' : OrthoPrefix('Rey', 'REU'),
@@ -668,7 +668,7 @@ class Steno:
                         Log('imparfait')
                         self.ending = "/-S"
                         if verb_word.is_third_person_plural():
-                                self.ending = "/AEUPBT"
+                                self.ending = "AEUPBT"
                         if verb_word.is_third_person_singular():
                                 self.ending = "/AEUT"
 
@@ -678,6 +678,10 @@ class Steno:
 
                 if verb_word.is_conditionnel():
                         self.ending = "/-RS"
+                        if verb_word.is_third_person_plural():
+                                self.ending = "AEUPBT"
+                                self.ending_syll = verb_word.syll[:-1]
+                                return verb_word
                         if verb_word.word.endswith('rrait') and verb_word.syll.endswith('E') :
                                 self.ending_syll = verb_word.syll[:-1]
                                 return verb_word
