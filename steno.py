@@ -1543,6 +1543,7 @@ class Steno_Encoding:
 #                "e" : "AEU", #collecte
                 'N' : 'PG',
                 'd' : 'D',
+                'S' : 'SH|FP',
                 "y": "U",       # cru
 
         }

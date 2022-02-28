@@ -58,12 +58,12 @@ class Dictionary:
         self.words.sort(key=lambda x: x.frequence, reverse=True)
 #        for word in self.words :
 #            print(word.frequence)
-#        self.words = self.words[:80000]
+#        self.words = self.words[:800]
 
 
         translated_word = {}
         duplicated = {}
-        translated_word = self.append_tao(translated_word)
+
         for word in self.words:
             if word.is_verb() and not word.is_infinitif():
                 continue
@@ -87,7 +87,7 @@ class Dictionary:
                 translated_word[steno] = word.word
 
 #                    d.write("'"+steno + "':'"+ word.word+"',\n")
-
+        translated_word = self.append_tao(translated_word)
         json_object = json.dumps(translated_word, indent = 4, ensure_ascii=False )
         dup_object = json.dumps(duplicated, indent = 4, ensure_ascii=False )
         with open('resources/dup.json', "w") as d:

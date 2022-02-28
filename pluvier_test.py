@@ -515,7 +515,8 @@ class TestPluvier:
 
     def test_lesson21_CH_init_is_SH_final_is_FP(self):
         self.assertSame({
-            "SHOEU": "choix",
+ #           "SHAER": "cher",
+                       "SHOEU": "choix",
 #            "SHO": "chaud",
             "KAFP": "cache",
 #            "RUFP": "ruche",
