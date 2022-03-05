@@ -24,10 +24,7 @@ class TestPluvier:
         "RAPD" : "rapide",
         "TKWEUS" : "édifice",
         "TPORPL/TKABL" : "formidable",
-
         "WEUS" : "vis",
-
-
 #        "APBLG/OEUPBDZ": "adjoindre",
     }
 
@@ -945,8 +942,12 @@ class TestPluvier:
 
         })        
     def test_lesson34_sounds_SW_swe_TW_twe_STW_stwe_DW_dwe_and_dve_FPL_sme(self):
+
         self.assertSame({
-            "SWAEU": "souhait",
+#            "SOEUPB": "soin",
+
+            "SWAR/E": "soirée",
+           "SWAEU": "souhait",
             "SWAEUT": "souhaite",
 
 #"TKWORS": "divorce",
@@ -1456,8 +1457,8 @@ class TestPluvier:
             "STKPHAFRPB": "démarche",
             "STKPHRAS": "déplace",
             "STKPHROR": "déplore",
-            "STKPRAEUGS": "dépression",
-            "STKPRAEUS/*EUF": "dépressive","STKPWOURS/-R": "débourser",
+ #           "STKPRAEUGS": "dépression",
+ #          "STKPRAEUS/*EUF": "dépressive","STKPWOURS/-R": "débourser",
 #            "STKWEUFT": "déficit",
             "STKPWEUL": "débile",
 
@@ -1467,7 +1468,7 @@ class TestPluvier:
         self.assertSame({
             "PHEUT/EG": "mitigé",
             "ER/*EG": "ériger",
-            "SREUG": "ériger",
+ #           "SREUG": "ériger",
 
             })
 

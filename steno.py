@@ -30,6 +30,8 @@ class Word:
                 return 'inf' in self.info_verb
 
         def is_passe_compose(self):
+                if 'ADJ' in self.info_verb:
+                        return false
                 return 'pas' in self.info_verb and self.word.endswith('é')
 
         def is_imparfait(self):
@@ -97,7 +99,8 @@ class Ortho:
                 return word.replace(suffix_str, self.alternative_str)
 
 class Log:
-        activate = False
+        activate = True
+
         def __init__(self, message, value = '') :
                 if self.activate: 
                         print(message, value)
@@ -239,7 +242,7 @@ class Steno:
                 'cité': OrthoSuffix('site', '-/FT'),
                 'sité': OrthoSuffix('site', '-ST*E'),
                 'igé': OrthoSuffix('iZe', 'EG'),
-                'iger': OrthoSuffix('iZeR', '-*EG'),
+                'iger': OrthoSuffix('iZe', '-*EG'),
                 'ience' : OrthoSuffix('j@s', '-AENS'),
                 'ance' : OrthoSuffix('@s', '-NS'),
                 'ence' : OrthoSuffix('@s', '-NS'),
@@ -384,6 +387,7 @@ class Steno:
                 "5p" : "-/EUFRP",
                 '@pl' : "-/AFRPL",
                 "9R":"-AO*R",
+                "je": "AE",     # pied
                 '@p' : '-/AFRP' , #campe
                 '§p' : '-/OFRP', # trompe
                 'Ribl' : '-RBL',
@@ -473,6 +477,7 @@ class Steno:
 
         words = []
         suffix = ""
+        needs_star = False
         prefix = ""
         steno_word = ""
         syllabes = []
@@ -585,6 +590,7 @@ class Steno:
                                 self.prefix = {'STKW' : 'def'}
                                 
                                 word.syll = word.syll.replace('def', '')
+                        self.prefix = {'STK' : 'de'}
                         word.syll = word.syll.replace('de', '')
                         Log('syll repl', word.syll)
                         return word
@@ -898,11 +904,11 @@ class Steno:
                         phonetics = self.ortho_prefixes(word.word, phonetics)
                 if check_suffix:
                         phonetics = self.ortho_suffixes(word.word, phonetics)
-                        Log('suffix', self.suffix)
-                        
-                        word = self.ortho_add_aloneR_infinitif_firstgroup(word)
-                        word = self.ortho_add_alone_keys_on_verb(word)
-                        word = self.ortho_add_alone_keys_on_noun(word)
+                        Log('get suffix', self.suffix)
+                        if not self.suffix:
+                                word = self.ortho_add_aloneR_infinitif_firstgroup(word)
+                                word = self.ortho_add_alone_keys_on_verb(word)
+                                word = self.ortho_add_alone_keys_on_noun(word)
                 word.syll = phonetics
                 if check_prefix and not self.prefix:
                         word = self.ortho_starting_with_des(word)
@@ -991,8 +997,8 @@ class Steno:
                 
                 Log('> syl',initial_word.syll)
                 Log('> all syl',all_sylls)
-                if not self.ending :
-                        self.final_encoded.append(Steno_Encoding(all_sylls, '', '').encode())
+#                if not self.ending :
+ #                       self.final_encoded.append(Steno_Encoding(all_sylls, '', '').encode())
                 has_homophone = self.has_homophone(initial_word)
                 for final_word in  self.final_encoded:
                                                 
@@ -1572,11 +1578,15 @@ class Steno_Encoding:
                 # *N is used for "on" (§) endings. # TODO this is a vowel, but only on word endings
 
         }
-
+        needs_star=False
         def __init__(self, syllabes, prefix, suffix):
                 self.syllabes = syllabes
                 self.prefix = prefix
                 self.suffix = suffix
+        #        if '*' in self.suffix:
+        #                self.suffix = self.suffix.replace('*', '')
+        #                self.needs_star = 'end'
+
                 Log('steno_suffixes' , vars(self))
 
         def diphtongs_try(self, word):
@@ -1727,7 +1737,36 @@ class Steno_Encoding:
                 if self.word_encoded.startswith('/'):
                         self.word_encoded = self.word_encoded[1:]
                 Log('WORD ENCODED ', self.word_encoded)
-                return  self.word_encoded.replace('//','/')
+                self.word_encoded = self.word_encoded.replace('//','/')
+                if self.needs_star  :
+                        splitted = self.word_encoded.split('/')
+                        splitted[len(splitted)-1]= self.add_star(splitted[len(splitted)-1])
+                        self.word_encoded = '/'.join(splitted)
+                return  self.word_encoded
+        def add_star(self,word):
+                if ('*' in word):
+                        return word
+                splitted = word.split('E')
+                if len( splitted) > 1:
+                         splitted[len(splitted)-2] = splitted[len(splitted)-2]+"*"
+                         return 'E'.join(splitted)
+                splitted = word.split('U')
+                Log('add star', word)                
+                if len( splitted) > 1:
+                         splitted[len(splitted)-2] = splitted[len(splitted)-2]+"*"
+                         return 'U'.join(splitted)
+                splitted = word.split('O')
+                if len( splitted) > 1:
+                         splitted[len(splitted)-1] = "*"+splitted[len(splitted)-1]
+                         return 'O'.join(splitted)
+
+                splitted = word.split('A')
+                if len( splitted) > 1:
+                         splitted[len(splitted)-1] = "*"+splitted[len(splitted)-1]
+                         Log('splitted "A"',splitted)
+                         return 'A'.join(splitted)
+                
+                return word+"*"
 
         def voyels(self, word):
                 new_word=word
