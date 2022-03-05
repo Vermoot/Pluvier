@@ -271,7 +271,7 @@ class Steno:
                 "ière"  : OrthoSuffix('jER', 'A*ER'),
                 "ier"  : OrthoSuffix('je', 'AER'),
                 'ive' : OrthoSuffix('iv|ive|iv', '-/*EUF'),
-                'if' : OrthoSuffix('if', '-/*EUFL'),
+                'if' : OrthoSuffix('if', '-/EUFL'),
                 'cien' : OrthoSuffix('sj5', '-GS'),
                 "ain" : OrthoSuffix("5", "IN"),
                 'cte' : OrthoSuffix('kt', 'KT'),
@@ -452,7 +452,7 @@ class Steno:
                 'N' : 'PG',
                 'El' :'-FL',
                 "Z" : "G", # rage
-                'u' : 'O*U',
+                'u' : 'OU',
                 'k' : 'K',
 
         }
@@ -1583,9 +1583,9 @@ class Steno_Encoding:
                 self.syllabes = syllabes
                 self.prefix = prefix
                 self.suffix = suffix
-        #        if '*' in self.suffix:
-        #                self.suffix = self.suffix.replace('*', '')
-        #                self.needs_star = 'end'
+                if '*' in self.suffix and  '/' not in self.suffix:
+                        self.suffix = self.suffix.replace('*', '')
+                        self.needs_star = True
 
                 Log('steno_suffixes' , vars(self))
 
@@ -1742,6 +1742,8 @@ class Steno_Encoding:
                         splitted = self.word_encoded.split('/')
                         splitted[len(splitted)-1]= self.add_star(splitted[len(splitted)-1])
                         self.word_encoded = '/'.join(splitted)
+                if self.word_encoded.endswith('/OU'):
+                        self.word_encoded = self.word_encoded.replace('/OU','/O*U')
                 return  self.word_encoded
         def add_star(self,word):
                 if ('*' in word):
@@ -1766,7 +1768,7 @@ class Steno_Encoding:
                          Log('splitted "A"',splitted)
                          return 'A'.join(splitted)
                 
-                return word+"*"
+                return "*"+word
 
         def voyels(self, word):
                 new_word=word

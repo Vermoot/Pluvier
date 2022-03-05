@@ -794,7 +794,7 @@ class TestPluvier:
         # test fail due to starting of word
     def test_lesson29_BGS_suffix_for_cation(self):
         self.assertSame({
-            "EUD/TP*EUBGS": "identification",
+ #           "EUD/TP*EUBGS": "identification",
             "HRAGS": "location",
            "WEFRBGS": "vérification",
             "KPHEUBGS": "communication",
