@@ -301,7 +301,7 @@ class TestPluvier:
     # H- COTE gauche pour les groupement -> not to todo ?
 
     def test_lesson13_S_alone_for_imparfait(self):
-        self.assertSame({"KRABG/-S": "craquait",
+        self.assertSame({"KRABG/-S": "craquais",
                          "PAS/-S": "passait",
                          "KOUR/-S": "courait",
                          })
@@ -431,7 +431,7 @@ class TestPluvier:
     def test_lesson17_SKWR_for_J_initial_and_SWR_for_Z_initial(self):
         self.assertSame({
 #should be ?            "SKWR-L/-D": "gelé",
- #           "SKWR-LD": "gelée",
+           "SKWR-LD": "gelée",
  #           "SKWRL/-D": "gelé",
             "SKWROEUPB": "joint",
             "SWRO": "zoo",
@@ -946,7 +946,7 @@ class TestPluvier:
         self.assertSame({
 #            "SOEUPB": "soin",
 
-            "SWAR/E": "soirée",
+ #??           "SWAR/E": "soirée",
            "SWAEU": "souhait",
             "SWAEUT": "souhaite",
 
@@ -1355,7 +1355,7 @@ class TestPluvier:
         self.assertSame({
 #            "SHRO*EG": "psychologue",
 #            "SAOD/TPHEUPL": "pseudonyme",
-            "SEUFP/*EUBG": "psychique",
+           "SEUFP/*EUBG": "psychique",
             "SHRO*EUG": "psychologie",
             "SKRAUTS": "psychiatre",
 
@@ -1614,12 +1614,18 @@ class TestPluvier:
             "AL/AEUPBT" : "allaient",
         })
 
-    def test_new_rule_imparfait_2p(self):
+    def test_new_rule_imparfaitoet_2p(self):
         self.assertSame({
             "AL/AEUT" : "allait",
         })
 
+    def test_new_rule_start_H(self):
+        self.assertSame({
+            "HAL" : "traitée",
+        })
 
+
+        
     def test_fightingwith_o(self):
         self.assertSame({
             "TPOET": "faute",

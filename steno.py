@@ -131,18 +131,15 @@ class OrthoPrefix(Ortho):
                         if syll.startswith(sound) :
                                 syll = syll[len(sound):]
                                 self.steno_str = self.replace_by
-                                Log('ortho prefix convert',syll)
+                                Log('Ortho prefix convert:',syll)
                                 return syll
                 return False
 
         def can_be_converted(self, syll):
-                Log('self sounds', self.sounds)
-                Log('word', syll)
                 for sound in self.sounds:
                         if syll.startswith(sound) :
                                 self.sound = sound
                                 return True
-                Log('cant be converted ')
                 return False
 class Steno:
         PREFIXES = {
@@ -271,7 +268,7 @@ class Steno:
                 "ière"  : OrthoSuffix('jER', 'A*ER'),
                 "ier"  : OrthoSuffix('je', 'AER'),
                 'ive' : OrthoSuffix('iv|ive|iv', '-/*EUF'),
-                'if' : OrthoSuffix('if', '-/EUFL'),
+                'if' : OrthoSuffix('if', '-/*EUFL'),
                 'cien' : OrthoSuffix('sj5', '-GS'),
                 "ain" : OrthoSuffix("5", "IN"),
                 'cte' : OrthoSuffix('kt', 'KT'),
@@ -564,12 +561,12 @@ class Steno:
         def ortho_starting_with_des(self,myword):
                 word = myword
                 syll = word.syll.replace('-','')
-                Log('sp', syll)
+                Log('Starting with des? ', syll)
 #                if not syll.startswith('dez') and not syll.startswith('des') and not syll.startswith('d°s'):
                 if not word.word.startswith('de') and not word.word.startswith('dé'):
                         return word
                 next_letter = word.word[:4].upper()
-                Log('next letter', next_letter)
+                Log('> 3rd letter:', next_letter)
                 if word.word.startswith('dés') and next_letter[-1] in ['A','E','É','I','O','U', 'Y'] :
                         self.prefix = {'TKAOEZ|STK' : 'dez'}
                         word.syll = word.syll[3:]
@@ -592,7 +589,7 @@ class Steno:
                                 word.syll = word.syll.replace('def', '')
                         self.prefix = {'STK' : 'de'}
                         word.syll = word.syll.replace('de', '')
-                        Log('syll repl', word.syll)
+                        Log('> syll: ', word.syll)
                         return word
 
                 return word
@@ -608,12 +605,18 @@ class Steno:
                 return word
 
         def ortho_add_alone_keys_on_noun(self,word):
+                if word.word.endswith('ée'):
+                        if not self.ending :
+                                self.ending_syll = word.syll[:-1]
+                        self.ending = "D"
+
+                                
                 if word.is_verb():
                         return word
                 if word.word.endswith('ette'):
                         self.ending = "/*T"
                         if word.syll.endswith('Et') :
-                                Log('fini par et')
+                                Log('Fini par et')
                                 self.ending_syll = word.syll[:-2]
                         return word
                 return word
@@ -625,7 +628,7 @@ class Steno:
 
                                 if ortho.check_alternative :
                                         if not self.find_spelled_word(ortho.get_alternative_str(word,orth[0])):
-                                                Log('cotinue check alternative')
+                                                Log('continue check alternative')
                                                 continue
                                 Log(vars(ortho))
                                 Log('can be' , ortho.can_be_converted(syll))
@@ -783,6 +786,7 @@ class Steno:
                         return word
                 for prefix in  self.PREFIXES.items():
                         if len(re.split("^"+prefix[0], new_word))>1:
+                                Log('found prefix : ',prefix[0])
                                 self.prefix = {prefix[1] : prefix[0]}
                                 return re.split("^"+prefix[0], new_word)[1]
 
@@ -886,16 +890,14 @@ class Steno:
 
         def prefix_h(self, word, syll) :
               
-                if word.startswith('h') and not syll.startswith('8') and not syll.startswith('a') and not syll.startswith('E') and not syll.startswith('1') :
+                if word.startswith('h') :
+                #and not syll.startswith('8') and not syll.startswith('a') and not syll.startswith('E') and not syll.startswith('1') :
                         return 'H'
                 return ''
         
         def get_prefix_and_suffix(self, initial_word, check_prefix = True, check_suffix = True ) :
-                Log('Get prefi and suffix', initial_word)
                 word = initial_word
-
                 self.prefix ={}
-                
                 self.suffix =""
 #                word_str = self.change_syllabes(word.syll)
                 phonetics  = word.syll.replace('-','') #word_str.split('-')
@@ -997,8 +999,8 @@ class Steno:
                 
                 Log('> syl',initial_word.syll)
                 Log('> all syl',all_sylls)
-#                if not self.ending :
- #                       self.final_encoded.append(Steno_Encoding(all_sylls, '', '').encode())
+                if not self.ending :
+                        self.final_encoded.append(Steno_Encoding(all_sylls, '', '').encode())
                 has_homophone = self.has_homophone(initial_word)
                 for final_word in  self.final_encoded:
                                                 
@@ -1010,8 +1012,8 @@ class Steno:
                         
                         Log('final_word' , final_word)
                         self.final_encoded.append(final_word)
-
-                return self.final_encoded
+                self.final_encoded = list(dict.fromkeys(self.final_encoded))
+                return  self.final_encoded
         
 
 
@@ -1505,6 +1507,7 @@ class Steno_Encoding:
                 "8i": "AU",     # pluie
 #                'ij': 'AO', # before jO
                 'ij' : '-LZ', #ille
+                'aj' : '-LZ', #paille
 #                'jO' : 'AO',
 
                 "j2": "AOEU",   # vieux
@@ -1540,17 +1543,7 @@ class Steno_Encoding:
 #                "ij": "LZ",    # bille # TODO Maybe not a diphtong, but a word ending/consonant thing
 
                 'fl': "FL",
-                "5" : "IN",
-                'u' : 'OU',
-                '1' : 'U',
-#                'e' : '',
-                "@": "AN",     # pluie
-                "E" : "AEU", #collecte
-#                "e" : "AEU", #collecte
-                'N' : 'PG',
-                'd' : 'D',
                 'S' : 'SH|FP',
-                "y": "U",       # cru
 
         }
         VOWELS = {
@@ -1558,6 +1551,15 @@ class Steno_Encoding:
                 "°" : "",
                 'j' : 'i',
                 "Z" : "G",
+                "5" : "IN",
+                'u' : 'OU',
+                'l' : 'L',
+
+                '1' : 'U',
+#                'e' : '',
+                "@": "AN",     # pluie
+                "E" : "AEU", #collecte
+#                "e" : "AEU", #collecte
 
                 "2": "AO",      # eux
                 "9": "AO",      # seul
@@ -1575,6 +1577,15 @@ class Steno_Encoding:
                 "5": "EUFR",    # vin
                 "8": "U",       # huit
                 "§": "ON",
+                'N' : 'N',
+                'd' : 'D',
+                'p' : 'P',
+                'm' : 'M',
+                'k' : 'K',
+                'n' : 'N',
+
+                "y": "U",       # cru
+
                 # *N is used for "on" (§) endings. # TODO this is a vowel, but only on word endings
 
         }
@@ -1618,13 +1629,13 @@ class Steno_Encoding:
 #                                self.found_sound = diphtong[1]
                                 if word.startswith(key):
                                         syll[key] = diphtong[1]
-                                        end = word.replace(key, '')
+                                        end = word[len(key):]
                                         if end :
                                                 for  findsyll in self.find_matching(syll,end).items():
                                                         syll[findsyll[0]] = findsyll[1]
                                         return syll
                                 if word.endswith(key):
-                                        start = word.replace(key, '')
+                                        start = word[:-len(key)]
                                         if start :
                                                 for  findsyll in self.find_matching(syll,start).items():
                                                         syll[findsyll[0]] = findsyll[1]
@@ -1667,12 +1678,15 @@ class Steno_Encoding:
     
                 
         def encode(self):
+                Log('-- Encode :',self.syllabes)
+
                 self.word_encoded = ""
                 previous = None
                 count_syll = 1
                 one_hand=False
                 next_syll = self.syllabes
                 if self.prefix:
+                        Log('> Prefix ', self.prefix)
                         if '/' in self.prefix:
                                 one_hand = True
                                 self.prefix = self.prefix.replace('/','')
@@ -1745,6 +1759,7 @@ class Steno_Encoding:
                 if self.word_encoded.endswith('/OU'):
                         self.word_encoded = self.word_encoded.replace('/OU','/O*U')
                 return  self.word_encoded
+        
         def add_star(self,word):
                 if ('*' in word):
                         return word
