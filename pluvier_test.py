@@ -232,7 +232,7 @@ class TestPluvier:
                          })
 
     def test_lesson12_ortho_aSem_for_ieme(self):
-        self.assertSame({'AUT/A*EPL': 'huitième',
+        self.assertSame({'HAUT/A*EPL': 'huitième',
                          "SAEUZ/A*EPL": "seizième",
                          # should be "SAEUZ/A*EPL": "seizième",
                          })
@@ -366,8 +366,7 @@ class TestPluvier:
 
     def test_lesson14_star_N_for_ending_on(self):
         self.assertSame({
-            #"PH-L/*PB": "melon",
-            "PHL/*PB": "melon",
+            "PH-L/*PB": "melon",
 #            "PHOPB": "mon",
 #            "PH-PB": "million",
                          })
@@ -1287,7 +1286,7 @@ class TestPluvier:
 
     def test_lesson50_LZ_sound_ille_RLZ_sound_reille(self):
         self.assertSame({
-            "ABLZ": "habille",
+            "HABLZ": "habille",
 #            "AEUG/AULZ": "aiguille",
             "AB/AEULZ": "abeille",
             "PWEULZ": "bille",
@@ -1620,8 +1619,13 @@ class TestPluvier:
         })
 
     def test_new_rule_start_H(self):
+        self.assertAllMatching("hameau", ["HAPL/OE"])
+
+
+    def test_new_rule_e_ee(self):
         self.assertSame({
-            "HAL" : "traitée",
+            "TRET/-D" : "traité",
+            "TRETD" : "traitée",
         })
 
 
@@ -1671,6 +1675,8 @@ class TestPluvier:
                          })
     def test_not_appears(self):
         self.assertSame({
+            "AP/RAEU": "après",
+            
             "TKWOEUB": "écris",
        })
 
