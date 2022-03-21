@@ -689,6 +689,7 @@ class TestPluvier:
         })            
     def test_lesson27_STK_for_starting_des_and_dec_following_by_woyel(self):
         self.assertSame({
+                "RAFL/RPL/EUR": "remplir",
 #            "TKAEUS/*EUPB": "dessin",
             "STKEUR": "désir",
 #            "STKAPBDZ": "descendre",
@@ -794,7 +795,7 @@ class TestPluvier:
     def test_lesson29_BGS_suffix_for_cation(self):
         self.assertSame({
  #           "EUD/TP*EUBGS": "identification",
-            "HRAGS": "location",
+#            "HRAGS": "location",
            "WEFRBGS": "vérification",
             "KPHEUBGS": "communication",
                          })
@@ -958,6 +959,7 @@ class TestPluvier:
         })
     def test_lesson35_sounds_FRP_mpe_FRPL_mple_FRPT_mpte_PL_ple(self):
         self.assertSame({
+            "RAFRPL/EUR": "remplir",
             "KAFRP": "campe",
 # not in lexique :             "STAFRP": "étampe",
             "TRAFRP": "trempe",
@@ -1248,10 +1250,11 @@ class TestPluvier:
 
             })
 #todo : 
-    def test_TODO_lesson47_DAOEZ_for_starting_des_not_followed_by_steno_woyel(self):
+    def test_lesson47_DAOEZ_for_starting_des_not_followed_by_steno_woyel(self):
         self.assertSame({
  #           "STKHREUBS": "déséquilibre",
-#           "TKAOEZ/SPWEG/R*E": "désintégré",
+           "TKAOEZ/SPWEG/R*E": "désintégré",
+#            "TKAERPL": "désarme",
             "TKAOEZ/KHREUBS": "déséquilibre",
 
             })

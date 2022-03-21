@@ -1,0 +1,2760 @@
+{
+    "-BGS/PRAEUS": [
+        "expresse",
+        [
+            "-BGS/PRAEUS",
+            "express"
+        ]
+    ],
+    "*D": [
+        "die",
+        [
+            "*D",
+            "dit"
+        ]
+    ],
+    "*EUL": [
+        "île",
+        [
+            "*EUL",
+            "{^ile}"
+        ]
+    ],
+    "A*": [
+        "ah",
+        [
+            "A*",
+            "a"
+        ]
+    ],
+    "AD/EUGZ": [
+        "addition",
+        [
+            "AD/EUGZ",
+            "additionne"
+        ]
+    ],
+    "AEUP/AEUS": [
+        "épaisse",
+        [
+            "AEUP/AEUS",
+            "espèce"
+        ]
+    ],
+    "AEUS": [
+        "s",
+        [
+            "AEUS",
+            "est-ce"
+        ]
+    ],
+    "AFP": [
+        "achat",
+        [
+            "AFP",
+            "hache"
+        ]
+    ],
+    "AFRB": [
+        "averse",
+        [
+            "AFRB",
+            "arrive"
+        ]
+    ],
+    "AFRBGS": [
+        "aversion",
+        [
+            "AFRBGS",
+            "ancre"
+        ]
+    ],
+    "AFRPB/*EUF": [
+        "archive",
+        [
+            "AFRPB/*EUF",
+            "archives"
+        ]
+    ],
+    "AL": [
+        "ale",
+        [
+            "AL",
+            "à le"
+        ]
+    ],
+    "ALG": [
+        "algue",
+        [
+            "ALG",
+            "à la"
+        ]
+    ],
+    "ALGTS": [
+        "attelle",
+        [
+            "ALGTS",
+            "a-t-elle"
+        ]
+    ],
+    "ALZ": [
+        "aïe",
+        [
+            "ALZ",
+            "aille"
+        ]
+    ],
+    "AOEU": [
+        "oeil",
+        [
+            "AOEU",
+            "yeux"
+        ]
+    ],
+    "AOFR": [
+        "oeuvre",
+        [
+            "AOFR",
+            "œuvre"
+        ]
+    ],
+    "AOLZ": [
+        "oeil",
+        [
+            "AOLZ",
+            "œil"
+        ]
+    ],
+    "ARPL": [
+        "arme",
+        [
+            "ARPL",
+            "à monsieur"
+        ]
+    ],
+    "ART": [
+        "acteur",
+        [
+            "ART",
+            "arrête"
+        ]
+    ],
+    "AS": [
+        "as",
+        [
+            "AS",
+            "à ce"
+        ]
+    ],
+    "EFRB": [
+        "éversé",
+        [
+            "EFRB",
+            "envers"
+        ]
+    ],
+    "ETS": [
+        "éther",
+        [
+            "ETS",
+            "était"
+        ]
+    ],
+    "EUG": [
+        "igue",
+        [
+            "EUG",
+            "image"
+        ]
+    ],
+    "H-L": [
+        "halle",
+        [
+            "H-L",
+            "ne le"
+        ]
+    ],
+    "HA*EU": [
+        "haie",
+        [
+            "HA*EU",
+            "n'ait"
+        ]
+    ],
+    "HAEU": [
+        "hé",
+        [
+            "HAEU",
+            "haie"
+        ]
+    ],
+    "HAFP": [
+        "hache",
+        [
+            "HAFP",
+            "hasch"
+        ]
+    ],
+    "HAL": [
+        "halle",
+        [
+            "HAL",
+            "hall"
+        ]
+    ],
+    "HAUL": [
+        "huile",
+        [
+            "HAUL",
+            "hâle"
+        ]
+    ],
+    "HAUT": [
+        "huit",
+        [
+            "HAUT",
+            "hâte"
+        ]
+    ],
+    "HEU": [
+        "hi",
+        [
+            "HEU",
+            "ni"
+        ]
+    ],
+    "HOPB": [
+        "hon",
+        [
+            "HOPB",
+            "nous avons"
+        ]
+    ],
+    "HOT": [
+        "hot",
+        [
+            "HOT",
+            "hotte"
+        ]
+    ],
+    "HR*EUZ": [
+        "lyse",
+        [
+            "HR*EUZ",
+            "Lise"
+        ]
+    ],
+    "HR*UB": [
+        "l'une",
+        [
+            "HR*UB",
+            "lune"
+        ]
+    ],
+    "HR*Z": [
+        "la",
+        [
+            "HR*Z",
+            "elle s'est"
+        ]
+    ],
+    "HRA": [
+        "la",
+        [
+            "HRA",
+            "elle a"
+        ]
+    ],
+    "HRA*": [
+        "là",
+        [
+            "HRA*",
+            "l'a"
+        ]
+    ],
+    "HRA*BG": [
+        "lacs",
+        [
+            "HRA*BG",
+            "l'accord"
+        ]
+    ],
+    "HRA*F": [
+        "lav",
+        [
+            "HRA*F",
+            "lave"
+        ]
+    ],
+    "HRAEU": [
+        "lait",
+        [
+            "HRAEU",
+            "laid"
+        ]
+    ],
+    "HRAF": [
+        "lave",
+        [
+            "HRAF",
+            "elle a fait"
+        ]
+    ],
+    "HREUD": [
+        "liée",
+        [
+            "HREUD",
+            "lundi"
+        ]
+    ],
+    "HROE": [
+        "allô",
+        [
+            "HROE",
+            "lot"
+        ]
+    ],
+    "HROEUD": [
+        "lloyd",
+        [
+            "HROEUD",
+            "elle doit"
+        ]
+    ],
+    "HROG": [
+        "loge",
+        [
+            "HROG",
+            "elles en ont"
+        ]
+    ],
+    "HROT": [
+        "lotte",
+        [
+            "HROT",
+            "lot"
+        ]
+    ],
+    "HROU": [
+        "loup",
+        [
+            "HROU",
+            "elles ont eu"
+        ]
+    ],
+    "HRU": [
+        "l'un",
+        [
+            "HRU",
+            "lu"
+        ]
+    ],
+    "HRUB": [
+        "lune",
+        [
+            "HRUB",
+            "l'une"
+        ]
+    ],
+    "HRUP": [
+        "lump",
+        [
+            "HRUP",
+            "loup"
+        ]
+    ],
+    "HRUPB": [
+        "lune",
+        [
+            "HRUPB",
+            "l'un"
+        ]
+    ],
+    "K-PB/*EL": [
+        "quenelle",
+        [
+            "K-PB/*EL",
+            "conditionnel"
+        ]
+    ],
+    "K-PBL": [
+        "quenelle",
+        [
+            "K-PBL",
+            "conditionnel"
+        ]
+    ],
+    "K*U": [
+        "q",
+        [
+            "K*U",
+            "continue"
+        ]
+    ],
+    "KA": [
+        "cas",
+        [
+            "KA",
+            "quand"
+        ]
+    ],
+    "KA*": [
+        "k",
+        [
+            "KA*",
+            "cas"
+        ]
+    ],
+    "KA*B": [
+        "canne",
+        [
+            "KA*B",
+            "Cannes"
+        ]
+    ],
+    "KAB": [
+        "cane",
+        [
+            "KAB",
+            "canne"
+        ]
+    ],
+    "KABG": [
+        "caque",
+        [
+            "KABG",
+            "quand est-ce que"
+        ]
+    ],
+    "KAE": [
+        "quiet",
+        [
+            "KAE",
+            "qu'à"
+        ]
+    ],
+    "KAFP": [
+        "cash",
+        [
+            "KAFP",
+            "cache"
+        ]
+    ],
+    "KAG": [
+        "cage",
+        [
+            "KAG",
+            "quand je"
+        ]
+    ],
+    "KAL": [
+        "cale",
+        [
+            "KAL",
+            "quand le"
+        ]
+    ],
+    "KALT": [
+        "qualité",
+        [
+            "KALT",
+            "qu'a-t-il"
+        ]
+    ],
+    "KAOR": [
+        "coeur",
+        [
+            "KAOR",
+            "cœur"
+        ]
+    ],
+    "KAPB": [
+        "quand",
+        [
+            "KAPB",
+            "camp"
+        ]
+    ],
+    "KAPG": [
+        "cagne",
+        [
+            "KAPG",
+            "campagne"
+        ]
+    ],
+    "KAR/*PB": [
+        "carron",
+        [
+            "KAR/*PB",
+            "Caron"
+        ]
+    ],
+    "KATS": [
+        "quatre",
+        [
+            "KATS",
+            "4"
+        ]
+    ],
+    "KAUR": [
+        "cuire",
+        [
+            "KAUR",
+            "cuir"
+        ]
+    ],
+    "KERT": [
+        "quêteur",
+        [
+            "KERT",
+            "enquêteur"
+        ]
+    ],
+    "KEUBG": [
+        "kick",
+        [
+            "KEUBG",
+            "qu'est-ce qui"
+        ]
+    ],
+    "KHAG": [
+        "minage",
+        [
+            "KHAG",
+            "qu'il en a"
+        ]
+    ],
+    "KHEU": [
+        "mini",
+        [
+            "KHEU",
+            "qu'il y"
+        ]
+    ],
+    "KHEUTS": [
+        "ministre",
+        [
+            "KHEUTS",
+            "ministère"
+        ]
+    ],
+    "KHRA": [
+        "calla",
+        [
+            "KHRA",
+            "qu'elle a"
+        ]
+    ],
+    "KHRAEUG": [
+        "collègue",
+        [
+            "KHRAEUG",
+            "collège"
+        ]
+    ],
+    "KHROBG": [
+        "cloque",
+        [
+            "KHROBG",
+            "colloque"
+        ]
+    ],
+    "KHROR": [
+        "clore",
+        [
+            "KHROR",
+            "chlore"
+        ]
+    ],
+    "KO*L": [
+        "colle",
+        [
+            "KO*L",
+            "{^cole}"
+        ]
+    ],
+    "KO*UR": [
+        "courre",
+        [
+            "KO*UR",
+            "court"
+        ]
+    ],
+    "KOEL": [
+        "khôl",
+        [
+            "KOEL",
+            "colle"
+        ]
+    ],
+    "KOL": [
+        "col",
+        [
+            "KOL",
+            "qu'on le"
+        ]
+    ],
+    "KOPBTS": [
+        "connaître",
+        [
+            "KOPBTS",
+            "contre"
+        ]
+    ],
+    "KPA": [
+        "compas",
+        [
+            "KPA",
+            "que ça"
+        ]
+    ],
+    "KPAPG": [
+        "compagne",
+        [
+            "KPAPG",
+            "campagne"
+        ]
+    ],
+    "KPOPL": [
+        "ex-homme",
+        [
+            "KPOPL",
+            "maximum"
+        ]
+    ],
+    "KPROEU": [
+        "ex-roi",
+        [
+            "KPROEU",
+            "43"
+        ]
+    ],
+    "KPUT": [
+        "comput",
+        [
+            "KPUT",
+            "exécute"
+        ]
+    ],
+    "KPWREUBGS": [
+        "imbrication",
+        [
+            "KPWREUBGS",
+            "86"
+        ]
+    ],
+    "KRA": [
+        "cracra",
+        [
+            "KRA",
+            "qui a"
+        ]
+    ],
+    "KRA*B": [
+        "crabe",
+        [
+            "KRA*B",
+            "qui n'a"
+        ]
+    ],
+    "KRAB": [
+        "crâne",
+        [
+            "KRAB",
+            "crabe"
+        ]
+    ],
+    "KRAPB": [
+        "crâne",
+        [
+            "KRAPB",
+            "cran"
+        ]
+    ],
+    "KREPD": [
+        "crêpée",
+        [
+            "KREPD",
+            "corresponde"
+        ]
+    ],
+    "KREUBG": [
+        "cric",
+        [
+            "KREUBG",
+            "qu'est-ce qui"
+        ]
+    ],
+    "KROEL": [
+        "crawl",
+        [
+            "KROEL",
+            "contrôle"
+        ]
+    ],
+    "KRU/*EL": [
+        "cruelle",
+        [
+            "KRU/*EL",
+            "cruel"
+        ]
+    ],
+    "KRUL": [
+        "cruelle",
+        [
+            "KRUL",
+            "cruel"
+        ]
+    ],
+    "KU": [
+        "cul",
+        [
+            "KU",
+            "continu"
+        ]
+    ],
+    "KUB": [
+        "cube",
+        [
+            "KUB",
+            "qu'une"
+        ]
+    ],
+    "KWA": [
+        "quoi",
+        [
+            "KWA",
+            "il y a"
+        ]
+    ],
+    "KWAR": [
+        "couard",
+        [
+            "KWAR",
+            "quart"
+        ]
+    ],
+    "KWR*Z": [
+        "ya",
+        [
+            "KWR*Z",
+            "il s'est"
+        ]
+    ],
+    "O*U": [
+        "ou",
+        [
+            "O*U",
+            "on lui"
+        ]
+    ],
+    "OE": [
+        "au",
+        [
+            "OE",
+            "-"
+        ]
+    ],
+    "OEB": [
+        "aube",
+        [
+            "OEB",
+            "on est"
+        ]
+    ],
+    "OEG": [
+        "auge",
+        [
+            "OEG",
+            "aujourd'hui"
+        ]
+    ],
+    "OELGTS": [
+        "autel",
+        [
+            "OELGTS",
+            "hôtel"
+        ]
+    ],
+    "OERT": [
+        "auteur",
+        [
+            "OERT",
+            "autorité"
+        ]
+    ],
+    "OETS": [
+        "autre",
+        [
+            "OETS",
+            "on était"
+        ]
+    ],
+    "OEUT": [
+        "watt",
+        [
+            "OEUT",
+            "{^-toi}"
+        ]
+    ],
+    "OF": [
+        "ove",
+        [
+            "OF",
+            "on fait"
+        ]
+    ],
+    "OFL": [
+        "off",
+        [
+            "OFL",
+            "autrefois"
+        ]
+    ],
+    "OPBS": [
+        "once",
+        [
+            "OPBS",
+            "on nous"
+        ]
+    ],
+    "OPBZ": [
+        "onze",
+        [
+            "OPBZ",
+            "11"
+        ]
+    ],
+    "ORB": [
+        "orbe",
+        [
+            "ORB",
+            "aussi"
+        ]
+    ],
+    "ORBG": [
+        "orque",
+        [
+            "ORBG",
+            "ocre"
+        ]
+    ],
+    "ORG": [
+        "orgue",
+        [
+            "ORG",
+            "organise"
+        ]
+    ],
+    "ORPL": [
+        "orme",
+        [
+            "ORPL",
+            "homme"
+        ]
+    ],
+    "OS": [
+        "os",
+        [
+            "OS",
+            "on se"
+        ]
+    ],
+    "OU": [
+        "où",
+        [
+            "OU",
+            "ou"
+        ]
+    ],
+    "OULZ": [
+        "ouille",
+        [
+            "OULZ",
+            "houille"
+        ]
+    ],
+    "P*EUBG": [
+        "pic",
+        [
+            "P*EUBG",
+            "pique"
+        ]
+    ],
+    "PAD": [
+        "pad",
+        [
+            "PAD",
+            "pendant"
+        ]
+    ],
+    "PAEPB": [
+        "pian",
+        [
+            "PAEPB",
+            "patient"
+        ]
+    ],
+    "PAER": [
+        "pier",
+        [
+            "PAER",
+            "pierre"
+        ]
+    ],
+    "PAEUPB": [
+        "peigne",
+        [
+            "PAEUPB",
+            "pain"
+        ]
+    ],
+    "PAEUR": [
+        "père",
+        [
+            "PAEUR",
+            "paire"
+        ]
+    ],
+    "PAGZ": [
+        "passion",
+        [
+            "PAGZ",
+            "passionne"
+        ]
+    ],
+    "PAL": [
+        "pâle",
+        [
+            "PAL",
+            "pale"
+        ]
+    ],
+    "PAOEU": [
+        "pieu",
+        [
+            "PAOEU",
+            "pieux"
+        ]
+    ],
+    "PAPG": [
+        "pagne",
+        [
+            "PAPG",
+            "par après"
+        ]
+    ],
+    "PAR": [
+        "par",
+        [
+            "PAR",
+            "part"
+        ]
+    ],
+    "PARL": [
+        "pâleur",
+        [
+            "PARL",
+            "parle"
+        ]
+    ],
+    "PARS": [
+        "parce",
+        [
+            "PARS",
+            "paresse"
+        ]
+    ],
+    "PART": [
+        "parité",
+        [
+            "PART",
+            "parte"
+        ]
+    ],
+    "PE": [
+        "p.",
+        [
+            "PE",
+            "pouvez"
+        ]
+    ],
+    "PER/O*U": [
+        "pérou",
+        [
+            "PER/O*U",
+            "Pérou"
+        ]
+    ],
+    "PEU": [
+        "pis",
+        [
+            "PEU",
+            "pie"
+        ]
+    ],
+    "PEUBG": [
+        "pique",
+        [
+            "PEUBG",
+            "pic"
+        ]
+    ],
+    "PEUPB": [
+        "pain",
+        [
+            "PEUPB",
+            "pin"
+        ]
+    ],
+    "PH-PBD": [
+        "menée",
+        [
+            "PH-PBD",
+            "million de dollars"
+        ]
+    ],
+    "PH*EU": [
+        "mi",
+        [
+            "PH*EU",
+            "m'y"
+        ]
+    ],
+    "PH*EUBGS": [
+        "miction",
+        [
+            "PH*EUBGS",
+            "mixte"
+        ]
+    ],
+    "PHA*RBG": [
+        "mark",
+        [
+            "PHA*RBG",
+            "Marc"
+        ]
+    ],
+    "PHAEUR": [
+        "mère",
+        [
+            "PHAEUR",
+            "maire"
+        ]
+    ],
+    "PHAEUTS": [
+        "mestre",
+        [
+            "PHAEUTS",
+            "mètre"
+        ]
+    ],
+    "PHAFP": [
+        "mâche",
+        [
+            "PHAFP",
+            "match"
+        ]
+    ],
+    "PHAPBG": [
+        "mangue",
+        [
+            "PHAPBG",
+            "manque"
+        ]
+    ],
+    "PHAPBGZ": [
+        "mention",
+        [
+            "PHAPBGZ",
+            "mentionne"
+        ]
+    ],
+    "PHAPBT/O*EBGS": [
+        "mentaux",
+        [
+            "PHAPBT/O*EBGS",
+            "manteaux"
+        ]
+    ],
+    "PHAPL": [
+        "mam",
+        [
+            "PHAPL",
+            "madame"
+        ]
+    ],
+    "PHAR/A*EUB": [
+        "marennes",
+        [
+            "PHAR/A*EUB",
+            "marraine"
+        ]
+    ],
+    "PHARLGTS": [
+        "martel",
+        [
+            "PHARLGTS",
+            "Martel"
+        ]
+    ],
+    "PHE": [
+        "mes",
+        [
+            "PHE",
+            "mai"
+        ]
+    ],
+    "PHEUT": [
+        "mythe",
+        [
+            "PHEUT",
+            "maintenant"
+        ]
+    ],
+    "PHO": [
+        "moho",
+        [
+            "PHO",
+            "mot"
+        ]
+    ],
+    "PHO*U": [
+        "moue",
+        [
+            "PHO*U",
+            "moud"
+        ]
+    ],
+    "PHOERL": [
+        "moral",
+        [
+            "PHOERL",
+            "morale"
+        ]
+    ],
+    "PHOEUR": [
+        "moire",
+        [
+            "PHOEUR",
+            "mémoire"
+        ]
+    ],
+    "PHOPBTS": [
+        "monstre",
+        [
+            "PHOPBTS",
+            "montre"
+        ]
+    ],
+    "PHORL": [
+        "morelle",
+        [
+            "PHORL",
+            "moral"
+        ]
+    ],
+    "PHR*U": [
+        "plue",
+        [
+            "PHR*U",
+            "pollue"
+        ]
+    ],
+    "PHRAEUB": [
+        "pleine",
+        [
+            "PHRAEUB",
+            "plaine"
+        ]
+    ],
+    "PHRU": [
+        "plus",
+        [
+            "PHRU",
+            "plu"
+        ]
+    ],
+    "PO*S": [
+        "post",
+        [
+            "PO*S",
+            "poste"
+        ]
+    ],
+    "POEGS": [
+        "potion",
+        [
+            "POEGS",
+            "position"
+        ]
+    ],
+    "POEGZ": [
+        "potion",
+        [
+            "POEGZ",
+            "positionne"
+        ]
+    ],
+    "POEU": [
+        "poids",
+        [
+            "POEU",
+            "pois"
+        ]
+    ],
+    "POL": [
+        "pole",
+        [
+            "POL",
+            "Paul"
+        ]
+    ],
+    "POPLT": [
+        "poplité",
+        [
+            "POPLT",
+            "pommette"
+        ]
+    ],
+    "POR": [
+        "porc",
+        [
+            "POR",
+            "port"
+        ]
+    ],
+    "PORBG": [
+        "porque",
+        [
+            "PORBG",
+            "porc"
+        ]
+    ],
+    "POUS": [
+        "pouce",
+        [
+            "POUS",
+            "pousse"
+        ]
+    ],
+    "PR*EU": [
+        "pourri",
+        [
+            "PR*EU",
+            "prie"
+        ]
+    ],
+    "PREU": [
+        "prix",
+        [
+            "PREU",
+            "pris"
+        ]
+    ],
+    "PROB": [
+        "pionne",
+        [
+            "PROB",
+            "probable"
+        ]
+    ],
+    "PROL": [
+        "piaule",
+        [
+            "PROL",
+            "parole"
+        ]
+    ],
+    "PROPB": [
+        "pionne",
+        [
+            "PROPB",
+            "prompt"
+        ]
+    ],
+    "PUBG": [
+        "punk",
+        [
+            "PUBG",
+            "public"
+        ]
+    ],
+    "PW*EU": [
+        "bi",
+        [
+            "PW*EU",
+            "bâti"
+        ]
+    ],
+    "PWA*ER": [
+        "bière",
+        [
+            "PWA*ER",
+            "banquière"
+        ]
+    ],
+    "PWA*L": [
+        "bale",
+        [
+            "PWA*L",
+            "balle"
+        ]
+    ],
+    "PWA*LZ": [
+        "bail",
+        [
+            "PWA*LZ",
+            "bâille"
+        ]
+    ],
+    "PWAE": [
+        "biais",
+        [
+            "PWAE",
+            "banquier"
+        ]
+    ],
+    "PWAEUPG": [
+        "beigne",
+        [
+            "PWAEUPG",
+            "baigne"
+        ]
+    ],
+    "PWAEUR": [
+        "berbère",
+        [
+            "PWAEUR",
+            "bancaire"
+        ]
+    ],
+    "PWAFL/W*E": [
+        "bafoué",
+        [
+            "PWAFL/W*E",
+            "bafouéé"
+        ]
+    ],
+    "PWALZ": [
+        "bye",
+        [
+            "PWALZ",
+            "bail"
+        ]
+    ],
+    "PWEUR": [
+        "bire",
+        [
+            "PWEUR",
+            "bâtir"
+        ]
+    ],
+    "PWEUS": [
+        "bis",
+        [
+            "PWEUS",
+            "bâtisse"
+        ]
+    ],
+    "PWHRO*BG": [
+        "block",
+        [
+            "PWHRO*BG",
+            "bloque"
+        ]
+    ],
+    "PWHROPB": [
+        "ballon",
+        [
+            "PWHROPB",
+            "blond"
+        ]
+    ],
+    "PWHROUZ": [
+        "blues",
+        [
+            "PWHROUZ",
+            "blouse"
+        ]
+    ],
+    "PWO*EU": [
+        "boy",
+        [
+            "PWO*EU",
+            "boit"
+        ]
+    ],
+    "PWO*U": [
+        "boue",
+        [
+            "PWO*U",
+            "bout"
+        ]
+    ],
+    "PWORPB": [
+        "borne",
+        [
+            "PWORPB",
+            "bonheur"
+        ]
+    ],
+    "PWOU": [
+        "bout",
+        [
+            "PWOU",
+            "boue"
+        ]
+    ],
+    "PWRAEU": [
+        "brai",
+        [
+            "PWRAEU",
+            "biais"
+        ]
+    ],
+    "PWREUPB": [
+        "bourrine",
+        [
+            "PWREUPB",
+            "brin"
+        ]
+    ],
+    "PWROE": [
+        "bourreau",
+        [
+            "PWROE",
+            "bureau"
+        ]
+    ],
+    "R*EU": [
+        "ris",
+        [
+            "R*EU",
+            "{^rie}"
+        ]
+    ],
+    "RA": [
+        "rat",
+        [
+            "RA",
+            "ras"
+        ]
+    ],
+    "RA*": [
+        "ya",
+        [
+            "RA*",
+            "rat"
+        ]
+    ],
+    "RA*EUB": [
+        "rêne",
+        [
+            "RA*EUB",
+            "Reine"
+        ]
+    ],
+    "RA*PB": [
+        "errant",
+        [
+            "RA*PB",
+            "rend"
+        ]
+    ],
+    "RABL": [
+        "râble",
+        [
+            "RABL",
+            "raisonnable"
+        ]
+    ],
+    "RAEU": [
+        "rai",
+        [
+            "RAEU",
+            "raie"
+        ]
+    ],
+    "RAOUT": [
+        "raout",
+        [
+            "RAOUT",
+            "autoroute"
+        ]
+    ],
+    "RARP": [
+        "rappeur",
+        [
+            "RARP",
+            "rapport"
+        ]
+    ],
+    "REU": [
+        "riz",
+        [
+            "REU",
+            "ri"
+        ]
+    ],
+    "REUPB": [
+        "rain",
+        [
+            "REUPB",
+            "rein"
+        ]
+    ],
+    "REUZ": [
+        "rise",
+        [
+            "REUZ",
+            "riz"
+        ]
+    ],
+    "RO*EU": [
+        "roy",
+        [
+            "RO*EU",
+            "Roy"
+        ]
+    ],
+    "RO*PL": [
+        "rom",
+        [
+            "RO*PL",
+            "Rome"
+        ]
+    ],
+    "ROBG": [
+        "rock",
+        [
+            "ROBG",
+            "roc"
+        ]
+    ],
+    "RORBG": [
+        "york",
+        [
+            "RORBG",
+            "remorque"
+        ]
+    ],
+    "S": [
+        "se",
+        [
+            "S",
+            "ce"
+        ]
+    ],
+    "S*EUT": [
+        "scythe",
+        [
+            "S*EUT",
+            "cite"
+        ]
+    ],
+    "SA": [
+        "ça",
+        [
+            "SA",
+            "sa"
+        ]
+    ],
+    "SA*EU": [
+        "saie",
+        [
+            "SA*EU",
+            "sait"
+        ]
+    ],
+    "SA*U": [
+        "suie",
+        [
+            "SA*U",
+            "suit"
+        ]
+    ],
+    "SAEPB": [
+        "science",
+        [
+            "SAEPB",
+            "sien"
+        ]
+    ],
+    "SAEU": [
+        "ses",
+        [
+            "SAEU",
+            "sait"
+        ]
+    ],
+    "SAEUB": [
+        "scène",
+        [
+            "SAEUB",
+            "saine"
+        ]
+    ],
+    "SAEUL": [
+        "sel",
+        [
+            "SAEUL",
+            "selle"
+        ]
+    ],
+    "SAEURB": [
+        "serbe",
+        [
+            "SAEURB",
+            "cerne"
+        ]
+    ],
+    "SAEURPLT": [
+        "serment",
+        [
+            "SAEURPLT",
+            "assermente"
+        ]
+    ],
+    "SAEUZ": [
+        "seize",
+        [
+            "SAEUZ",
+            "16"
+        ]
+    ],
+    "SALD": [
+        "salée",
+        [
+            "SALD",
+            "salade"
+        ]
+    ],
+    "SAO": [
+        "ce",
+        [
+            "SAO",
+            "ceux"
+        ]
+    ],
+    "SAOR": [
+        "soeur",
+        [
+            "SAOR",
+            "sœur"
+        ]
+    ],
+    "SAPBS": [
+        "sens",
+        [
+            "SAPBS",
+            "sans nous"
+        ]
+    ],
+    "SAU": [
+        "suisse",
+        [
+            "SAU",
+            "suie"
+        ]
+    ],
+    "SAUF": [
+        "suiv",
+        [
+            "SAUF",
+            "suive"
+        ]
+    ],
+    "SE": [
+        "ses",
+        [
+            "SE",
+            "c'est"
+        ]
+    ],
+    "SEPBS": [
+        "séance",
+        [
+            "SEPBS",
+            "sens"
+        ]
+    ],
+    "SETS": [
+        "setter",
+        [
+            "SETS",
+            "c'était"
+        ]
+    ],
+    "SHA": [
+        "chat",
+        [
+            "SHA",
+            "ça"
+        ]
+    ],
+    "SHA*": [
+        "shah",
+        [
+            "SHA*",
+            "chat"
+        ]
+    ],
+    "SHAEUR": [
+        "cher",
+        [
+            "SHAEUR",
+            "chair"
+        ]
+    ],
+    "SHAPBS": [
+        "chance",
+        [
+            "SHAPBS",
+            "ça nous"
+        ]
+    ],
+    "SHAS": [
+        "chasse",
+        [
+            "SHAS",
+            "ça se"
+        ]
+    ],
+    "SHEUB": [
+        "chine",
+        [
+            "SHEUB",
+            "chemine"
+        ]
+    ],
+    "SHEUPB": [
+        "chine",
+        [
+            "SHEUPB",
+            "chemin"
+        ]
+    ],
+    "SHO*E": [
+        "chaut",
+        [
+            "SHO*E",
+            "show"
+        ]
+    ],
+    "SHUT": [
+        "chut",
+        [
+            "SHUT",
+            "chute"
+        ]
+    ],
+    "SKA": [
+        "ska",
+        [
+            "SKA",
+            "syndicat"
+        ]
+    ],
+    "SKAL": [
+        "skaal",
+        [
+            "SKAL",
+            "syndical"
+        ]
+    ],
+    "SKALZ": [
+        "skaï",
+        [
+            "SKALZ",
+            "syndicalise"
+        ]
+    ],
+    "SKURT": [
+        "chahuteur",
+        [
+            "SKURT",
+            "sécurité"
+        ]
+    ],
+    "SKWAL": [
+        "squale",
+        [
+            "SKWAL",
+            "cheval"
+        ]
+    ],
+    "SKWAO": [
+        "cheveu",
+        [
+            "SKWAO",
+            "52"
+        ]
+    ],
+    "SKWOE": [
+        "squaw",
+        [
+            "SKWOE",
+            "statu quo"
+        ]
+    ],
+    "SKWRA": [
+        "jà",
+        [
+            "SKWRA",
+            "jusqu'à"
+        ]
+    ],
+    "SKWRAEURPL/A*EUB": [
+        "germen",
+        [
+            "SKWRAEURPL/A*EUB",
+            "Germaine"
+        ]
+    ],
+    "SKWRAPB": [
+        "gent",
+        [
+            "SKWRAPB",
+            "gens"
+        ]
+    ],
+    "SKWREUG": [
+        "gigue",
+        [
+            "SKWREUG",
+            "j'imagine"
+        ]
+    ],
+    "SKWREUS": [
+        "gypse",
+        [
+            "SKWREUS",
+            "justice"
+        ]
+    ],
+    "SKWRUPLT": [
+        "jument",
+        [
+            "SKWRUPLT",
+            "jugement"
+        ]
+    ],
+    "SOUFRB": [
+        "sous-verre",
+        [
+            "SOUFRB",
+            "souffert"
+        ]
+    ],
+    "SOUL": [
+        "soûle",
+        [
+            "SOUL",
+            "sous le"
+        ]
+    ],
+    "SPAEU": [
+        "spahi",
+        [
+            "SPAEU",
+            "suspect"
+        ]
+    ],
+    "SPWA*EB": [
+        "antienne",
+        [
+            "SPWA*EB",
+            "Indienne"
+        ]
+    ],
+    "SPWEUBG": [
+        "antique",
+        [
+            "SPWEUBG",
+            "indique"
+        ]
+    ],
+    "SPWOUR": [
+        "entour",
+        [
+            "SPWOUR",
+            "entoure"
+        ]
+    ],
+    "SPWRAPB": [
+        "entrant",
+        [
+            "SPWRAPB",
+            "intrants"
+        ]
+    ],
+    "SPWUR": [
+        "enture",
+        [
+            "SPWUR",
+            "endure"
+        ]
+    ],
+    "SRA": [
+        "serra",
+        [
+            "SRA",
+            "sera"
+        ]
+    ],
+    "SRE": [
+        "serré",
+        [
+            "SRE",
+            "serez"
+        ]
+    ],
+    "ST": [
+        "pst",
+        [
+            "ST",
+            "cet"
+        ]
+    ],
+    "STAEUPL": [
+        "stem",
+        [
+            "STAEUPL",
+            "système"
+        ]
+    ],
+    "STAEURBL": [
+        "sternal",
+        [
+            "STAEURBL",
+            "éternel"
+        ]
+    ],
+    "STAGZ": [
+        "station",
+        [
+            "STAGZ",
+            "stationne"
+        ]
+    ],
+    "STKAPBDZ": [
+        "défendre",
+        [
+            "STKAPBDZ",
+            "descendre"
+        ]
+    ],
+    "STKOE": [
+        "défaut",
+        [
+            "STKOE",
+            "condo"
+        ]
+    ],
+    "STKPWHRAEU": [
+        "déblai",
+        [
+            "STKPWHRAEU",
+            "déblaie"
+        ]
+    ],
+    "STKU": [
+        "déçu",
+        [
+            "STKU",
+            "dessus"
+        ]
+    ],
+    "STKWOE": [
+        "dévot",
+        [
+            "STKWOE",
+            "défaut"
+        ]
+    ],
+    "STPHAEU": [
+        "ciné",
+        [
+            "STPHAEU",
+            "connaît"
+        ]
+    ],
+    "STPHU": [
+        "insu",
+        [
+            "STPHU",
+            "connu"
+        ]
+    ],
+    "STROFL": [
+        "strophe",
+        [
+            "STROFL",
+            "'"
+        ]
+    ],
+    "STUP": [
+        "stup",
+        [
+            "STUP",
+            "c'est un peu"
+        ]
+    ],
+    "SUG": [
+        "sujet",
+        [
+            "SUG",
+            "suggère"
+        ]
+    ],
+    "SUGS": [
+        "succion",
+        [
+            "SUGS",
+            "suggestion"
+        ]
+    ],
+    "SUR": [
+        "sur",
+        [
+            "SUR",
+            "sûr"
+        ]
+    ],
+    "SUS": [
+        "sus",
+        [
+            "SUS",
+            "suce"
+        ]
+    ],
+    "SWRAG": [
+        "sevrage",
+        [
+            "SWRAG",
+            "visage"
+        ]
+    ],
+    "T": [
+        "t'",
+        [
+            "T",
+            "te"
+        ]
+    ],
+    "TAEPB": [
+        "tiens",
+        [
+            "TAEPB",
+            "tien"
+        ]
+    ],
+    "TAFP": [
+        "tâche",
+        [
+            "TAFP",
+            "tache"
+        ]
+    ],
+    "TAG": [
+        "tag",
+        [
+            "TAG",
+            "témoignage"
+        ]
+    ],
+    "TE": [
+        "tes",
+        [
+            "TE",
+            "thé"
+        ]
+    ],
+    "TEU": [
+        "tee",
+        [
+            "TEU",
+            "petit"
+        ]
+    ],
+    "TEUB": [
+        "tine",
+        [
+            "TEUB",
+            "termine"
+        ]
+    ],
+    "TEUL": [
+        "till",
+        [
+            "TEUL",
+            "utile"
+        ]
+    ],
+    "THU": [
+        "tenue",
+        [
+            "THU",
+            "tenu"
+        ]
+    ],
+    "TK*EU": [
+        "die",
+        [
+            "TK*EU",
+            "d'y"
+        ]
+    ],
+    "TK*EUFRB": [
+        "diverse",
+        [
+            "TK*EUFRB",
+            "d'hiver"
+        ]
+    ],
+    "TK*EUG": [
+        "digue",
+        [
+            "TK*EUG",
+            "dis-je"
+        ]
+    ],
+    "TKA": [
+        "da",
+        [
+            "TKA",
+            "dans"
+        ]
+    ],
+    "TKAG": [
+        "dague",
+        [
+            "TKAG",
+            "dommage"
+        ]
+    ],
+    "TKAL": [
+        "dalle",
+        [
+            "TKAL",
+            "dans le"
+        ]
+    ],
+    "TKAO": [
+        "deux",
+        [
+            "TKAO",
+            "2"
+        ]
+    ],
+    "TKAOEU": [
+        "dieu",
+        [
+            "TKAOEU",
+            "Dieu"
+        ]
+    ],
+    "TKAPB": [
+        "dans",
+        [
+            "TKAPB",
+            "dent"
+        ]
+    ],
+    "TKEUB": [
+        "dine",
+        [
+            "TKEUB",
+            "dîne"
+        ]
+    ],
+    "TKEUFRBS": [
+        "diverse",
+        [
+            "TKEUFRBS",
+            "diverses"
+        ]
+    ],
+    "TKEUG": [
+        "ding",
+        [
+            "TKEUG",
+            "digue"
+        ]
+    ],
+    "TKEUL": [
+        "deal",
+        [
+            "TKEUL",
+            "difficile"
+        ]
+    ],
+    "TKEUPL": [
+        "dîme",
+        [
+            "TKEUPL",
+            "demi"
+        ]
+    ],
+    "TKEUS": [
+        "dix",
+        [
+            "TKEUS",
+            "dis"
+        ]
+    ],
+    "TKOEU": [
+        "dois",
+        [
+            "TKOEU",
+            "doit"
+        ]
+    ],
+    "TKOEUB": [
+        "douane",
+        [
+            "TKOEUB",
+            "doyenne"
+        ]
+    ],
+    "TKOUZ": [
+        "douze",
+        [
+            "TKOUZ",
+            "12"
+        ]
+    ],
+    "TKPWAEU": [
+        "gay",
+        [
+            "TKPWAEU",
+            "guet"
+        ]
+    ],
+    "TKPWAEUB": [
+        "gène",
+        [
+            "TKPWAEUB",
+            "gaine"
+        ]
+    ],
+    "TKPWAEUR": [
+        "guerre",
+        [
+            "TKPWAEUR",
+            "guère"
+        ]
+    ],
+    "TKPWAL": [
+        "gale",
+        [
+            "TKPWAL",
+            "gouvernemental"
+        ]
+    ],
+    "TKPWE": [
+        "g",
+        [
+            "TKPWE",
+            "gai"
+        ]
+    ],
+    "TKPWOU": [
+        "debout",
+        [
+            "TKPWOU",
+            "goût"
+        ]
+    ],
+    "TKPWRA*FL": [
+        "graff",
+        [
+            "TKPWRA*FL",
+            "Gravel"
+        ]
+    ],
+    "TKPWRAFL": [
+        "graphe",
+        [
+            "TKPWRAFL",
+            "gravelle"
+        ]
+    ],
+    "TKPWRAFT": [
+        "gravité",
+        [
+            "TKPWRAFT",
+            "gravite"
+        ]
+    ],
+    "TKPWRAL": [
+        "graal",
+        [
+            "TKPWRAL",
+            "gouvernement fédéral"
+        ]
+    ],
+    "TKPWRAS": [
+        "grâce",
+        [
+            "TKPWRAS",
+            "grasse"
+        ]
+    ],
+    "TKPWREU": [
+        "grille",
+        [
+            "TKPWREU",
+            "gris"
+        ]
+    ],
+    "TKREUG": [
+        "dring",
+        [
+            "TKREUG",
+            "dirige"
+        ]
+    ],
+    "TKUB": [
+        "dune",
+        [
+            "TKUB",
+            "d'une"
+        ]
+    ],
+    "TKUPB": [
+        "dune",
+        [
+            "TKUPB",
+            "d'un"
+        ]
+    ],
+    "TKWAEUR": [
+        "douaire",
+        [
+            "TKWAEUR",
+            "divers"
+        ]
+    ],
+    "TKWAL": [
+        "dual",
+        [
+            "TKWAL",
+            "devant le"
+        ]
+    ],
+    "TKWHR": [
+        "douelle",
+        [
+            "TKWHR",
+            "duel"
+        ]
+    ],
+    "TO*R": [
+        "tors",
+        [
+            "TO*R",
+            "tord"
+        ]
+    ],
+    "TOE": [
+        "tôt",
+        [
+            "TOE",
+            "taux"
+        ]
+    ],
+    "TOEL": [
+        "taule",
+        [
+            "TOEL",
+            "tôle"
+        ]
+    ],
+    "TOUBG": [
+        "touque",
+        [
+            "TOUBG",
+            "tout à coup"
+        ]
+    ],
+    "TPA*ER": [
+        "fier",
+        [
+            "TPA*ER",
+            "fière"
+        ]
+    ],
+    "TPAEUL": [
+        "fêle",
+        [
+            "TPAEUL",
+            "facile"
+        ]
+    ],
+    "TPAFL": [
+        "faf",
+        [
+            "TPAFL",
+            "photographe"
+        ]
+    ],
+    "TPAOPB": [
+        "foehn",
+        [
+            "TPAOPB",
+            "façon"
+        ]
+    ],
+    "TPAS": [
+        "face",
+        [
+            "TPAS",
+            "fasse"
+        ]
+    ],
+    "TPEUPB": [
+        "fine",
+        [
+            "TPEUPB",
+            "fin"
+        ]
+    ],
+    "TPH*E": [
+        "né",
+        [
+            "TPH*E",
+            "nie"
+        ]
+    ],
+    "TPHA*EUFL": [
+        "nef",
+        [
+            "TPHA*EUFL",
+            "naïf"
+        ]
+    ],
+    "TPHAO": [
+        "pneu",
+        [
+            "TPHAO",
+            "nœud"
+        ]
+    ],
+    "TPHEU": [
+        "ni",
+        [
+            "TPHEU",
+            "en y"
+        ]
+    ],
+    "TPHEUD": [
+        "niée",
+        [
+            "TPHEUD",
+            "nid"
+        ]
+    ],
+    "TPHOS": [
+        "noce",
+        [
+            "TPHOS",
+            "en sont"
+        ]
+    ],
+    "TPHOTS": [
+        "notre",
+        [
+            "TPHOTS",
+            "notaire"
+        ]
+    ],
+    "TPHRAFRPBLG": [
+        "flash",
+        [
+            "TPHRAFRPBLG",
+            "flanche"
+        ]
+    ],
+    "TPOEUL": [
+        "foil",
+        [
+            "TPOEUL",
+            "folie"
+        ]
+    ],
+    "TPORPL/ALT": [
+        "formalité",
+        [
+            "TPORPL/ALT",
+            "forme a-t-il"
+        ]
+    ],
+    "TPORPLT": [
+        "formant",
+        [
+            "TPORPLT",
+            "formalité"
+        ]
+    ],
+    "TPRATS": [
+        "frater",
+        [
+            "TPRATS",
+            "fracture"
+        ]
+    ],
+    "TPREUP": [
+        "fripe",
+        [
+            "TPREUP",
+            "frippe"
+        ]
+    ],
+    "TPREUZ": [
+        "frise",
+        [
+            "TPREUZ",
+            "franchise"
+        ]
+    ],
+    "TRAEB": [
+        "terrienne",
+        [
+            "TRAEB",
+            "ontarienne"
+        ]
+    ],
+    "TRAEPB": [
+        "terrien",
+        [
+            "TRAEPB",
+            "ontarien"
+        ]
+    ],
+    "TRAEU": [
+        "très",
+        [
+            "TRAEU",
+            "trait"
+        ]
+    ],
+    "TRAEUS": [
+        "terrestre",
+        [
+            "TRAEUS",
+            "tresse"
+        ]
+    ],
+    "TRAO": [
+        "terreux",
+        [
+            "TRAO",
+            "trio"
+        ]
+    ],
+    "TREUL": [
+        "thrill",
+        [
+            "TREUL",
+            "tranquille"
+        ]
+    ],
+    "TRO*E": [
+        "trot",
+        [
+            "TRO*E",
+            "Ontario"
+        ]
+    ],
+    "TROEU": [
+        "trois",
+        [
+            "TROEU",
+            "3"
+        ]
+    ],
+    "TUL": [
+        "tulle",
+        [
+            "TUL",
+            "tu le"
+        ]
+    ],
+    "TURB": [
+        "turne",
+        [
+            "TURB",
+            "tourbe"
+        ]
+    ],
+    "U": [
+        "un",
+        [
+            "U",
+            "eu"
+        ]
+    ],
+    "UPB": [
+        "une",
+        [
+            "UPB",
+            "un"
+        ]
+    ],
+    "W*ES": [
+        "ouest",
+        [
+            "W*ES",
+            "avec cette"
+        ]
+    ],
+    "W*EUS": [
+        "whist",
+        [
+            "W*EUS",
+            "visse"
+        ]
+    ],
+    "WA*B": [
+        "vanne",
+        [
+            "WA*B",
+            "van"
+        ]
+    ],
+    "WAB": [
+        "van",
+        [
+            "WAB",
+            "vanne"
+        ]
+    ],
+    "WABGS": [
+        "vacation",
+        [
+            "WABGS",
+            "vacances"
+        ]
+    ],
+    "WAEPB": [
+        "viens",
+        [
+            "WAEPB",
+            "vient"
+        ]
+    ],
+    "WALZ": [
+        "valise",
+        [
+            "WALZ",
+            "vaille"
+        ]
+    ],
+    "WAO": [
+        "voeu",
+        [
+            "WAO",
+            "vœu"
+        ]
+    ],
+    "WAO*": [
+        "voeux",
+        [
+            "WAO*",
+            "veut"
+        ]
+    ],
+    "WAOL": [
+        "veule",
+        [
+            "WAOL",
+            "veulent"
+        ]
+    ],
+    "WAPBT": [
+        "vente",
+        [
+            "WAPBT",
+            "vante"
+        ]
+    ],
+    "WE": [
+        "ouais",
+        [
+            "WE",
+            "avez"
+        ]
+    ],
+    "WEB": [
+        "web",
+        [
+            "WEB",
+            "veine"
+        ]
+    ],
+    "WEUPB": [
+        "vain",
+        [
+            "WEUPB",
+            "vin"
+        ]
+    ],
+    "WEUS": [
+        "fils",
+        [
+            "WEUS",
+            "vis"
+        ]
+    ],
+    "WHRAF": [
+        "vellave",
+        [
+            "WHRAF",
+            "valve"
+        ]
+    ],
+    "WHRAPB": [
+        "vlan",
+        [
+            "WHRAPB",
+            "violent"
+        ]
+    ],
+    "WO*E": [
+        "veau",
+        [
+            "WO*E",
+            "vaut"
+        ]
+    ],
+    "WOE": [
+        "vos",
+        [
+            "WOE",
+            "veau"
+        ]
+    ],
+    "WOEU": [
+        "voix",
+        [
+            "WOEU",
+            "voie"
+        ]
+    ],
+    "WOUG": [
+        "vouge",
+        [
+            "WOUG",
+            "vous en"
+        ]
+    ],
+    "WRO*L": [
+        "violent",
+        [
+            "WRO*L",
+            "viole"
+        ]
+    ]
+}

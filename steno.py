@@ -594,6 +594,15 @@ class Steno:
                         return word.syll
 
                 return word.syll
+
+        def eat_woyel(self, syll) :
+                if not syll[0]:
+                        return syll
+                if syll[0][0] in ['a','j','u','1','E','e','o','O','8','y' ] :
+                        syll[0]=syll[0][1:]
+                        
+                return syll
+
                 
         def ortho_add_aloneR_infinitif_firstgroup(self, word):
                 verb_word = self.find_same_word_verb(word)
@@ -954,6 +963,11 @@ class Steno:
 
                 for aprefix, phonem  in self.prefix.items():
                         for  one_prefix in aprefix.split('|'):
+                                self.syllabes = [word_str]
+                                                        
+                                if one_prefix=='TKAOEZ':
+                                        self.syllabes = self.eat_woyel(self.syllabes)
+                                        
                                 if not self.ending: 
                                         self.final_encoded.append(Steno_Encoding(self.syllabes, one_prefix, self.suffix.split('|')[0]).encode())
 
@@ -1490,6 +1504,7 @@ class Steno_Encoding:
                 'ERv' : '-/FRB', #v-erve
                 'vEr' : '-/FRB', # cou-vert
                 'vER' : '-/FRB', # travers
+                'Rifi' : '-/FR', # bonus rifi
                 'ijO' : 'AO',
                 'jO' : 'RO|AO',
 
@@ -1548,8 +1563,8 @@ class Steno_Encoding:
                 "§t" : "OFRPT",
                 "@S" : "-AFRPBLG",
                 "5S" : "-EUFRPBLG",
-                '@p' : '-AFRP' , #campe
-                '§p' : '-OFRP', # trompe
+                '@p' : '-/AFRP' , #campe
+                '§p' : '-/OFRP', # trompe
                 'pl' : 'PL',
                 "ER" : "AIR",
                 'gl' : 'GL|-FRLG', #glace or angle
@@ -1570,7 +1585,7 @@ class Steno_Encoding:
         VOWELS = {
                 "a": "A",       # chat
                 "°" : "",
-                'j' : 'i',
+                'j' : 'EU',
                 "Z" : "G",
                 "H" : "H",
                 "5" : "IN",

@@ -420,7 +420,8 @@
         "scie",
         "sis",
         "psi",
-        "cis"
+        "cis",
+        "seille"
     ],
     "A*EU": [
         "ais",
@@ -584,7 +585,8 @@
     ],
     "W*EUL": [
         "vile",
-        "vil"
+        "vil",
+        "vielle"
     ],
     "PHAR/*EUPB": [
         "marine"
@@ -698,7 +700,7 @@
         "coéquipière",
         "co-équipier"
     ],
-    "P-EU/OPB/A*ER": [
+    "PEU/OPB/A*ER": [
         "pionnière"
     ],
     "KOEBG/*EUPB": [
@@ -1564,7 +1566,8 @@
     ],
     "HR*EUR": [
         "lyre",
-        "lire"
+        "lire",
+        "lierre"
     ],
     "PHRA*EUB": [
         "plaine",
@@ -1700,6 +1703,10 @@
     ],
     "ALT/A*ER": [
         "altière"
+    ],
+    "PW*EUL": [
+        "bill",
+        "bielle"
     ],
     "PWHR*": [
         "bill",
@@ -2466,7 +2473,8 @@
         "maharaja"
     ],
     "PH*EUL": [
-        "mil"
+        "mil",
+        "mielle"
     ],
     "TPH*EUP/OPB": [
         "nipponne",

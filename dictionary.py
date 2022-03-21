@@ -41,12 +41,21 @@ class Dictionary:
                 
         return words
     def append_tao(self, dico):
+        dup = {}
         with open('resources/tao_la_salle.json') as json_file:
             data = json.load(json_file)
 
         for elem in data.items():
-            if elem[0] not in dico:
-                dico[elem[0]] = elem[1]
+            if elem[0] in dico and dico[elem[0]] != elem[1]:
+                if elem[0] not in dup:
+                    dup[elem[0]] =[]
+                dup[elem[0]].append(dico[elem[0]])
+                dup[elem[0]].append(elem)
+            dico[elem[0]] = elem[1]
+        dup_object = json.dumps(dup, indent = 4, ensure_ascii=False )
+        with open('resources/dup-tao.json', "w") as d:
+            d.write(dup_object)
+
         return dico
 
     def steno(self,word, force_verb = False):
@@ -54,6 +63,10 @@ class Dictionary:
         return self.steno_class.transform_word(word)
 
     def generate(self) :
+        # with open('resources/dicofr.json') as json_file:
+        #     data = json.load(json_file)
+        # translated_word = self.append_tao(data)
+        # return True
         self.words = self.read_corpus()
         self.words.sort(key=lambda x: x.frequence, reverse=True)
 #        for word in self.words :
