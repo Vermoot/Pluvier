@@ -35,13 +35,6 @@
     "PRAOPL/A*ER": [
         "première"
     ],
-    "TS*": [
-        "terre",
-        "être",
-        "taire",
-        "ter",
-        "aître"
-    ],
     "HRAO*R": [
         "leurs",
         "leurre"
@@ -56,13 +49,14 @@
         "près",
         "prêts"
     ],
-    "PH-T-S*": [
-        "maître",
-        "mettre",
-        "mètre"
-    ],
     "SAO*L": [
         "seule"
+    ],
+    "TS*": [
+        "être",
+        "taire",
+        "ter",
+        "aître"
     ],
     "PH*EU/AOR": [
         "meilleure"
@@ -71,11 +65,6 @@
         "t",
         "te",
         "techno"
-    ],
-    "TKO*EU": [
-        "doigt",
-        "dois",
-        "doit"
     ],
     "A*": [
         "a",
@@ -92,6 +81,10 @@
     "SHER/*EU": [
         "chérie",
         "cherry"
+    ],
+    "KPWORT/AEU/-R": [
+        "emporter",
+        "importer"
     ],
     "AE/PH*EU": [
         "amie"
@@ -140,6 +133,10 @@
     "TKAOZ/A*EPL": [
         "deuxièmes"
     ],
+    "PH-T-S*": [
+        "mètre",
+        "mettre"
+    ],
     "SA*PB": [
         "cent",
         "sang",
@@ -170,10 +167,6 @@
         "fère",
         "faire"
     ],
-    "TPA*EUR": [
-        "fère",
-        "fer"
-    ],
     "SHA*EUR": [
         "chair",
         "chère",
@@ -190,9 +183,6 @@
         "joue",
         "goût",
         "joug"
-    ],
-    "PHAR/A*E": [
-        "marié"
     ],
     "TROEUZ/A*EPL": [
         "troisièmes"
@@ -310,10 +300,6 @@
     "AEUB/PH*EU": [
         "ennemie"
     ],
-    "KA*UR": [
-        "cuir",
-        "cuire"
-    ],
     "SEUF/*EUL": [
         "civile"
     ],
@@ -353,9 +339,6 @@
     ],
     "PA*RLZ": [
         "pareille"
-    ],
-    "STKA*EUR": [
-        "défaire"
     ],
     "TKAO*EU": [
         "deuil",
@@ -446,7 +429,7 @@
     "TK*EUS/PAR/U": [
         "disparue"
     ],
-    "R-P/APBS/-R": [
+    "R-P/APBS/AEU/-R": [
         "repenser",
         "re-penser"
     ],
@@ -563,10 +546,6 @@
         "pa",
         "pât"
     ],
-    "STK*U": [
-        "défunt",
-        "déçue"
-    ],
     "PWAPB/KA*ER": [
         "banquière"
     ],
@@ -628,15 +607,11 @@
     "KO*PBTS": [
         "contre"
     ],
-    "AE/TKPWEUTD": [
-        "agitée",
-        "agité"
-    ],
     "RAPL/-R": [
         "ramer",
         "rappeler"
     ],
-    "PWHR--Z*": [
+    "PWHR-Z*": [
         "bille",
         "bail",
         "bye-bye",
@@ -656,6 +631,10 @@
     "RO*U": [
         "roux"
     ],
+    "KHAEU/-R": [
+        "miner",
+        "mener"
+    ],
     "KOURS/A*ER": [
         "coursière"
     ],
@@ -671,11 +650,6 @@
     ],
     "ROUT/A*ER": [
         "routière"
-    ],
-    "HRA*E": [
-        "allier",
-        "allié",
-        "lié"
     ],
     "KOUFP/A*EU": [
         "couché"
@@ -760,10 +734,6 @@
         "lice",
         "ellipse"
     ],
-    "AE/SURD": [
-        "assurée",
-        "absurde"
-    ],
     "AS/URD": [
         "assurée",
         "absurde"
@@ -799,6 +769,10 @@
     "TKPW*": [
         "j"
     ],
+    "STKWA*ER": [
+        "dévier",
+        "défier"
+    ],
     "KO*EBG/U": [
         "cocue"
     ],
@@ -811,6 +785,10 @@
     ],
     "KOURT/A*ER": [
         "courtière"
+    ],
+    "KPWOEFP/AEU/-R": [
+        "empocher",
+        "embaucher"
     ],
     "PWR-L-Z/-R": [
         "brailler",
@@ -881,6 +859,10 @@
         "té",
         "thé"
     ],
+    "SPWUB/AEU/-R": [
+        "intuber",
+        "entuber"
+    ],
     "SEUPBG/UL/A*ER": [
         "singulière"
     ],
@@ -924,6 +906,10 @@
         "tripler",
         "trimer"
     ],
+    "TREUPL/AEU/-R": [
+        "tripler",
+        "trimer"
+    ],
     "HREUPL/OUZ/*EUPB": [
         "limousine"
     ],
@@ -955,10 +941,6 @@
     ],
     "KORD/OPB/A*ER": [
         "cordonnière"
-    ],
-    "STKA*EU": [
-        "défait",
-        "décédé"
     ],
     "TREZ/OER/A*ER": [
         "trésorière"
@@ -1027,9 +1009,6 @@
     "PHO*FL/RPT/APB": [
         "montant"
     ],
-    "OEBL/EUG/*E": [
-        "obligé"
-    ],
     "PWEUG/OUT/A*ER": [
         "bijoutière"
     ],
@@ -1042,6 +1021,10 @@
         "cène"
     ],
     "TREUPB/PWAL/-R": [
+        "trimbaler",
+        "trimballer"
+    ],
+    "TREUPB/PWAL/AEU/-R": [
         "trimbaler",
         "trimballer"
     ],
@@ -1070,6 +1053,10 @@
         "port"
     ],
     "KRAFP/-R": [
+        "crasher",
+        "cracher"
+    ],
+    "KRAFP/AEU/-R": [
         "crasher",
         "cracher"
     ],
@@ -1118,9 +1105,16 @@
         "carre",
         "quarre"
     ],
+    "SPWET/AEU/-R": [
+        "endetter",
+        "entêter"
+    ],
     "PH*EU": [
         "mie",
         "mi"
+    ],
+    "STK*U": [
+        "déçue"
     ],
     "TK*ES/U": [
         "déçue"
@@ -1144,6 +1138,10 @@
     "ROED/-R": [
         "roder",
         "rôder"
+    ],
+    "KPWAL/AEU/-R": [
+        "empaler",
+        "emballer"
     ],
     "A*EUS/K": [
         "est-ce-que",
@@ -1304,13 +1302,13 @@
         "voulue",
         "velue"
     ],
-    "PWHR--Z/-R": [
+    "PWHR-Z/-R": [
         "bailler",
         "bâiller",
         "biller",
         "bayer"
     ],
-    "STK-G/OET/-R": [
+    "STK-G/OET/AEU/-R": [
         "dégotter",
         "dégoter"
     ],
@@ -1332,7 +1330,7 @@
         "thaïe",
         "thaï"
     ],
-    "THR--Z*": [
+    "THR-Z*": [
         "thaïe",
         "thaï",
         "tille"
@@ -1390,6 +1388,10 @@
         "gon",
         "jonc"
     ],
+    "KPWUT/AEU/-R": [
+        "imputer",
+        "amputer"
+    ],
     "PO*EU": [
         "pouah",
         "pois",
@@ -1408,14 +1410,6 @@
     ],
     "*EUPBTS/TPHAS/ROPBL": [
         "internationale"
-    ],
-    "PREUF/EUL/EG/A*E": [
-        "privilégié"
-    ],
-    "R-L/A*E": [
-        "relié",
-        "rallier",
-        "rallié"
     ],
     "RUD": [
         "ruée",
@@ -1437,10 +1431,6 @@
         "tain",
         "thym",
         "tin"
-    ],
-    "TPHA*E": [
-        "niais",
-        "nié"
     ],
     "REPB/-R": [
         "rainer",
@@ -1466,10 +1456,6 @@
     "SP*ES/RAL": [
         "spéciale"
     ],
-    "KHRO*R": [
-        "chlore",
-        "clore"
-    ],
     "HRA*BG": [
         "laque",
         "lacs",
@@ -1478,7 +1464,7 @@
     "TKPA*PB": [
         "texane"
     ],
-    "A*E/TPH--L": [
+    "A*E/TPH-L": [
         "annales",
         "anale"
     ],
@@ -1503,7 +1489,7 @@
     "TKPWT/*E": [
         "jeté"
     ],
-    "TAFL/RP/O*ERL": [
+    "TAFRP/O*ERL": [
         "temporale",
         "temporal"
     ],
@@ -1595,6 +1581,10 @@
     "TKPWOEG/O*E": [
         "jojo"
     ],
+    "R-T/RET/AEUD": [
+        "re-traitée",
+        "retraitée"
+    ],
     "R-T/RETD": [
         "re-traitée",
         "retraitée"
@@ -1656,8 +1646,16 @@
     "EUPB/POEL/*EU": [
         "impolie"
     ],
+    "KPWORT/AEUD": [
+        "emportée",
+        "importée"
+    ],
     "TPROFL/RPT/AL/A*ER": [
         "frontalière"
+    ],
+    "KPHAPBD/AEU/-R": [
+        "quémander",
+        "commander"
     ],
     "HRO*BG": [
         "alloc",
@@ -1666,7 +1664,7 @@
     "PR-EUPBS/A*ER": [
         "princière"
     ],
-    "KPEUL/-R": [
+    "KPEUL/AEU/-R": [
         "compiler",
         "exiler"
     ],
@@ -1691,9 +1689,6 @@
         "pêcher",
         "pêché"
     ],
-    "HREUS/APBS/A*E": [
-        "licencié"
-    ],
     "PAR/WH*U": [
         "parvenue"
     ],
@@ -1712,11 +1707,11 @@
         "bill",
         "balle"
     ],
+    "STKWO*E": [
+        "dévot"
+    ],
     "PHET/*EUS": [
         "métisse"
-    ],
-    "SARBG/EUFL/A*E": [
-        "sacrifié"
     ],
     "SA*EUR": [
         "serf",
@@ -1744,6 +1739,10 @@
     "SA*U": [
         "sui",
         "suie"
+    ],
+    "TPR-L-Z/AO*R": [
+        "ferrailleur",
+        "frayeur"
     ],
     "PA*EURS/APB": [
         "persane",
@@ -1832,6 +1831,10 @@
         "chatter",
         "tchatcher"
     ],
+    "SPWET/AEUD": [
+        "endettée",
+        "entêtée"
+    ],
     "EUPBT/*EGS/AL": [
         "intégrale"
     ],
@@ -1886,6 +1889,10 @@
     ],
     "KAR/AF/APB/A*ER": [
         "caravanière"
+    ],
+    "KPWAL/AEUD": [
+        "empalée",
+        "emballée"
     ],
     "PHAPL/*EU": [
         "mammy",
@@ -2025,7 +2032,7 @@
         "ran",
         "errant"
     ],
-    "R-/WHR--Z/A*L": [
+    "R-/WHR-Z/A*L": [
         "royale"
     ],
     "W-EUPBT/A*EPL": [
@@ -2066,7 +2073,7 @@
         "cheik",
         "scheik"
     ],
-    "STK-T/OEPB/-R": [
+    "STK-T/OPB/AEU/-R": [
         "détonner",
         "détoner"
     ],
@@ -2104,9 +2111,6 @@
         "poly",
         "polie"
     ],
-    "REFL/UG/A*E": [
-        "réfugié"
-    ],
     "PWA*T": [
         "bath",
         "baht"
@@ -2143,9 +2147,6 @@
     "KPHA*EUR": [
         "khmère",
         "khmer"
-    ],
-    "TPHEG/L/EUG/*E": [
-        "négligé"
     ],
     "SA*EPB": [
         "sien",
@@ -2213,7 +2214,15 @@
     "KAB/ART/A*ER": [
         "cabaretière"
     ],
+    "TKO*EU": [
+        "doit",
+        "dois"
+    ],
     "TKREUBL/-R": [
+        "dribler",
+        "dribbler"
+    ],
+    "TKREUBL/AEU/-R": [
         "dribler",
         "dribbler"
     ],
@@ -2242,9 +2251,6 @@
         "côlon",
         "colon"
     ],
-    "EUPB/EUS/A*E": [
-        "initié"
-    ],
     "RO*PB": [
         "ron",
         "rogne"
@@ -2260,7 +2266,7 @@
         "tendeur",
         "tender"
     ],
-    "STK-BG/HRAPBSH/-R": [
+    "STK-BG/HRAFL/RPBLG/AEU/-R": [
         "déclancher",
         "déclencher"
     ],
@@ -2281,7 +2287,11 @@
         "chlinguer",
         "schlinguer"
     ],
-    "K-T/-R": [
+    "SH-L/EUPBG/AEU/-R": [
+        "chlinguer",
+        "schlinguer"
+    ],
+    "K-T/AEU/-R": [
         "quêter",
         "compter"
     ],
@@ -2291,9 +2301,6 @@
     ],
     "SHER/*EUFL": [
         "chérif"
-    ],
-    "KRUS/EUFL/A*E": [
-        "crucifié"
     ],
     "LZ*": [
         "lise",
@@ -2352,6 +2359,10 @@
     "PWOUT/EUBG/A*ER": [
         "boutiquière"
     ],
+    "TKAOEZ/FBGT/AEU/-R": [
+        "désaffecter",
+        "désinfecter"
+    ],
     "ARD/-R": [
         "harder",
         "arder"
@@ -2401,9 +2412,6 @@
         "haler",
         "aller"
     ],
-    "EUPBS/APBD/A*E": [
-        "incendié"
-    ],
     "PHAEURS/A*ER": [
         "mercière"
     ],
@@ -2426,7 +2434,7 @@
         "zyeuter",
         "zieuter"
     ],
-    "Z/AOEUT/-R": [
+    "Z/AOEUT/AEU/-R": [
         "zyeuter",
         "zieuter"
     ],
@@ -2442,9 +2450,6 @@
     ],
     "ROUT/EUPB/A*ER": [
         "routinière"
-    ],
-    "AFL/EUL/A*E": [
-        "affilié"
     ],
     "APBT/*EUF/OL": [
         "antivol"
@@ -2493,7 +2498,7 @@
     "PER/*EUFL": [
         "périf"
     ],
-    "R-B/OUBG/HR/-R": [
+    "R-B/OUBG/HRAEU/-R": [
         "reboucler",
         "re-boucler"
     ],
@@ -2590,7 +2595,7 @@
         "bât",
         "bah"
     ],
-    "STK-G/OUT/-R": [
+    "STK-G/OUT/AEU/-R": [
         "dégoutter",
         "dégoûter"
     ],
@@ -2633,11 +2638,15 @@
         "sniff",
         "snif"
     ],
-    "AE/SEPB/-R": [
+    "AE/SEPB/AEU/-R": [
         "assener",
         "asséner"
     ],
     "AS/EPB/-R": [
+        "assener",
+        "asséner"
+    ],
+    "AS/EPB/AEU/-R": [
         "assener",
         "asséner"
     ],
@@ -2714,10 +2723,6 @@
     "KAPB/KAPB/A*ER": [
         "cancanière"
     ],
-    "STK-FL/ER/-R": [
-        "déferrer",
-        "déférer"
-    ],
     "TKEFL/ER/-R": [
         "déferrer",
         "déférer"
@@ -2788,7 +2793,7 @@
         "raff",
         "raval"
     ],
-    "R-BG/HRAS/-R": [
+    "R-BG/HRAS/AEU/-R": [
         "reclasser",
         "re-classer"
     ],
@@ -2847,7 +2852,7 @@
     "R*URL": [
         "rurale"
     ],
-    "AE/HREG/-R": [
+    "AE/HREG/AEU/-R": [
         "alléguer",
         "alléger"
     ],
@@ -2855,12 +2860,13 @@
         "alléguer",
         "alléger"
     ],
+    "AL/EG/AEU/-R": [
+        "alléguer",
+        "alléger"
+    ],
     "KOES/EUPB/-R": [
         "co-signer",
         "cosigner"
-    ],
-    "KOER/EUG/*E": [
-        "corrigé"
     ],
     "TKO*RS/AL": [
         "dorsale"
@@ -2881,7 +2887,7 @@
         "halter",
         "haleter"
     ],
-    "HALT/-R": [
+    "HALT/AEU/-R": [
         "halter",
         "haleter"
     ],
@@ -2947,13 +2953,17 @@
         "tapie",
         "tapi"
     ],
-    "A*E/HR--Z": [
+    "A*E/HR-Z": [
         "alise",
         "ail"
     ],
     "A*LZ": [
         "alise",
         "ail"
+    ],
+    "KPWHRAEU/-R": [
+        "ambler",
+        "combler"
     ],
     "KA*PBL": [
         "cannelle"
@@ -2965,10 +2975,6 @@
     "KOEBG/PEUS/T/-R": [
         "co-exister",
         "coexister"
-    ],
-    "STKPEUTD": [
-        "dépitée",
-        "dépité"
     ],
     "A*EUS": [
         "est-ce",
@@ -2989,7 +2995,7 @@
     "TPHA*FL": [
         "navale"
     ],
-    "KHR--Z/-R": [
+    "KHR-Z/-R": [
         "quiller",
         "cailler"
     ],
@@ -3059,7 +3065,7 @@
         "cul-cul",
         "cucu"
     ],
-    "STKHRAS/-R": [
+    "STKHRAS/AEU/-R": [
         "délacer",
         "délasser"
     ],
@@ -3069,6 +3075,14 @@
     ],
     "TPAL/O*E": [
         "falot"
+    ],
+    "TKPWR-L*": [
+        "graal",
+        "gril"
+    ],
+    "SPWAPBT/AEU/-R": [
+        "indenter",
+        "intenter"
     ],
     "SKWRAPL/AEUBG/-*EUPB": [
         "jamaïquain"
@@ -3108,7 +3122,7 @@
         "pacson",
         "paqson"
     ],
-    "PHR--Z/A*R": [
+    "PHR-Z/A*R": [
         "paillard"
     ],
     "PROES/ED/UR/A*ER": [
@@ -3118,11 +3132,6 @@
         "quarte",
         "kart",
         "karité"
-    ],
-    "STKA*PB": [
-        "sedan",
-        "défends",
-        "défens"
     ],
     "S*E/APB": [
         "séant"
@@ -3134,11 +3143,15 @@
     "EBG/OET/A*ER": [
         "échotière"
     ],
+    "HRA*E": [
+        "allier",
+        "lié"
+    ],
     "KRA*EU": [
         "crêt",
         "cré"
     ],
-    "AFL/RPL/*EU": [
+    "AFRPL/*EU": [
         "emplie",
         "empli"
     ],
@@ -3153,7 +3166,7 @@
         "entre-jambe",
         "entre-jambes"
     ],
-    "SPWR--G/A*FL/RB": [
+    "SPWR-G/A*FL/RB": [
         "entre-jambe",
         "entre-jambes"
     ],
@@ -3214,11 +3227,11 @@
     "SAPBSKR*EU": [
         "sanscrit"
     ],
-    "SHAFL/RP/AOUPB/-R": [
+    "SHAFRP/AOUPB/-R": [
         "shampooiner",
         "shampouiner"
     ],
-    "SHAPB/PAOUPB/-R": [
+    "SHAFRP/AOUPB/AEU/-R": [
         "shampooiner",
         "shampouiner"
     ],
@@ -3226,7 +3239,15 @@
         "shunter",
         "chuter"
     ],
+    "SHUT/AEU/-R": [
+        "shunter",
+        "chuter"
+    ],
     "STPHEUFL/-R": [
+        "snifer",
+        "sniffer"
+    ],
+    "STPHEUFL/AEU/-R": [
         "snifer",
         "sniffer"
     ],
@@ -3273,9 +3294,6 @@
     "TKA*EU": [
         "dey",
         "dais"
-    ],
-    "KP-BG/OEPL/UPB/A*E": [
-        "excommunié"
     ],
     "TPO*EBG/AL": [
         "focale"
@@ -3441,10 +3459,6 @@
         "canna",
         "khanat"
     ],
-    "KAR/A*E": [
-        "carrier",
-        "carier"
-    ],
     "KAR/A*ER": [
         "carrier",
         "carier"
@@ -3490,10 +3504,6 @@
         "inde"
     ],
     "APBT/R-D/EF/OER/-R": [
-        "entredévorer",
-        "entre-dévorer"
-    ],
-    "SPWAPBT/R-D/EF/OER/-R": [
         "entredévorer",
         "entre-dévorer"
     ],
@@ -3588,7 +3598,7 @@
     "OET/O*EPL/APB": [
         "ottomane"
     ],
-    "PHR--Z/-R": [
+    "PHR-Z/-R": [
         "pailler",
         "piller"
     ],
@@ -3643,6 +3653,9 @@
         "raller",
         "râler"
     ],
+    "R-L/A*E": [
+        "rallié"
+    ],
     "RAPL/A*": [
         "ramas",
         "raplapla"
@@ -3680,7 +3693,7 @@
         "théier",
         "théière"
     ],
-    "THR--Z/-R": [
+    "THR-Z/-R": [
         "tiller",
         "tailler"
     ],
@@ -3774,9 +3787,6 @@
         "bistre",
         "biture"
     ],
-    "PWOPB/*EUR": [
-        "bonir"
-    ],
     "PWO*RT/FRPBLG": [
         "borchtch",
         "bortch"
@@ -3798,7 +3808,7 @@
     "KAG/O*E": [
         "cagot"
     ],
-    "KHR--Z/*E": [
+    "KHR-Z/*E": [
         "caillé"
     ],
     "KAP/*EUT/APB": [
@@ -3883,10 +3893,6 @@
         "doublet",
         "doubler"
     ],
-    "STKPWOPBD/-R": [
-        "débonder",
-        "seconder"
-    ],
     "STK-G/O*UT/APBT": [
         "dégouttante"
     ],
@@ -3897,6 +3903,10 @@
         "embu",
         "imbue"
     ],
+    "KPWOEPL/AEU/-R": [
+        "empaumer",
+        "embaumer"
+    ],
     "APBG/L/*EUFP": [
         "engliche"
     ],
@@ -3906,9 +3916,6 @@
     "AEUTS/ET/*ER/A": [
         "etcetera",
         "etc."
-    ],
-    "KP-P/AT/R-L-Z/*E": [
-        "expatrié"
     ],
     "TPRO*E": [
         "ferro",
@@ -4118,7 +4125,7 @@
         "salopiaux",
         "salopiot"
     ],
-    "SHAFL/RP/O*EUPB": [
+    "SHAFRP/O*EUPB": [
         "schampooing",
         "shampoing"
     ],
@@ -4137,9 +4144,6 @@
     "SOUP/A*ER": [
         "soupier",
         "soupière"
-    ],
-    "SUPL/EUS/A*E": [
-        "supplicié"
     ],
     "S*EFL/AR/AD": [
         "sépharade"

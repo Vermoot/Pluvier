@@ -202,6 +202,12 @@ class TestPluvier:
                          })
 
  #skip lesson 9 on numbers
+    def test_lesson9_numbers(self):
+        self.assertSame({ 'TK' : 'deux',
+                          'PHRABG' : 'plaque',
+                          'HRAEUS' : 'laisse'
+                         })
+
     def test_lesson10_HR_for_L_BG_for_K_ending(self):
         self.assertSame({ 'HREUR' : 'lire',
                           'PHRABG' : 'plaque',
@@ -689,7 +695,6 @@ class TestPluvier:
         })            
     def test_lesson27_STK_for_starting_des_and_dec_following_by_woyel(self):
         self.assertSame({
-                "RAFL/RPL/EUR": "remplir",
 #            "TKAEUS/*EUPB": "dessin",
             "STKEUR": "désir",
 #            "STKAPBDZ": "descendre",
@@ -1253,7 +1258,7 @@ class TestPluvier:
     def test_lesson47_DAOEZ_for_starting_des_not_followed_by_steno_woyel(self):
         self.assertSame({
  #           "STKHREUBS": "déséquilibre",
-           "TKAOEZ/SPWEG/R*E": "désintégré",
+#           "TKAOEZ/SPWEG/R*E": "désintégré",
 #            "TKAERPL": "désarme",
             "TKAOEZ/KHREUBS": "déséquilibre",
 
@@ -1618,6 +1623,8 @@ class TestPluvier:
 
     def test_new_rule_imparfaitoet_2p(self):
         self.assertSame({
+
+            "AL/-TS" : "allait" ,
             "AL/AEUT" : "allait",
         })
 
@@ -1683,6 +1690,15 @@ class TestPluvier:
             "TKWOEUB": "écris",
        })
 
+    def test_wrong_words(self):
+        self.assertSame({
+            "STK-FRLG/-EUPBG": "déglingue",
+            "OA" : "entendaient",
+            "SKR-PL/-D" :"charmé",
+        })
+            
+
+        
     def assertSame(self, words, force_verb=True):
         found = False
         self.assertSounds(words)

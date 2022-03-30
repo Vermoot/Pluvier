@@ -90,7 +90,6 @@ class Dictionary:
                     if steno in translated_word :
                         if steno not in duplicated:
                             duplicated[steno] = []
-                    #    duplicated[steno].extend((word.word , translated_word[steno]))
                         if word.word not in duplicated[steno]:
                             duplicated[steno].append(word.word)
                         if translated_word[steno]  not in duplicated[steno]:

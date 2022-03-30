@@ -496,13 +496,6 @@
             "4"
         ]
     ],
-    "KAUR": [
-        "cuire",
-        [
-            "KAUR",
-            "cuir"
-        ]
-    ],
     "KERT": [
         "quêteur",
         [
@@ -538,6 +531,13 @@
             "ministère"
         ]
     ],
+    "KHR-Z": [
+        "quille",
+        [
+            "KHR-Z",
+            "qu'elle est"
+        ]
+    ],
     "KHRA": [
         "calla",
         [
@@ -557,13 +557,6 @@
         [
             "KHROBG",
             "colloque"
-        ]
-    ],
-    "KHROR": [
-        "clore",
-        [
-            "KHROR",
-            "chlore"
         ]
     ],
     "KO*L": [
@@ -1236,6 +1229,13 @@
         [
             "POUS",
             "pousse"
+        ]
+    ],
+    "PR-L": [
+        "pleur",
+        [
+            "PR-L",
+            "pour le"
         ]
     ],
     "PR*EU": [
@@ -1938,20 +1938,6 @@
             "stationne"
         ]
     ],
-    "STKAPBDZ": [
-        "défendre",
-        [
-            "STKAPBDZ",
-            "descendre"
-        ]
-    ],
-    "STKOE": [
-        "défaut",
-        [
-            "STKOE",
-            "condo"
-        ]
-    ],
     "STKPWHRAEU": [
         "déblai",
         [
@@ -1966,11 +1952,25 @@
             "dessus"
         ]
     ],
-    "STKWOE": [
-        "dévot",
+    "STKWAEU": [
+        "défait",
         [
-            "STKWOE",
-            "défaut"
+            "STKWAEU",
+            "désuet"
+        ]
+    ],
+    "STKWAEUT": [
+        "défaite",
+        [
+            "STKWAEUT",
+            "désuète"
+        ]
+    ],
+    "STKWAPB": [
+        "défends",
+        [
+            "STKWAPB",
+            "défend"
         ]
     ],
     "STPHAEU": [
@@ -2205,7 +2205,7 @@
         ]
     ],
     "TKOEU": [
-        "dois",
+        "doigt",
         [
             "TKOEU",
             "doit"
@@ -2741,6 +2741,13 @@
         [
             "WOEU",
             "voie"
+        ]
+    ],
+    "WOEUR": [
+        "voire",
+        [
+            "WOEUR",
+            "voir"
         ]
     ],
     "WOUG": [

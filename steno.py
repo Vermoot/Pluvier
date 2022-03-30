@@ -39,6 +39,9 @@ class Word:
                 return ':imp' in self.info_verb
         #and self.word.endswith('ait')
 
+        def ending_with(self, suffix):
+                return self.word.endswith(suffix)
+
         def is_conditionnel(self):
                 return 'cnd' in self.info_verb
 
@@ -198,7 +201,7 @@ class Steno:
                 "Z" : "SKWR",
 #                'd' : 'DAOE',
                 'z' : 'Z',
-                'a':'A|AE/',
+                'a':'A|/AE',
                 
         }
 
@@ -429,7 +432,7 @@ class Steno:
                 "m@" : "-/PLT",
                 "En" : "AIB",
                 "ER" : "AIR",
-                "@d" :"PBD",
+                "@d" :"-/PBD",
 
                 "dR" : "DZ" ,# ajoin-dre
                 "@b": "-AFRB",   # jambe
@@ -575,21 +578,21 @@ class Steno:
 
                 if word.word.startswith('dé') or ((next_letter.endswith('O') or next_letter.endswith('E') or next_letter.endswith('I') or next_letter.endswith('A') or next_letter.endswith('U') or next_letter.endswith('@') or next_letter.endswith('Y'))) :
                         
-                        if 'dez' in word.syll:
+                        if word.syll.startswith('dez'):
                                 self.prefix = {'STK':'dez'}
                                 word.syll = word.syll.replace('dez', '')
-                        if 'des' in word.syll:
+                        if word.syll.startswith('des'):
                                 self.prefix = {'STK':'des'}
                                 word.syll = word.syll.replace('des', '')
-                        if 'd°z' in word.syll:
+                        if word.syll.startswith('d°s'):
                                 self.prefix = {'STK':'d°s'}                                
                                 word.syll = word.syll.replace('d°s', '')
                         if (word.syll.startswith('def')):
                                 self.prefix = {'STKW' : 'def'}
-                                
                                 word.syll = word.syll.replace('def', '')
-                        self.prefix = {'STK' : 'de'}
-                        word.syll = word.syll.replace('de', '')
+                        if not self.prefix:
+                                self.prefix = {'STK' : 'de'}
+                                word.syll = word.syll.replace('de', '')
                         Log('> syll: ', word.syll)
                         return word.syll
 
@@ -598,9 +601,11 @@ class Steno:
         def eat_woyel(self, syll) :
                 if not syll[0]:
                         return syll
-                if syll[0][0] in ['a','j','u','1','E','e','o','O','8','y' ] :
-                        syll[0]=syll[0][1:]
-                        
+                Log('> before eat: ', syll[0][:1])
+                if syll[0][:1] in ['a','j','u','1','E','e','o','O','8','y' ,'5','2'] :
+                        Log('> eat voyel: ', syll)
+                        syll[0] = syll[0][1:]
+                Log('> not eat voyel: ', syll)
                 return syll
 
                 
@@ -672,6 +677,7 @@ class Steno:
                 if not verb_word.is_verb():
                         return word
                 Log('Verbe')
+                
                 if (not self.ending_syll):
                         self.ending_syll = verb_word.syll
                         
@@ -684,26 +690,18 @@ class Steno:
                                 self.ending = "/-D"
                                 self.ending_syll = verb_word.syll[:-1]
                         return verb_word
-
-                if verb_word.is_imparfait():
-                        Log('imparfait')
-                        self.ending = "/-S"
-                        if verb_word.is_third_person_plural():
-                                self.ending = "AEUPBT"
-                        if verb_word.is_third_person_singular():
-                                self.ending = "/AEUT"
-
-                        if verb_word.syll.endswith('E') :
-                                self.ending_syll = verb_word.syll[:-1]
-                        return verb_word
-
                 if verb_word.is_conditionnel():
                         self.ending = "/-RS"
                         if verb_word.is_third_person_plural():
-                                self.ending = "AEUPBT"
+#                                self.ending = "AEUPBT"
+                                self.ending = "/-RPB"
                                 self.ending_syll = verb_word.syll[:-1]
                                 return verb_word
-                        if verb_word.word.endswith('rrait') and verb_word.syll.endswith('E') :
+                        if verb_word.word.endswith('rais') and verb_word.syll.endswith('E') :
+                                self.ending = "/-RS"
+                                if verb_word.word.endswith('rait'):
+                                        self.ending = "-RTS"
+
                                 self.ending_syll = verb_word.syll[:-1]
                                 return verb_word
                         if verb_word.syll.endswith('RE') :
@@ -730,8 +728,33 @@ class Steno:
                         if verb_word.syll.endswith('@') :
                                 self.ending_syll = verb_word.syll[:-1]
                                 return verb_word
-                        return verb_word
 
+                if verb_word.ending_with('ais'):
+#                if verb_word.is_imparfait():
+                        Log('imparfait')
+                        self.ending = "/-S"
+                        if verb_word.syll.endswith('E') :
+                                self.ending_syll = verb_word.syll[:-1]
+                        return verb_word
+                if verb_word.ending_with('aient'):
+#                        if verb_word.is_third_person_plural():
+#                                self.ending = "AEUPBT"
+                        self.ending = "/-PBS"
+                        if verb_word.syll.endswith('E') :
+                                self.ending_syll = verb_word.syll[:-1]
+                        return verb_word
+                if verb_word.ending_with('ait'):
+#                        if verb_word.is_third_person_singular():
+#                                self.ending = "/AEUT"
+                        if verb_word.syll.endswith('E') :
+                                self.ending_syll = verb_word.syll[:-1]
+                        self.ending = "/-TS"
+                        return verb_word
+                # if verb_word.syll.endswith('E') :
+                #         self.ending_syll = verb_word.syll[:-1]
+
+                if not self.ending  :
+                        Log('not found ending',verb_word)
                 return word
                 
         def try_to_remove_woyel(self, myword) :
@@ -963,27 +986,32 @@ class Steno:
 
                 for aprefix, phonem  in self.prefix.items():
                         for  one_prefix in aprefix.split('|'):
-                                self.syllabes = [word_str]
+                                self.syllabes = [word_str]                                        
                                                         
                                 if one_prefix=='TKAOEZ':
                                         self.syllabes = self.eat_woyel(self.syllabes)
-                                        
+
                                 if not self.ending: 
                                         self.final_encoded.append(Steno_Encoding(self.syllabes, one_prefix, self.suffix.split('|')[0]).encode())
 
                                 if self.ending :
-                                        myendingword =  initial_word
-                                        myendingword.syll= self.ending_syll
-                                        word_str = self.get_prefix_and_suffix(myendingword,True,True)
-                                        Log('endi : ',word_str)
-                                        suff = ""
-                                        Log('suffix endi', suff)
+                                        self.final_encoded.append(Steno_Encoding(self.syllabes, one_prefix, self.suffix.split('|')[0]).encode()+self.ending)
+
+                                        # myendingword =  initial_word
+                                        # myendingword.syll= self.ending_syll
+                                        # word_str = self.get_prefix_and_suffix(myendingword,True,True)
+                                        # Log('endi : ',word_str)
+                                        # suff = ""
+                                        # Log('suffix endi', suff)
+                                        # if one_prefix=='TKAOEZ':
+                                        #         self.syllabes = self.eat_woyel(self.syllabes)
+                                        
 #                                self.syllabes = [word_str]
 #                                self.prefixes(self.ending_syll, word)
 #                                suff =self.suffix.split('|')[0]
 
 
-                                        self.final_encoded.append(Steno_Encoding(re.sub( "^"+ phonem, '', self.ending_syll).split('-'), one_prefix, suff).encode()+self.ending)
+                                     #   self.final_encoded.append(Steno_Encoding(re.sub( "^"+ phonem, '', self.ending_syll).split('-'), one_prefix, suff).encode()+self.ending)
 
 #                word_str = self.get_prefix_and_suffix(initial_word)
 #                self.syllabes = [word_str]
@@ -1008,7 +1036,7 @@ class Steno:
                 if self.ending_syll:
                         Log('ending_syll:' , self.ending_syll)
                 if self.ending :
-                        encoded_w = Steno_Encoding([self.ending_syll.replace('-', '')], "","").encode()+self.ending
+                        encoded_w = Steno_Encoding([self.ending_syll.replace('-', '')], "",self.suffix).encode()+self.ending
                         Log('ending encoding: ', encoded_w)
                         self.final_encoded.append(encoded_w)
 
@@ -1020,7 +1048,7 @@ class Steno:
                         all_sylls = 'H'+all_sylls
                 all_sylls =[all_sylls]
                 Log('> all syl',all_sylls)
-                if not self.ending :
+                if not self.ending and not initial_word.is_verb() :
                         self.final_encoded.append(Steno_Encoding(all_sylls, '', '').encode())
                 has_homophone = self.has_homophone(initial_word)
                 for final_word in  self.final_encoded:
@@ -1240,8 +1268,9 @@ class Syllabe:
                 previous_encoded = self.previous.encoded_hand
                 if (self.encoded_hand != '') :
                         previous_encoded = previous_encoded + self.encoded_hand
-                if self.previous is not None:
+                if self.previous is not None and previous_encoded.endswith('-'):
                         Log('add hyphen previous encod',previous_encoded)
+                        return word
 
                 if not (self.hand == 'R' and (self.previous.hand == 'L')):
                         return word
@@ -1567,7 +1596,7 @@ class Steno_Encoding:
                 '§p' : '-/OFRP', # trompe
                 'pl' : 'PL',
                 "ER" : "AIR",
-                'gl' : 'GL|-FRLG', #glace or angle
+                'gl' : 'GL|FRLG', #glace or angle
                 "wa": "OEU",    # froid
                 "w5": "OEUPB",  # loin
                 "wi": "AOU",    # oui
