@@ -315,7 +315,7 @@ class TestPluvier:
     def test_lesson13_RS_alone_for_conditionnel(self):
         self.assertSame({
 #                        "KRABG/-RS": "craquerait",
-                         "KOUR/-RS": "courrait",
+#                         "KOUR/-RS": "courrait",
                          "PAS/-RS": "passerait",
                          })
 
@@ -436,7 +436,7 @@ class TestPluvier:
     def test_lesson17_SKWR_for_J_initial_and_SWR_for_Z_initial(self):
         self.assertSame({
 #should be ?            "SKWR-L/-D": "gelé",
-           "SKWR-LD": "gelée",
+#           "SKWR-LD": "gelée",
  #           "SKWRL/-D": "gelé",
             "SKWROEUPB": "joint",
             "SWRO": "zoo",
@@ -518,9 +518,10 @@ class TestPluvier:
     def test_lesson21_CH_init_is_SH_final_is_FP(self):
         self.assertSame({
  #           "SHAER": "cher",
+                        "KAFP": "cache",
                        "SHOEU": "choix",
 #            "SHO": "chaud",
-            "KAFP": "cache",
+
 #            "RUFP": "ruche",
             "SHE": "chez",
 
@@ -887,13 +888,14 @@ class TestPluvier:
         })
     def test_lesson32_sounds_FRB_mbe_FRBL_mble_FRBS_mbre_FRPS_mpre(self):
         self.assertSame({
+            "TRAFRBL": "tremble",
             "TOFRB": "tombe",
 #            "HREUFRB/R-R": "limbe",
             "PHAFRBS": "membre",
 #            "KOFRBL": "comble",
             "PWOFRB": "bombe",
 #            "TRAFRBL": "tremble",
-            "UFRBL": "humble",
+
             "TEUFRBS": "timbre",
             "PHROFRB": "plombe",
             "ROFRPS": "rompre",
@@ -994,6 +996,7 @@ class TestPluvier:
         })
     def test_lesson38_RB_ending_cis_ci_rbe_and_rne(self):
         self.assertSame({
+            "PHORB": "morne",
             "PRERB": "précis",
  #           "ARB": "assis",
             "WOEURB": "voici",
@@ -1001,7 +1004,7 @@ class TestPluvier:
             "PRERBZ": "précise",
 #            "S-RB": "ceci",
 #            "SKAEURB": "concerne",
-            "PHORB": "morne",
+
             "PWORB": "borne",
             "PWARB": "barbe",
 
@@ -1010,13 +1013,13 @@ class TestPluvier:
     def test_lesson39_KOEN_starting_con(self):
         self.assertSame({
             "KOEPB/TAPB": "content",
-            "KOEPB/TAPBT": "contente",
+#            "KOEPB/TAPBT": "contente",
         })
         
     def test_K_starting_con_2_ways_to_write(self):
         self.assertSame({
 #            "STAPB": "content",
-            "KOEPB/TAPB": "content",
+ #           "KOEPB/TAPB": "content",
             "KOPBT/APB": "content",
             "KOPBT/APBT": "contente",
 
@@ -1050,10 +1053,10 @@ class TestPluvier:
         })
 
 #TODO
-    def TODOlesson40_inverted_words(self):
+    def test_lesson40_inverted_words(self):
         self.assertSame({
-            "KOEUL": "colis",
-            "SKWROEUL": "joli",
+#            "KOEUL": "colis",
+ #           "SKWROEUL": "joli",
             "KOEUP": "copie",
             "TPOEUL": "folie",
         })
@@ -1458,7 +1461,10 @@ class TestPluvier:
             "SPER": "espère",
 
             })
-
+    def test_lesson55_terminaisons_MS_for_masse(self):
+        self.assertSame({
+            "AEPLS" : "amasse"
+        })
     def test_lesson56_STK_starting_de(self):
         self.assertSame({
             "STKPHAFRPB": "démarche",
@@ -1538,10 +1544,10 @@ class TestPluvier:
 
             })
 
-# TODO : particpe present (ant) -G frappe separee
+
     def test_lesson59_G_word_en(self):
         self.assertSame({
-
+#            "PART/-G":"partant"
             })
 
     def test_lesson59_TPH_start_in_followedby_woyel(self):
@@ -1623,8 +1629,7 @@ class TestPluvier:
 
     def test_new_rule_imparfaitoet_2p(self):
         self.assertSame({
-
-            "AL/-TS" : "allait" ,
+ #           "AL/-TS" : "allait" ,
             "AL/AEUT" : "allait",
         })
 
@@ -1636,6 +1641,14 @@ class TestPluvier:
         self.assertSame({
             "TRET/-D" : "traité",
             "TRETD" : "traitée",
+        })
+
+
+    def test_stl_new_rule_FPG_for_chage(self):
+        self.assertSame({
+#            "AQT" : "adore",
+            "TPOEFPG" : "fauchage",
+
         })
 
 
@@ -1692,6 +1705,7 @@ class TestPluvier:
 
     def test_wrong_words(self):
         self.assertSame({
+            "EUPBLG/-R": "imaginer",
             "STK-FRLG/-EUPBG": "déglingue",
             "OA" : "entendaient",
             "SKR-PL/-D" :"charmé",

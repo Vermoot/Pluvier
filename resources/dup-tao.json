@@ -34,6 +34,34 @@
             "additionne"
         ]
     ],
+    "AEBL": [
+        "able",
+        [
+            "AEBL",
+            "assemble"
+        ]
+    ],
+    "AELG": [
+        "algue",
+        [
+            "AELG",
+            "égal"
+        ]
+    ],
+    "AEPT": [
+        "apte",
+        [
+            "AEPT",
+            "accepte"
+        ]
+    ],
+    "AES": [
+        "as",
+        [
+            "AES",
+            "assez"
+        ]
+    ],
     "AEUP/AEUS": [
         "épaisse",
         [
@@ -552,6 +580,13 @@
             "collège"
         ]
     ],
+    "KHREUB": [
+        "clean",
+        [
+            "KHREUB",
+            "colline"
+        ]
+    ],
     "KHROBG": [
         "cloque",
         [
@@ -578,6 +613,13 @@
         [
             "KOEL",
             "colle"
+        ]
+    ],
+    "KOEUPB": [
+        "copine",
+        [
+            "KOEUPB",
+            "coin"
         ]
     ],
     "KOL": [
@@ -1917,6 +1959,13 @@
             "cet"
         ]
     ],
+    "STAEUB": [
+        "centaine",
+        [
+            "STAEUB",
+            "certaine"
+        ]
+    ],
     "STAEUPL": [
         "stem",
         [
@@ -1936,6 +1985,13 @@
         [
             "STAGZ",
             "stationne"
+        ]
+    ],
+    "STAPB": [
+        "sentant",
+        [
+            "STAPB",
+            "content"
         ]
     ],
     "STKPWHRAEU": [
@@ -2475,13 +2531,6 @@
         [
             "TPHRAFRPBLG",
             "flanche"
-        ]
-    ],
-    "TPOEUL": [
-        "foil",
-        [
-            "TPOEUL",
-            "folie"
         ]
     ],
     "TPORPL/ALT": [

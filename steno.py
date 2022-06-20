@@ -4,14 +4,16 @@ import re
 class Word:
         def __init__(self, word, phonetics, lemme, cgram, cgramortho,genre, number, info_verb, syll, orthosyll, frequence = 0):
             self.word = word
-            self.phonetics = phonetics
+            self.phonetics = phonetics.replace('oli','oil')
+            self.phonetics = self.phonetics.replace('opi','oip')
             self.lemme = lemme
             self.cgram = cgram
             self.cgramortho = cgramortho
             self.genre = genre
             self.number = number
             self.info_verb = info_verb
-            self.syll = syll
+            self.syll = syll.replace('o-li','oil')
+            self.syll = self.syll.replace('o-pi','oip')
             self.orthosyll = orthosyll
             self.frequence = float(frequence)
         def __str__(self):
@@ -28,6 +30,10 @@ class Word:
         
         def is_infinitif(self):
                 return 'inf' in self.info_verb
+
+
+        def has_noinfoverb(self):
+                return ''  == self.info_verb
 
         def is_passe_compose(self):
                 if 'ADJ' in self.info_verb:
@@ -173,9 +179,11 @@ class Steno:
                 '5si' : 'STPHEU',
                 '5sa' : 'STPHA',
                 '5se' : 'STPHE',
+                "s@t" : "ST",
                 '5k' : '/EUFRPB',
                 "kR" : "KR", #craquait
                 "S°" : "SK",
+
                 "@t" :"SPW",
                 "5t" :"SPW",
                 "R°" : "R",
@@ -201,7 +209,7 @@ class Steno:
                 "Z" : "SKWR",
 #                'd' : 'DAOE',
                 'z' : 'Z',
-                'a':'A|/AE',
+                'a':'A|AE',
                 
         }
 
@@ -232,7 +240,7 @@ class Steno:
                 'ilité' : OrthoSuffix('ilite','ILT'),
                 'lité' : OrthoSuffix('lite','-LT'),
                 'bilise' : OrthoSuffix('biliz','BLZ'),
-                'ralise' : OrthoSuffix('Raliz','-BLZ'),
+                'ralise' : OrthoSuffix('Raliz','RALZ'),
                 'lise' : OrthoSuffix('liz','-LZ'),
 
                 'rité' : OrthoSuffix('Rite', '-RT'), # securite
@@ -282,6 +290,7 @@ class Steno:
                 "anche" : OrthoSuffix("@S","-/AFRPBLG"),
                 "rche" : OrthoSuffix("RS","-/FRPB"),
                 "che" : OrthoSuffix("S","-/FP"),
+                "chage" : OrthoSuffix("SaZ","-/FPG"),
                 "oué" : OrthoSuffix("we|wE","-/W*E"),
                 "way" : OrthoSuffix("we|wE","-/W*E"),
                 "ué" : OrthoSuffix("8e","-/W*E"),
@@ -331,7 +340,7 @@ class Steno:
                 '§gl' : '-/OFRLG',
                 '5gl' : '-/EUFRLG',
                 'nal' : '-NL', #canal
-
+                'mas' : 'MS', #amasse
 
 
 #second option                'sjOn' :'-/GS/*B',
@@ -369,7 +378,7 @@ class Steno:
                 "stR" : "-TS", #-stre
                 "RtR" : "-RTS", #-rtre
                 "§pR" : '-/OFRPS',
-                "@b": "-/AFRBL",   # tremble
+                "@bl": "-/AFRBL",   # tremble
                 "§bl": "-/OFRBL",  # comble
                 "1bl": "-/UFRBL",  # comble
                 "@bR": "-/AFRBS",   # ambre
@@ -378,7 +387,7 @@ class Steno:
                 "5b": "-EUFRB",  # limbe
                 "§b": "-/OFRB",  # comble
                 "ks": "-BGS",
-                "t@" : "/TAPB", #content
+                "t@" : "TAN", #content
                 "ve": "-WE", # releve
                 "N§" : "-/HO*PB", #bourguignon
                 "@Z" :"-/APBLG", # ange
@@ -676,6 +685,9 @@ class Steno:
 
                 if not verb_word.is_verb():
                         return word
+                if verb_word.has_noinfoverb():
+                        return word
+
                 Log('Verbe')
                 
                 if (not self.ending_syll):
@@ -733,9 +745,18 @@ class Steno:
 #                if verb_word.is_imparfait():
                         Log('imparfait')
                         self.ending = "/-S"
+#                        self.ending = "/AEUS"
                         if verb_word.syll.endswith('E') :
                                 self.ending_syll = verb_word.syll[:-1]
                         return verb_word
+                if verb_word.ending_with('ait'):
+#                        if verb_word.is_third_person_singular():
+#                                self.ending = "/AEUT"
+                        if verb_word.syll.endswith('E') :
+                                self.ending_syll = verb_word.syll[:-1]
+                        self.ending = "/AEUT"
+                        return verb_word
+
                 if verb_word.ending_with('aient'):
 #                        if verb_word.is_third_person_plural():
 #                                self.ending = "AEUPBT"
@@ -750,6 +771,15 @@ class Steno:
                                 self.ending_syll = verb_word.syll[:-1]
                         self.ending = "/-TS"
                         return verb_word
+
+                if verb_word.ending_with('ent'):
+#                        if verb_word.is_third_person_singular():
+#                                self.ending = "/AEUT"
+                        if verb_word.syll.endswith('E') :
+                                self.ending_syll = verb_word.syll[:-1]
+                        self.ending = "/-T"
+                        return verb_word
+
                 # if verb_word.syll.endswith('E') :
                 #         self.ending_syll = verb_word.syll[:-1]
 
@@ -960,9 +990,9 @@ class Steno:
                 Log('after prefix', phonetics)
                 Log('suffix', self.suffix)
 
-                if check_suffix and (not self.suffix and '-' in word.syll):
+                if check_suffix and (not self.suffix and '-' in word.syll and not self.ending):
                         phonetics = self.real_suffixes(phonetics)
-                if check_suffix and not self.suffix:
+                if check_suffix and not self.suffix and not self.ending:
                         phonetics = self.suffixes(phonetics)
                 Log('suffix', self.suffix)
 
@@ -994,8 +1024,8 @@ class Steno:
                                 if not self.ending: 
                                         self.final_encoded.append(Steno_Encoding(self.syllabes, one_prefix, self.suffix.split('|')[0]).encode())
 
-                                if self.ending :
-                                        self.final_encoded.append(Steno_Encoding(self.syllabes, one_prefix, self.suffix.split('|')[0]).encode()+self.ending)
+#                                if self.ending :
+#                                        self.final_encoded.append(Steno_Encoding(self.syllabes, one_prefix, self.suffix.split('|')[0]).encode()+self.ending)
 
                                         # myendingword =  initial_word
                                         # myendingword.syll= self.ending_syll
@@ -1551,6 +1581,7 @@ class Steno_Encoding:
                 "bZ" : "PBLG",
                 "ps" : "S",
                 'En' : 'AIB',
+                'oi' : 'OEU',
                 "vaj" : "-FL",
                 "vEj" : "-FL",
                 '@v' : 'ENVH', #envenime
