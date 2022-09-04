@@ -4,14 +4,16 @@ import re
 class Word:
         def __init__(self, word, phonetics, lemme, cgram, cgramortho,genre, number, info_verb, syll, orthosyll, frequence = 0):
             self.word = word
-            self.phonetics = phonetics
+            self.phonetics = phonetics.replace('oli','oil')
+            self.phonetics = self.phonetics.replace('opi','oip')
             self.lemme = lemme
             self.cgram = cgram
             self.cgramortho = cgramortho
             self.genre = genre
             self.number = number
             self.info_verb = info_verb
-            self.syll = syll
+            self.syll = syll.replace('o-li','oil')
+            self.syll = self.syll.replace('o-pi','oip')
             self.orthosyll = orthosyll
             self.frequence = float(frequence)
         def __str__(self):
@@ -25,9 +27,14 @@ class Word:
         
         def is_verb(self):
                 return "VER" in self.cgram  or "AUX" in self.cgram #and "AUX" not in self.cgramortho
+        #                return "VER" in self.cgramortho and not ("NOM" in self.cgramortho  or "ADJ"  in self.cgramortho)
         
         def is_infinitif(self):
                 return 'inf' in self.info_verb
+
+
+        def has_noinfoverb(self):
+                return ''  == self.info_verb
 
         def is_passe_compose(self):
                 if 'ADJ' in self.info_verb:
@@ -38,6 +45,9 @@ class Word:
                 Log(self.info_verb)
                 return ':imp' in self.info_verb
         #and self.word.endswith('ait')
+
+        def ending_with(self, suffix):
+                return self.word.endswith(suffix)
 
         def is_conditionnel(self):
                 return 'cnd' in self.info_verb

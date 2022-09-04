@@ -1,75 +1,11 @@
 import sys
 import copy
 import re
-class Word:
-        def __init__(self, word, phonetics, lemme, cgram, cgramortho,genre, number, info_verb, syll, orthosyll, frequence = 0):
-            self.word = word
-            self.phonetics = phonetics.replace('oli','oil')
-            self.phonetics = self.phonetics.replace('opi','oip')
-            self.lemme = lemme
-            self.cgram = cgram
-            self.cgramortho = cgramortho
-            self.genre = genre
-            self.number = number
-            self.info_verb = info_verb
-            self.syll = syll.replace('o-li','oil')
-            self.syll = self.syll.replace('o-pi','oip')
-            self.orthosyll = orthosyll
-            self.frequence = float(frequence)
-        def __str__(self):
-                print("word", self.word)
-                print("phonetics", self.phonetics)
-                print("lemme", self.lemme)
-                print('cgram',  self.cgram)
-                print('number', self.number)
-                print('syll', self.syll)
-                return self.syll
-        
-        def is_verb(self):
-                return "VER" in self.cgram  or "AUX" in self.cgram #and "AUX" not in self.cgramortho
-        
-        def is_infinitif(self):
-                return 'inf' in self.info_verb
-
-
-        def has_noinfoverb(self):
-                return ''  == self.info_verb
-
-        def is_passe_compose(self):
-                if 'ADJ' in self.info_verb:
-                        return false
-                return 'pas' in self.info_verb and self.word.endswith('é')
-
-        def is_imparfait(self):
-                Log(self.info_verb)
-                return ':imp' in self.info_verb
-        #and self.word.endswith('ait')
-
-        def ending_with(self, suffix):
-                return self.word.endswith(suffix)
-
-        def is_conditionnel(self):
-                return 'cnd' in self.info_verb
-
-        def is_third_person_plural(self):
-                return '3p' in self.info_verb
-
-        def is_third_person_singular(self):
-                return '3s' in self.info_verb
-
-        def is_participe_present(self):
-#                return 'par' in self.info_verb and
-                return self.is_verb() and self.word.endswith('ant')
-
-        def is_vous_ind_present(self):
-                return 'ind' in self.info_verb and self.word.endswith('ez')
-
-        def is_indicatif(self):
-                return 'ind' in self.info_verb
-
-        def is_plural(self) :
-                return self.number =='p'
-
+from word import Word
+from cutword import Cutword
+from syllabe import Syllabe
+from log import Log
+from steno_encoding import Steno_Encoding
 class Ortho:
 
         sounds = ''
@@ -107,12 +43,6 @@ class Ortho:
         def get_alternative_str(self, word, suffix_str) :
                 return word.replace(suffix_str, self.alternative_str)
 
-class Log:
-        activate = True
-
-        def __init__(self, message, value = '') :
-                if self.activate: 
-                        print(message, value)
 
 class OrthoSuffix(Ortho):
         
@@ -163,7 +93,7 @@ class Steno:
                 'Eksi' : 'KPEU',
 
                 'Eks' : "-/BGS",
-                'ade' : 'ATK', # sound
+                'ade' : 'AD', # sound
                 'm°n' : "KH",#men
                 'min' : "KH",#min
                 'm2n' : 'KH', #men
@@ -268,6 +198,7 @@ class Steno:
                 "neur" : OrthoSuffix("n9R", "-RN") ,
                 "rtion" : OrthoSuffix("Rsj§", "-RGS"),
                 "ration" : OrthoSuffix("Rasj§", "-RGS"),
+                "ctrice" : OrthoSuffix("ktRis", "-/RTS") ,
                 "trice" : OrthoSuffix("tRis", "-/RTS") ,
                 'cienne' : OrthoSuffix('sjEn', '-GZ'),
                 "telle" : OrthoSuffix("tEl" , "-/LGTS"),
@@ -632,7 +563,7 @@ class Steno:
                 if word.word.endswith('ée'):
                         if not self.ending :
                                 self.ending_syll = word.syll[:-1]
-                        self.ending = "D"
+                        self.ending = "/-D"
 
                                 
                 if word.is_verb():
@@ -680,7 +611,7 @@ class Steno:
                 return syll
 
         
-        def ortho_add_alone_keys_on_verb(self,word):
+        def ortho_add_alone_keys_on_verb(self,word, phonetics):
                 verb_word = self.find_same_word_verb(word)
 
                 if not verb_word.is_verb():
@@ -691,7 +622,7 @@ class Steno:
                 Log('Verbe')
                 
                 if (not self.ending_syll):
-                        self.ending_syll = verb_word.syll
+                        self.ending_syll = phonetics
                         
                 if  verb_word.is_passe_compose():
                         if verb_word.word.endswith('ué') or verb_word.word.endswith('oué') :
@@ -760,7 +691,7 @@ class Steno:
                 if verb_word.ending_with('aient'):
 #                        if verb_word.is_third_person_plural():
 #                                self.ending = "AEUPBT"
-                        self.ending = "/-PBS"
+                        self.ending = "AEUPBT"
                         if verb_word.syll.endswith('E') :
                                 self.ending_syll = verb_word.syll[:-1]
                         return verb_word
@@ -837,9 +768,12 @@ class Steno:
 
 
         def prefixes(self, word, word_class):
+                cutword = Cutword(word_class.word)
                 if (word_class.word.startswith('y') and word.startswith('j')):
                         self.prefix ={'KWR' : 'j'}
                         new_word = word.replace('j','',1)
+                        cutword.set_remains(word.replace('j','',1))
+                        cutword.set_replaced_by('j','KWR')
                         return new_word
                 
                 new_word=word
@@ -848,6 +782,7 @@ class Steno:
                         return word
                 for prefix in  self.PREFIXES.items():
                         if len(re.split("^"+prefix[0], new_word))>1:
+                                
                                 Log('found prefix : ',prefix[0])
                                 self.prefix = {prefix[1] : prefix[0]}
                                 return re.split("^"+prefix[0], new_word)[1]
@@ -973,7 +908,7 @@ class Steno:
                         Log('get suffix', self.suffix)
                         if not self.suffix:
                                 word = self.ortho_add_aloneR_infinitif_firstgroup(word)
-                                word = self.ortho_add_alone_keys_on_verb(word)
+                                word = self.ortho_add_alone_keys_on_verb(word,phonetics)
                                 word = self.ortho_add_alone_keys_on_noun(word)
                 word.syll = phonetics
                 if check_prefix and not self.prefix:
@@ -1017,15 +952,14 @@ class Steno:
                 for aprefix, phonem  in self.prefix.items():
                         for  one_prefix in aprefix.split('|'):
                                 self.syllabes = [word_str]                                        
-                                                        
                                 if one_prefix=='TKAOEZ':
                                         self.syllabes = self.eat_woyel(self.syllabes)
 
                                 if not self.ending: 
                                         self.final_encoded.append(Steno_Encoding(self.syllabes, one_prefix, self.suffix.split('|')[0]).encode())
 
-#                                if self.ending :
-#                                        self.final_encoded.append(Steno_Encoding(self.syllabes, one_prefix, self.suffix.split('|')[0]).encode()+self.ending)
+                                if self.ending :
+                                        self.final_encoded.append(Steno_Encoding(self.syllabes, one_prefix, self.suffix.split('|')[0]).encode()+self.ending)
 
                                         # myendingword =  initial_word
                                         # myendingword.syll= self.ending_syll
@@ -1095,796 +1029,4 @@ class Steno:
                 return  self.final_encoded
         
 
-
-class Syllabe:
-        hand = 'L'
-        CONSONANTS_RHS = {
-                "v": "F",
-                "l": "L",
-                "b": "B",
-                "n": "B",
-                "g": "G",
-                "d": "D",
-                "z": "Z",
-                "k": "BG",
-                "l": "FL",      # TODO When is "l" FL or L?
-                "m": "PL",
-                "n": "PB",      # TODO This doubles the "n" = "B" from earlier. Might be in only certain pre-defined cases like AIB = "aine"
-                "Z": "G",
-                "S": "FP",
-                "N": "PG",
-                "v": "F",
-                "v": "F",
-
-        }
-
-        CONSONANT_PAIRS_RHS = {
-                "tR": "TS",
-                "st": "*S",
-                "ks": "BGS",
-                "bZ": "PBLG",
-                "dZ": "PBLG",
-                "sm": "FLP",
-                "st": "*S",
-                "bZ": "PBLG",
-                "kR": "RBG",
-                "vR": "VR",
-                "fR": "VR",
-                "rS": "FRPB",
-
-        }
-
-        SOUNDS_RH = {
-                "ST" : "TS",
-                "N" : "PB",
-                "M" : "PL",
-                "K": "BG",
-#                "L": "FL",      # TODO When is "l" FL or L?
-                "N": "PB",      # TODO This doubles the "n" = "B" from earlier. Might be in only certain pre-defined cases like AIB = "aine"
-#                "Z": "G",
-#                "S": "FP",
-#                "N": "PG",
-                "V": "F",
-                "I": "EU",
-                "F":"FL",
-                "J" : "G",
-                'X' : 'BGS',
-
-                }
-
-        SOUNDS_LH = {
-                "F" : "TP",
-                "V" : "W",
-                "D" : "TK",
-                "I": "EU",
-                "B" : "PW",
-                "M" : "PH",
-                "L" : "HR",
-                "Y" : "KWR",
-                "G" : "TKPW",
-                "J" : "SKWR",
-                "N" : "TPH",
-                "Q" : "KW",
-                'X' : 'KP',
-
-                "Z" : "SWR"
-
-        }
-
-
-        SOUND_RHS_EXTRA = {
-                "En": "AIB",
-                "wan": "OIB",
-
-                "win": "AOUB",
-                "zj§": "GZ",
-                "sj§": "GZ",
-                "z§": "GZ",
-                "sjOn": "GZ",   # TODO This might conflict with "zj§" just above. The rule says "either `-GS/*B` or `-GZ`*
-                "zjOn": "GZ",
-                "@pR": "AFRPS",
-                "5pR": "EUFRPS",
-                "§pR": "OFRPS",
-                "5sj§": "EUPBGS",    # p_incions_
-                "§sj§": "OPBGS",    # pron_oncions_
-                "@ksj§": "APBGS",    # san_ction_
-                "5ksj§": "EUPBGS",    # dist_inction_
-                "§ksj§": "OPBGS",    # j_onction_
-                "ksj§": "*BGS",     # a_ction_
-                "isjOn": "EUGZ",
-                "tR": "TS",
-                "tER": "TS",
-                "tyR": "TS",
-                #  "Et": "*T",      # TODO: "Et" is covered by `AIT`, I don't get this. Maybe orthographic for "ette".
-                "isjOn": "EUGZ",
-
-        }
-
-        LEFT_KEYS = '-/*STKPWHRAO*'
-        RIGHT_KEYS = '-/*EUFRPBLGTSDZ'
-        consume_woyels = 'AOEU'
-        keys_left = ''
-        encoded_hand = ''
-        already_encoded = False
-        next_sylls = []
-        one_hand = False
-        is_prefix = False
-        is_suffix = False
-        def __init__(self, syllabe, previous, next_sylls):
-                self.previous = previous
-                self.syllabe = syllabe
-                self.hand = 'L'
-                self.next_sylls = next_sylls
-                if (previous is not None) and previous.is_right_hand():
-                        self.hand='R'
-
-                if previous is not None:
-                        Log('get previous key left:',previous.keys_left)
-                        self.keys_left = previous.keys_left
-
-                if syllabe =="":
-                        Log('init key left because syllabe is empty:')
-#                        self.init_keys_left()
-                        return None
-
-                if self.syllabe.endswith('-'):
-#                        self.hand='R'
-                        self.keys_left = ''
-                        return None
-                if self.syllabe.startswith('-'):
-#                        self.hand='R'
-#                        self.keys_left = ''
-                        return None
-
-
-                self.init_keys_left()
-
-        def set_one_hand(self):
-                self.one_hand = True
-                return self
-        
-        def prefix(self):
-                self.is_prefix = True
-                return self
-
-        def suffix(self):
-                self.is_suffix = True
-                return self
-
-        
-        def init_keys_left(self):
-                self.consume_woyels = 'AOEU'
-
-                self.keys_left = self.LEFT_KEYS
-                if self.is_right_hand():
-                        self.keys_left = self.RIGHT_KEYS
-                return self
-
-        def set_hand(self, hand):
-                self.hand = hand
-                return self
-        def change_hand(self):
-
-                if self.is_right_hand():
-                        self.hand='L'
-                        Log('change_hand to Gauche')
-                        self.init_keys_left()
-                        return self
-                self.hand='R'
-                Log('change_hand to droite')
-                self.init_keys_left()
-                return self
-        
-        def is_right_hand(self):
-                return self.hand == 'R'
-
-        def is_left_hand(self):
-                return self.hand == 'L'
-
-        def contains_woyels(self, word) :
-                return "*" in word or "A" in word or "O" in word or "E" in word or "U" in word
-                
-        def add_hyphen(self, word):
-
-                if self.already_encoded :
-                        return word
-                Log('hand', self.hand)
-                Log('word', word)
-                if self.previous is None and self.hand == 'R'  and self.already_encoded == "" :
-                        return '-'+word
-                
-                if self.previous is None :
-                        return word
-                previous_encoded = self.previous.encoded_hand
-                if (self.encoded_hand != '') :
-                        previous_encoded = previous_encoded + self.encoded_hand
-                if self.previous is not None and previous_encoded.endswith('-'):
-                        Log('add hyphen previous encod',previous_encoded)
-                        return word
-
-                if not (self.hand == 'R' and (self.previous.hand == 'L')):
-                        return word
-
-                if  self.contains_woyels( previous_encoded) or self.contains_woyels(word):
-                        return word
-
-                Log('added hyphen to word',word)
-
-                return "-"+word
-                
-        def consume(self,syllabe, keys, sounds):
-                keys = keys
-                not_found = []
-                rest = ''
-#                self.encoded_hand = ''
-                Log('--- Consume ---')
-                Log('syll:',syllabe)
-                Log('hand:',self.hand)
-                Log('already_encoded ? ',self.already_encoded)
-#                if self.already_encoded :
- #                       keys = keys.split(syllabe[-1:])[1] if len(keys.split(syllabe[-1:]))>1 else ''
- #                       Log('alreday keys left',keys)
-                if ("|" in syllabe) :
-                        syllabe_split = syllabe.split('|')[0]
-                        self.already_encoded = True
-                        if self.is_right_hand() and len(syllabe.split('|'))>1:
-                                syllabe_split = syllabe.split('|')[1]
-                        if not self.syll_can_enter(syllabe_split, keys):
-                                self.change_hand()
-                                keys =self.keys_left
-                                sounds = self.SOUNDS_LH
-                                if self.is_right_hand() :
-                                        sounds = self.SOUNDS_RH
-                                syllabe_split = syllabe.split('|')[0]
-                                if self.is_right_hand() and len(syllabe.split('|'))>1:
-                                        syllabe_split = syllabe.split('|')[1]
-                        syllabe = syllabe_split
-
-                if (self.already_encoded and self.previous):
-                        if  not self.contains_woyels( self.previous.encoded_hand) and not self.contains_woyels(self.syllabe) and '-' not in self.encoded_hand:
-                                self.encoded_hand =self.encoded_hand+ '-'
-                else:
-                        if  self.encoded_hand and self.is_right_hand() and not self.contains_woyels( self.encoded_hand) and not self.contains_woyels(self.syllabe) and '-' not in self.encoded_hand:
-                                self.encoded_hand =self.encoded_hand+'-'
-                                Log('Not contain voyel',self.encoded_hand)
-                Log('keys left',keys)
-                for key in syllabe:
-                        if not_found:
-                                rest=rest+key
-                                continue
-                        key_trans = key
-                        if not self.already_encoded and ( key in sounds.keys()):
-                                key_trans = sounds[key]
-
-                        Log('key_trans', key_trans)
-                        for key_trans_char in key_trans:
-                                if key_trans_char in keys :
-                                        keys = keys.split(key_trans_char)[1]
-                                else:
-                                        rest=rest+key
-                                        not_found.append(key)
-                                        key_trans=""
-                                        break
-                                
-                        if not not_found:
-                                self.encoded_hand = self.encoded_hand + self.add_hyphen(key_trans)
-#                                self.encoded_hand=self.encoded_hand + key_trans
-
-                Log('not_found', not_found)
-                Log('encoded', self.encoded_hand)
-                Log('rest', rest)
-                Log('keys left', keys)
-                self.keys_left = keys
-                return (rest,not_found)
-                
-        def consume_syll(self, syllabe):
-                sounds = self.SOUNDS_LH
-                if self.is_right_hand():
-                        sounds = self.SOUNDS_RH
-                Log('keys_left',self.keys_left)
-                return self.consume(syllabe, self.keys_left, sounds)
-                
-        def has_previous_R_and_L(self):
-                previous = self.previous
-                consume = 'R'
-                while previous:
-                        if previous.encoded_hand:
-                                consume.replace(previous.hand, '')
-                        previous = previous.previous
-                return consume ==''
-        def syll_can_enter(self, syll, keysleft) :
-                for char in syll:
-                        if not char in keysleft:
-                                Log('have to change')
-                                return False
-                        keysleft = keysleft.split(char)[1]
-                return True
-        def get_hand_sound(self, hand, syllabe ,already_encoded):
-                
-                not_found = []
-                rest = ''
-                sounds = self.SOUNDS_LH
-                keys = self.LEFT_KEYS
-                encoded = ''
-                if hand == 'R':
-                        keys = self.RIGHT_KEYS
-                        sounds = self.SOUNDS_RH
-                if ("|" in syllabe) :
-                        syllabe = syllabe.split('|')[0]
-                        if hand == 'R':
-                                syllabe = syllabe.split('|')[1]
-
-
-                for key in syllabe:
-                        if not_found:
-                                rest=rest+key
-                                continue
-                        key_trans = key
-                        
-                        if not self.already_encoded and ( key in sounds.keys()):
-                                key_trans = sounds[key]
-
-#                        Log('key_trans', key_trans)
-                        for key_trans_char in key_trans:
-                                if key_trans_char in keys :
-                                        keys = keys.split(key_trans_char)[1]
-                                else:
-                                        rest=rest+key
-                                        not_found.append(key)
-                                        key_trans=""
-                                        break
-                        if not not_found:
-                                encoded = encoded + self.add_hyphen(key_trans)
-                return (encoded,rest,not_found)
-
-        def needs_hand(self, syllabe, already_encoded) :
-                (encoded,rest,not_found) = self.get_hand_sound('L',syllabe,already_encoded)
-                if not encoded :
-                        return 'R'
-                (encoded,rest,not_found) = self.get_hand_sound('R',syllabe,already_encoded)
-                if not rest:
-                        return 'L'
-                return 'B'
-
-                        
-        def matching_syll(self, syllabe, keys) :
-                for car in syllabe:
-                        if car not in keys:
-                                return False
-                        keys = keys.replace(car,'')
-                return True
-
-        def encoded(self):
-                piece = ""
-                Log('--- Encoded ---')
-                self.encoded_hand = ''
-                if self.syllabe == "":
-                        return piece
-                if self.is_prefix:
-                        # prefix always start left hand
-                        self.hand = 'L'
-                        self.already_encoded = True
-                        self.init_keys_left()
-#                if self.one_hand or self.syllabe.endswith('-'):
-
-#                        self.encoded_hand = self.syllabe+'-'
-                        Log('encoded one_hand', self.syllabe)
-                        if self.one_hand :
-                                return self.syllabe+'/'
-                        if self.syllabe.endswith('-'):
-#                                self.change_hand()
-                                self.syllabe = self.syllabe[:-1]                    
-#                                self.keys_left=''
-#                        self.encoded_hand = self.encoded_hand + self.syllabe
-
-#                        return self.syllabe
-                
-                if self.syllabe.startswith('-'):
-                        self.syllabe = self.syllabe[1:]
-
-                if self.syllabe.startswith('/'):
-                        self.already_encoded = True
-                        self.syllabe = self.syllabe[1:]          
-
-            
-
-
-                rest = self.syllabe
-                count = 1
-
-                cpt = (self.has_previous_R_and_L())
-                if (self.previous is not None) :
-                        if "PBLG" in self.previous.encoded_hand:
-                                self.change_hand()
-                                cpt = True
-                        else:
-                                self.keys_left = self.previous.keys_left
-                                                                
-                if self.is_suffix :
-                        need_hand = self.needs_hand(self.syllabe, self.already_encoded)
-
-                        if need_hand == 'B' and self.hand == 'R':
-                                Log('need hand' , need_hand)
-                                self.change_hand()
-                                cpt= True
-                        
-
-                while rest and count<30:
-
-                        if  self.is_left_hand() and cpt:
-                                cpt = False
-                                self.encoded_hand = self.encoded_hand+'/'
-#                                piece = piece+'/'
-                        (rest, not_found) = self.consume_syll(rest)
-
-                        Log('piece',self.encoded_hand)
-
-                        if rest :
-                                self.change_hand()
-                                cpt = True
-                        count= count +1
-                        Log('reste:'+rest)
-                        Log('encoded_hand', self.encoded_hand)
-#                self.encoded_hand = self.add_hyphen(self.encoded_hand)
-                Log('-- Encoded : end --')
-                return self.encoded_hand #piece
-
-        def replace_hand(self, syllabe, items):
-                for sound in items:
-                        syllabe = syllabe.replace(sound[0], sound[1])
-                return syllabe
-
-class Steno_Encoding:
-        DIPHTONGS = {
-                # without i
-
-                'sjasj§': 'SRAGS', #ciation
-                '@v°n' : 'ENVH',
-                'v°n' : 'VH',
-                'vin' : 'VH',
-                "jEn": "AEB",
-                'Egze' : 'KP',
-                'Egzi' : 'KPEU',
-                'Eksi' : 'KPEU',
-                'Eks' : 'KP',
-                'ist' : '*EUS',
-                'wan' : 'WOIB', #douane                
-                'bRe': '-BS',
-                "djO": "OD",
-                "zj§": "GZ",
-                'nal' : '-NL', 
-                '@kR' : '-FRKS', #cancre
-                "sj§": "GZ",
-                'vul': 'WHR',
-                "fik" : "-/FBG",
-                "fEk" : "-/FBG",
-                                'kE' : 'KE',
-                'vERs' : '-/FRB', # divers
-                'ERv' : '-/FRB', #v-erve
-                'vEr' : '-/FRB', # cou-vert
-                'vER' : '-/FRB', # travers
-                'Rifi' : '-/FR', # bonus rifi
-                'ijO' : 'AO',
-                'jO' : 'RO|AO',
-
-                'j@' : 'AEN' , # son ian
-                '@l' : '-ANL', #enleve
-                "RSi" : "VRPB",
-                'REj' : '-RLZ' , #oreille
-
-                "tER": "-TS",  #notaire
-                "EtR" : "-TS" , #fenetre
-                "RS" : "VRPB",# -rche
-                "dZEk" : "PBLG",
-                "dZ" : "PBLG",
-                "bZEk" : "PBLG",
-                "bZ" : "PBLG",
-                "ps" : "S",
-                'En' : 'AIB',
-                'oi' : 'OEU',
-                "vaj" : "-FL",
-                "vEj" : "-FL",
-                '@v' : 'ENVH', #envenime
-
-                't8' : 'TW', # fru-ctu-eux
-#                "kR" : "KR", 
-                "ks": "-BGS",
-                '8a' : 'WA' , # ua in situation
-#                "kR" : "RK",#can-cre
-                 "kR" : "KR|RBG",#skrute
-                'Ne'  : '-PGR',
-                'on' : 'ON',
-#                "di" : "D",
-#                "mi" : "M",k§t
-                'gRi' : 'TKPWR|GS',
-                'gR' : 'TKPWR|GS',
-#                "tR": "-TS", #tre
-                "tR": "TR", #strate
-                "8i": "AU",     # pluie
-#                'ij': 'AO', # before jO
-                'ij' : '-LZ', #ille
-                'aj' : '-LZ', #paille
-#                'jO' : 'AO',
-
-                "j2": "AOEU",   # vieux
-                "je": "AE",     # pied
-                "jE": "AE",     # ciel
-                "ja": "RA",     # cria
-                "jo": "RO",     # bio
-
-#                "jO": "ROE",    # fjord # TODO unsure
-#                "jo": "AO",     # bio # TODO Some conflict there. "-R can be read as i" (above), but the diphtongs are more important I guess?
-#                "jO": "RO",     # fjord
-                "j§": "AO",     # av_ion_
-                "kw": "KW",
-                'k§' : 'KOEPB-', # content
-#                "wE": "WAEU",
-                "wE" : "WE",
-                "§t" : "OFRPT",
-                "@S" : "-AFRPBLG",
-                "5S" : "-EUFRPBLG",
-                '@p' : '-/AFRP' , #campe
-                '§p' : '-/OFRP', # trompe
-                'pl' : 'PL',
-                "ER" : "AIR",
-                'gl' : 'GL|FRLG', #glace or angle
-                "wa": "OEU",    # froid
-                "w5": "OEUPB",  # loin
-                "wi": "AOU",    # oui
-                "j5": "AEPB",   # chien
-                "ey": "EU",     # r_éu_nion
-#                "vR": "VR",
-                'oo' : 'O',    #zoo
-                "ya": "WA",     # suave
-#                "ij": "LZ",    # bille # TODO Maybe not a diphtong, but a word ending/consonant thing
-
-                'fl': "FL",
-                'S' : 'SH|FP',
-
-        }
-        VOWELS = {
-                "a": "A",       # chat
-                "°" : "",
-                'j' : 'EU',
-                "Z" : "G",
-                "H" : "H",
-                "5" : "IN",
-                'u' : 'OU',
-                'l' : 'L',
-
-                '1' : 'U',
-#                'e' : '',
-                "@": "AN",     # pluie
-                "E" : "AEU", #collecte
-#                "e" : "AEU", #collecte
-
-                "2": "AO",      # eux
-                "9": "AO",      # seul
-#                "E": "AEU",     # père
-                "e": "E",       # clé
-
-#                "E" : "",
-                "i": "EU",      # lit
-                "o": "OE",      # haut
-                "o": "OE",      # haut
-                "O": "O",       # mort
-
-#                "y" : "",
-                "u": "OU",      # mou
-                "8": "U",       # huit
-                "§": "ON",
-                'N' : 'N',
-                'd' : 'D',
-                'p' : 'P',
-                'm' : 'M',
-                'k' : 'K',
-                'n' : 'N',
-
-                "y": "U",       # cru
-
-                # *N is used for "on" (§) endings. # TODO this is a vowel, but only on word endings
-
-        }
-        needs_star=False
-        def __init__(self, syllabes, prefix, suffix):
-                self.syllabes = syllabes
-                self.prefix = prefix
-                self.suffix = suffix
-                if '*' in self.suffix and  '/' not in self.suffix:
-                        self.suffix = self.suffix.replace('*', '')
-                        self.needs_star = True
-
-                Log('steno_suffixes' , vars(self))
-
-        def diphtongs_try(self, word):
-                new_word=word
-                final_word = ''
-                items = self.DIPHTONGS
-                keys = self.DIPHTONGS.keys()
-#                self.found_sound = ''
-                nb_char = len(word)
-                while new_word != '' :
-                        Log(nb_char,word[:nb_char])
-                        if items.get(word[:nb_char]) is not None:
-#                                self.found_sound=diphtong[1]
-                                final_word = final_word + "+"+items[word[:nb_char]]+"+"
-                                break
-                        nb_char = nb_char-1
-                        if new_word :
-                                new_word = new_word[nb_char:]
-                                                        
-
-                return final_word
-
-        def find_matching(self, syll, word) :
-                Log('find match word', word)
-                for diphtong in self.DIPHTONGS.items():
-                        key = diphtong[0]
-                        if key in word:
-                                Log('find key', key)
-#                                self.found_sound = diphtong[1]
-                                if word.startswith(key):
-                                        syll[key] = diphtong[1]
-                                        end = word[len(key):]
-                                        if end :
-                                                for  findsyll in self.find_matching(syll,end).items():
-                                                        syll[findsyll[0]] = findsyll[1]
-                                        return syll
-                                if word.endswith(key):
-                                        start = word[:-len(key)]
-                                        if start :
-                                                for  findsyll in self.find_matching(syll,start).items():
-                                                        syll[findsyll[0]] = findsyll[1]
-                                        syll[key] = diphtong[1]
-                                        return syll
-                                splitted = word.split(key)
-                                start  =splitted[0]
-                                for  findsyll in self.find_matching(syll,start).items():
-                                        syll[findsyll[0]] = findsyll[1]
-                                syll[key] = diphtong[1]
-                                
-                                end = splitted[1]
-                                for  findsyll in self.find_matching(syll,end).items():
-                                        syll[findsyll[0]] = findsyll[1]
-                                return syll
-                syll[word] = ""
-                return syll
-                                
-                                
-        def diphtongs(self, word):
-                before = ''
-                after = ''
-                new_word=word
-                syll_dict = {}
-                final_word = word
-                items = self.DIPHTONGS
-                keys = self.DIPHTONGS.keys()
-#                self.found_sound = ''
-                nb_char = len(word)
-                for diphtong in self.DIPHTONGS.items():
-                        
-                        if diphtong[0] in new_word :
-                                final_word = final_word.replace(diphtong[0], "+"+diphtong[1]+"+")
-                                Log('final_word',final_word)
-
-                                new_word = new_word.replace(diphtong[1],'')
-                                Log('new_word',new_word)
-#                        self.found_sound=diphtong[1]
-
-    
-                
-        def encode(self):
-                Log('-- Encode :',self.syllabes)
-
-                self.word_encoded = ""
-                previous = None
-                count_syll = 1
-                one_hand=False
-                next_syll = self.syllabes
-                if self.prefix:
-                        Log('> Prefix ', self.prefix)
-                        if '/' in self.prefix:
-                                one_hand = True
-                                self.prefix = self.prefix.replace('/','')
-                        previous = Syllabe(self.prefix, None, self.prefix).prefix()
-                        if (one_hand):
-                                previous.set_one_hand()
-                        self.word_encoded = previous.encoded()
-                        Log('prefix encoded', self.word_encoded)
-                        if (one_hand):
-                                self.hand='L'
-                        count_syll = 2
-                
-                for piece in self.syllabes:
-                        if piece == "":
-                                continue
-                        Log('piece',piece)
-                        sylls = {}
-                        sylls = self.find_matching(sylls, piece)
-                        Log('sylls' , sylls)
-
-
-#                        piece = self.diphtongs(piece)
-                        Log('word encoded' , self.word_encoded)
-#                        Log('found sound dif' , self.found_sound)
-
-                        Log('dif',piece)
-#                        piece = self.voyels(piece)
-                        Log('voyel',piece)
-                        
-                        if piece == "":
-                                continue
-                        for mysyll in sylls.items() :
-                                new_piece = mysyll[0]
-                                if mysyll[1] != "":
-                                        new_piece = mysyll[1]
-                                else:
-                                        new_piece = self.voyels(new_piece)
-                                        new_piece = new_piece.upper()
-#                        for new_piece in piece.split('+'):
-                                Log('syllabe',new_piece)
-                                syllabe = Syllabe(new_piece.upper(), previous,next_syll)
-                                encoded = syllabe.encoded()
-
-                                Log('encoded syllabe', encoded)
-#                                if self.found_sound and self.found_sound.endswith("RK") and self.word_encoded.endswith('PB'):
-
-#                                        Log('found sound', self.found_sound)
-#                                        self.word_encoded = self.word_encoded[:2]
-#                                        encoded = 'KS'
-#b                                         or self.found_sound.endswith("BGS")) 
-                                
-                                self.word_encoded = self.word_encoded+ encoded
-                                
-                                Log('encoded word', self.word_encoded)
-                                previous = syllabe
-                        next_syll = self.syllabes[count_syll:]
-                        count_syll = count_syll+1
-                Log('WORD ENCODED BEFORE SUFFIX', self.word_encoded)
-                if self.suffix :
-                        syllabe = Syllabe(self.suffix,previous, next_syll).suffix()
-                        self.word_encoded = self.word_encoded + syllabe.encoded()
-                if self.word_encoded.startswith('/'):
-                        self.word_encoded = self.word_encoded[1:]
-                Log('WORD ENCODED ', self.word_encoded)
-                self.word_encoded = self.word_encoded.replace('//','/')
-                if self.needs_star  :
-                        splitted = self.word_encoded.split('/')
-                        splitted[len(splitted)-1]= self.add_star(splitted[len(splitted)-1])
-                        self.word_encoded = '/'.join(splitted)
-                if self.word_encoded.endswith('/OU'):
-                        self.word_encoded = self.word_encoded.replace('/OU','/O*U')
-                return  self.word_encoded
-        
-        def add_star(self,word):
-                if ('*' in word):
-                        return word
-                splitted = word.split('E')
-                if len( splitted) > 1:
-                         splitted[len(splitted)-2] = splitted[len(splitted)-2]+"*"
-                         return 'E'.join(splitted)
-                splitted = word.split('U')
-                Log('add star', word)                
-                if len( splitted) > 1:
-                         splitted[len(splitted)-2] = splitted[len(splitted)-2]+"*"
-                         return 'U'.join(splitted)
-                splitted = word.split('O')
-                if len( splitted) > 1:
-                         splitted[len(splitted)-1] = "*"+splitted[len(splitted)-1]
-                         return 'O'.join(splitted)
-
-                splitted = word.split('A')
-                if len( splitted) > 1:
-                         splitted[len(splitted)-1] = "*"+splitted[len(splitted)-1]
-                         Log('splitted "A"',splitted)
-                         return 'A'.join(splitted)
-                
-                return "*"+word
-
-        def voyels(self, word):
-                new_word=word
-                for char in word:
-                        if char in self.VOWELS:
-                                new_word = new_word.replace(char, self.VOWELS[char])
-                return new_word
 
