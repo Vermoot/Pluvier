@@ -6,7 +6,7 @@ import numpy as np
 import json
 
 from steno import Steno
-from steno import Word
+from word import Word
 
 class Dictionary:
 
