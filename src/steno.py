@@ -1,12 +1,12 @@
 import sys
 import copy
 import re
-from word import Word
-from cutword import Cutword
-from syllabe import Syllabe
-from log import Log
-from translated import Translated
-from steno_encoding import Steno_Encoding
+
+from src.word import Word
+from src.cutword import Cutword
+from src.syllabe import Syllabe
+from src.log import Log
+from src.steno_encoding import Steno_Encoding
 class Ortho:
 
         sounds = ''

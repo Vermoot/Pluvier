@@ -1,4 +1,4 @@
-from log import Log
+from src.log import Log
 class Syllabe:
         hand = 'L'
 

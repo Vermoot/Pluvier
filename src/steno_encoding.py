@@ -1,6 +1,6 @@
-from log import Log
-from syllabe import Syllabe
-from cutword import Cutword
+from src.log import Log
+from src.syllabe import Syllabe
+from src.cutword import Cutword
 class Steno_Encoding:
         DIPHTONGS = {
                 # without i

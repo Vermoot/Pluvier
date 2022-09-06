@@ -1,8 +1,9 @@
 import sys
 import json
+
 import numpy as np
-from steno import Steno
-from steno import Word
+from src.steno import Steno
+from src.steno import Word
 
 class TestPluvier: 
 
