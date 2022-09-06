@@ -345,6 +345,96 @@ class Steno_Encoding:
                         self.word_encoded = self.word_encoded.replace('/OU','/O*U')
                 return  self.word_encoded
         
+
+        def encode_by_syll(self):
+                Log('-- Encode by syllabes :',self.syllabes)
+
+                self.word_encoded = ""
+                previous = None
+                count_syll = 1
+                one_hand=False
+                next_syll = self.syllabes
+                if self.prefix:
+                        Log('> Prefix ', self.prefix)
+                        if '/' in self.prefix:
+                                one_hand = True
+                                self.prefix = self.prefix.replace('/','')
+                        previous = Syllabe(self.prefix, None, self.prefix).prefix()
+                        if (one_hand):
+                                previous.set_one_hand()
+                        self.word_encoded = previous.encoded()
+                        Log('prefix encoded', self.word_encoded)
+                        if (one_hand):
+                                self.hand='L'
+                        count_syll = 2
+                        previous.keys_left= ''
+                i=0;
+                cutword=Cutword(self.syllabes)
+                for piece in self.syllabes.split( '-'):
+                        if piece == "":
+                                continue
+                        Log('piece',piece)
+                        sylls = {}
+                        sylls = self.find_matching(sylls, piece)
+                        Log('sylls' , sylls)
+
+
+#                        piece = self.diphtongs(piece)
+                        Log('word encoded' , self.word_encoded)
+#                        Log('found sound dif' , self.found_sound)
+
+                        Log('dif',piece)
+#                        piece = self.voyels(piece)
+                        Log('voyel',piece)
+                        
+                        if piece == "":
+                                continue
+                        for mysyll in sylls.items() :
+                                new_piece = mysyll[0]
+                                if mysyll[1] != "":
+                                        new_piece = mysyll[1]
+                                else:
+                                        new_piece = self.voyels(new_piece)
+                                        new_piece = new_piece.upper()
+#                        for new_piece in piece.split('+'):
+                                Log('syllabe',new_piece)
+                                syllabe = Syllabe(new_piece.upper(), previous,next_syll)
+                                encoded = syllabe.encoded()
+
+                                Log('encoded syllabe', encoded)
+#                                if self.found_sound and self.found_sound.endswith("RK") and self.word_encoded.endswith('PB'):
+
+#                                        Log('found sound', self.found_sound)
+#                                        self.word_encoded = self.word_encoded[:2]
+#                                        encoded = 'KS'
+#b                                         or self.found_sound.endswith("BGS")) 
+                                
+                                self.word_encoded = self.word_encoded+ encoded
+                                
+                                Log('encoded word', self.word_encoded)
+
+                                previous = syllabe
+                        previous.keys_left= ''
+                        next_syll = self.syllabes[count_syll:]
+                        count_syll = count_syll+1
+
+                Log('WORD ENCODED BEFORE SUFFIX', self.word_encoded)
+                if self.suffix :
+                        syllabe = Syllabe(self.suffix,previous, next_syll).suffix()
+                        self.word_encoded = self.word_encoded + syllabe.encoded()
+                if self.word_encoded.startswith('/'):
+                        self.word_encoded = self.word_encoded[1:]
+                Log('WORD ENCODED ', self.word_encoded)
+                self.word_encoded = self.word_encoded.replace('//','/')
+                if self.needs_star  :
+                        splitted = self.word_encoded.split('/')
+                        splitted[len(splitted)-1]= self.add_star(splitted[len(splitted)-1])
+                        self.word_encoded = '/'.join(splitted)
+                if self.word_encoded.endswith('/OU'):
+                        self.word_encoded = self.word_encoded.replace('/OU','/O*U')
+                return  self.word_encoded
+        
+
         def add_star(self,word):
                 if ('*' in word):
                         return word

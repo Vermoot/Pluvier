@@ -6,7 +6,7 @@ import numpy as np
 import json
 
 from src.steno import Steno
-from src.word import Word
+from src.steno import Word
 
 class Dictionary:
 
@@ -60,7 +60,7 @@ class Dictionary:
 
     def steno(self,word, force_verb = False):
         self.steno_class=Steno(self.words)
-        return self.steno_class.newtransform(word)
+        return self.steno_class.basic_transform_by_syllabes(word)
 
     def generate(self) :
         # with open('resources/dicofr.json') as json_file:
@@ -68,21 +68,23 @@ class Dictionary:
         # translated_word = self.append_tao(data)
         # return True
         self.words = self.read_corpus()
+
         self.words.sort(key=lambda x: x.frequence, reverse=True)
-        with open('resources/tao_la_salle.json') as json_file:
-            tao = json.load(json_file)
-
-
 #        for word in self.words :
 #            print(word.frequence)
-#        self.words = self.words[:8000]
+        self.words = self.words[:8000]
+        with open('resources/tao_la_salle.json') as json_file:
+            tao = json.load(json_file)
 
 
         translated_word = {}
         duplicated = {}
 
         for word in self.words:
-            if not word.is_verb():
+            if word.word  in tao.values():
+                continue
+ 
+            if word.is_verb() and not word.is_infinitif():
                 continue
             for steno in np.unique(self.steno(word)):
 #                steno = steno.replace("'","\'")
@@ -103,12 +105,12 @@ class Dictionary:
                 translated_word[steno] = word.word
 
 #                    d.write("'"+steno + "':'"+ word.word+"',\n")
+        dup_object = json.dumps(duplicated, indent = 4, ensure_ascii=False )
 
         json_object = json.dumps(translated_word, indent = 4, ensure_ascii=False )
-        dup_object = json.dumps(duplicated, indent = 4, ensure_ascii=False )
-        with open('resources/dup-verbs.json', "w") as d:
+        with open('resources/dup-syll.json', "w") as d:
             d.write(dup_object)
-        with open('resources/verbs.json', "w") as d:
+        with open('resources/dicofrbysyll.json', "w") as d:
             d.write(json_object)
 
 Dictionary().generate()

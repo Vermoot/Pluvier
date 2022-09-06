@@ -906,7 +906,8 @@ class Steno:
 #                myword.syll = self.try_to_remove_woyel(myword)
 #                self.prefix ={}
 #                self.suffix =""
-                self.final_encoded=self.newtransform(myword)
+#                self.final_encoded=self.newtransform(myword)
+                self.final_encoded=self.basic_transform_by_syllabes(myword)
                 Log('The word is a verb ? ' , myword.is_verb())
                 has_homophone = self.has_homophone(myword)
                 Log('Has homophone ? ' , has_homophone)
@@ -1026,6 +1027,41 @@ class Steno:
                         results.append(final_word)
                 results = list(dict.fromkeys(results))
                 return results
+
+
+        def basic_transform_by_syllabes(self,initial_word):
+                all_sylls = initial_word.syll
+
+                if initial_word.is_plural() and initial_word.word.endswith('s'):
+                        return []
+
+                results = []
+                has_homophone = self.has_homophone(initial_word)
+                splitted =all_sylls.split( '-')
+                for prefix in self.check_prefixes(initial_word,all_sylls):
+                        Log(prefix.get_remains())
                         
+                        for suffix in self.check_suffixes(initial_word,prefix):
+                                suffix_remains = suffix.get_remains()
+                                final_word= Steno_Encoding(suffix_remains, prefix.get_steno(), suffix.get_steno()).encode_by_syll()
+                                if has_homophone and initial_word.is_verb() and not prefix.has_ortho_rule() and not suffix.has_ortho_rule():
+                                        Log( 'is homophone',suffix.has_ortho_rule())
+                                        final_word = self.add_star(final_word)
+                                results.append(final_word)
+#                        final_word = self.orth_ending_iere(initial_word.word, final_word)
+
+
+                Log(results)
+
+                for final_word in  results:
+                                                
+                        Log('final_word' , final_word)
+                        results.remove(final_word)
+                        
+                        Log('final_word' , final_word)
+                        results.append(final_word)
+                results = list(dict.fromkeys(results))
+                return results
+
 
 
