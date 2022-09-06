@@ -9,6 +9,7 @@ class Steno_Encoding:
                 '@v°n' : 'ENVH',
                 'v°n' : 'VH',
                 'vin' : 'VH',
+                'vol' :'VL',
                 "jEn": "AEB",
                 'Egze' : 'KP',
                 'Egzi' : 'KPEU',
@@ -108,6 +109,9 @@ class Steno_Encoding:
 #                "ij": "LZ",    # bille # TODO Maybe not a diphtong, but a word ending/consonant thing
 
                 'fl': "FL",
+                "ska" : "K",#skrute
+                "sk" : "K",#skrute
+                "sp" : "P",#skrute
                 'S' : 'SH|FP',
 
         }
@@ -156,10 +160,11 @@ class Steno_Encoding:
         }
         needs_star=False
         def __init__(self, syllabes, prefix, suffix):
+                self.syllabes = syllabes
                 if prefix=='TKAOEZ':
                         self.syllabes = self.eat_woyel(self.syllabes)
 
-                self.syllabes = syllabes
+
                 self.prefix = prefix
                 self.suffix = suffix
                 if '*' in self.suffix and  '/' not in self.suffix:
@@ -168,12 +173,12 @@ class Steno_Encoding:
 
                 Log('steno_suffixes' , vars(self))
         def eat_woyel(self, syll) :
-                if not syll[0]:
+                if not syll or not syll[0]:
                         return syll
                 Log('> before eat: ', syll[0][:1])
                 if syll[0][:1] in ['a','j','u','1','E','e','o','O','8','y' ,'5','2'] :
                         Log('> eat voyel: ', syll)
-                        syll[0] = syll[0][1:]
+                        syll = syll.replace(syll[0][1:],'',1)
                 Log('> not eat voyel: ', syll)
                 return syll
 

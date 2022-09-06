@@ -60,7 +60,7 @@ class Dictionary:
 
     def steno(self,word, force_verb = False):
         self.steno_class=Steno(self.words)
-        return self.steno_class.transform_word(word)
+        return self.steno_class.newtransform(word)
 
     def generate(self) :
         # with open('resources/dicofr.json') as json_file:

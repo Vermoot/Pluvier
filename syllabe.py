@@ -179,18 +179,83 @@ class Syllabe:
                 Log('added hyphen to word',word)
 
                 return "-"+word
+        def encode_syll(self, syllabe, sounds,keys,already_encoded):
+                not_found = []
+                rest = ''
+                encoded_hand= ''
+                for key in syllabe:
+                        if not_found:
+                                rest=rest+key
+                                Log('not found',rest)
+                                continue
+                        key_trans = key
+                        if not already_encoded and ( key in sounds.keys()):
+                                key_trans = sounds[key]
+
+                        Log('key_trans', key_trans)
+
+                        for key_trans_char in key_trans:
+                                if key_trans_char in keys :
+                                        keys = keys.split(key_trans_char)[1]
+                                else:
+                                        rest=rest+key
+                                        not_found.append(key)
+                                        key_trans=""
+                                        break
+                                Log('encoded hand ',encoded_hand)
+                                
+                        if not not_found:
+#                                self.encoded_hand = self.encoded_hand + self.add_hyphen(key_trans)
+                                encoded_hand=encoded_hand + key_trans
+                return [encoded_hand,keys,rest,not_found]
+
+        
+        def add_hyphen_between(self, encoded_hand, word,already_encoded, previous ):
+
+                if already_encoded :
+                        return word
+                Log('hand', self.hand)
+                Log('word', word)
+
+                if previous is None and self.hand == 'R'  and self.already_encoded == "" :
+                        return '-'+word
                 
+                if self.previous is None :
+                        return word
+                previous_encoded = self.previous.encoded_hand
+                if (self.encoded_hand != '') :
+                        previous_encoded = previous_encoded + self.encoded_hand
+                if self.previous is not None and previous_encoded.endswith('-'):
+                        Log('add hyphen previous encod',previous_encoded)
+                        return word
+
+                if not (self.hand == 'R' and (self.previous.hand == 'L')):
+                        return word
+
+                if  self.contains_woyels( previous_encoded) or self.contains_woyels(word):
+                        return word
+
+                Log('added hyphen to word',word)
+
+                return "-"+word
+                
+
         def consume(self,syllabe, keys, sounds):
                 keys = keys
                 not_found = []
                 rest = ''
-#                self.encoded_hand = ''
+                if not self.encoded_hand:
+                        self.encoded_hand = ''
                 Log('--- Consume ---')
                 Log('syll:',syllabe)
                 Log('hand:',self.hand)
+                Log('previous:',self.previous)
+                Log('encoded hand:',self.encoded_hand)
                 Log('already_encoded ? ',self.already_encoded)
+                if not self.already_encoded:
+                        self.already_encoded= ''
 #                if self.already_encoded :
- #                       keys = keys.split(syllabe[-1:])[1] if len(keys.split(syllabe[-1:]))>1 else ''
+ #                       keys = keys.split(syllabe[-1:])[1] if len(keys.split(syllabe[-1:]))>1 else ''n
  #                       Log('alreday keys left',keys)
 
                         
@@ -210,39 +275,21 @@ class Syllabe:
                                         syllabe_split = syllabe.split('|')[1]
                         syllabe = syllabe_split
                         Log('syll split:',syllabe_split)
-                if (self.already_encoded and self.previous):
-                        if  not self.contains_woyels( self.previous.encoded_hand) and not self.contains_woyels(self.syllabe) and not self.syll_can_enter(syllabe, keys) and not '-' in syllabe:
+                [encoded, keys ,rest,not_found] =self.encode_syll(syllabe,sounds,keys,self.already_encoded)
+                Log('hand:',self.hand)
+                Log('contains voyelles:',self.contains_woyels(syllabe))
+                if (self.is_right_hand() and not self.contains_woyels(encoded)  and not self.contains_woyels(self.encoded_hand) and  self.previous) and not syllabe.startswith( '-'):
+                        Log('previous:',self.previous.encoded_hand)
+                        if self.previous.hand=='L' and not self.contains_woyels(self.previous.encoded_hand):
                                 self.encoded_hand =self.add_hyphen_after(self.encoded_hand)
-                else:
-                        if  self.encoded_hand and self.is_right_hand() and not self.contains_woyels( self.encoded_hand) and not self.contains_woyels(self.syllabe) and not '-' in syllabe:
-                                self.encoded_hand =self.add_hyphen_after(self.encoded_hand)
-                                Log('Not contain voyel',self.encoded_hand)
+
+                if (self.is_right_hand() and not self.contains_woyels(encoded) and not self.contains_woyels(self.encoded_hand) and  not self.previous and not syllabe.startswith( '-')):
+                        self.encoded_hand =self.add_hyphen_after(self.encoded_hand)
                 Log('keys left',keys)
-                for key in syllabe:
-                        if not_found:
-                                rest=rest+key
-                                Log('not found',rest)
-                                continue
-                        key_trans = key
-                        if not self.already_encoded and ( key in sounds.keys()):
-                                key_trans = sounds[key]
 
-                        Log('key_trans', key_trans)
-
-                        for key_trans_char in key_trans:
-                                if key_trans_char in keys :
-                                        keys = keys.split(key_trans_char)[1]
-                                else:
-                                        rest=rest+key
-                                        not_found.append(key)
-                                        key_trans=""
-                                        break
-                                Log('encoded hand ',self.encoded_hand)
-                                
-                        if not not_found:
-                                self.encoded_hand = self.encoded_hand + self.add_hyphen(key_trans)
-#                                self.encoded_hand=self.encoded_hand + key_trans
-
+                Log('encoded',encoded)
+                Log('keys left',keys)
+                self.encoded_hand = self.encoded_hand+encoded
                 Log('not_found', not_found)
                 Log('encoded', self.encoded_hand)
                 Log('rest', rest)
@@ -314,6 +361,7 @@ class Syllabe:
                                         break
                         if not not_found:
                                 encoded = encoded + self.add_hyphen(key_trans)
+
                 return (encoded,rest,not_found)
 
         def needs_hand(self, syllabe, already_encoded) :
@@ -387,7 +435,7 @@ class Syllabe:
                                 self.change_hand()
                                 cpt= True
                         
-
+                Log('encoded_hand bf', self.encoded_hand)
                 while rest and count<30:
 
                         if  self.is_left_hand() and cpt:

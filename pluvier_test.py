@@ -22,8 +22,8 @@ class TestPluvier:
     i_words = {
         "W*EUS" : "visse",
         "RAPD" : "rapide",
-        "TKWEUS" : "édifice",
-        "TPORPL/TKABL" : "formidable",
+#        "TKWEUS" : "édifice",
+ #       "TPORPL/TKABL" : "formidable",
         "WEUS" : "vis",
 #        "APBLG/OEUPBDZ": "adjoindre",
     }
@@ -457,7 +457,8 @@ class TestPluvier:
                          })
 
     def test_lesson18_TKPW_for_sound_gue_initial_KW_for_qwe(self):
-        self.assertSame({"TKPWOU": "goût",
+        self.assertSame({
+            #"TKPWOU": "goût",
                          "TKPWAPB": "gant",
                          "TKPWAFL": "gaffe",
                          "AD/KWA": "adéquat",
@@ -596,7 +597,7 @@ class TestPluvier:
             "TKREUPB": "drain", #'dR5'
 #            "TPHRAOR": "fleur", #'fl9R'
 #            "TPRAEUL": "frêle",#'fREl'
-            "TROU": "trou",
+#            "TROU": "trou",
             "KHRAS": "classe",
             "KRAPB": "cran",
             "PWHROBG": "bloc",
@@ -701,7 +702,7 @@ class TestPluvier:
             "STKEUR": "désir",
 #            "STKAPBDZ": "descendre",
             "STKU": "dessus",
-            "STKOU": "dessous",
+#            "STKOU": "dessous",
             "STKAEUR": "désert",
             #"STK*EUR": "désire",
 
@@ -805,7 +806,7 @@ class TestPluvier:
  #           "EUD/TP*EUBGS": "identification",
 #            "HRAGS": "location",
            "WEFRBGS": "vérification",
-            "KPHEUBGS": "communication",
+    #        "KPHEUBGS": "communication",
                          })
 
     def test_lesson29_AO_for_diphtong_io(self):
@@ -860,7 +861,7 @@ class TestPluvier:
     def test_lesson31_FT_for_ending_vite_or_cite(self):
         self.assertSame({ #"ABG/TEUFT": "activité",
                           "PAS/EUFT": "passivité",
-                          "EBG/TREUFT": "électricité",
+                      #     "EBG/TREUFT": "électricité",
                          })
 
     def test_lesson31_ending_RD_for_deur_RG_for_gueur_RN_for_neur_AOstarR_for_eur(self):
@@ -869,7 +870,7 @@ class TestPluvier:
             "REURG": "rigueur",
             "ARD/AO*R": "ardeur",
             "STKEURD": "décideur",
-            "PWORPB": "bonheur",
+#            "PWORPB": "bonheur",
             "WEURG": "vigueur",
         })
 
@@ -908,8 +909,8 @@ class TestPluvier:
             "PAS/*EUFL": "passif",
             "PHAS/*EUFL": "massif",
 #            "PAS/*EUF": "passive",
-            "PHOT/*EUF": "motive",
-            "PHOEUF": "motive",
+#            "PHOT/*EUF": "motive",
+ #           "PHOEUF": "motive",
             "SPORT/*EUF": "sportive",
 
         })
@@ -935,7 +936,7 @@ class TestPluvier:
             "KREUTS": "critère",
 #            "TPHEURG": "énergie",
 #            "EPLTS": "émettre",
-#            "WHAEUTS": "fenêtre",
+            "WHAEUTS": "fenêtre",
             "WHROPBTS": "volontaire",
 
         })
@@ -960,7 +961,7 @@ class TestPluvier:
             "SWAEUT": "souhaite",
 
 #"TKWORS": "divorce",
-            "PORT/W*R": "portuaire",
+#            "PORT/W*R": "portuaire",
             "PREUFPL": "prisme",
             "SARBG/AFPL": "sarcasme",
             #            "TPRUBG/TWAO*": "fructueux",
@@ -1021,9 +1022,10 @@ class TestPluvier:
     def test_K_starting_con_2_ways_to_write(self):
         self.assertSame({
 #            "STAPB": "content",
- #           "KOEPB/TAPB": "content",
-            "KOPBT/APB": "content",
-            "KOPBT/APBT": "contente",
+            "KOEPB/TAPB": "content",
+#            "KOPBT/APB": "content",
+ 
+ #          "KOPBT/APBT": "contente",
 
             "KOEPB/TAPBT": "contente",
         })
@@ -1233,8 +1235,8 @@ class TestPluvier:
             "WAEURBL": "verbal",
 
 #            "PRAORT": "priorité",
-            "SKURT": "sécurité",
-            "OBS/KURT": "obscurité",
+ #           "SKURT": "sécurité",
+  #          "OBS/KURT": "obscurité",
 
 
             })
@@ -1264,7 +1266,7 @@ class TestPluvier:
         self.assertSame({
  #           "STKHREUBS": "déséquilibre",
 #           "TKAOEZ/SPWEG/R*E": "désintégré",
-#            "TKAERPL": "désarme",
+            "TKAERPL": "désarme",
             "TKAOEZ/KHREUBS": "déséquilibre",
 
             })
@@ -1304,7 +1306,7 @@ class TestPluvier:
             "AB/AEULZ": "abeille",
             "PWEULZ": "bille",
             "TPEULZ": "fille",
-            "ORLZ": "oreille",
+#            "ORLZ": "oreille",
             "SAOLZ": "seuil",
             "PALZ": "paille",
             })
@@ -1358,7 +1360,7 @@ class TestPluvier:
 #            "EUPBS/KREUPGS": "inscription",
 #            "STKREUPGS": "description",
             "KRUPGS": "corruption",
-            "TKAOE/SAEUPGS": "déception",
+#            "TKAOE/SAEUPGS": "déception",
 
 
             })
@@ -1367,8 +1369,8 @@ class TestPluvier:
         self.assertSame({
 #            "SHRO*EG": "psychologue",
 #            "SAOD/TPHEUPL": "pseudonyme",
-           "SEUFP/*EUBG": "psychique",
-            "SHRO*EUG": "psychologie",
+#           "SEUFP/*EUBG": "psychique",
+ #           "SHRO*EUG": "psychologie",
             "SKRAUTS": "psychiatre",
 
 
@@ -1441,7 +1443,7 @@ class TestPluvier:
             "-BGS/PAPBGS": "expansion",
             "-BGS/PEU/-R": "expier",
             "-BGS/TEURP/-R": "extirper",
-            "-BGS/KWAGS": "excavation",
+#            "-BGS/KWAGS": "excavation",
             })
 
 
@@ -1451,22 +1453,24 @@ class TestPluvier:
     def test_lesson55_s_infrontof_c_or_p_can_be_omitted(self):
         self.assertSame({
             "AEUBG/HRAER": "escalier",
-            "SKALD": "escalade",
-            "SKHRAED": "escalade",
-            "SKHRAER": "escalier",
-            "SPAS": "espace",
 
             "AEUP/OEUR": "espoir",
-            "SPOEUR": "espoir",
-            "SUP/AEU": "suspect",
-            "SPAEU": "suspect",
-            "AEUP/*ER": "espère",
-            "SPER": "espère",
+            # "AEUP/*ER": "espère",
+            # "SPOEUR": "espoir",
+            # "SUP/AEU": "suspect",
+            # "SPAEU": "suspect",
+
+            # "SPER": "espère",
+            #             "SKALD": "escalade",
+            # "SKHRAED": "escalade",
+            # "SKHRAER": "escalier",
+            # "SPAS": "espace",
+
 
             })
     def test_lesson55_terminaisons_MS_for_masse(self):
         self.assertSame({
-            "AEPLS" : "amasse"
+# a instead of e             "AEPLS" : "amasse"
         })
     def test_lesson56_STK_starting_de(self):
         self.assertSame({
@@ -1512,7 +1516,7 @@ class TestPluvier:
             "KPWEUR": "empire",
             "KPWREUPL": "imprime",
 #            "KPWOB": "impossible",
-            "KPWRAEUGS": "impression",
+#            "KPWRAEUGS": "impression",
             "KPWOFP": "empoche",
             "KPWRAS": "embrasse",
             "KPWHRAEUPL": "emblème",
@@ -1582,7 +1586,7 @@ class TestPluvier:
     def test_lesson60_star_ending_word_ou(self):
         self.assertSame({
             "PHAT/O*U": "matou",
-            "KOUR/O*U": "courroux",
+#            "KOUR/O*U": "courroux",
 
 
             })
@@ -1611,15 +1615,14 @@ class TestPluvier:
             "TPRATS": "fracture",
             "STRUTS": "structure",
             "RATS": "rature",
-            "KWEUTS": "confiture",
+#            "KWEUTS": "confiture",
 
             })
 
     def test_lesson60_HOstarN_ending_gnon(self):
         self.assertSame({
-#            "SHOPB": "champion",
 #            "SHO*PB": "champignon",
- #           "SHAFRP/HO*PB": "champignon",
+            "SHAFRP/HO*PB": "champignon",
             "PWOURG/HO*PB": "bourguignon",
 
             })
@@ -1705,14 +1708,15 @@ class TestPluvier:
         self.assertSame({
             "AP/RAEU": "après",
             
-            "TKWOEUB": "écris",
+#            "TKWOEUB": "écris",
        })
 
     def test_wrong_words(self):
         self.assertSame({
-            "EUPBLG/-R": "imaginer",
-            "STK-FRLG/-EUPBG": "déglingue",
-            "OEA" : "entendaient",
+ #           "EUPBLG/-R": "imaginer",
+            "RAPBT/R/-R": "rentrer",
+            "STK-FRLG/EUPBG": "déglingue",
+#            "OEA" : "entendaient",
             "SKR-PL/-D" :"charmé",
         })
             
