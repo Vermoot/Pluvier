@@ -1747,7 +1747,7 @@ class TestPluvier:
             d.write(myjson)
         with open('lessons/typey_type/'+str(namefunc)+'.type', "w") as d:
             for elem in words.items():
-                d.write(elem[0]+'	'+elem[1]+"\n")
+                d.write(elem[1]+'	'+elem[0]+"\n")
 
         return self.assertAll(words, force_verb)
         self.assertSounds(words)

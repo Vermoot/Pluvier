@@ -1,4 +1,4 @@
-HOELGTS	hôtel
-KARLGTS	cartel
-PHOELGTS	motel
-PHORLGTS	mortel
+hôtel	HOELGTS
+cartel	KARLGTS
+motel	PHOELGTS
+mortel	PHORLGTS
