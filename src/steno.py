@@ -115,7 +115,6 @@ class Steno:
                 '5k' : '/EUFRPB',
                 "kR" : "KR", #craquait
                 "S°" : "SK",
-
                 "@t" :"SPW",
                 "5t" :"SPW",
                 "R°" : "R",
@@ -143,7 +142,7 @@ class Steno:
 #                'd' : 'DAOE',
                 'z' : 'SWR',
                 'a':'A|AE/',
-                
+                'e':'E'
         }
 
         ORTHO_PREFIXES = {
@@ -261,6 +260,7 @@ class Steno:
                 '@sjOn' : "ANGZ", #mentionne
                 '5ksj§' : "PBGS", #distinction
                 '§ksjOn' : "-/OPBGS/*B", #fo-nctionne
+                "mEtR": "-PLTS",
                 'ij@d' : 'IND',
                 'ksj§' : "*BGS", #friction
                 "zj§": "-GZ",
@@ -273,9 +273,9 @@ class Steno:
                 't8ER' : 'TW*R', # portuaire
                 'ktyR' : '-TS', #ture
                 'tyR' : '-TS', #ture
-                '@gl' : '-/AFRLG',
-                '§gl' : '-/OFRLG',
-                '5gl' : '-/EUFRLG',
+                '@gl' : '/AFRLG',
+                '§gl' : '/OFRLG',
+                '5gl' : '/EUFRLG',
                 'diR' : '-/DZ',
                 "win": "AOUB",    # oui
                 'nal' : '-NL', #canal
@@ -300,7 +300,7 @@ class Steno:
                 "fik" : "-/FBG",
                 "fEk" : "-/FBG",
                 "kEl" : "-/BLG",
-                "§kl" : "-/OFRBLG", # oncle
+                "§kl" : "/OFRBLG", # oncle
                 "akl" : "-/AFRBLG", 
 #                "je" : "AER" , #caissIER
 
@@ -394,7 +394,7 @@ class Steno:
                 "nEs" : "BS",
                 "Et" : "AEUT",
                 "E" : "AEU",
-                "e" : "AEU",
+                "e" : "E",
                 "n" : "B",
                 'j' : '-LZ',
                 "§" : "OPB|-/*PB",
@@ -405,7 +405,7 @@ class Steno:
                 'El' :'-FL',
                 "Z" : "G", # rage
                 'u' : 'O*U',
-                "S" : "-/FRPBLG",
+#                "S" : "-/FRPBLG",
                 'k' : 'K',
 
         }
@@ -676,12 +676,13 @@ class Steno:
                                 self.ending = "/-RPB"
                                 self.ending_syll = phonetics[:-1]
                                 return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
-                        if verb_word.word.endswith('rais') and verb_word.syll.endswith('E') :
-                                self.ending = "/-RS"
-                                if verb_word.word.endswith('rait'):
-                                        self.ending = "-RTS"
+#                                                        if verb_word.word.endswith('rait'):
+#                                        self.ending = "-RTS"
 
-                                self.ending_syll = phonetics[:-1]
+                        if (verb_word.word.endswith('rais') or verb_word.word.endswith('rait')) and verb_word.syll.endswith('E') :
+                                self.ending = "/-RS"
+
+                                self.ending_syll = phonetics[:-2]
                                 return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
                         if verb_word.syll.endswith('RE') :
                                 self.ending_syll = phonetics[:-2]
@@ -906,8 +907,8 @@ class Steno:
 #                myword.syll = self.try_to_remove_woyel(myword)
 #                self.prefix ={}
 #                self.suffix =""
-#                self.final_encoded=self.newtransform(myword)
-                self.final_encoded=self.basic_transform_by_syllabes(myword)
+                self.final_encoded=self.newtransform(myword)
+#                self.final_encoded=self.basic_transform_by_syllabes(myword)
                 Log('The word is a verb ? ' , myword.is_verb())
                 has_homophone = self.has_homophone(myword)
                 Log('Has homophone ? ' , has_homophone)

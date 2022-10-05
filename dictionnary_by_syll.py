@@ -72,7 +72,7 @@ class Dictionary:
         self.words.sort(key=lambda x: x.frequence, reverse=True)
 #        for word in self.words :
 #            print(word.frequence)
-        self.words = self.words[:8000]
+        self.words = self.words[:80000]
         with open('resources/tao_la_salle.json') as json_file:
             tao = json.load(json_file)
 

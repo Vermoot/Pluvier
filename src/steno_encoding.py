@@ -7,6 +7,7 @@ class Steno_Encoding:
 
                 'sjasj§': 'SRAGS', #ciation
                 '@v°n' : 'ENVH',
+                "enER": "EBS",
                 'v°n' : 'VH',
                 'vin' : 'VH',
                 'vol' :'VL',
@@ -15,6 +16,8 @@ class Steno_Encoding:
                 'Egzi' : 'KPEU',
                 'Eksi' : 'KPEU',
                 'Eks' : 'KP',
+
+                
                 'ist' : '*EUS',
                 'wan' : 'WOIB', #douane                
                 'bRe': '-BS',
@@ -53,7 +56,7 @@ class Steno_Encoding:
                 "vaj" : "-FL",
                 "vEj" : "-FL",
                 '@v' : 'ENVH', #envenime
-
+                'vw' : 'SRWA|WOEU',# not in TAO rules..
                 't8' : 'TW', # fru-ctu-eux
 #                "kR" : "KR", 
                 "ks": "-BGS",
@@ -99,7 +102,6 @@ class Steno_Encoding:
                 'gl' : 'TKPWHR|FRLG', #glace or angle
                 "wa": "OEU",    # froid
                 "w5": "OEUPB",  # loin
-
                 "wi": "AOU",    # oui
                 "j5": "AEPB",   # chien
                 "ey": "EU",     # r_éu_nion
@@ -119,7 +121,7 @@ class Steno_Encoding:
                 "a": "A",       # chat
                 "°" : "",
                 'j' : 'EU',
-                "Z" : "G",
+                "Z" : "J",
                 "H" : "H",
                 "5" : "EUPB",
                 'u' : 'OU',
@@ -128,13 +130,14 @@ class Steno_Encoding:
                 '1' : 'U',
 #                'e' : '',
                 "@": "AN",     # pluie
+                "e": "E",       # clé
                 "E" : "AEU", #collecte
 #                "e" : "AEU", #collecte
 
                 "2": "AO",      # eux
                 "9": "AO",      # seul
 #                "E": "AEU",     # père
-                "e": "E",       # clé
+
 
 #                "E" : "",
                 "i": "EU",      # lit

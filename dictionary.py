@@ -5,8 +5,8 @@ import json
 import numpy as np
 import json
 
-from steno import Steno
-from steno import Word
+from src.steno import Steno
+from src.steno import Word
 
 class Dictionary:
 

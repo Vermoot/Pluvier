@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # coding: utf-8
 import sys
-import json
+import re
 import numpy as np
 import json
 
@@ -40,6 +40,16 @@ class Dictionary:
                 words.append(word)
                 
         return words
+    def add_pronoun_je(self, steno,word):
+        if word.is_first_person_singular():
+                    pronoun='je '
+                    if re.match("^[aeiouyh]",word.word):
+                        pronoun="j'"
+                    if steno[0] in ['E','A','U','O','-']: 
+                        translated_word["STKW"+steno] = pronoun+word.word
+                    else:
+                        translated_word["STKW/"+steno] = "je "+word.word
+        
     def append_tao(self, dico):
         dup = {}
         with open('resources/tao_la_salle.json') as json_file:
@@ -75,7 +85,7 @@ class Dictionary:
 
 #        for word in self.words :
 #            print(word.frequence)
-#        self.words = self.words[:8000]
+#         self.words = self.words[:80000]
 
 
         translated_word = {}
@@ -84,7 +94,17 @@ class Dictionary:
         for word in self.words:
             if not word.is_verb():
                 continue
-            for steno in np.unique(self.steno(word)):
+                        
+            # if word.is_first_person_singular():
+            #     word.syll ='Z°' + word.syll
+            #     word.phonetics ='Z°' + word.phonetics
+            #     word.word ='je ' + word.word
+
+            stenowords = self.steno(word)
+            if len(stenowords)==0:
+                continue
+
+            for steno in np.unique(stenowords):
 #                steno = steno.replace("'","\'")
                 #                    print(steno)
                 if steno in translated_word  and (translated_word[steno] == word.word):
@@ -99,8 +119,40 @@ class Dictionary:
                         if translated_word[steno]  not in duplicated[steno]:
                             duplicated[steno].append(translated_word[steno])
                         continue
-                    
                 translated_word[steno] = word.word
+                if word.frequence<10:
+                    continue
+                if word.is_first_person_singular():
+                    
+                    pronoun='je '
+                    if re.match("^[aeiouyh]",word.word):
+                        pronoun="j'"
+                    if steno[0] in ['E','A','U','O','-']: 
+                        translated_word["STKW"+steno] = pronoun+word.word
+                    else:
+                        translated_word["STKW/"+steno] = pronoun+word.word
+                if word.is_second_person_singular():
+                    pronoun='tu '
+
+                    if steno[0] in ['R','E','A','U','O','-']: 
+                        translated_word["TW"+steno] = pronoun+word.word
+                    else:
+                        translated_word["TW/"+steno] = pronoun+word.word
+                if word.is_third_person_singular():
+                    pronoun='il '
+
+                    if steno[0] in ['E','A','U','O','-']: 
+                        translated_word["KWR"+steno] = pronoun+word.word
+                    else:
+                        translated_word["KWR/"+steno] = pronoun+word.word
+                    pronoun='elle '
+
+                    if steno[0] in ['E','A','U','O','-']: 
+                        translated_word["HR"+steno] = pronoun+word.word
+                    else:
+                        translated_word["HR/"+steno] = pronoun+word.word
+                        
+
 
 #                    d.write("'"+steno + "':'"+ word.word+"',\n")
 

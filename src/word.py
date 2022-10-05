@@ -58,6 +58,12 @@ class Word:
         def is_third_person_singular(self):
                 return '3s' in self.info_verb
 
+        def is_first_person_singular(self):
+                return '1s' in self.info_verb
+
+        def is_second_person_singular(self):
+                return '2s' in self.info_verb and 'imp:pre:2s' not in self.info_verb
+
         def is_participe_present(self):
 #                return 'par' in self.info_verb and
                 return self.is_verb() and self.word.endswith('ant')

@@ -1,6 +1,6 @@
 import sys
 import json
-
+import inspect
 import numpy as np
 from src.steno import Steno
 from src.steno import Word
@@ -933,10 +933,15 @@ class TestPluvier:
         
     def test_lesson33_TS_sound_tre_taire_or_ture_starT_sound_ette_and_AstarAIR_ortho_aire_EBS_sound_ener(self):
         self.assertSame({
+            "EBS/SKWREU": "énergie",
 #            "TPHOTS": "notaire",
+                "SUTS": "suture",
             "KREUTS": "critère",
+            "TOEUL/*T": "toilette",
 #            "TPHEURG": "énergie",
-#            "EPLTS": "émettre",
+                "HRAEUTS": "lettre",
+            "EPLTS": "émettre",
+            "PAEURPLTS": "permettre", #my
             "WHAEUTS": "fenêtre",
             "WHROPBTS": "volontaire",
 
@@ -1267,7 +1272,7 @@ class TestPluvier:
         self.assertSame({
  #           "STKHREUBS": "déséquilibre",
 #           "TKAOEZ/SPWEG/R*E": "désintégré",
-            "TKAERPL": "désarme",
+            "STKAERPL": "désarme",
             "TKAOEZ/KHREUBS": "déséquilibre",
 
             })
@@ -1657,6 +1662,15 @@ class TestPluvier:
     def test_stl_new_rule_FPG_for_chage(self):
         self.assertSame({
 #            "AQT" : "adore",
+            "W" : "voyais",
+            "TPOEFPG" : "fauchage",
+
+        })
+
+    def test_stl_new_rule_FT_for_ste(self):
+        self.assertSame({
+#            "AQT" : "adore",
+            "W" : "voyais",
             "TPOEFPG" : "fauchage",
 
         })
@@ -1709,12 +1723,13 @@ class TestPluvier:
         self.assertSame({
             "AP/RAEU": "après",
             
-#            "TKWOEUB": "écris",
+            "TKWOEUB": "écris",
        })
 
     def test_wrong_words(self):
         self.assertSame({
- #           "EUPBLG/-R": "imaginer",
+            #           "EUPBLG/-R": "imaginer",
+                        "-DZ": "dire",
             "RAPBT/R/-R": "rentrer",
             "STK-FRLG/EUPBG": "déglingue",
 #            "OEA" : "entendaient",
@@ -1725,6 +1740,15 @@ class TestPluvier:
         
     def assertSame(self, words, force_verb=True):
         found = False
+        namefunc=str(sys._getframe().f_back.f_code.co_name).replace('test_','')
+#        namefunc=inspect.stack()[1][3]
+        with open('lessons/json/'+str(namefunc)+'.json', "w") as d:
+            myjson=json.dumps(words, indent = 4, ensure_ascii=False )
+            d.write(myjson)
+        with open('lessons/typey_type/'+str(namefunc)+'.type', "w") as d:
+            for elem in words.items():
+                d.write(elem[0]+'	'+elem[1]+"\n")
+
         return self.assertAll(words, force_verb)
         self.assertSounds(words)
 
@@ -1782,6 +1806,9 @@ class TestPluvier:
 
     def test_verb_matching(self):
         self.assertAllMatching('parlez' , ["PARL/*EZ"])
+
+    def test_verb_matching_voyais(self):
+        self.assertAllMatching('voyais' , ["PARL/*EZ"])
 
     def test_plural_not_matching(self):
         self.assertAllMatching('voitures' , [])

@@ -1447,7 +1447,7 @@
         "dépassée",
         "dépasser"
     ],
-    "*WHR--D": [
+    "*WHR-D": [
         "volée"
     ],
     "AE/RAFP/A*EU": [
@@ -2320,7 +2320,7 @@
         "occidentale"
     ],
     "TA/A*E": [
-v        "taillée",
+        "taillée",
         "tailler"
     ],
     "AE/TPOEL/A*EU": [
@@ -5873,7 +5873,7 @@ v        "taillée",
     "EPB/APL/OU/R*E": [
         "énamourée"
     ],
-    "*KPWHR--R": [
+    "*KPWHR-R": [
         "ambler",
         "combler"
     ],
@@ -6982,11 +6982,11 @@ v        "taillée",
         "guillotinée",
         "guillotiner"
     ],
-    "AFP/*EUFRPBLG": [
+    "AFP/*EU": [
         "hachisch",
         "haschisch"
     ],
-    "HAFP/*EUFRPBLG": [
+    "HAFP/*EU": [
         "hachisch",
         "haschisch"
     ],
@@ -7206,7 +7206,7 @@ v        "taillée",
         "bistre",
         "biture"
     ],
-    "PWO*RT/FRPBLG": [
+    "PWO*RTSH": [
         "borchtch",
         "bortch"
     ],
@@ -7227,6 +7227,10 @@ v        "taillée",
     ],
     "KAT/A*R": [
         "cathare"
+    ],
+    "SHA*EU": [
+        "chaix",
+        "chèche"
     ],
     "SHA*PB": [
         "chand",
@@ -7362,9 +7366,6 @@ v        "taillée",
         "encornée"
     ],
     "APBTKPWHR*EUFP": [
-        "engliche"
-    ],
-    "APBTKPWHR*EUFRPBLG": [
         "engliche"
     ],
     "SPWAPBD/A*PB": [
