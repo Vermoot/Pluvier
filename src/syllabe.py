@@ -413,8 +413,6 @@ class Syllabe:
                 if self.syllabe.startswith('/'):
                         self.already_encoded = True
                         self.syllabe = self.syllabe[1:]          
-            
-
 
                 rest = self.syllabe
                 count = 1

@@ -5,6 +5,7 @@ class Cutword:
         remains = ''
         steno  = ''
         ortho_rule=False
+        separate_stroke=False
         def __init__(self,phoneme):
             self.phoneme = phoneme
             self.remains = phoneme
@@ -18,8 +19,19 @@ class Cutword:
         def has_ortho_rule(self) :
                 return self.ortho_rule
 
+        def has_separate_stroke(self) :
+                return self.separate_stroke
+
         def set_ortho_rule(self) :
                 self.ortho_rule=True
+                return self
+
+        def remove_star(self) :
+                self.steno=self.steno.replace('*', '')
+                return self
+
+        def set_separate_stroke(self) :
+                self.separate_stroke=True
                 return self
 
         def generate(self) :
@@ -36,8 +48,9 @@ class Cutword:
 
                         if self.has_ortho_rule():
                                 newcut.set_ortho_rule()
+                        if self.has_separate_stroke():
+                                newcut.set_separate_stroke()
 
-                        
                         mylist.append(newcut)
                 return mylist
         def get_remains(self):

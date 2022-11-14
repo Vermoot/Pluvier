@@ -18,7 +18,8 @@ class Steno_Encoding:
                 'Eks' : 'KP',
 
                 
-                'ist' : '*EUS',
+#                'ist' : '*EUS',
+
                 'wan' : 'WOIB', #douane                
                 'bRe': '-BS',
                 "djO": "OD",
@@ -56,7 +57,7 @@ class Steno_Encoding:
                 "vaj" : "-FL",
                 "vEj" : "-FL",
                 '@v' : 'ENVH', #envenime
-                'vw' : 'SRWA|WOEU',# not in TAO rules..
+                'vwa' : 'WOEU',# not in TAO rules..
                 't8' : 'TW', # fru-ctu-eux
 #                "kR" : "KR", 
                 "ks": "-BGS",
@@ -142,19 +143,19 @@ class Steno_Encoding:
 #                "E" : "",
                 "i": "EU",      # lit
                 "o": "OE",      # haut
-                "o": "OE",      # haut
                 "O": "O",       # mort
 
 #                "y" : "",
                 "u": "OU",      # mou
                 "8": "U",       # huit
                 "§": "ON",
-                'N' : 'N',
                 'd' : 'D',
+                'N' : 'N',
                 'p' : 'P',
                 'm' : 'M',
                 'k' : 'K',
                 'n' : 'N',
+                's' : 'S',
 
                 "y": "U",       # cru
 
@@ -170,8 +171,8 @@ class Steno_Encoding:
 
                 self.prefix = prefix
                 self.suffix = suffix
-                if '*' in self.suffix and  '/' not in self.suffix:
-                        self.suffix = self.suffix.replace('*', '')
+                if '*' in self.suffix.get_steno() and  '/' not in self.suffix.get_steno():
+                        self.suffix.remove_star()
                         self.needs_star = True
 
                 Log('steno_suffixes' , vars(self))
@@ -307,7 +308,9 @@ class Steno_Encoding:
                         if piece == "":
                                 continue
                         for mysyll in sylls.items() :
+
                                 new_piece = mysyll[0]
+                                Log('syllabe',new_piece)
                                 if mysyll[1] != "":
                                         new_piece = mysyll[1]
                                 else:
@@ -334,8 +337,11 @@ class Steno_Encoding:
                         count_syll = count_syll+1
                 Log('WORD ENCODED BEFORE SUFFIX', self.word_encoded)
                 if self.suffix :
-                        syllabe = Syllabe(self.suffix,previous, next_syll).suffix()
-                        self.word_encoded = self.word_encoded + syllabe.encoded()
+                        if self.suffix.has_separate_stroke():
+                            self.word_encoded = self.word_encoded + self.suffix.get_steno()
+                        else :
+                                syllabe = Syllabe(self.suffix.get_steno(),previous, next_syll).suffix()
+                                self.word_encoded = self.word_encoded + syllabe.encoded()
                 if self.word_encoded.startswith('/'):
                         self.word_encoded = self.word_encoded[1:]
                 Log('WORD ENCODED ', self.word_encoded)
@@ -388,19 +394,21 @@ class Steno_Encoding:
 
                         Log('dif',piece)
 #                        piece = self.voyels(piece)
-                        Log('voyel',piece)
+                        Log('voyel:',piece)
                         
                         if piece == "":
                                 continue
                         for mysyll in sylls.items() :
                                 new_piece = mysyll[0]
+                                Log('syllabe:',new_piece)
                                 if mysyll[1] != "":
                                         new_piece = mysyll[1]
                                 else:
                                         new_piece = self.voyels(new_piece)
                                         new_piece = new_piece.upper()
 #                        for new_piece in piece.split('+'):
-                                Log('syllabe',new_piece)
+
+                                Log('syllabe ici :',new_piece)
                                 syllabe = Syllabe(new_piece.upper(), previous,next_syll)
                                 encoded = syllabe.encoded()
 
@@ -423,8 +431,11 @@ class Steno_Encoding:
 
                 Log('WORD ENCODED BEFORE SUFFIX', self.word_encoded)
                 if self.suffix :
-                        syllabe = Syllabe(self.suffix,previous, next_syll).suffix()
-                        self.word_encoded = self.word_encoded + syllabe.encoded()
+                        if self.suffix.has_separate_stroke():
+                            self.word_encoded = self.word_encoded + suffix.get_steno()
+                        else :
+                                syllabe = Syllabe(self.suffix.get_steno(),previous, next_syll).suffix()
+                                self.word_encoded = self.word_encoded + syllabe.encoded()
                 if self.word_encoded.startswith('/'):
                         self.word_encoded = self.word_encoded[1:]
                 Log('WORD ENCODED ', self.word_encoded)
@@ -464,8 +475,13 @@ class Steno_Encoding:
                 return "*"+word
 
         def voyels(self, word):
-                new_word=word
+                new_word=''
                 for char in word:
+
+                        Log('replace',char)
+                        transform_char=char.upper()
                         if char in self.VOWELS:
-                                new_word = new_word.replace(char, self.VOWELS[char])
+                                transform_char=self.VOWELS[char]
+                        Log('by',transform_char)
+                        new_word = new_word+transform_char
                 return new_word

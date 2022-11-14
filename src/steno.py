@@ -326,11 +326,13 @@ class Steno:
                 "5b": "-EUFRB",  # limbe
                 "§b": "-/OFRB",  # comble
                 "ks": "-BGS",
+                'st' : '-/FT',#new rule
+#                "st" : "-*S",
                 "t@" : "TAN", #content
                 "ve": "-WE", # releve
                 "iN§" : "-/HO*PB", #bourguignon
                 "N§" : "-/HO*PB", #bourguignon
-                "@Z" :"-/APBLG", # ange
+                "@Z" :"/APBLG", # ange
                 "5Z" :"-/EUPBLG", # linge
                 "§t" : "-/OFRPT", # prompte
                 "5p" : "-/EUFRP",
@@ -375,7 +377,7 @@ class Steno:
                 "Re":"-/R*E|-RE",
                 'z§':'-GZ',
                 "@S" : "-AFRPBLG",
-                "st" : "-*S",
+
                 "ZE" : "G",
 
                 'ij' : '-/LZ|EULZ', #ille
@@ -590,7 +592,7 @@ class Steno:
 
                 if word.word.endswith('ée'):
                         self.ending_syll = phonetics[:-1]
-                        self.ending = "/-D"
+                        self.ending = "/ED"
                         return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending)
 
                                 
@@ -636,12 +638,14 @@ class Steno:
                 mylist.extend(cutword.generate())
                 return mylist
 
-        def create_cutword(self,phonetics,remains,replace,by, ortho =False):
+        def create_cutword(self,phonetics,remains,replace,by, ortho =False, separate_stroke=False):
                 cutword=Cutword(phonetics)
                 cutword.set_replaced_by(replace, by)
                 cutword.set_remains(remains)
                 if ortho:
                         cutword.set_ortho_rule()
+                if separate_stroke:
+                        cutword.set_separate_stroke()
                 return cutword
                 
         
@@ -707,11 +711,11 @@ class Steno:
                         self.ending = "/-G"
                         if verb_word.syll.endswith('j@')  :
                                 self.ending_syll = phonetics[:-2]
-                                return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending)
+                                return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending, True, True)
 
                         if verb_word.syll.endswith('@') :
                                 self.ending_syll = phonetics[:-1]
-                                return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending)
+                                return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True, True)
 
 
                 if verb_word.ending_with('ais'):
@@ -721,7 +725,7 @@ class Steno:
 #                        self.ending = "/AEUS"
                         if verb_word.syll.endswith('E') :
                                 self.ending_syll = phonetics[:-1]
-                        return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                        return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True,True)
 
                 if verb_word.ending_with('ait'):
 #                        if verb_word.is_third_person_singular():
@@ -1009,7 +1013,7 @@ class Steno:
                         
                         for suffix in self.check_suffixes(initial_word,prefix):
                                 remains = self.double_consonant_remove_woyel(initial_word.word, suffix.get_remains())
-                                final_word= Steno_Encoding(remains, prefix.get_steno(), suffix.get_steno()).encode()
+                                final_word= Steno_Encoding(remains, prefix.get_steno(), suffix).encode()
                                 if has_homophone and initial_word.is_verb() and not prefix.has_ortho_rule() and not suffix.has_ortho_rule():
                                         Log( 'is homophone',suffix.has_ortho_rule())
                                         final_word = self.add_star(final_word)
@@ -1044,7 +1048,7 @@ class Steno:
                         
                         for suffix in self.check_suffixes(initial_word,prefix):
                                 suffix_remains = suffix.get_remains()
-                                final_word= Steno_Encoding(suffix_remains, prefix.get_steno(), suffix.get_steno()).encode_by_syll()
+                                final_word= Steno_Encoding(suffix_remains, prefix.get_steno(), suffix).encode_by_syll()
                                 if has_homophone and initial_word.is_verb() and not prefix.has_ortho_rule() and not suffix.has_ortho_rule():
                                         Log( 'is homophone',suffix.has_ortho_rule())
                                         final_word = self.add_star(final_word)

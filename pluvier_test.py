@@ -317,8 +317,9 @@ class TestPluvier:
         
     def test_lesson13_RS_alone_for_conditionnel(self):
         self.assertSame({
-#                        "KRABG/-RS": "craquerait",
-#                         "KOUR/-RS": "courrait",
+            "TP-RS": "ferait",
+                        "KRABG/-RS": "craquerait",
+                         "KOU/-RS": "courrait",
                          "PAS/-RS": "passerait",
                          })
 
@@ -331,6 +332,8 @@ class TestPluvier:
                          })
     def test_lesson13_G_alone_for_ant_participe_present(self):
         self.assertSame({"KREU/-G": "criant",
+                         "SA/-G": "saillant",
+
  
  #                        "REU/-G": "riant",
                          "KOUR/-G": "courant",
@@ -346,6 +349,7 @@ class TestPluvier:
 
     def test_lesson13_RP_for_peur_RL_for_leur(self):
         self.assertSame({"TRARP": "trappeur",
+                         "RARL" : "râleur"
  #                        "WRL": "voleur", #should be WORL ?
                          })
 
@@ -381,7 +385,7 @@ class TestPluvier:
                          })
 
 
-    def test_lesson14_star_S_for_ste(self):
+    def wrong_lesson14_star_S_for_ste(self):
         self.assertSame({"P*EUS": "piste",
                          "HR*EUS": "liste",
                          })
@@ -1653,8 +1657,8 @@ class TestPluvier:
         self.assertSame({
 #            "KWR/-D" : "joué",
             "TRET/-D" : "traité",
-#            "TRETD" : "traitée",
-            "PWHREUPBD/-D": "blindée",
+            "TRET/ED" : "traitée", 
+            "PWHREUPBD/-D": "blindé",
 
         })
 
@@ -1667,12 +1671,13 @@ class TestPluvier:
 
         })
 
+
     def test_stl_new_rule_FT_for_ste(self):
         self.assertSame({
 #            "AQT" : "adore",
-            "W" : "voyais",
-            "TPOEFPG" : "fauchage",
-
+            "KPEUFT": "existe",
+            "PEUFT": "piste",
+            "HREUFT": "liste",
         })
 
         
@@ -1721,6 +1726,7 @@ class TestPluvier:
                          })
     def test_not_appears(self):
         self.assertSame({
+            "ERBG/EUR": "écrire",
             "AP/RAEU": "après",
             
             "TKWOEUB": "écris",
@@ -1729,6 +1735,7 @@ class TestPluvier:
     def test_wrong_words(self):
         self.assertSame({
             #           "EUPBLG/-R": "imaginer",
+            "PL": "plaisez",
                         "-DZ": "dire",
             "RAPBT/R/-R": "rentrer",
             "STK-FRLG/EUPBG": "déglingue",
@@ -1809,6 +1816,9 @@ class TestPluvier:
 
     def test_verb_matching_voyais(self):
         self.assertAllMatching('voyais' , ["PARL/*EZ"])
+
+    def test_verb_matching_elle_laisse(self):
+        self.assertAllMatching('haïsse' , ["HAEUS"])
 
     def test_plural_not_matching(self):
         self.assertAllMatching('voitures' , [])
