@@ -516,6 +516,7 @@ class TestPluvier:
     def test_lesson19_separate_starZ_ending_a_sound(self):
         self.assertSame({
 #            "R-P/*Z": "repas",
+            "SAG/A": "saga",
                          "SAG/*Z": "saga",
                          "KOUP/*Z": "coupa",
 #                         "WOBGZ": "avocat",
@@ -633,7 +634,7 @@ class TestPluvier:
 #            "HRAPS/R-R": "laps",
             "HROPBG": "longue",
             "SOUFL": "souffle",
-            "AEURB": "herbe",
+            "HAEURB": "herbe",
 #            "AFPT": "achète", # a-SEt
 #             "ORPBLG": "orge", #'ORZ'
             "OPT": "opte", 
@@ -1193,7 +1194,7 @@ class TestPluvier:
 #            "HAFRPBLG": "hanche",
 #            "PHAFRPBLG/*T": "manchette",
             "TRAFRPBLG": "tranche",
-            "TPRAFRPBLG": "franche",
+            "TPRAFRPBLG": "franche", 
             "PHAFRPBLG": "manche",
 #            "PWHRAFRPBLG": "blanche",
  #           "TKPWREUFRPBLG/AO*": "grincheux",
@@ -1417,6 +1418,7 @@ class TestPluvier:
             "WHEUPB": "venin",
             "WHU": "venu",
             "EPB/WHEUPL": "envenime",
+            "APB/WEU": "envie",
 
             })
 
@@ -1735,6 +1737,11 @@ class TestPluvier:
     def test_wrong_words(self):
         self.assertSame({
             #           "EUPBLG/-R": "imaginer",
+            "SAG/A": "sympa",
+            "HOET/AO*R": "hauteur",
+            "HOERT": "hauteur", 
+            "A/TRAFRPBLG/EUR": "affranchir",
+            
             "PL": "plaisez",
                         "-DZ": "dire",
             "RAPBT/R/-R": "rentrer",

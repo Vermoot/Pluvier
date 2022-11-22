@@ -56,7 +56,7 @@ class Steno_Encoding:
                 'oi' : 'OEU',
                 "vaj" : "-FL",
                 "vEj" : "-FL",
-                '@v' : 'ENVH', #envenime
+                #'@v' : 'ENVH', #envenime
                 'vwa' : 'WOEU',# not in TAO rules..
                 't8' : 'TW', # fru-ctu-eux
 #                "kR" : "KR", 
@@ -93,6 +93,7 @@ class Steno_Encoding:
                 'k§' : 'KOEPB-', # content
 #                "wE": "WAEU",
                 "wE" : "WE",
+                "fR" : "TPR|FR",
                 "§t" : "OFRPT",
                 "@S" : "-AFRPBLG",
                 "5S" : "-EUFRPBLG",
@@ -175,7 +176,7 @@ class Steno_Encoding:
                         self.suffix.remove_star()
                         self.needs_star = True
 
-                Log('steno_suffixes' , vars(self))
+                Log('steno_suffixes' , vars(self.suffix))
         def eat_woyel(self, syll) :
                 if not syll or not syll[0]:
                         return syll
@@ -336,12 +337,14 @@ class Steno_Encoding:
                         next_syll = self.syllabes[count_syll:]
                         count_syll = count_syll+1
                 Log('WORD ENCODED BEFORE SUFFIX', self.word_encoded)
-                if self.suffix :
-                        if self.suffix.has_separate_stroke():
-                            self.word_encoded = self.word_encoded + self.suffix.get_steno()
-                        else :
-                                syllabe = Syllabe(self.suffix.get_steno(),previous, next_syll).suffix()
-                                self.word_encoded = self.word_encoded + syllabe.encoded()
+                if self.suffix and self.suffix.has_separate_stroke() :
+                        self.word_encoded = self.word_encoded + self.suffix.get_steno()
+                        Log('word enc:', self.word_encoded)
+                if self.suffix and not self.suffix.has_separate_stroke() :
+                        syllabe = Syllabe(self.suffix.get_steno(),previous, next_syll).suffix()
+                        Log('word enc 2:', self.suffix)
+                        self.word_encoded = self.word_encoded + syllabe.encoded()
+
                 if self.word_encoded.startswith('/'):
                         self.word_encoded = self.word_encoded[1:]
                 Log('WORD ENCODED ', self.word_encoded)

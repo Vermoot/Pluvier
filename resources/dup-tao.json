@@ -13,13 +13,6 @@
             "fois"
         ]
     ],
-    "-FRB": [
-        "vair",
-        [
-            "-FRB",
-            "vers"
-        ]
-    ],
     "-FRS": [
         "voire",
         [
@@ -48,83 +41,6 @@
             "dit"
         ]
     ],
-    "A": [
-        "ha",
-        [
-            "A",
-            "à"
-        ]
-    ],
-    "A*BG": [
-        "hack",
-        [
-            "A*BG",
-            "accord"
-        ]
-    ],
-    "A*U": [
-        "huis",
-        [
-            "A*U",
-            "lui"
-        ]
-    ],
-    "AE/PHORT/EU": [
-        "amortie",
-        [
-            "AE/PHORT/EU",
-            "amorti"
-        ]
-    ],
-    "AE/TKAOEU": [
-        "adieux",
-        [
-            "AE/TKAOEU",
-            "adieu"
-        ]
-    ],
-    "AEUB/PHEU": [
-        "ennemie",
-        [
-            "AEUB/PHEU",
-            "ennemi"
-        ]
-    ],
-    "AEUD": [
-        "aïd",
-        [
-            "AEUD",
-            "aide"
-        ]
-    ],
-    "AEUP/AEUS": [
-        "épaisse",
-        [
-            "AEUP/AEUS",
-            "espèce"
-        ]
-    ],
-    "AEUPL": [
-        "hem",
-        [
-            "AEUPL",
-            "aime"
-        ]
-    ],
-    "AEUR": [
-        "haïr",
-        [
-            "AEUR",
-            "air"
-        ]
-    ],
-    "AEURS": [
-        "herse",
-        [
-            "AEURS",
-            "aimerait"
-        ]
-    ],
     "AEUS": [
         "s",
         [
@@ -132,32 +48,11 @@
             "est-ce"
         ]
     ],
-    "AF": [
-        "hâve",
-        [
-            "AF",
-            "a fait"
-        ]
-    ],
     "AFP": [
         "ache",
         [
             "AFP",
             "hache"
-        ]
-    ],
-    "AFPT": [
-        "hachette",
-        [
-            "AFPT",
-            "achète"
-        ]
-    ],
-    "AFR": [
-        "havre",
-        [
-            "AFR",
-            "affaire"
         ]
     ],
     "AFRB": [
@@ -174,25 +69,18 @@
             "ancre"
         ]
     ],
-    "AFRLG": [
-        "aglagla",
-        [
-            "AFRLG",
-            "angle"
-        ]
-    ],
-    "AFRPB": [
-        "archi",
-        [
-            "AFRPB",
-            "arche"
-        ]
-    ],
     "AFRPB/*EUF": [
         "archive",
         [
             "AFRPB/*EUF",
             "archives"
+        ]
+    ],
+    "AFT": [
+        "aste",
+        [
+            "AFT",
+            "a faite"
         ]
     ],
     "AL": [
@@ -202,11 +90,11 @@
             "à le"
         ]
     ],
-    "ALT": [
-        "halte",
+    "ALGTS": [
+        "attelle",
         [
-            "ALT",
-            "a-t-il"
+            "ALGTS",
+            "a-t-elle"
         ]
     ],
     "ALZ": [
@@ -214,13 +102,6 @@
         [
             "ALZ",
             "aille"
-        ]
-    ],
-    "AO": [
-        "euh",
-        [
-            "AO",
-            "eux"
         ]
     ],
     "AOFR": [
@@ -237,20 +118,6 @@
             "œil"
         ]
     ],
-    "APBLG": [
-        "adja",
-        [
-            "APBLG",
-            "ange"
-        ]
-    ],
-    "AR": [
-        "are",
-        [
-            "AR",
-            "art"
-        ]
-    ],
     "AS": [
         "as",
         [
@@ -258,25 +125,11 @@
             "à ce"
         ]
     ],
-    "ATS": [
-        "âtre",
+    "EFP/W*E": [
+        "échouer",
         [
-            "ATS",
-            "astre"
-        ]
-    ],
-    "AU": [
-        "hui",
-        [
-            "AU",
-            "a eu"
-        ]
-    ],
-    "AUT": [
-        "huit",
-        [
-            "AUT",
-            "8"
+            "EFP/W*E",
+            "échoué"
         ]
     ],
     "ETS": [
@@ -286,25 +139,11 @@
             "était"
         ]
     ],
-    "EU": [
-        "i",
-        [
-            "EU",
-            "y"
-        ]
-    ],
     "EUG": [
         "igue",
         [
             "EUG",
             "image"
-        ]
-    ],
-    "EUL": [
-        "hile",
-        [
-            "EUL",
-            "il"
         ]
     ],
     "H-L": [
@@ -319,13 +158,6 @@
         [
             "HA*EU",
             "n'ait"
-        ]
-    ],
-    "HAEU": [
-        "hé",
-        [
-            "HAEU",
-            "haie"
         ]
     ],
     "HAL": [
@@ -349,13 +181,6 @@
             "ni"
         ]
     ],
-    "HOE": [
-        "ho",
-        [
-            "HOE",
-            "haut"
-        ]
-    ],
     "HOPB": [
         "hon",
         [
@@ -375,6 +200,13 @@
         [
             "HR*EUS",
             "liste"
+        ]
+    ],
+    "HR*EUZ": [
+        "lyse",
+        [
+            "HR*EUZ",
+            "Lise"
         ]
     ],
     "HR*Z": [
@@ -399,24 +231,10 @@
         ]
     ],
     "HRA*BG": [
-        "laque",
+        "lacs",
         [
             "HRA*BG",
             "l'accord"
-        ]
-    ],
-    "HRABG": [
-        "lacs",
-        [
-            "HRABG",
-            "lac"
-        ]
-    ],
-    "HRAEPB": [
-        "liant",
-        [
-            "HRAEPB",
-            "lien"
         ]
     ],
     "HRAER": [
@@ -426,32 +244,11 @@
             "lierre"
         ]
     ],
-    "HRAEU": [
-        "aller",
-        [
-            "HRAEU",
-            "laid"
-        ]
-    ],
-    "HRAEUB": [
-        "hellène",
-        [
-            "HRAEUB",
-            "laine"
-        ]
-    ],
     "HRAEUT": [
         "lette",
         [
             "HRAEUT",
             "lait"
-        ]
-    ],
-    "HRAEUTS": [
-        "lecture",
-        [
-            "HRAEUTS",
-            "lettre"
         ]
     ],
     "HRAF": [
@@ -461,53 +258,11 @@
             "elle a fait"
         ]
     ],
-    "HRAOEU": [
-        "lieux",
-        [
-            "HRAOEU",
-            "lieu"
-        ]
-    ],
-    "HREG/-R": [
-        "alléger",
-        [
-            "HREG/-R",
-            "léguer"
-        ]
-    ],
     "HREUD": [
         "lied",
         [
             "HREUD",
             "lundi"
-        ]
-    ],
-    "HREUR": [
-        "lyre",
-        [
-            "HREUR",
-            "lire"
-        ]
-    ],
-    "HREUZ": [
-        "lyse",
-        [
-            "HREUZ",
-            "lise"
-        ]
-    ],
-    "HROB": [
-        "lob",
-        [
-            "HROB",
-            "lobe"
-        ]
-    ],
-    "HROBG": [
-        "loch",
-        [
-            "HROBG",
-            "loque"
         ]
     ],
     "HROE": [
@@ -524,39 +279,11 @@
             "elle doit"
         ]
     ],
-    "HROPBG": [
-        "allonge",
-        [
-            "HROPBG",
-            "longue"
-        ]
-    ],
     "HROT": [
         "lotte",
         [
             "HROT",
             "lot"
-        ]
-    ],
-    "HROUR": [
-        "lur",
-        [
-            "HROUR",
-            "lourd"
-        ]
-    ],
-    "HRU": [
-        "lue",
-        [
-            "HRU",
-            "lu"
-        ]
-    ],
-    "HRUBGS": [
-        "lux",
-        [
-            "HRUBGS",
-            "luxe"
         ]
     ],
     "HRUP": [
@@ -566,32 +293,11 @@
             "loup"
         ]
     ],
-    "HRUT": [
-        "luth",
-        [
-            "HRUT",
-            "lutte"
-        ]
-    ],
     "K-PB/*EL": [
         "quenelle",
         [
             "K-PB/*EL",
             "conditionnel"
-        ]
-    ],
-    "K-T": [
-        "scat",
-        [
-            "K-T",
-            "compte"
-        ]
-    ],
-    "K*/PABGT": [
-        "compacte",
-        [
-            "K*/PABGT",
-            "compact"
         ]
     ],
     "K*U": [
@@ -616,7 +322,7 @@
         ]
     ],
     "KA*B": [
-        "khan",
+        "cab",
         [
             "KA*B",
             "Cannes"
@@ -629,25 +335,11 @@
             "qu'a"
         ]
     ],
-    "KAB": [
-        "cab",
-        [
-            "KAB",
-            "canne"
-        ]
-    ],
     "KABG": [
         "caque",
         [
             "KABG",
             "quand est-ce que"
-        ]
-    ],
-    "KAEUT": [
-        "ket",
-        [
-            "KAEUT",
-            "quête"
         ]
     ],
     "KAFP": [
@@ -678,25 +370,11 @@
             "cœur"
         ]
     ],
-    "KAPB": [
-        "quant",
-        [
-            "KAPB",
-            "camp"
-        ]
-    ],
     "KAPG": [
         "cagne",
         [
             "KAPG",
             "campagne"
-        ]
-    ],
-    "KAR": [
-        "care",
-        [
-            "KAR",
-            "car"
         ]
     ],
     "KAR/*PB": [
@@ -711,20 +389,6 @@
         [
             "KATS",
             "4"
-        ]
-    ],
-    "KAU": [
-        "cui-cui",
-        [
-            "KAU",
-            "cuit"
-        ]
-    ],
-    "KAUT": [
-        "cahute",
-        [
-            "KAUT",
-            "cuite"
         ]
     ],
     "KERT": [
@@ -748,13 +412,6 @@
             "15"
         ]
     ],
-    "KEUT": [
-        "kit",
-        [
-            "KEUT",
-            "quitte"
-        ]
-    ],
     "KHAG": [
         "minage",
         [
@@ -776,25 +433,11 @@
             "qu'elle a"
         ]
     ],
-    "KHRABG": [
-        "clac",
-        [
-            "KHRABG",
-            "claque"
-        ]
-    ],
     "KHRAEUG": [
         "collègue",
         [
             "KHRAEUG",
             "collège"
-        ]
-    ],
-    "KHRAS": [
-        "class",
-        [
-            "KHRAS",
-            "classe"
         ]
     ],
     "KHREUB": [
@@ -811,25 +454,11 @@
             "colloque"
         ]
     ],
-    "KHU": [
-        "menue",
+    "KO*R": [
+        "score",
         [
-            "KHU",
-            "menu"
-        ]
-    ],
-    "KHUT": [
-        "mn",
-        [
-            "KHUT",
-            "minute"
-        ]
-    ],
-    "KOBG": [
-        "coque",
-        [
-            "KOBG",
-            "coq"
+            "KO*R",
+            "cor"
         ]
     ],
     "KOEL": [
@@ -853,67 +482,11 @@
             "condo"
         ]
     ],
-    "KOEUL": [
-        "scolie",
-        [
-            "KOEUL",
-            "colis"
-        ]
-    ],
-    "KOEUP": [
-        "scopie",
-        [
-            "KOEUP",
-            "copie"
-        ]
-    ],
     "KOEUPB": [
         "copine",
         [
             "KOEUPB",
             "coin"
-        ]
-    ],
-    "KOR": [
-        "score",
-        [
-            "KOR",
-            "corps"
-        ]
-    ],
-    "KOT": [
-        "cotes",
-        [
-            "KOT",
-            "cote"
-        ]
-    ],
-    "KOUP": [
-        "scoop",
-        [
-            "KOUP",
-            "coupe"
-        ]
-    ],
-    "KPABGT": [
-        "compacte",
-        [
-            "KPABGT",
-            "compact"
-        ]
-    ],
-    "KPAEUPT/-D": [
-        "exceptée",
-        [
-            "KPAEUPT/-D",
-            "excepté"
-        ]
-    ],
-    "KPEUL": [
-        "compil",
-        [
-            "KPEUL",
-            "exil"
         ]
     ],
     "KPHA": [
@@ -944,18 +517,11 @@
             "exécute"
         ]
     ],
-    "KPWHRAPB": [
-        "comblant",
+    "KPWHRE": [
+        "combler",
         [
-            "KPWHRAPB",
-            "implant"
-        ]
-    ],
-    "KPWOE": [
-        "combo",
-        [
-            "KPWOE",
-            "impôt"
+            "KPWHRE",
+            "comblé"
         ]
     ],
     "KPWRAO": [
@@ -972,13 +538,6 @@
             "86"
         ]
     ],
-    "KPWU": [
-        "imbue",
-        [
-            "KPWU",
-            "imbu"
-        ]
-    ],
     "KRA": [
         "cracra",
         [
@@ -986,18 +545,11 @@
             "qui a"
         ]
     ],
-    "KRAB": [
+    "KRA*B": [
         "crane",
         [
-            "KRAB",
-            "crabe"
-        ]
-    ],
-    "KRAEU": [
-        "cré",
-        [
-            "KRAEU",
-            "craie"
+            "KRA*B",
+            "qui n'a"
         ]
     ],
     "KREUBG": [
@@ -1028,13 +580,6 @@
             "continu"
         ]
     ],
-    "KULTS": [
-        "sculpture",
-        [
-            "KULTS",
-            "culture"
-        ]
-    ],
     "KWA": [
         "quoi",
         [
@@ -1063,15 +608,8 @@
             "il a"
         ]
     ],
-    "O*P": [
-        "ope",
-        [
-            "O*P",
-            "on peut"
-        ]
-    ],
     "O*U": [
-        "houx",
+        "ouh",
         [
             "O*U",
             "on lui"
@@ -1119,13 +657,6 @@
             "on était"
         ]
     ],
-    "OEUP": [
-        "hopi",
-        [
-            "OEUP",
-            "emploi"
-        ]
-    ],
     "OF": [
         "ove",
         [
@@ -1140,11 +671,11 @@
             "autrefois"
         ]
     ],
-    "OPB": [
-        "hon",
+    "OPBS": [
+        "once",
         [
-            "OPB",
-            "on"
+            "OPBS",
+            "on nous"
         ]
     ],
     "OPBZ": [
@@ -1152,20 +683,6 @@
         [
             "OPBZ",
             "11"
-        ]
-    ],
-    "OPL": [
-        "hom",
-        [
-            "OPL",
-            "on me"
-        ]
-    ],
-    "OR": [
-        "hors",
-        [
-            "OR",
-            "or"
         ]
     ],
     "ORB": [
@@ -1189,13 +706,6 @@
             "organise"
         ]
     ],
-    "ORPL": [
-        "orme",
-        [
-            "ORPL",
-            "homme"
-        ]
-    ],
     "OULZ": [
         "ouille",
         [
@@ -1203,11 +713,18 @@
             "houille"
         ]
     ],
-    "PAB": [
-        "paonne",
+    "P-FT": [
+        "pst",
         [
-            "PAB",
-            "panne"
+            "P-FT",
+            "parfaite"
+        ]
+    ],
+    "P*EUBG": [
+        "spic",
+        [
+            "P*EUBG",
+            "pique"
         ]
     ],
     "PAD": [
@@ -1231,46 +748,11 @@
             "pierre"
         ]
     ],
-    "PAEUB": [
-        "penne",
-        [
-            "PAEUB",
-            "peine"
-        ]
-    ],
-    "PAEUR": [
-        "pair",
-        [
-            "PAEUR",
-            "paire"
-        ]
-    ],
-    "PAL": [
-        "pal",
-        [
-            "PAL",
-            "pale"
-        ]
-    ],
     "PAOEU": [
         "pieu",
         [
             "PAOEU",
             "pieux"
-        ]
-    ],
-    "PAR": [
-        "parr",
-        [
-            "PAR",
-            "part"
-        ]
-    ],
-    "PARBG": [
-        "parque",
-        [
-            "PARBG",
-            "parc"
         ]
     ],
     "PARL": [
@@ -1294,25 +776,11 @@
             "parte"
         ]
     ],
-    "PAT": [
-        "pat",
+    "PE": [
+        "p.",
         [
-            "PAT",
-            "patte"
-        ]
-    ],
-    "PAU": [
-        "puy",
-        [
-            "PAU",
-            "puis"
-        ]
-    ],
-    "PAUFBG": [
-        "puisqu",
-        [
-            "PAUFBG",
-            "puisque"
+            "PE",
+            "pouvez"
         ]
     ],
     "PER/O*U": [
@@ -1329,25 +797,11 @@
             "pie"
         ]
     ],
-    "PEUBG": [
-        "spic",
+    "PH*EU": [
+        "mi",
         [
-            "PEUBG",
-            "pic"
-        ]
-    ],
-    "PEUPB": [
-        "peint",
-        [
-            "PEUPB",
-            "pin"
-        ]
-    ],
-    "PEUR": [
-        "spire",
-        [
-            "PEUR",
-            "pire"
+            "PH*EU",
+            "m'y"
         ]
     ],
     "PH*EUBGS": [
@@ -1357,11 +811,11 @@
             "mixte"
         ]
     ],
-    "PHA": [
-        "mas",
+    "PHA*RBG": [
+        "mark",
         [
-            "PHA",
-            "ma"
+            "PHA*RBG",
+            "Marc"
         ]
     ],
     "PHAEUTS": [
@@ -1378,13 +832,6 @@
             "manque"
         ]
     ],
-    "PHAPBGS": [
-        "mansion",
-        [
-            "PHAPBGS",
-            "mention"
-        ]
-    ],
     "PHAPBT/O*EBGS": [
         "mentaux",
         [
@@ -1399,20 +846,6 @@
             "madame"
         ]
     ],
-    "PHARBG": [
-        "mark",
-        [
-            "PHARBG",
-            "marque"
-        ]
-    ],
-    "PHARL": [
-        "marle",
-        [
-            "PHARL",
-            "malheur"
-        ]
-    ],
     "PHARLGTS": [
         "martel",
         [
@@ -1420,32 +853,18 @@
             "Martel"
         ]
     ],
-    "PHEU": [
-        "mi",
-        [
-            "PHEU",
-            "mis"
-        ]
-    ],
-    "PHEUB": [
-        "min",
-        [
-            "PHEUB",
-            "mine"
-        ]
-    ],
-    "PHEUPB": [
-        "maint",
-        [
-            "PHEUPB",
-            "main"
-        ]
-    ],
     "PHEUPBT": [
         "mainte",
         [
             "PHEUPBT",
             "maintes"
+        ]
+    ],
+    "PHEUT": [
+        "mythe",
+        [
+            "PHEUT",
+            "maintenant"
         ]
     ],
     "PHO": [
@@ -1462,39 +881,11 @@
             "moud"
         ]
     ],
-    "PHOD": [
-        "mod",
-        [
-            "PHOD",
-            "mode"
-        ]
-    ],
-    "PHOEU": [
-        "moi-moi-moi",
-        [
-            "PHOEU",
-            "moi"
-        ]
-    ],
     "PHOEUR": [
         "moire",
         [
             "PHOEUR",
             "mémoire"
-        ]
-    ],
-    "PHOL": [
-        "mol",
-        [
-            "PHOL",
-            "molle"
-        ]
-    ],
-    "PHOPB": [
-        "mont",
-        [
-            "PHOPB",
-            "mon"
         ]
     ],
     "PHOPBTS": [
@@ -1504,25 +895,11 @@
             "montre"
         ]
     ],
-    "PHORLGTS": [
-        "mortelle",
-        [
-            "PHORLGTS",
-            "mortel"
-        ]
-    ],
     "PHORT/*EL": [
         "mortelle",
         [
             "PHORT/*EL",
             "mortel"
-        ]
-    ],
-    "PHRAEUB": [
-        "plèbe",
-        [
-            "PHRAEUB",
-            "plaine"
         ]
     ],
     "PHRU": [
@@ -1532,46 +909,11 @@
             "plu"
         ]
     ],
-    "PHUR": [
-        "mûr",
-        [
-            "PHUR",
-            "mur"
-        ]
-    ],
-    "PHURL": [
-        "murale",
-        [
-            "PHURL",
-            "mural"
-        ]
-    ],
-    "PO*S": [
-        "post",
-        [
-            "PO*S",
-            "poste"
-        ]
-    ],
-    "POE": [
-        "peaux",
-        [
-            "POE",
-            "peau"
-        ]
-    ],
     "POEGS": [
         "potion",
         [
             "POEGS",
             "position"
-        ]
-    ],
-    "POEU": [
-        "pouah",
-        [
-            "POEU",
-            "pois"
         ]
     ],
     "POL": [
@@ -1588,13 +930,6 @@
             "pommette"
         ]
     ],
-    "POR": [
-        "pore",
-        [
-            "POR",
-            "port"
-        ]
-    ],
     "PORBG": [
         "porque",
         [
@@ -1602,11 +937,11 @@
             "porc"
         ]
     ],
-    "POUL": [
-        "pool",
+    "POUS": [
+        "pouce",
         [
-            "POUL",
-            "poule"
+            "POUS",
+            "pousse"
         ]
     ],
     "PR-L": [
@@ -1621,13 +956,6 @@
         [
             "PR*EU",
             "prie"
-        ]
-    ],
-    "PRAEU": [
-        "prêts",
-        [
-            "PRAEU",
-            "prêt"
         ]
     ],
     "PREU": [
@@ -1651,13 +979,6 @@
             "parole"
         ]
     ],
-    "PROPB": [
-        "perron",
-        [
-            "PROPB",
-            "prompt"
-        ]
-    ],
     "PRUS": [
         "spruce",
         [
@@ -1672,13 +993,6 @@
             "public"
         ]
     ],
-    "PUR": [
-        "pure",
-        [
-            "PUR",
-            "pur"
-        ]
-    ],
     "PW*EU": [
         "bi",
         [
@@ -1686,25 +1000,11 @@
             "bâti"
         ]
     ],
-    "PWA": [
-        "bah",
-        [
-            "PWA",
-            "bas"
-        ]
-    ],
     "PWA*LZ": [
-        "balise",
+        "bail",
         [
             "PWA*LZ",
             "bâille"
-        ]
-    ],
-    "PWAEUG": [
-        "bègue",
-        [
-            "PWAEUG",
-            "beige"
         ]
     ],
     "PWAFL/W*E": [
@@ -1721,18 +1021,11 @@
             "bail"
         ]
     ],
-    "PWAPB": [
-        "ban",
+    "KAB/R-R": [
+        "cabrer",
         [
-            "PWAPB",
-            "banc"
-        ]
-    ],
-    "PWAPBL": [
-        "banale",
-        [
-            "PWAPBL",
-            "banal"
+            "KAB/R-R",
+            "can"
         ]
     ],
     "PWEUR": [
@@ -1742,25 +1035,11 @@
             "bâtir"
         ]
     ],
-    "PWHRAO": [
-        "bleue",
-        [
-            "PWHRAO",
-            "bleu"
-        ]
-    ],
-    "PWHRAPB": [
-        "ballant",
-        [
-            "PWHRAPB",
-            "blanc"
-        ]
-    ],
-    "PWHROBG": [
+    "PWHRO*BG": [
         "block",
         [
-            "PWHROBG",
-            "bloc"
+            "PWHRO*BG",
+            "bloque"
         ]
     ],
     "PWHROPB": [
@@ -1777,39 +1056,11 @@
             "blouse"
         ]
     ],
-    "PWOB": [
-        "bob",
-        [
-            "PWOB",
-            "bonne"
-        ]
-    ],
-    "PWOR": [
-        "bore",
-        [
-            "PWOR",
-            "bord"
-        ]
-    ],
-    "PWOUL": [
-        "boulle",
-        [
-            "PWOUL",
-            "boule"
-        ]
-    ],
     "PWRAEU": [
         "brai",
         [
             "PWRAEU",
             "biais"
-        ]
-    ],
-    "PWREUPB": [
-        "bourrin",
-        [
-            "PWREUPB",
-            "brin"
         ]
     ],
     "PWROE": [
@@ -1819,18 +1070,11 @@
             "bureau"
         ]
     ],
-    "PWUL": [
-        "bull",
+    "R*EU": [
+        "ri",
         [
-            "PWUL",
-            "bulle"
-        ]
-    ],
-    "R-L/WE": [
-        "relevée",
-        [
-            "R-L/WE",
-            "relevé"
+            "R*EU",
+            "{^rie}"
         ]
     ],
     "RA": [
@@ -1841,21 +1085,21 @@
         ]
     ],
     "RA*": [
-        "hourra",
+        "ras",
         [
             "RA*",
             "rat"
         ]
     ],
     "RA*EUB": [
-        "renne",
+        "rêne",
         [
             "RA*EUB",
             "Reine"
         ]
     ],
     "RA*PB": [
-        "ran",
+        "errant",
         [
             "RA*PB",
             "rend"
@@ -1875,53 +1119,11 @@
             "raie"
         ]
     ],
-    "RAEUB": [
-        "rêne",
-        [
-            "RAEUB",
-            "reine"
-        ]
-    ],
-    "RAEUD": [
-        "raid",
-        [
-            "RAEUD",
-            "raide"
-        ]
-    ],
-    "RAG": [
-        "rag",
-        [
-            "RAG",
-            "rage"
-        ]
-    ],
     "RAOUT": [
         "raout",
         [
             "RAOUT",
             "autoroute"
-        ]
-    ],
-    "RAPB": [
-        "errant",
-        [
-            "RAPB",
-            "rang"
-        ]
-    ],
-    "RAPL": [
-        "rams",
-        [
-            "RAPL",
-            "rame"
-        ]
-    ],
-    "RAR": [
-        "yard",
-        [
-            "RAR",
-            "rare"
         ]
     ],
     "RARP": [
@@ -1931,39 +1133,11 @@
             "rapport"
         ]
     ],
-    "RAS": [
-        "rasse",
-        [
-            "RAS",
-            "race"
-        ]
-    ],
-    "RAT": [
-        "ratte",
-        [
-            "RAT",
-            "rate"
-        ]
-    ],
     "REU": [
         "ris",
         [
             "REU",
             "ri"
-        ]
-    ],
-    "REUPB": [
-        "rain",
-        [
-            "REUPB",
-            "rein"
-        ]
-    ],
-    "REUS/EU": [
-        "réussie",
-        [
-            "REUS/EU",
-            "réussi"
         ]
     ],
     "REUZ": [
@@ -1974,10 +1148,17 @@
         ]
     ],
     "RO*EU": [
-        "roi-roi",
+        "roy",
         [
             "RO*EU",
             "Roy"
+        ]
+    ],
+    "RO*PL": [
+        "rom",
+        [
+            "RO*PL",
+            "Rome"
         ]
     ],
     "ROBG": [
@@ -1985,48 +1166,6 @@
         [
             "ROBG",
             "roc"
-        ]
-    ],
-    "ROEU": [
-        "roy",
-        [
-            "ROEU",
-            "roi"
-        ]
-    ],
-    "ROPB": [
-        "ron",
-        [
-            "ROPB",
-            "rond"
-        ]
-    ],
-    "ROPL": [
-        "rom",
-        [
-            "ROPL",
-            "rhum"
-        ]
-    ],
-    "ROUG": [
-        "rouget",
-        [
-            "ROUG",
-            "rouge"
-        ]
-    ],
-    "RU": [
-        "ru",
-        [
-            "RU",
-            "rue"
-        ]
-    ],
-    "RURL": [
-        "rurale",
-        [
-            "RURL",
-            "rural"
         ]
     ],
     "S": [
@@ -2037,17 +1176,10 @@
         ]
     ],
     "S*EUT": [
-        "psitt",
+        "scythe",
         [
             "S*EUT",
             "cite"
-        ]
-    ],
-    "SA": [
-        "çà",
-        [
-            "SA",
-            "sa"
         ]
     ],
     "SA*EU": [
@@ -2057,15 +1189,15 @@
             "sait"
         ]
     ],
-    "SAEB": [
-        "sciène",
+    "SA*U": [
+        "sui",
         [
-            "SAEB",
-            "sienne"
+            "SA*U",
+            "suit"
         ]
     ],
     "SAEPB": [
-        "cyan",
+        "science",
         [
             "SAEPB",
             "sien"
@@ -2092,13 +1224,6 @@
             "cerne"
         ]
     ],
-    "SAEUS": [
-        "seps",
-        [
-            "SAEUS",
-            "cesse"
-        ]
-    ],
     "SAEUZ": [
         "seize",
         [
@@ -2106,32 +1231,11 @@
             "16"
         ]
     ],
-    "SAOL": [
-        "seule",
-        [
-            "SAOL",
-            "seul"
-        ]
-    ],
-    "SAPB": [
-        "cent",
-        [
-            "SAPB",
-            "sans"
-        ]
-    ],
     "SAPBS": [
         "cens",
         [
             "SAPBS",
             "sans nous"
-        ]
-    ],
-    "SAU": [
-        "sui",
-        [
-            "SAU",
-            "suie"
         ]
     ],
     "SAUF": [
@@ -2146,34 +1250,6 @@
         [
             "SETS",
             "c'était"
-        ]
-    ],
-    "SEU": [
-        "psy",
-        [
-            "SEU",
-            "si"
-        ]
-    ],
-    "SEUPBLG": [
-        "singes",
-        [
-            "SEUPBLG",
-            "singe"
-        ]
-    ],
-    "SEUPG": [
-        "cygne",
-        [
-            "SEUPG",
-            "signe"
-        ]
-    ],
-    "SEUT": [
-        "scythe",
-        [
-            "SEUT",
-            "site"
         ]
     ],
     "SHA": [
@@ -2218,20 +1294,6 @@
             "show"
         ]
     ],
-    "SHR-RB": [
-        "celles-ci",
-        [
-            "SHR-RB",
-            "celle-ci"
-        ]
-    ],
-    "SHRA": [
-        "cella",
-        [
-            "SHRA",
-            "cela"
-        ]
-    ],
     "SHUT": [
         "chut",
         [
@@ -2274,25 +1336,18 @@
             "jusqu'à"
         ]
     ],
+    "SKWRAEUB": [
+        "gène",
+        [
+            "SKWRAEUB",
+            "gêne"
+        ]
+    ],
     "SKWRAEURPL/A*EUB": [
         "germen",
         [
             "SKWRAEURPL/A*EUB",
             "Germaine"
-        ]
-    ],
-    "SKWRAO": [
-        "jeux",
-        [
-            "SKWRAO",
-            "jeu"
-        ]
-    ],
-    "SKWRAOB": [
-        "jeûne",
-        [
-            "SKWRAOB",
-            "jeune"
         ]
     ],
     "SKWRAPB": [
@@ -2302,11 +1357,11 @@
             "gens"
         ]
     ],
-    "SKWRAR": [
-        "jar",
+    "SKWRE": [
+        "g",
         [
-            "SKWRAR",
-            "jarre"
+            "SKWRE",
+            "j'ai"
         ]
     ],
     "SKWREUG": [
@@ -2323,20 +1378,6 @@
             "justice"
         ]
     ],
-    "SKWROEUL": [
-        "jolie",
-        [
-            "SKWROEUL",
-            "joli"
-        ]
-    ],
-    "SOE": [
-        "seau",
-        [
-            "SOE",
-            "saut"
-        ]
-    ],
     "SOUFRB": [
         "sous-verre",
         [
@@ -2351,13 +1392,6 @@
             "sous le"
         ]
     ],
-    "SP-R/TPHRU": [
-        "superflue",
-        [
-            "SP-R/TPHRU",
-            "superflu"
-        ]
-    ],
     "SPAEU": [
         "spahi",
         [
@@ -2365,18 +1399,11 @@
             "suspect"
         ]
     ],
-    "SPWAEB": [
+    "SPWA*EB": [
         "antienne",
         [
-            "SPWAEB",
-            "indienne"
-        ]
-    ],
-    "SPWAPBGS": [
-        "intension",
-        [
-            "SPWAPBGS",
-            "intention"
+            "SPWA*EB",
+            "Indienne"
         ]
     ],
     "SPWEUBG": [
@@ -2391,13 +1418,6 @@
         [
             "SPWOUR",
             "entoure"
-        ]
-    ],
-    "SPWR-D": [
-        "enterrée",
-        [
-            "SPWR-D",
-            "entrée"
         ]
     ],
     "SPWROFRPS": [
@@ -2456,25 +1476,11 @@
             "content"
         ]
     ],
-    "STEUL": [
-        "centile",
+    "STE": [
+        "santé",
         [
-            "STEUL",
-            "style"
-        ]
-    ],
-    "STKAEUR": [
-        "dessert",
-        [
-            "STKAEUR",
-            "désert"
-        ]
-    ],
-    "STKAEURT": [
-        "desserte",
-        [
-            "STKAEURT",
-            "déserte"
+            "STE",
+            "société"
         ]
     ],
     "STKOR": [
@@ -2489,13 +1495,6 @@
         [
             "STKPWHRAEU",
             "déblaie"
-        ]
-    ],
-    "STKU": [
-        "déçue",
-        [
-            "STKU",
-            "dessus"
         ]
     ],
     "STKWAEU": [
@@ -2519,20 +1518,6 @@
             "défend"
         ]
     ],
-    "STKWOE": [
-        "dévot",
-        [
-            "STKWOE",
-            "défaut"
-        ]
-    ],
-    "STPHAEU": [
-        "ciné",
-        [
-            "STPHAEU",
-            "connaît"
-        ]
-    ],
     "STPHU": [
         "insu",
         [
@@ -2554,13 +1539,6 @@
             "c'est un peu"
         ]
     ],
-    "SU": [
-        "sue",
-        [
-            "SU",
-            "su"
-        ]
-    ],
     "SUG": [
         "sujet",
         [
@@ -2573,13 +1551,6 @@
         [
             "SUGS",
             "suggestion"
-        ]
-    ],
-    "SUR": [
-        "sûre",
-        [
-            "SUR",
-            "sûr"
         ]
     ],
     "SUS": [
@@ -2610,13 +1581,6 @@
             "te"
         ]
     ],
-    "TA": [
-        "tas",
-        [
-            "TA",
-            "ta"
-        ]
-    ],
     "TAEPB": [
         "tiens",
         [
@@ -2624,32 +1588,11 @@
             "tien"
         ]
     ],
-    "TAEUT": [
-        "tette",
-        [
-            "TAEUT",
-            "tête"
-        ]
-    ],
     "TAG": [
         "tag",
         [
             "TAG",
             "témoignage"
-        ]
-    ],
-    "TAP": [
-        "tap",
-        [
-            "TAP",
-            "tape"
-        ]
-    ],
-    "TAR": [
-        "tare",
-        [
-            "TAR",
-            "tard"
         ]
     ],
     "TEU": [
@@ -2681,7 +1624,7 @@
         ]
     ],
     "TK*EUG": [
-        "dig",
+        "digue",
         [
             "TK*EUG",
             "dis-je"
@@ -2722,34 +1665,6 @@
             "Dieu"
         ]
     ],
-    "TKAPB": [
-        "dam",
-        [
-            "TKAPB",
-            "dent"
-        ]
-    ],
-    "TKAT": [
-        "datte",
-        [
-            "TKAT",
-            "date"
-        ]
-    ],
-    "TKERB": [
-        "déci",
-        [
-            "TKERB",
-            "dernière"
-        ]
-    ],
-    "TKES/U": [
-        "déçue",
-        [
-            "TKES/U",
-            "déçu"
-        ]
-    ],
     "TKEUB": [
         "dine",
         [
@@ -2785,13 +1700,6 @@
             "dis"
         ]
     ],
-    "TKOE": [
-        "do",
-        [
-            "TKOE",
-            "dos"
-        ]
-    ],
     "TKOUZ": [
         "douze",
         [
@@ -2806,13 +1714,6 @@
             "guet"
         ]
     ],
-    "TKPWAFL": [
-        "javel",
-        [
-            "TKPWAFL",
-            "gaffe"
-        ]
-    ],
     "TKPWAL": [
         "gal",
         [
@@ -2820,25 +1721,11 @@
             "gouvernemental"
         ]
     ],
-    "TKPWAPB": [
-        "gent",
+    "TKPWE": [
+        "gué",
         [
-            "TKPWAPB",
-            "gant"
-        ]
-    ],
-    "TKPWAR": [
-        "jar",
-        [
-            "TKPWAR",
-            "gare"
-        ]
-    ],
-    "TKPWHRAS": [
-        "glass",
-        [
-            "TKPWHRAS",
-            "glace"
+            "TKPWE",
+            "gai"
         ]
     ],
     "TKPWRA*FL": [
@@ -2855,39 +1742,11 @@
             "gravelle"
         ]
     ],
-    "TKPWREU": [
-        "gerris",
-        [
-            "TKPWREU",
-            "gris"
-        ]
-    ],
-    "TKPWROUP": [
-        "group",
-        [
-            "TKPWROUP",
-            "groupe"
-        ]
-    ],
     "TKREUG": [
         "dring",
         [
             "TKREUG",
             "dirige"
-        ]
-    ],
-    "TKU": [
-        "due",
-        [
-            "TKU",
-            "du"
-        ]
-    ],
-    "TKUR": [
-        "dure",
-        [
-            "TKUR",
-            "dur"
         ]
     ],
     "TKWAEUR": [
@@ -2905,7 +1764,7 @@
         ]
     ],
     "TO*R": [
-        "tore",
+        "tors",
         [
             "TO*R",
             "tord"
@@ -2925,39 +1784,11 @@
             "tôle"
         ]
     ],
-    "TOFRPB": [
-        "torchis",
-        [
-            "TOFRPB",
-            "torche"
-        ]
-    ],
-    "TOPB": [
-        "thon",
-        [
-            "TOPB",
-            "ton"
-        ]
-    ],
-    "TOR": [
-        "tors",
-        [
-            "TOR",
-            "tort"
-        ]
-    ],
     "TOUBG": [
         "touque",
         [
             "TOUBG",
             "tout à coup"
-        ]
-    ],
-    "TPAER": [
-        "fillér",
-        [
-            "TPAER",
-            "fier"
         ]
     ],
     "TPAFL": [
@@ -2967,39 +1798,18 @@
             "photographe"
         ]
     ],
-    "TPAO": [
-        "feux",
+    "TPAS": [
+        "face",
         [
-            "TPAO",
-            "feu"
+            "TPAS",
+            "fasse"
         ]
     ],
-    "TPAR": [
-        "fard",
+    "TPH*E": [
+        "né",
         [
-            "TPAR",
-            "phare"
-        ]
-    ],
-    "TPEUL": [
-        "file",
-        [
-            "TPEUL",
-            "fil"
-        ]
-    ],
-    "TPEUL/AEU": [
-        "filé",
-        [
-            "TPEUL/AEU",
-            "filet"
-        ]
-    ],
-    "TPEUPB": [
-        "feint",
-        [
-            "TPEUPB",
-            "fin"
+            "TPH*E",
+            "nie"
         ]
     ],
     "TPHAEUFL": [
@@ -3007,13 +1817,6 @@
         [
             "TPHAEUFL",
             "naïf"
-        ]
-    ],
-    "TPHAEUT": [
-        "nette",
-        [
-            "TPHAEUT",
-            "net"
         ]
     ],
     "TPHAO": [
@@ -3030,11 +1833,11 @@
             "Nice"
         ]
     ],
-    "TPHOEUR": [
-        "noire",
+    "TPHOS": [
+        "noce",
         [
-            "TPHOEUR",
-            "noir"
+            "TPHOS",
+            "en sont"
         ]
     ],
     "TPHOTS": [
@@ -3044,46 +1847,11 @@
             "notaire"
         ]
     ],
-    "TPHOUFL": [
-        "nouvel",
-        [
-            "TPHOUFL",
-            "nouvelle"
-        ]
-    ],
     "TPHRAGS": [
         "fellation",
         [
             "TPHRAGS",
             "félicitations"
-        ]
-    ],
-    "TPHU": [
-        "nue",
-        [
-            "TPHU",
-            "nu"
-        ]
-    ],
-    "TPHUL": [
-        "nulle",
-        [
-            "TPHUL",
-            "nul"
-        ]
-    ],
-    "TPOEUL": [
-        "foil",
-        [
-            "TPOEUL",
-            "folie"
-        ]
-    ],
-    "TPOPB": [
-        "fonds",
-        [
-            "TPOPB",
-            "fond"
         ]
     ],
     "TPORPLT": [
@@ -3100,20 +1868,6 @@
             "frère"
         ]
     ],
-    "TPRAEU": [
-        "fret",
-        [
-            "TPRAEU",
-            "frais"
-        ]
-    ],
-    "TPRATS": [
-        "frater",
-        [
-            "TPRATS",
-            "fracture"
-        ]
-    ],
     "TPREUP": [
         "fripe",
         [
@@ -3126,13 +1880,6 @@
         [
             "TPREUZ",
             "franchise"
-        ]
-    ],
-    "TPRUR": [
-        "ferrure",
-        [
-            "TPRUR",
-            "fourrure"
         ]
     ],
     "TRAEB": [
@@ -3149,46 +1896,11 @@
             "ontarien"
         ]
     ],
-    "TRAEU": [
-        "trahi",
-        [
-            "TRAEU",
-            "trait"
-        ]
-    ],
-    "TRAFRP": [
-        "tramp",
-        [
-            "TRAFRP",
-            "trempe"
-        ]
-    ],
-    "TRAG": [
-        "terrage",
-        [
-            "TRAG",
-            "trajet"
-        ]
-    ],
     "TRAO": [
         "terreux",
         [
             "TRAO",
             "trio"
-        ]
-    ],
-    "TRAS": [
-        "terrasse",
-        [
-            "TRAS",
-            "trace"
-        ]
-    ],
-    "TRASZ": [
-        "thrace",
-        [
-            "TRASZ",
-            "trace"
         ]
     ],
     "TRATS": [
@@ -3212,20 +1924,6 @@
             "3"
         ]
     ],
-    "TU": [
-        "tue",
-        [
-            "TU",
-            "tu"
-        ]
-    ],
-    "TUB": [
-        "thune",
-        [
-            "TUB",
-            "tube"
-        ]
-    ],
     "TUL": [
         "tulle",
         [
@@ -3247,11 +1945,11 @@
             "eu"
         ]
     ],
-    "UB": [
-        "hune",
+    "W*EUS": [
+        "vis",
         [
-            "UB",
-            "une"
+            "W*EUS",
+            "visse"
         ]
     ],
     "WABGS": [
@@ -3261,25 +1959,11 @@
             "vacances"
         ]
     ],
-    "WAELZ": [
-        "vieil",
-        [
-            "WAELZ",
-            "vieille"
-        ]
-    ],
     "WAEPB": [
         "viens",
         [
             "WAEPB",
             "vient"
-        ]
-    ],
-    "WAEURBL": [
-        "verbale",
-        [
-            "WAEURBL",
-            "verbal"
         ]
     ],
     "WALZ": [
@@ -3317,27 +2001,6 @@
             "veine"
         ]
     ],
-    "WEUGZ": [
-        "vison",
-        [
-            "WEUGZ",
-            "vision"
-        ]
-    ],
-    "WEUPB": [
-        "vingt",
-        [
-            "WEUPB",
-            "vin"
-        ]
-    ],
-    "WEURL": [
-        "virale",
-        [
-            "WEURL",
-            "viral"
-        ]
-    ],
     "WEUS": [
         "vice",
         [
@@ -3345,32 +2008,11 @@
             "vis"
         ]
     ],
-    "WHAL": [
-        "finale",
-        [
-            "WHAL",
-            "final"
-        ]
-    ],
-    "WHEU": [
-        "finie",
-        [
-            "WHEU",
-            "fini"
-        ]
-    ],
     "WHRAF": [
         "vellave",
         [
             "WHRAF",
             "valve"
-        ]
-    ],
-    "WHRAG": [
-        "volage",
-        [
-            "WHRAG",
-            "village"
         ]
     ],
     "WHRAPB": [
@@ -3387,39 +2029,11 @@
             "violente"
         ]
     ],
-    "WHRU": [
-        "voulue",
-        [
-            "WHRU",
-            "voulu"
-        ]
-    ],
-    "WHU": [
-        "venue",
-        [
-            "WHU",
-            "venu"
-        ]
-    ],
     "WO*E": [
-        "vaux",
+        "veaux",
         [
             "WO*E",
             "vaut"
-        ]
-    ],
-    "WOE": [
-        "veaux",
-        [
-            "WOE",
-            "veau"
-        ]
-    ],
-    "WOL": [
-        "vole",
-        [
-            "WOL",
-            "vol"
         ]
     ],
     "WOUG": [
@@ -3427,20 +2041,6 @@
         [
             "WOUG",
             "vous en"
-        ]
-    ],
-    "WRA": [
-        "verrat",
-        [
-            "WRA",
-            "via"
-        ]
-    ],
-    "WRAEU": [
-        "vraie",
-        [
-            "WRAEU",
-            "vrai"
         ]
     ]
 }

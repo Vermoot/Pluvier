@@ -3,6 +3,7 @@ import copy
 import re
 
 from src.word import Word
+
 from src.cutword import Cutword
 from src.syllabe import Syllabe
 from src.log import Log
@@ -296,7 +297,7 @@ class Steno:
                 "lOg" : "LO*EG",
                 "p9R" : "-RP",
                 "pid" : "-PD",
-                "fis" : "-WEUS",
+#                "fis" : "-WEUS",
                 "fik" : "-/FBG",
                 "fEk" : "-/FBG",
                 "kEl" : "-/BLG",
@@ -538,6 +539,10 @@ class Steno:
 
                 if word.word.startswith('dé')  or word.word.startswith('des') or ((next_letter.endswith('O') or next_letter.endswith('E') or next_letter.endswith('I') or next_letter.endswith('A') or next_letter.endswith('U') or next_letter.endswith('@') or next_letter.endswith('Y'))) :
                         remains=phonetics
+                        replace ='de' 
+                        by='STK'
+                        self.prefix = {'STK' : 'de'}
+                        remains = phonetics[2:]
                         if phonetics.startswith('dez'):
                                 self.prefix = {'STK':'dez'}
                                 replace ='dez' 
@@ -561,11 +566,6 @@ class Steno:
                                 self.prefix = {'STKW' : 'def'}
                                 remains = phonetics[3:]
 
-                        if not self.prefix:
-                                replace ='de' 
-                                by='STK'
-                                self.prefix = {'STK' : 'de'}
-                                remains = phonetics[2:]
                         Log('> syll: ', remains)
                         return self.create_cutword(phonetics,remains,replace,by)
 
@@ -593,7 +593,10 @@ class Steno:
                 if word.word.endswith('ée'):
                         self.ending_syll = phonetics[:-1]
                         self.ending = "/ED"
-                        return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending)
+                        
+                        cutword=self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending)
+                        cutword.mandatory=True
+                        return cutword
 
                                 
                 if word.word.endswith('ette'):
@@ -611,11 +614,14 @@ class Steno:
                 Log('check prefixes start')
                 mylist =[]
                 cutword=Cutword(syll)
-                mylist.extend( cutword.generate())
+#                mylist.extend( cutword.generate())
                 cutword = self.prefixes(syll,word)
-
+                
                 if cutword.has_found():
                         mylist.extend( cutword.generate())
+                if cutword.mandatory==True:
+                        Log('mandatory',cutword.steno)
+                        return mylist
                 cutword= self.ortho_starting_with_des(word, syll)
 
                 if cutword.has_found():
@@ -700,11 +706,15 @@ class Steno:
                                 Log('indic')
                                 self.ending = "/R*EZ"
                                 self.ending_syll = phonetics[:-2]
-                                return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                                cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                                cutword.mandatory=True
+                                return cutword
 
                         if verb_word.syll.endswith('e') :
                                 self.ending_syll = phonetics[:-1]
-                                return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                                cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                                cutword.mandatory=True
+                                return cutword
 
                 if verb_word.is_participe_present():
                         Log('participe present')
@@ -717,7 +727,13 @@ class Steno:
                                 self.ending_syll = phonetics[:-1]
                                 return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True, True)
 
-
+                if verb_word.ending_with('a'):
+                        self.ending = "/*Z"
+                        self.ending_syll = phonetics[:-1]
+                        cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                        cutword.mandatory=True
+                        return cutword
+                
                 if verb_word.ending_with('ais'):
 #                if verb_word.is_imparfait():
                         Log('imparfait')
@@ -824,6 +840,7 @@ class Steno:
                         self.prefix = {'H' : ''}
                         cutword.set_remains(phoneme)
                         cutword.set_replaced_by('','H')
+                        cutword.mandatory=True
                         return cutword
                 if (word_class.word.startswith('y') and phoneme.startswith('j')):
                         self.prefix ={'KWR' : 'j'}
@@ -912,6 +929,7 @@ class Steno:
 #                self.prefix ={}
 #                self.suffix =""
                 self.final_encoded=self.newtransform(myword)
+                Log('Final words encoded: ' , self.final_encoded)
 #                self.final_encoded=self.basic_transform_by_syllabes(myword)
                 Log('The word is a verb ? ' , myword.is_verb())
                 has_homophone = self.has_homophone(myword)
@@ -928,12 +946,18 @@ class Steno:
                 onverb = self.ortho_add_alone_keys_on_verb(word,phoneme)
                 if onverb.has_found():
                         mylist.append(onverb)
+                        if onverb.mandatory:
+                                return mylist
                 infinitif = self.ortho_add_aloneR_infinitif_firstgroup(word, phoneme)
                 if infinitif.has_found():
                         mylist.append(infinitif)
+                        if infinitif.mandatory:
+                                return mylist
                 infinitif = self.ortho_add_alone_keys_on_noun(word, phoneme)
                 if infinitif.has_found():
                         mylist.append(infinitif)
+                        if infinitif.mandatory:
+                                return mylist
 
 
                 for orth in self.ORTHO_SUFFIXES.items():
@@ -956,6 +980,7 @@ class Steno:
 
                 cutword = self.suffixes(phoneme,  self.SUFFIXES)
                 if (cutword.has_found()) :
+                        Log('found cutwor:',vars(cutword))
                         mylist.extend(cutword.generate())
                         return mylist
 
@@ -964,6 +989,7 @@ class Steno:
                 if (cutword.has_found()) :
                         mylist.extend(cutword.generate())
                         return mylist
+                Log('found cutwo 2:',vars(cutword))
                 mylist.extend(cutword.generate())
                 return mylist
 
@@ -1009,10 +1035,14 @@ class Steno:
                 results = []
                 has_homophone = self.has_homophone(initial_word)
                 for prefix in self.check_prefixes(initial_word,all_sylls):
-                        Log(prefix.get_remains())
-                        
-                        for suffix in self.check_suffixes(initial_word,prefix):
+                        Log('remains',prefix.get_remains())
+                        all_suffixes=self.check_suffixes(initial_word,prefix)
+
+                        for suffix in all_suffixes:
+
+                                Log('trouve suffixes', initial_word.word)
                                 remains = self.double_consonant_remove_woyel(initial_word.word, suffix.get_remains())
+                                Log('trouve suffixes', remains)
                                 final_word= Steno_Encoding(remains, prefix.get_steno(), suffix).encode()
                                 if has_homophone and initial_word.is_verb() and not prefix.has_ortho_rule() and not suffix.has_ortho_rule():
                                         Log( 'is homophone',suffix.has_ortho_rule())

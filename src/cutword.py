@@ -6,6 +6,7 @@ class Cutword:
         steno  = ''
         ortho_rule=False
         separate_stroke=False
+        mandatory=False
         def __init__(self,phoneme):
             self.phoneme = phoneme
             self.remains = phoneme

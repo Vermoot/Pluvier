@@ -1,4 +1,5 @@
 {
+    "SAG/A": "saga",
     "SAG/*Z": "saga",
     "KOUP/*Z": "coupa"
 }
