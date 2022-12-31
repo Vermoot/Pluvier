@@ -7,10 +7,15 @@ class Steno_Encoding:
 
                 'sjasj§': 'SRAGS', #ciation
                 '@v°n' : 'ENVH',
+                "aOR" : "ARP",
+                'ynik' : 'UBG',
                 "enER": "EBS",
+                '§ple' : '/OFRPL', # trompe
+                '§pli' : '/OFRPL', # trompe
+
                 'v°n' : 'VH',
                 'vin' : 'VH',
-                'vol' :'VL',
+                'vOl' :'VL',
                 "jEn": "AEB",
                 'Egze' : 'KP',
                 'Egzi' : 'KPEU',
@@ -24,6 +29,7 @@ class Steno_Encoding:
                 'bRe': '-BS',
                 "djO": "OD",
                 "zj§": "GZ",
+                'ps' : 'S',
                 'nal' : '-NL', 
                 '@kR' : '-FRKS', #cancre
                 "sj§": "GZ",
@@ -31,6 +37,8 @@ class Steno_Encoding:
                 "fik" : "-/FBG",
                 "fEk" : "-/FBG",
                                 'kE' : 'KE',
+                'psjOn' :'-PGS',
+                'sjOn' :'-GZ',
                 'vERs' : '-/FRB', # divers
                 'ERv' : '-/FRB', #v-erve
                 'vEr' : '-/FRB', # cou-vert
@@ -38,7 +46,7 @@ class Steno_Encoding:
                 'Rifi' : '-/FR', # bonus rifi
                 'ijO' : 'AO',
 #                'jO' : 'RO|AO',
-                'jO' : 'AO', # conflit viol et myope RO
+#                'jO' : 'AO', # conflit viol et myope RO
                 'j@' : 'AEN' , # son ian
                 '@l' : '-ANL', #enleve
                 "RSi" : "VRPB",
@@ -54,6 +62,7 @@ class Steno_Encoding:
                 "ps" : "S",
                 'En' : 'AIB',
                 'oi' : 'OEU',
+                
                 "vaj" : "-FL",
                 "vEj" : "-FL",
                 #'@v' : 'ENVH', #envenime
@@ -83,14 +92,15 @@ class Steno_Encoding:
                 "je": "AE",     # pied
                 "jE": "AE",     # ciel
                 "ja": "RA",     # cria
-                "jo": "RO",     # bio
+                "rjO": "RAO",     # griotte
+                "jO": "AO",     # kiosque
 
 #                "jO": "ROE",    # fjord # TODO unsure
 #                "jo": "AO",     # bio # TODO Some conflict there. "-R can be read as i" (above), but the diphtongs are more important I guess?
 #                "jO": "RO",     # fjord
                 "j§": "AO",     # av_ion_
                 "kw": "KW",
-                'k§' : 'KOEPB-', # content
+                'k§' : 'KOEPB', # content
 #                "wE": "WAEU",
                 "wE" : "WE",
                 "fR" : "TPR|FR",
@@ -115,7 +125,7 @@ class Steno_Encoding:
                 'fl': "FL",
                 "ska" : "K",#skrute
                 "sk" : "K",#skrute
-                "sp" : "P",#skrute
+  #                "sp" : "P",#skrute
                 'S' : 'SH|FP',
 
         }
@@ -329,7 +339,8 @@ class Steno_Encoding:
 #                                        self.word_encoded = self.word_encoded[:2]
 #                                        encoded = 'KS'
 #b                                         or self.found_sound.endswith("BGS")) 
-                                
+
+                                Log('bef encoded word', self.word_encoded)
                                 self.word_encoded = self.word_encoded+ encoded
                                 
                                 Log('encoded word', self.word_encoded)

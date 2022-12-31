@@ -1,4 +1,5 @@
 {
     "OPGS": "option",
+    "OPGS/*EL": "optionnel",
     "KRUPGS": "corruption"
 }

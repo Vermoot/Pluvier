@@ -86,7 +86,11 @@ class Steno:
         PREFIXES = {
 #                "s2": "S", # ce mais pas ceux
                 "sypER" : "SP-R/",
-                "tEkno" : "T",
+                "sufR" : "STPR",
+                "tEknO" : "T",
+                "aREt" : "ART",
+                "apO" : "PAO",
+                "aplO" : "PHRAO", 
                 "tR@s" : "TRAPBS/",
                 "tR@z" : "TRAPBS/",
                 "tEl" : "THR-",
@@ -94,6 +98,7 @@ class Steno:
                 'Egze' : 'KP',
                 'Egzi' : 'KPEU',
                 'Eksi' : 'KPEU',
+                'pER' : 'PR',
 
                 'Eks' : "KP|-/BGS",
                 'ade' : 'AD', # sound
@@ -103,6 +108,7 @@ class Steno:
                 't°n' : 'TH', #tenace
                 'ten' : 'TH', #tenace
                 'ina' : 'TPHA',
+                "syp" : "SP",
                 'inE' : 'TPHAEU',
                 'ini' : 'TPHEU',
                 'in§' : 'TPHOPB',
@@ -148,8 +154,11 @@ class Steno:
 
         ORTHO_PREFIXES = {
                 'multi' :OrthoPrefix('mylti', 'PHULT'),
-                'corr' : OrthoPrefix('koR', 'KR'),
-                'coll' : OrthoPrefix('kol', 'KHR'),
+
+                'égal' : OrthoPrefix('egal', 'AELG'),
+
+                'corr' : OrthoPrefix('kOR', 'KR'),
+                'coll' : OrthoPrefix('kOl', 'KHR'),
                 "comm" : OrthoPrefix('kom|kOm','KPH'),
                 "com" : OrthoPrefix('k§','K*/|K'),
                 "con" : OrthoPrefix('k§','KOEPB|KOPB'),
@@ -166,11 +175,13 @@ class Steno:
 
         
         ORTHO_SUFFIXES = {
+                'babilité' : OrthoSuffix('babilite','-BLT'),
                 'cation' : OrthoSuffix('kasj§','-BGS'),
 
                 'lation' : OrthoSuffix('lasj§', '-/LGS'),
+
                 'bilité' : OrthoSuffix('bilite','-BLT'),
-                'ilité' : OrthoSuffix('ilite','ILT'),
+                'ilité' : OrthoSuffix('ilite','ILT|LT'),
                 'lité' : OrthoSuffix('lite','-LT'),
                 'bilise' : OrthoSuffix('biliz','BLZ'),
                 'ralise' : OrthoSuffix('Raliz','RALZ'),
@@ -185,11 +196,11 @@ class Steno:
                 'igé': OrthoSuffix('iZe', 'EG'),
                 'iger': OrthoSuffix('iZe', '-*EG'),
                 'ience' : OrthoSuffix('j@s', '-AENS'),
-                'ance' : OrthoSuffix('@s', '-NS'),
-                'ence' : OrthoSuffix('@s', '-NS'),
+#                'ance' : OrthoSuffix('@s', '-NS'),
+#                'ence' : OrthoSuffix('@s', '-NS'),
                 'ande' : OrthoSuffix('@d', '-ND'),
                 'aux' : OrthoSuffix('o', '-O*EX'),
-                'ité' : OrthoSuffix('ite','ITD'),
+                'ité' : OrthoSuffix('ite','ITD|T'),
                 'gueur' : OrthoSuffix('g9R' , '-RG'),
                 'deur' : OrthoSuffix('d9R' , '-RD'),
                 'lheur' : OrthoSuffix('l9R' , '-RL'),
@@ -254,7 +265,10 @@ class Steno:
         }
 
         # if start with - then dont convert 
+
         SUFFIXES = {
+                'm@tER' : '-MTS',
+                '@tER' : '-NTS|ANTS',
                 'pasj§' :  '-PGS', # preocuppation
                 't82' : '-/TWAO*', # fru-ctu-eux
                 'sjasj§': 'SRAGS', #ciation
@@ -262,6 +276,7 @@ class Steno:
                 '5ksj§' : "PBGS", #distinction
                 '§ksjOn' : "-/OPBGS/*B", #fo-nctionne
                 "mEtR": "-PLTS",
+                'st@s': '-/STAPBS',
                 'ij@d' : 'IND',
                 'ksj§' : "*BGS", #friction
                 "zj§": "-GZ",
@@ -291,7 +306,7 @@ class Steno:
                 "jasm" : "-/KWRAFPL",
                 "jEn": "AEB",
                 "sj§" : "GS",
-                "loZik" : "LOIK",
+                "lOZik" : "LOIK",
                 "lOZist" : "-/HRO*EUS",
                 "lOZi" : "LO*IG",
                 "lOg" : "LO*EG",
@@ -310,7 +325,7 @@ class Steno:
                 "dabl" : "-/TKABL",
                 "v°m@" : "-/FPLT",
                 "@sj§": "APBGS",    # p_ension_
-                "jast" : "YA*S",
+                "jast" : "YA*S|/KWRAFT|/RAFT",
                 "vwaR" : "-/FRS",
 
                 "Ribl" : "-RBL",
@@ -342,6 +357,10 @@ class Steno:
                 'oo' : 'O',    #zoo
                 "je": "AE",     # pied
                 '@p' : '-/AFRP' , #campe
+                'ilm' : 'LIM' , #film -> flim
+                'ylb' : 'LUB' , #bulbe -> blub
+                'alv' : 'LAV' , #valve -> vlav
+                'gl' : 'LG' , #sigle -> silge
                 '§p' : '-/OFRP', # trompe
                 'Ribl' : '-RBL',
                 'Rbal' : '-RBL' , #verbal
@@ -355,7 +374,7 @@ class Steno:
                 'REj' : '-RLZ' , #reille
                 
 #                'fER' : '-/FRB', #o-ffert
-#                'fER' : '-/FR', #faire sphere
+                'fER' : '-/FR', #faire sphere
                 'vR' : '-/FR', # iv-re
                 'fR' : '-/FR' , #sou-fre
                 '@l' : '-ANL', #branle
@@ -378,13 +397,14 @@ class Steno:
                 "Re":"-/R*E|-RE",
                 'z§':'-GZ',
                 "@S" : "-AFRPBLG",
+                "@s" : "APBS|-PBS",
 
                 "ZE" : "G",
 
                 'ij' : '-/LZ|EULZ', #ille
 
-
-                "m@" : "-/PLT",
+                "t°m@" : "/-PLT",
+                "m@" : "/-PLT|/PLT",
                 "En" : "AIB",
                 "ER" : "AIR",
                 "@d" :"-/PBD",
@@ -403,6 +423,7 @@ class Steno:
                 "§" : "OPB|-/*PB",
 #                "sm" : "-/FP",
                 'o' : 'OE',
+                'O' : 'O',
 #                't' : 'T',
                 'N' : 'PG',
                 'El' :'-FL',
@@ -577,11 +598,12 @@ class Steno:
                 cutword=Cutword(phonetics)
                 verb_word = self.find_same_word_verb(word)
                 if verb_word.is_verb() and verb_word.is_infinitif()  and verb_word.word.endswith('er'):
-                        self.ending = "/-R"
+                        self.ending = "-R"
                         self.ending_syll = phonetics
                         if verb_word.syll.endswith('e') :
                                 self.ending_syll = phonetics[:-1]
-                        return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                        cutword=self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                        cutword.mandatory=True
 
                 return cutword
 
@@ -589,10 +611,12 @@ class Steno:
                 cutword=Cutword(phonetics)
                 if word.is_verb():
                         return cutword
+                
+
 
                 if word.word.endswith('ée'):
                         self.ending_syll = phonetics[:-1]
-                        self.ending = "/ED"
+                        self.ending = "ED"
                         
                         cutword=self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending)
                         cutword.mandatory=True
@@ -604,6 +628,9 @@ class Steno:
                         if word.syll.endswith('Et') :
                                 Log('Fini par et')
                                 self.ending_syll = phonetics[:-2]
+                        return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending)
+                if word.is_plural() and word.word.endswith('s'):
+                        self.ending = "-S"
                         return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending)
 
                 return cutword
@@ -658,16 +685,19 @@ class Steno:
         def ortho_add_alone_keys_on_verb(self,word, phonetics):
                 verb_word = self.find_same_word_verb(word)
                 cutword=Cutword(phonetics)
+
                 if not verb_word.is_verb():
+                        Log('word is not a verb')
                         return cutword
                 if verb_word.has_noinfoverb():
                         return cutword
 
                 Log('Verbe')
                 
-                if (not self.ending_syll):
-                        self.ending_syll = phonetics
-                        
+#                if (not self.ending_syll):
+
+                self.ending_syll = phonetics
+                Log('ending syll',phonetics)
                 if  verb_word.is_passe_compose():
                         if verb_word.word.endswith('ué') or verb_word.word.endswith('oué') :
                                 self.ending = "/W*E"
@@ -682,10 +712,13 @@ class Steno:
                 if verb_word.is_conditionnel():
                         self.ending = "/-RS"
                         if verb_word.is_third_person_plural():
-#                                self.ending = "AEUPBT"
-                                self.ending = "/-RPB"
-                                self.ending_syll = phonetics[:-1]
-                                return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                                self.ending = "RAEUPBT"
+#                                self.ending = "/-RPB"
+                                self.ending_syll = phonetics[:-2]
+                                cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                                cutword.mandatory=True
+                                return cutword
+
 #                                                        if verb_word.word.endswith('rait'):
 #                                        self.ending = "-RTS"
 
@@ -696,7 +729,11 @@ class Steno:
                                 return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
                         if verb_word.syll.endswith('RE') :
                                 self.ending_syll = phonetics[:-2]
-                        return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+
+
+                        cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                        cutword.mandatory=True
+                        return cutword
 
 
                 if verb_word.is_vous_ind_present():
@@ -718,11 +755,12 @@ class Steno:
 
                 if verb_word.is_participe_present():
                         Log('participe present')
-                        self.ending = "/-G"
+                        self.ending = "-G"
                         if verb_word.syll.endswith('j@')  :
                                 self.ending_syll = phonetics[:-2]
-                                return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending, True, True)
-
+                                cutword=self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending, True, True)
+                                cutword.mandatory=True
+                                return cutword
                         if verb_word.syll.endswith('@') :
                                 self.ending_syll = phonetics[:-1]
                                 return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True, True)
@@ -741,7 +779,20 @@ class Steno:
 #                        self.ending = "/AEUS"
                         if verb_word.syll.endswith('E') :
                                 self.ending_syll = phonetics[:-1]
-                        return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True,True)
+                        cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True,True)
+                        cutword.mandatory=True
+                        return cutword
+
+                if verb_word.ending_with('ai'):
+#                if verb_word.is_imparfait():
+                        Log('futur')
+                        self.ending = "/AEU"
+#                        self.ending = "/AEUS"
+                        if verb_word.syll.endswith('E') :
+                                self.ending_syll = phonetics[:-1]
+                        cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True,True)
+                        cutword.mandatory=True
+                        return cutword
 
                 if verb_word.ending_with('ait'):
 #                        if verb_word.is_third_person_singular():
@@ -749,16 +800,20 @@ class Steno:
                         if verb_word.syll.endswith('E') :
                                 self.ending_syll = phonetics[:-1]
                         self.ending = "/AEUT"
-                        return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending, True)
+                        cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending, True)
+                        cutword.mandatory=True
+                        return cutword
 
 
                 if verb_word.ending_with('aient'):
 #                        if verb_word.is_third_person_plural():
 #                                self.ending = "AEUPBT"
-                        self.ending = "AEUPBT"
+                        self.ending = "/AEUPBT"
                         if verb_word.syll.endswith('E') :
                                 self.ending_syll = phonetics[:-1]
-                        return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                                cutword = self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                                cutword.mandatory=True
+                                return cutword
                 if verb_word.ending_with('ait'):
 #                        if verb_word.is_third_person_singular():
 #                                self.ending = "/AEUT"
@@ -938,27 +993,30 @@ class Steno:
                 Log('Final words encoded: ' , self.final_encoded)
                 return self.final_encoded
 
+        def check_ending(self, word,prefix) :
+                phoneme  = prefix.get_remains()
+                cutword = Cutword(phoneme)
+                mylist  =[]
+
+                Log("phoneme",phoneme)
+                onverb = self.ortho_add_alone_keys_on_verb(word,phoneme)
+                Log("on verb",vars(onverb))
+                                        
+                if onverb.has_found():
+                        return  onverb
+                infinitif = self.ortho_add_aloneR_infinitif_firstgroup(word, phoneme)
+                if infinitif.has_found():
+                        return infinitif
+                infinitif = self.ortho_add_alone_keys_on_noun(word, phoneme)
+                if infinitif.has_found():
+                        return infinitif
+                return False
+
         def check_suffixes(self, word, prefix) :
                 phoneme  = prefix.get_remains()
                 cutword = Cutword(phoneme)
                 mylist  =[]
                 Log("phoneme",phoneme)
-                onverb = self.ortho_add_alone_keys_on_verb(word,phoneme)
-                if onverb.has_found():
-                        mylist.append(onverb)
-                        if onverb.mandatory:
-                                return mylist
-                infinitif = self.ortho_add_aloneR_infinitif_firstgroup(word, phoneme)
-                if infinitif.has_found():
-                        mylist.append(infinitif)
-                        if infinitif.mandatory:
-                                return mylist
-                infinitif = self.ortho_add_alone_keys_on_noun(word, phoneme)
-                if infinitif.has_found():
-                        mylist.append(infinitif)
-                        if infinitif.mandatory:
-                                return mylist
-
 
                 for orth in self.ORTHO_SUFFIXES.items():
 
@@ -1026,31 +1084,76 @@ class Steno:
                 
                 return "*"+word
 
+        
+        def simple_o_when_o_ortho(self, syllabe, ortho):
+                if 'o' in syllabe  and 'o' in ortho:
+                        return syllabe.replace('o','O', ortho.count('o'))
+                return syllabe
+                
+        def adapt_phonetics(self, phonetics, word):
+                result = []
+                Log('ortho', phonetics)
+                return self.simple_o_when_o_ortho(phonetics, word)
+                        
+
+        def concat_ending(self,word,ending):
+                if ending.startswith('/'):
+                         return word+ending
+                endstring= word
+                if '/' in word :
+                         endstring = word.rsplit('/',1)[1]
+                Log('endstring',endstring)
+                if [char for char in   ['A', 'E', 'O' , 'U', '*' ,'-'] if  char in endstring]:
+                        return word+'/'+ending
+                Log('wtor',endstring)
+                return word+ending
+
+                
         def newtransform(self,initial_word):
-                all_sylls = initial_word.syll.replace('-','')
+                all_sylls = self.adapt_phonetics(initial_word.phonetics , initial_word.word)
+ #                all_sylls = phonetic.replace('-','')
 
                 if initial_word.is_plural() and initial_word.word.endswith('s'):
-                        return []
+                       return []
 
                 results = []
                 has_homophone = self.has_homophone(initial_word)
                 for prefix in self.check_prefixes(initial_word,all_sylls):
-                        Log('remains',prefix.get_remains())
-                        all_suffixes=self.check_suffixes(initial_word,prefix)
+                        Log('prefix', vars(prefix))
+
+                        ending =self.check_ending(initial_word,prefix)
+                        nextword=prefix
+                        if ending:
+                                nextword=ending
+                                
+                        all_suffixes=self.check_suffixes(initial_word,nextword)
 
                         for suffix in all_suffixes:
 
                                 Log('trouve suffixes', initial_word.word)
                                 remains = self.double_consonant_remove_woyel(initial_word.word, suffix.get_remains())
                                 Log('trouve suffixes', remains)
+
                                 final_word= Steno_Encoding(remains, prefix.get_steno(), suffix).encode()
-                                if has_homophone and initial_word.is_verb() and not prefix.has_ortho_rule() and not suffix.has_ortho_rule():
+                                if ending :
+                                        final_word = self.concat_ending(final_word, ending.get_steno())
+                                if has_homophone and initial_word.is_verb() and not prefix.has_ortho_rule() and not ending:
                                         Log( 'is homophone',suffix.has_ortho_rule())
                                         final_word = self.add_star(final_word)
                                 results.append(final_word)
 #                        final_word = self.orth_ending_iere(initial_word.word, final_word)
 
+                        if ending and not ending.mandatory:
+                                Log('not mandatory')
+                                all_suffixes=self.check_suffixes(initial_word,prefix)
+                                for suffix in all_suffixes:
 
+                                        Log('trouve suffixes', initial_word.word)
+                                        remains = self.double_consonant_remove_woyel(initial_word.word, suffix.get_remains())
+                                        Log('trouve suffixes', remains)
+                                        final_word= Steno_Encoding(remains, prefix.get_steno(), suffix).encode()
+                                        results.append(final_word)
+                                
                 Log(results)
 
                 for final_word in  results:
