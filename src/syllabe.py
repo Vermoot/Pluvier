@@ -407,9 +407,10 @@ class Syllabe:
 #                        return self.syllabe
                 
 
-
+                add_underscore=False
                 if self.syllabe.startswith('-') :
                         self.syllabe = self.syllabe[1:]
+                        add_underscore=True
                 if self.syllabe.startswith('/'):
                         self.already_encoded = True
                         self.syllabe = self.syllabe[1:]          
@@ -439,6 +440,10 @@ class Syllabe:
                         if  self.is_left_hand() and cpt:
                                 cpt = False
                                 self.encoded_hand = self.encoded_hand+'/'
+                                if add_underscore:
+                                        self.encoded_hand=self.encoded_hand +'-'
+                                                                        
+
 #                                piece = piece+'/'
                         (rest, not_found) = self.consume_syll(rest)
 

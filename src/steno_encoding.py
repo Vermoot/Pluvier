@@ -2,8 +2,11 @@ from src.log import Log
 from src.syllabe import Syllabe
 from src.cutword import Cutword
 class Steno_Encoding:
-        DIPHTONGS = {
-                # without i
+        CHUNKS = {
+                # syllabe of sound
+                # separate by |  => right_hand|left_hand
+                # start with / : already encoded
+                # start with - : right hand
 
                 'sjasj§': 'SRAGS', #ciation
                 '@v°n' : 'ENVH',
@@ -29,15 +32,16 @@ class Steno_Encoding:
                 'bRe': '-BS',
                 "djO": "OD",
                 "zj§": "GZ",
-                'ps' : 'S',
+
                 'nal' : '-NL', 
-                '@kR' : '-FRKS', #cancre
+                '@kR' : '/AFRBGS', #cancre
                 "sj§": "GZ",
                 'vul': 'WHR',
                 "fik" : "-/FBG",
                 "fEk" : "-/FBG",
                                 'kE' : 'KE',
-                'psjOn' :'-PGS',
+                'psjOn' :'-/PGS',
+                'ps' : 'S',
                 'sjOn' :'-GZ',
                 'vERs' : '-/FRB', # divers
                 'ERv' : '-/FRB', #v-erve
@@ -48,7 +52,7 @@ class Steno_Encoding:
 #                'jO' : 'RO|AO',
 #                'jO' : 'AO', # conflit viol et myope RO
                 'j@' : 'AEN' , # son ian
-                '@l' : '-ANL', #enleve
+                '@l' : 'ANL', #enleve
                 "RSi" : "VRPB",
                 'REj' : '-RLZ' , #oreille
 
@@ -69,7 +73,7 @@ class Steno_Encoding:
                 'vwa' : 'WOEU',# not in TAO rules..
                 't8' : 'TW', # fru-ctu-eux
 #                "kR" : "KR", 
-                "ks": "-BGS",
+                "ks": "/-BGS",
                 '8a' : 'WA' , # ua in situation
 #                "kR" : "RK",#can-cre
                  "kR" : "KR|RBG",#skrute
@@ -103,12 +107,12 @@ class Steno_Encoding:
                 'k§' : 'KOEPB', # content
 #                "wE": "WAEU",
                 "wE" : "WE",
-                "fR" : "TPR|FR",
+                "fR" : "/TPR|/FR",
                 "§t" : "OFRPT",
-                "@S" : "-AFRPBLG",
-                "5S" : "-EUFRPBLG",
-                '@p' : '-/AFRP' , #campe
-                '§p' : '-/OFRP', # trompe
+                "@S" : "/AFRPBLG",
+                "5S" : "/EUFRPBLG",
+                '@p' : '/AFRP' , #campe
+                '§p' : '/OFRP', # trompe
                 'pl' : 'PL',
                 "ER" : "AIR",
                 'gl' : 'TKPWHR|FRLG', #glace or angle
@@ -125,9 +129,9 @@ class Steno_Encoding:
                 'fl': "FL",
                 "ska" : "K",#skrute
                 "sk" : "K",#skrute
-  #                "sp" : "P",#skrute
+                "sp" : "P",#skrute
                 'S' : 'SH|FP',
-
+                "5" : "/EUPB"
         }
         VOWELS = {
                 "a": "A",       # chat
@@ -135,7 +139,7 @@ class Steno_Encoding:
                 'j' : 'EU',
                 "Z" : "J",
                 "H" : "H",
-                "5" : "EUPB",
+
                 'u' : 'OU',
                 'l' : 'L',
 
@@ -184,6 +188,7 @@ class Steno_Encoding:
                 self.suffix = suffix
                 if '*' in self.suffix.get_steno() and  '/' not in self.suffix.get_steno():
                         self.suffix.remove_star()
+                        Log('nedd star')
                         self.needs_star = True
 
                 Log('steno_suffixes' , vars(self.suffix))
@@ -200,8 +205,8 @@ class Steno_Encoding:
         def diphtongs_try(self, word):
                 new_word=word
                 final_word = ''
-                items = self.DIPHTONGS
-                keys = self.DIPHTONGS.keys()
+                items = self.CHUNKS
+                keys = self.CHUNKS.keys()
 #                self.found_sound = ''
                 nb_char = len(word)
                 while new_word != '' :
@@ -219,7 +224,7 @@ class Steno_Encoding:
 
         def find_matching(self, syll, word) :
                 Log('find match word', word)
-                for diphtong in self.DIPHTONGS.items():
+                for diphtong in self.CHUNKS.items():
                         key = diphtong[0]
                         if key in word:
                                 Log('find key', key)
@@ -258,11 +263,11 @@ class Steno_Encoding:
                 new_word=word
                 syll_dict = {}
                 final_word = word
-                items = self.DIPHTONGS
-                keys = self.DIPHTONGS.keys()
+                items = self.CHUNKS
+                keys = self.CHUNKS.keys()
 #                self.found_sound = ''
                 nb_char = len(word)
-                for diphtong in self.DIPHTONGS.items():
+                for diphtong in self.CHUNKS.items():
                         
                         if diphtong[0] in new_word :
                                 final_word = final_word.replace(diphtong[0], "+"+diphtong[1]+"+")
@@ -331,7 +336,9 @@ class Steno_Encoding:
                                 Log('syllabe',new_piece)
                                 syllabe = Syllabe(new_piece.upper(), previous,next_syll)
                                 encoded = syllabe.encoded()
-
+                                Log('mysyll',vars(syllabe))
+                                if previous:
+                                        Log('previous',vars(previous))
                                 Log('encoded syllabe', encoded)
 #                                if self.found_sound and self.found_sound.endswith("RK") and self.word_encoded.endswith('PB'):
 
@@ -340,9 +347,12 @@ class Steno_Encoding:
 #                                        encoded = 'KS'
 #b                                         or self.found_sound.endswith("BGS")) 
 
+
                                 Log('bef encoded word', self.word_encoded)
-                                self.word_encoded = self.word_encoded+ encoded
-                                
+                                if encoded and syllabe.is_left_hand() and (previous and  previous.is_right_hand()):
+                                        self.word_encoded = self.word_encoded+ '/'+encoded
+                                else:
+                                        self.word_encoded = self.word_encoded+ encoded               
                                 Log('encoded word', self.word_encoded)
                                 previous = syllabe
                         next_syll = self.syllabes[count_syll:]

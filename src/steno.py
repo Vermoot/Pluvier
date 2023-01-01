@@ -90,6 +90,7 @@ class Steno:
                 "tEknO" : "T",
                 "aREt" : "ART",
                 "apO" : "PAO",
+                "aplo" : "PHRAO",
                 "aplO" : "PHRAO", 
                 "tR@s" : "TRAPBS/",
                 "tR@z" : "TRAPBS/",
@@ -160,8 +161,9 @@ class Steno:
                 'corr' : OrthoPrefix('kOR', 'KR'),
                 'coll' : OrthoPrefix('kOl', 'KHR'),
                 "comm" : OrthoPrefix('kom|kOm','KPH'),
+#                "cont" : OrthoPrefix('k§t','KOEPB/T|KOPB/T|ST'),
                 "com" : OrthoPrefix('k§','K*/|K'),
-                "con" : OrthoPrefix('k§','KOEPB|KOPB'),
+                "con" : OrthoPrefix('k§','KOEPB|KOPB|S'),
                 'inter' : OrthoPrefix('5tER', 'EUPBTS'), #SPWR
                 'ind' : OrthoPrefix('5d', 'SPW'),
                 'end' : OrthoPrefix('@d', 'SPW'),
@@ -189,17 +191,17 @@ class Steno:
 
                 'rité' : OrthoSuffix('Rite', '-RT'), # securite
                 'bité' : OrthoSuffix('bite','-BT'),
-                'tivité': OrthoSuffix('tivite', '-/TEUFT'),
+                'tivité': OrthoSuffix('tivite', '/TEUFT'),
                 'vité': OrthoSuffix('vite', '-/FT'),
                 'cité': OrthoSuffix('site', '-/FT'),
-                'sité': OrthoSuffix('site', '-ST*E'),
+                'sité': OrthoSuffix('site', 'ST*E'),
                 'igé': OrthoSuffix('iZe', 'EG'),
-                'iger': OrthoSuffix('iZe', '-*EG'),
-                'ience' : OrthoSuffix('j@s', '-AENS'),
+                'iger': OrthoSuffix('iZe', '*EG'),
+                'ience' : OrthoSuffix('j@s', 'AENS'),
 #                'ance' : OrthoSuffix('@s', '-NS'),
 #                'ence' : OrthoSuffix('@s', '-NS'),
                 'ande' : OrthoSuffix('@d', '-ND'),
-                'aux' : OrthoSuffix('o', '-O*EX'),
+                'aux' : OrthoSuffix('o', 'O*EX'),
                 'ité' : OrthoSuffix('ite','ITD|T'),
                 'gueur' : OrthoSuffix('g9R' , '-RG'),
                 'deur' : OrthoSuffix('d9R' , '-RD'),
@@ -220,37 +222,37 @@ class Steno:
                 "velle" : OrthoSuffix("vEl", "-/FL"),
                 "quelle" : OrthoSuffix("kEl", "-/BLG"),
                 "quel" : OrthoSuffix("kEl", "-/BLG"),
-                "elle" : OrthoSuffix("El", "AEUL|-/*EL"),
+                "elle" : OrthoSuffix("El", "AEUL|/*EL"),
                 "ière"  : OrthoSuffix('jER', 'A*ER'),
                 "ier"  : OrthoSuffix('jER|je', 'AER'),
                 "iel"  : OrthoSuffix('jEl', 'AEL'),
-                'ive' : OrthoSuffix('iv|ive|iv', '-/*EUF'),
-                'if' : OrthoSuffix('if', '-/*EUFL'),
+                'ive' : OrthoSuffix('iv|ive|iv', '/*EUF'),
+                'if' : OrthoSuffix('if', '/*EUFL'),
                 'cien' : OrthoSuffix('sj5', '-GS'),
                 "ain" : OrthoSuffix("5", "IN"),
                 'cte' : OrthoSuffix('kt', 'KT'),
-                "ène" : OrthoSuffix("En","-/*EB"),
+                "ène" : OrthoSuffix("En","/*EB"),
 #                "eur" : OrthoSuffix("9R","-AO*R"),
-                "uel" : OrthoSuffix("yEl","-/U*EL"),
-                "uel" : OrthoSuffix("8El","-/W*EL"),
-                "anche" : OrthoSuffix("@S","-/AFRPBLG"),
+                "uel" : OrthoSuffix("yEl","/U*EL"),
+                "uel" : OrthoSuffix("8El","/W*EL"),
+                "anche" : OrthoSuffix("@S","/AFRPBLG"),
                 "rche" : OrthoSuffix("RS","-/FRPB"),
                 "che" : OrthoSuffix("S","-/FP"),
                 "chage" : OrthoSuffix("SaZ","-/FPG"),
-                "oué" : OrthoSuffix("we|wE","-/W*E"),
-                "way" : OrthoSuffix("we|wE","-/W*E"),
-                "ué" : OrthoSuffix("8e","-/W*E"),
+                "oué" : OrthoSuffix("we|wE","/W*E"),
+                "way" : OrthoSuffix("we|wE","/W*E"),
+                "ué" : OrthoSuffix("8e","/W*E"),
                 "cise" :OrthoSuffix("siz", "-/RBZ"),
                 "cis" :OrthoSuffix("si", "-/RB"),
 
                 "ssis" :OrthoSuffix("si", "-/RB"),
                 "ci" : OrthoSuffix("si", "-/RB"),
-                "cet" : OrthoSuffix("sE", "-SZAEU"),
+                "cet" : OrthoSuffix("sE", "SZAEU"),
                 "ce" : OrthoSuffix("s", "-SZ").alternative('ss'),
-                "el" : OrthoSuffix("El", "-/*EL"),
+                "el" : OrthoSuffix("El", "/*EL"),
                 "th" : OrthoSuffix("t", "-GT"),
                 "the" : OrthoSuffix("t", "-GT"),
-                "a" : OrthoSuffix("a", "-/*Z"),
+                "a" : OrthoSuffix("a", "/*Z"),
                 
 
         }
@@ -274,9 +276,9 @@ class Steno:
                 'sjasj§': 'SRAGS', #ciation
                 '@sjOn' : "ANGZ", #mentionne
                 '5ksj§' : "PBGS", #distinction
-                '§ksjOn' : "-/OPBGS/*B", #fo-nctionne
+                '§ksjOn' : "/OPBGS/*B", #fo-nctionne
                 "mEtR": "-PLTS",
-                'st@s': '-/STAPBS',
+                'st@s': '/STAPBS',
                 'ij@d' : 'IND',
                 'ksj§' : "*BGS", #friction
                 "zj§": "-GZ",
@@ -301,23 +303,27 @@ class Steno:
 #second option                'sjOn' :'-/GS/*B',
                 "tER": "-TS",  #notaire
 #                "EtR" : "-TS" , #fenetre
-                "jEm" : "-/A*EPL",
+                "jEm" : "/A*EPL",
 #                "jER" : "AER" , #caissiERE
                 "jasm" : "-/KWRAFPL",
                 "jEn": "AEB",
                 "sj§" : "GS",
                 "lOZik" : "LOIK",
-                "lOZist" : "-/HRO*EUS",
+                "lOZist" : "/HRO*EUS",
                 "lOZi" : "LO*IG",
                 "lOg" : "LO*EG",
                 "p9R" : "-RP",
+                "pORt" : "-RPT",
+                "poR" : "-RP",
+                "pOR" : "-RP",
+
                 "pid" : "-PD",
 #                "fis" : "-WEUS",
                 "fik" : "-/FBG",
                 "fEk" : "-/FBG",
                 "kEl" : "-/BLG",
                 "§kl" : "/OFRBLG", # oncle
-                "akl" : "-/AFRBLG", 
+                "akl" : "/AFRBLG", 
 #                "je" : "AER" , #caissIER
 
 #                "l9R" : "-RL",
@@ -332,36 +338,36 @@ class Steno:
                 "@tR" : "-NTS", #-ntre
                 "stR" : "-TS", #-stre
                 "RtR" : "-RTS", #-rtre
-                "§pR" : '-/OFRPS',
-                "@bl": "-/AFRBL",   # tremble
-                "§bl": "-/OFRBL",  # comble
-                "1bl": "-/UFRBL",  # comble
-                "@bR": "-/AFRBS",   # ambre
-                "5bR": "-/EUFRBS",  # timbre
-                "§bR": "-/OFRBS",   # ombre
-                "5b": "-EUFRB",  # limbe
-                "§b": "-/OFRB",  # comble
+                "§pR" : '/OFRPS',
+                "@bl": "/AFRBL",   # tremble
+                "§bl": "/OFRBL",  # comble
+                "1bl": "/UFRBL",  # comble
+                "@bR": "/AFRBS",   # ambre
+                "5bR": "/EUFRBS",  # timbre
+                "§bR": "/OFRBS",   # ombre
+                "5b": "/EUFRB",  # limbe
+                "§b": "/OFRB",  # comble
                 "ks": "-BGS",
                 'st' : '-/FT',#new rule
 #                "st" : "-*S",
                 "t@" : "TAN", #content
-                "ve": "-WE", # releve
-                "iN§" : "-/HO*PB", #bourguignon
-                "N§" : "-/HO*PB", #bourguignon
+                "ve": "WE", # releve
+                "iN§" : "/HO*PB", #bourguignon
+                "N§" : "/HO*PB", #bourguignon
                 "@Z" :"/APBLG", # ange
-                "5Z" :"-/EUPBLG", # linge
-                "§t" : "-/OFRPT", # prompte
-                "5p" : "-/EUFRP",
-                '@pl' : "-/AFRPL",
-                "9R":"-AO*R",
+                "5Z" :"/EUPBLG", # linge
+                "§t" : "/OFRPT", # prompte
+                "5p" : "/EUFRP",
+                '@pl' : "/AFRPL",
+                "9R":"/AO*R",
                 'oo' : 'O',    #zoo
                 "je": "AE",     # pied
-                '@p' : '-/AFRP' , #campe
+                '@p' : '/AFRP' , #campe
                 'ilm' : 'LIM' , #film -> flim
                 'ylb' : 'LUB' , #bulbe -> blub
                 'alv' : 'LAV' , #valve -> vlav
                 'gl' : 'LG' , #sigle -> silge
-                '§p' : '-/OFRP', # trompe
+                '§p' : '/OFRP', # trompe
                 'Ribl' : '-RBL',
                 'Rbal' : '-RBL' , #verbal
                 'bal' : '-BR' , #global
@@ -377,26 +383,26 @@ class Steno:
                 'fER' : '-/FR', #faire sphere
                 'vR' : '-/FR', # iv-re
                 'fR' : '-/FR' , #sou-fre
-                '@l' : '-ANL', #branle
+                '@l' : 'ANL', #branle
                 'zm' : '-/FPL',
                 'sm' : '-/FPL',
-                'di' : '-/*D',  #interdit ?
-                "tEkt" : "-/T*K",
+                'di' : '/*D',  #interdit ?
+                "tEkt" :  "-/T*K",
 #                "EtR" : "-/TS",
                 "SEt" : "-/FPT" , # achete
 #                "RZ" : "-/RPBLG",
                 "RZ" : "RG",
                 "bl" : "-BL",
-                "@S°" : "-AFRPBLG",
+                "@S°" : "AFRPBLG",
                 "fR" : "-/FR", #souffre
                 "fl" : "-/FL", #souffle
                 'sk°'  : '-/FBG', #puisque
                 'sk' : '-/FBG',
 
 
-                "Re":"-/R*E|-RE",
+                "Re":"/R*E|RE",
                 'z§':'-GZ',
-                "@S" : "-AFRPBLG",
+                "@S" : "AFRPBLG",
                 "@s" : "APBS|-PBS",
 
                 "ZE" : "G",
@@ -410,7 +416,7 @@ class Steno:
                 "@d" :"-/PBD",
 
                 "dR" : "DZ" ,# ajoin-dre
-                "@b": "-AFRB",   # jambe
+                "@b": "AFRB",   # jambe
                 "tR": "-/TS", #tre - 
                 "bR":"-BS",  #-bre
                 "pR":"-PS", #-pre
@@ -420,7 +426,7 @@ class Steno:
                 "e" : "E",
                 "n" : "B",
                 'j' : '-LZ',
-                "§" : "OPB|-/*PB",
+                "§" : "OPB|/*PB",
 #                "sm" : "-/FP",
                 'o' : 'OE',
                 'O' : 'O',
@@ -598,6 +604,12 @@ class Steno:
                 cutword=Cutword(phonetics)
                 verb_word = self.find_same_word_verb(word)
                 if verb_word.is_verb() and verb_word.is_infinitif()  and verb_word.word.endswith('er'):
+                        if verb_word.word.endswith('iger'):
+                                self.ending = "*EG"
+                                self.ending_syll = phonetics[:-3]
+                                cutword=self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                                cutword.mandatory=True
+                                return cutword
                         self.ending = "-R"
                         self.ending_syll = phonetics
                         if verb_word.syll.endswith('e') :
@@ -684,6 +696,7 @@ class Steno:
         
         def ortho_add_alone_keys_on_verb(self,word, phonetics):
                 verb_word = self.find_same_word_verb(word)
+                Log(vars(verb_word))
                 cutword=Cutword(phonetics)
 
                 if not verb_word.is_verb():
@@ -702,11 +715,15 @@ class Steno:
                         if verb_word.word.endswith('ué') or verb_word.word.endswith('oué') :
                                 self.ending = "/W*E"
                                 self.ending_syll = phonetics[:-2]
-                                return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                                cutword=self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                                cutword.mandatory=True
+                                return cutword
                         if verb_word.syll.endswith('e') :
                                 self.ending = "/-D"
                                 self.ending_syll = phonetics[:-1]
-                        return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                                cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                                cutword.mandatory=True
+                                return cutword
 
 
                 if verb_word.is_conditionnel():
@@ -763,7 +780,10 @@ class Steno:
                                 return cutword
                         if verb_word.syll.endswith('@') :
                                 self.ending_syll = phonetics[:-1]
-                                return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True, True)
+                                cutword=self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending, True, True)
+                                cutword.mandatory=True
+                                return cutword
+
 
                 if verb_word.ending_with('a'):
                         self.ending = "/*Z"
@@ -829,7 +849,9 @@ class Steno:
                         if verb_word.syll.endswith('E') :
                                 self.ending_syll = phonetics[:-1]
                         self.ending = "/-T"
-                        return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                        cutword = self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                        cutword.mandatory=True
+                        return cutword
 
 
                 # if verb_word.syll.endswith('E') :
@@ -1067,7 +1089,7 @@ class Steno:
                          splitted[len(splitted)-2] = splitted[len(splitted)-2]+"*"
                          return 'E'.join(splitted)
                 splitted = word.split('U')
-                Log('add star', word)                
+                Log('add starx', word)                
                 if len( splitted) > 1:
                          splitted[len(splitted)-2] = splitted[len(splitted)-2]+"*"
                          return 'U'.join(splitted)
