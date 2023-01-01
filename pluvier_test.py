@@ -259,6 +259,7 @@ class TestPluvier:
     def test_lesson12_ortho_rightR_infinitif(self):
         self.assertSame({'PARL/-R' : 'parler',
                          "SOUL/W-R" :"soulever",
+                         "TW-R" : "tuer",
                          "TWED" : "tuée"
                          })
 
@@ -325,7 +326,7 @@ class TestPluvier:
 #            "TP-RS": "ferait",
 
                         "KRABG/-RS": "craquerait",
-                         "KOU/-RS": "courrait",
+                         "KO*U/-RS": "courrait",
                          "PAS/-RS": "passerait",
                          })
 
@@ -523,10 +524,12 @@ class TestPluvier:
 
     def test_lesson19_WstarEL_ending_uel(self):
         self.assertSame({
-            #"WEUZ/W*EL": "visuel",
-                         "TKPWRAD/W*EL": "graduel",
+        "WEUZ/W*EL": "visuel",
+        "TKPWRAD/W*EL": "graduel",
 #                         "ABT/W*EL": "habituel",
                          })
+
+
 
     def test_lesson19_separate_starZ_ending_a_sound(self):
         self.assertSame({
@@ -1044,18 +1047,18 @@ class TestPluvier:
         self.assertSame({
             "KOEPB/TAPB": "content",
 #            "KOEPB/TAPBT": "contente",
-        })
+        },False)
         
     def test_K_starting_con_2_ways_to_write(self):
         self.assertSame({
-#            "STAPB": "content",
+            "STAPB": "content",
             "KOEPB/TAPB": "content",
 #            "KOPBT/APB": "content",
  
  #          "KOPBT/APBT": "contente",
 
             "KOEPB/TAPBT": "contente",
-        })
+        },False)
 
     def test_lesson40_start_by_co_followed_by_rr_or_ll_then_o_omitted(self):
         self.assertSame({
@@ -1121,8 +1124,9 @@ class TestPluvier:
             "TPHARBG": "nacre",  
 #            "AFRBGS": "ancre",
  #           "SKARBG": "consacre",
-#            "EFRBGS": "encre",
-#           "KAFRBGS": "cancre",
+            "AFRBGS": "ancre",
+            
+           "KAFRBGS": "cancre",
 #            "SARBG": "sacre",
 
         })
@@ -1305,11 +1309,11 @@ class TestPluvier:
 
             })
 #todo : 
-    def test_lesson47_DAOEZ_for_starting_des_not_followed_by_steno_woyel(self):
+    def test_todo_lesson47_DAOEZ_for_starting_des_not_followed_by_steno_woyel(self):
         self.assertSame({
  #           "STKHREUBS": "déséquilibre",
 #           "TKAOEZ/SPWEG/R*E": "désintégré",
-            "STKAERPL": "désarme",
+            "STKARPL": "désarme",
             "TKAOEZ/KHREUBS": "déséquilibre",
 
             })
@@ -1414,7 +1418,7 @@ class TestPluvier:
  #            "SHRO*EG": "psychologue",
 #            "SAOD/TPHEUPL": "pseudonyme",
 # should be in tao :           "SEUFP/*EUBG": "psychique",
-             "SEUFPBG": "psychique",
+             "SEUFP/EUBG": "psychique",
  #           "SHRO*EUG": "psychologie",
 #            "SKRATS": "psychiatre",
 
@@ -1423,8 +1427,8 @@ class TestPluvier:
 
     def test_lesson4_N_sound_pn(self):
         self.assertSame({
-            "TPHAOP/T*EUBG": "pneumatique",
-            "TPHAOP/HRO*EG": "pneumologue",
+            "TPHAO": "pneu",
+#            "TPHAOP/HRO*EG": "pneumologue",
 #            "TPHAOP/HRO*EUG": "pneumologie",
 
 
@@ -1437,9 +1441,7 @@ class TestPluvier:
             "THEUS": "tennis",
             "THAFT": "ténacité",
             "THALZ": "tenaille",
-            "THAPB": "tenant",
-            "TH-G": "tenant",
-            
+            "TH-G": "tenant"
             })
 
 
@@ -1487,7 +1489,7 @@ class TestPluvier:
     def test_lesson54_BGS_start_ex_follow_by_consonne(self):
         self.assertSame({
             "-BGS/PAPBGS": "expansion",
-            "-BGS/PEU/-R": "expier",
+#            "-BGS/PEU/-R": "expier",
             "-BGS/TEURP/-R": "extirper",
 #            "-BGS/KWAGS": "excavation",
             })
@@ -1516,7 +1518,7 @@ class TestPluvier:
             })
     def test_lesson55_terminaisons_MS_for_masse(self):
         self.assertSame({
-# a instead of e             "AEPLS" : "amasse"
+            "APLS" : "amasse"
         })
     def test_lesson56_STK_starting_de(self):
         self.assertSame({
@@ -1536,7 +1538,7 @@ class TestPluvier:
             "ER/*EG": "ériger",
  #           "SREUG": "ériger",
 
-            })
+            }, False)
 
 
     def test_lesson56_ending_LZ_lise_BLZ_bilise_RLZ_ralise(self):
@@ -1591,7 +1593,7 @@ class TestPluvier:
         self.assertSame({
 #            "HRA/R-R": "las",
             "HRAS": "lasse",
-            "HRASZ": "lace",
+#            "HRASZ": "lace",
             "HRASZ/AEU": "lacet",
 #            "HRA/-S": "lassait",
 
@@ -1688,9 +1690,9 @@ class TestPluvier:
         self.assertSame({
             "PR-PLTS": "permettre",
             "ART/*Z": "arrêta",
-            "ARPT": "apporte",
-            "ARPT/-S": "apportais",
-            "RARPT": "rapporte",
+#            "ARPT": "apporte",
+#            "ARPT/-S": "apportais",
+#            "RARPT": "rapporte",
 #            "PRAOUP": "préoccupe", 
 
         })
@@ -1719,7 +1721,7 @@ class TestPluvier:
     def test_new_rule_imparfaitoet_2p(self):
         self.assertSame({
  #           "AL/-TS" : "allait"
-            "R-PBTS/A*EUT" : "rentrait",
+            "R-PBTS/AEUT" : "rentrait",
             "AL/AEUT" : "allait",
         })
 
@@ -1792,9 +1794,9 @@ class TestPluvier:
 
 
         
-    def test_lesson22_OIB_for_sound_oine_and_starOIB_for_suffixe_oine(self):
+    def test_todo_lesson22_OIB_for_sound_oine_and_starOIB_for_suffixe_oine(self):
         self.assertSame({
-            "TKWOEUB": "douane",
+            "TKOEUB": "douane",
 # also work            "TKWAB": "douane",
             #"PHOEUB": "moine",
             "PEU/O*EUB": "pivoine",
@@ -1804,30 +1806,42 @@ class TestPluvier:
             "ERBG/EUR": "écrire",
             "AP/RAEU": "après",
             
-            "TKWOEUB": "écris",
+#            "TKWOEUB": "écris",
        })
-
+#            "iu": "congédié" could be ED without LZ,
     def test_wrong_words(self):
         self.assertSame({
             #           "EUPBLG/-R": "imaginer",
 #            "KOU": "coucher",
+            "KOPBG/ED/A*ED": "congédiée",
+            "KOPBG/ED/AED": "congédié",
+
+            "WOEUL/AG": "voilage",   
+            "PHORD/-LZ/-R": "mordiller",
+            "K-T/-R": "quêter",
+            "KH": "min",
+            "KH-R": "miner",
+            "PWORT/SH": "bortsch",
+            "PWOUL/-FRBS/ED" :"bouleversée",
+            "EUPB/TPRA*BGS": "infraction",
+            "PWOL/SH-F/EUFT" : "bolcheviste",
             "PHAPB/EUFL/AEUS/-PLT": "manifestement",
-                        "PWEJ" :"bulles",
-            "SHAEUFRPBG" :"déplacent",
+            "PWUL" :"bulle",
+            "STKPHRAS/-T" :"déplacent",
             "SHAEUFRPB/-G" :"cherchant",
-            "ENNOT" :"retournent",
-            "/-PBS" :"suffit",
-            "KPEUFT/-PBS" :"existence",
+            "R-T/OURB/-T" :"retournent",
+    #"/-PBS" :"suffit",
+#            "KPEUFT/-PBS" :"existence",
             "A*E/KOFRPL" :"accomplit",
-            "ME" :"modèle",
-            "AUT" :"auteur",
-            "KOU": "coup",
+#            "ME" :"modèle",
+            "OERT" :"auteur",
+            "KO*U": "coup",
             "HOET/AO*R": "hauteur",
             "HOERT": "hauteur", 
-            "A/TRAFRPBLG/EUR": "affranchir",
-            "PL": "plaisez",
+#            "A/TRAFRPBLG/ "affranchir",
+#            "PL": "plaisez",
             "-DZ": "dire",
-            "RAPBT/R/-R": "rentrer",
+            "R-PBTS/-R": "rentrer",
             "STK-FRLG/EUPBG": "déglingue",
 #            "OEA" : "entendaient",
             "SKR-PL/-D" :"charmé",

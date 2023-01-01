@@ -128,9 +128,9 @@ class Dictionary:
                     if re.match("^[aeiouyh]",word.word):
                         pronoun="j'"
                     if steno[0] in ['E','A','U','O','-']: 
-                        translated_word["SKW"+steno] = pronoun+word.word
+                        translated_word["SKWR"+steno] = pronoun+word.word
                     else:
-                        translated_word["SKW/"+steno] = pronoun+word.word
+                        translated_word["SKWR/"+steno] = pronoun+word.word
                 if word.is_second_person_singular():
                     pronoun='tu '
 

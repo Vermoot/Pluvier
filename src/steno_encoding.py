@@ -36,7 +36,7 @@ class Steno_Encoding:
                 'nal' : '-NL', 
                 '@kR' : '/AFRBGS', #cancre
                 "sj§": "GZ",
-                'vul': 'WHR',
+                'vul': '/WHR',
                 "fik" : "-/FBG",
                 "fEk" : "-/FBG",
                                 'kE' : 'KE',
@@ -56,19 +56,19 @@ class Steno_Encoding:
                 "RSi" : "VRPB",
                 'REj' : '-RLZ' , #oreille
 
-                "tER": "-TS",  #notaire
-                "EtR" : "-TS" , #fenetre
+                "tER": "/-TS",  #notaire
+                "EtR" : "/-TS" , #fenetre
                 "RS" : "VRPB",# -rche
-                "dZEk" : "PBLG",
-                "dZ" : "PBLG",
-                "bZEk" : "PBLG",
-                "bZ" : "PBLG",
+                "dZEk" : "-/PBLG",
+                "dZ" : "-/PBLG",
+                "bZEk" : "-/PBLG",
+                "bZ" : "-/PBLG",
                 "ps" : "S",
                 'En' : 'AIB',
                 'oi' : 'OEU',
                 
-                "vaj" : "-FL",
-                "vEj" : "-FL",
+                "vaj" : "/-FL",
+                "vEj" : "/-FL",
                 #'@v' : 'ENVH', #envenime
                 'vwa' : 'WOEU',# not in TAO rules..
                 't8' : 'TW', # fru-ctu-eux
@@ -224,37 +224,38 @@ class Steno_Encoding:
 
         def find_matching(self, syll, word) :
                 Log('find match word', word)
-                for diphtong in self.CHUNKS.items():
-                        key = diphtong[0]
-                        if key in word:
-                                Log('find key', key)
+                list_tuple=[]
+                for sound, steno in self.CHUNKS.items():
+                        if sound in word:
+                                Log('find sound', sound)
 #                                self.found_sound = diphtong[1]
-                                if word.startswith(key):
-                                        syll[key] = diphtong[1]
-                                        end = word[len(key):]
+                                if word.startswith(sound):
+                                        list_tuple.append((sound,steno)) 
+                                        end = word[len(sound):]
                                         if end :
-                                                for  findsyll in self.find_matching(syll,end).items():
-                                                        syll[findsyll[0]] = findsyll[1]
-                                        return syll
-                                if word.endswith(key):
-                                        start = word[:-len(key)]
+                                                for  newkey, value in self.find_matching(syll,end):
+                                                        list_tuple.append((newkey,value)) 
+                                        return list_tuple
+                                if word.endswith(sound):
+                                        start = word[:-len(sound)]
                                         if start :
-                                                for  findsyll in self.find_matching(syll,start).items():
-                                                        syll[findsyll[0]] = findsyll[1]
-                                        syll[key] = diphtong[1]
-                                        return syll
-                                splitted = word.split(key)
+                                                for  key, value in self.find_matching(syll,start):
+                                                        list_tuple.append((key,value)) 
+                                        list_tuple.append((key,steno))
+                                        return list_tuple
+
+                                splitted = word.split(sound)
                                 start  =splitted[0]
-                                for  findsyll in self.find_matching(syll,start).items():
-                                        syll[findsyll[0]] = findsyll[1]
-                                syll[key] = diphtong[1]
-                                
+                                for  newkey,value in self.find_matching(syll,start):
+                                        list_tuple.append((newkey,value)) 
+                                list_tuple.append((sound,steno))     
                                 end = splitted[1]
-                                for  findsyll in self.find_matching(syll,end).items():
-                                        syll[findsyll[0]] = findsyll[1]
-                                return syll
-                syll[word] = ""
-                return syll
+                                for  newkey,value in self.find_matching(syll,end):
+                                        list_tuple.append((newkey,value)) 
+                                return list_tuple
+                list_tuple.append((word, ""))
+
+                return list_tuple
                                 
                                 
         def diphtongs(self, word):
@@ -307,7 +308,7 @@ class Steno_Encoding:
                         piece=self.syllabes
                         if piece == "":
                                 continue
-                        Log('piece',piece)
+                        Log('one piece',piece)
                         sylls = {}
                         sylls = self.find_matching(sylls, piece)
                         Log('sylls' , sylls)
@@ -323,14 +324,13 @@ class Steno_Encoding:
                         
                         if piece == "":
                                 continue
-                        for mysyll in sylls.items() :
 
-                                new_piece = mysyll[0]
+                        for key,new_piece in sylls :
+
+                            #    new_piece = mysyll[0]
                                 Log('syllabe',new_piece)
-                                if mysyll[1] != "":
-                                        new_piece = mysyll[1]
-                                else:
-                                        new_piece = self.voyels(new_piece)
+                                if new_piece == "":
+                                        new_piece = self.voyels(key)
                                         new_piece = new_piece.upper()
 #                        for new_piece in piece.split('+'):
                                 Log('syllabe',new_piece)
@@ -349,7 +349,7 @@ class Steno_Encoding:
 
 
                                 Log('bef encoded word', self.word_encoded)
-                                if encoded and syllabe.is_left_hand() and (previous and  previous.is_right_hand()):
+                                if encoded and syllabe.is_left_hand() and not '/' in syllabe.encoded_hand and (previous and  previous.is_right_hand()):
                                         self.word_encoded = self.word_encoded+ '/'+encoded
                                 else:
                                         self.word_encoded = self.word_encoded+ encoded               
@@ -422,6 +422,7 @@ class Steno_Encoding:
                         
                         if piece == "":
                                 continue
+                        
                         for mysyll in sylls.items() :
                                 new_piece = mysyll[0]
                                 Log('syllabe:',new_piece)

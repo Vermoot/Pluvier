@@ -84,6 +84,7 @@ class OrthoPrefix(Ortho):
                 return False
 class Steno:
         PREFIXES = {
+                # all already encoded
 #                "s2": "S", # ce mais pas ceux
                 "sypER" : "SP-R/",
                 "sufR" : "STPR",
@@ -224,6 +225,8 @@ class Steno:
                 "quel" : OrthoSuffix("kEl", "-/BLG"),
                 "elle" : OrthoSuffix("El", "AEUL|/*EL"),
                 "ière"  : OrthoSuffix('jER', 'A*ER'),
+                "iée"  : OrthoSuffix('je', 'A*ED'),
+                "ié"  : OrthoSuffix('je', 'AE'),
                 "ier"  : OrthoSuffix('jER|je', 'AER'),
                 "iel"  : OrthoSuffix('jEl', 'AEL'),
                 'ive' : OrthoSuffix('iv|ive|iv', '/*EUF'),
@@ -266,14 +269,15 @@ class Steno:
 
         }
 
-        # if start with - then dont convert 
+        # if start with / then dont convert
+        # - for right hand
 
         SUFFIXES = {
                 'm@tER' : '-MTS',
                 '@tER' : '-NTS|ANTS',
                 'pasj§' :  '-PGS', # preocuppation
-                't82' : '-/TWAO*', # fru-ctu-eux
-                'sjasj§': 'SRAGS', #ciation
+                't82' : '/TWAO*', # fru-ctu-eux
+                'sjasj§': '/SRAGS', #ciation
                 '@sjOn' : "ANGZ", #mentionne
                 '5ksj§' : "PBGS", #distinction
                 '§ksjOn' : "/OPBGS/*B", #fo-nctionne
@@ -328,16 +332,16 @@ class Steno:
 
 #                "l9R" : "-RL",
 #                "d9R" : "RD",
-                "dabl" : "-/TKABL",
+                "dabl" : "/TKABL",
                 "v°m@" : "-/FPLT",
-                "@sj§": "APBGS",    # p_ension_
+                "@sj§": "/APBS",    # p_ension_
                 "jast" : "YA*S|/KWRAFT|/RAFT",
                 "vwaR" : "-/FRS",
 
-                "Ribl" : "-RBL",
-                "@tR" : "-NTS", #-ntre
-                "stR" : "-TS", #-stre
-                "RtR" : "-RTS", #-rtre
+                "Ribl" : "-/RBL",
+                "@tR" : "-/PBTS", #-ntre
+                "stR" : "-/TS", #-stre
+                "RtR" : "-/RTS", #-rtre
                 "§pR" : '/OFRPS',
                 "@bl": "/AFRBL",   # tremble
                 "§bl": "/OFRBL",  # comble
@@ -347,11 +351,11 @@ class Steno:
                 "§bR": "/OFRBS",   # ombre
                 "5b": "/EUFRB",  # limbe
                 "§b": "/OFRB",  # comble
-                "ks": "-BGS",
+                "ks": "-/BGS",
                 'st' : '-/FT',#new rule
 #                "st" : "-*S",
                 "t@" : "TAN", #content
-                "ve": "WE", # releve
+                "ve": "/WE", # releve
                 "iN§" : "/HO*PB", #bourguignon
                 "N§" : "/HO*PB", #bourguignon
                 "@Z" :"/APBLG", # ange
@@ -368,16 +372,16 @@ class Steno:
                 'alv' : 'LAV' , #valve -> vlav
                 'gl' : 'LG' , #sigle -> silge
                 '§p' : '/OFRP', # trompe
-                'Ribl' : '-RBL',
-                'Rbal' : '-RBL' , #verbal
-                'bal' : '-BR' , #global
-                "Ral" : "-RL",
+                'Ribl' : '-/RBL',
+                'Rbal' : '-/RBL' , #verbal
+                'bal' : '-/BR' , #global
+                "Ral" : "-/RL",
                 'kE' : 'KE',
                 'vERs' : '-/FRBS', # diverses
                 'ERv' : '-/FRB', #v-erve
                 'vEr' : '-/FRB', # cou-vert
                 'vER' : '-/FRB', # travers
-                'REj' : '-RLZ' , #reille
+                'REj' : '-/RLZ' , #reille
                 
 #                'fER' : '-/FRB', #o-ffert
                 'fER' : '-/FR', #faire sphere
@@ -392,7 +396,7 @@ class Steno:
                 "SEt" : "-/FPT" , # achete
 #                "RZ" : "-/RPBLG",
                 "RZ" : "RG",
-                "bl" : "-BL",
+                "bl" : "-/BL",
                 "@S°" : "AFRPBLG",
                 "fR" : "-/FR", #souffre
                 "fl" : "-/FL", #souffle
@@ -401,9 +405,9 @@ class Steno:
 
 
                 "Re":"/R*E|RE",
-                'z§':'-GZ',
-                "@S" : "AFRPBLG",
-                "@s" : "APBS|-PBS",
+                'z§':'-/GZ',
+                "@S" : "/AFRPBLG",
+                "@s" : "/APBS|-/PBS",
 
                 "ZE" : "G",
 
@@ -418,21 +422,21 @@ class Steno:
                 "dR" : "DZ" ,# ajoin-dre
                 "@b": "AFRB",   # jambe
                 "tR": "-/TS", #tre - 
-                "bR":"-BS",  #-bre
-                "pR":"-PS", #-pre
+                "bR":"-/BS",  #-bre
+                "pR":"-/PS", #-pre
                 "nEs" : "BS",
-                "Et" : "AEUT",
-                "E" : "AEU",
+                "Et" : "/AEUT",
+                "E" : "/AEU",
                 "e" : "E",
                 "n" : "B",
-                'j' : '-LZ',
+                'j' : '-/LZ',
                 "§" : "OPB|/*PB",
 #                "sm" : "-/FP",
                 'o' : 'OE',
                 'O' : 'O',
 #                't' : 'T',
                 'N' : 'PG',
-                'El' :'-FL',
+                'El' :'-/FL',
                 "Z" : "G", # rage
                 'u' : 'O*U',
 #                "S" : "-/FRPBLG",
@@ -626,7 +630,7 @@ class Steno:
                 
 
 
-                if word.word.endswith('ée'):
+                if word.word.endswith('ée') and not word.word.endswith('iée'):
                         self.ending_syll = phonetics[:-1]
                         self.ending = "ED"
                         
@@ -718,6 +722,13 @@ class Steno:
                                 cutword=self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
                                 cutword.mandatory=True
                                 return cutword
+                        if verb_word.syll.endswith('je') :
+                                self.ending = "/AED"
+                                self.ending_syll = phonetics[:-2]
+                                cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                                cutword.mandatory=True
+                                return cutword
+                        
                         if verb_word.syll.endswith('e') :
                                 self.ending = "/-D"
                                 self.ending_syll = phonetics[:-1]

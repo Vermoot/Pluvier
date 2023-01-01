@@ -272,6 +272,13 @@
             "lierre"
         ]
     ],
+    "HRAEUBG/-RT": [
+        "lecteur",
+        [
+            "HRAEUBG/-RT",
+            "lectrice"
+        ]
+    ],
     "HRAEUT": [
         "lette",
         [
@@ -447,13 +454,6 @@
             "qu'il en a"
         ]
     ],
-    "KHR-Z": [
-        "skaï",
-        [
-            "KHR-Z",
-            "qu'elle est"
-        ]
-    ],
     "KHRA": [
         "calla",
         [
@@ -578,13 +578,6 @@
         [
             "KPWREUBGS",
             "86"
-        ]
-    ],
-    "KRA": [
-        "cracra",
-        [
-            "KRA",
-            "qui a"
         ]
     ],
     "KRA*B": [
@@ -795,6 +788,13 @@
         [
             "P-LT",
             "personnalité"
+        ]
+    ],
+    "P*EUBG": [
+        "spic",
+        [
+            "P*EUBG",
+            "pique"
         ]
     ],
     "PAD": [
@@ -1049,6 +1049,13 @@
             "pour son"
         ]
     ],
+    "PRUS": [
+        "spruce",
+        [
+            "PRUS",
+            "processus"
+        ]
+    ],
     "PUBG": [
         "punk",
         [
@@ -1189,6 +1196,13 @@
             "rapport"
         ]
     ],
+    "RE": [
+        "rez",
+        [
+            "RE",
+            "ré"
+        ]
+    ],
     "REU": [
         "ris",
         [
@@ -1225,7 +1239,7 @@
         ]
     ],
     "S": [
-        "c",
+        "con",
         [
             "S",
             "ce"
@@ -1348,6 +1362,13 @@
         [
             "SHUT",
             "chute"
+        ]
+    ],
+    "SKEU": [
+        "conquis",
+        [
+            "SKEU",
+            "ski"
         ]
     ],
     "SKURT": [
@@ -1483,6 +1504,13 @@
             "endure"
         ]
     ],
+    "SR-P": [
+        "sport",
+        [
+            "SR-P",
+            "surplus"
+        ]
+    ],
     "SRA": [
         "serra",
         [
@@ -1525,11 +1553,25 @@
             "content"
         ]
     ],
+    "STAPBGS": [
+        "contention",
+        [
+            "STAPBGS",
+            "substantiel"
+        ]
+    ],
     "STE": [
         "santé",
         [
             "STE",
             "société"
+        ]
+    ],
+    "STKO*R": [
+        "condor",
+        [
+            "STKO*R",
+            "décore"
         ]
     ],
     "STKOR": [
@@ -1574,6 +1616,13 @@
             "connu"
         ]
     ],
+    "STRA": [
+        "contra",
+        [
+            "STRA",
+            "extra"
+        ]
+    ],
     "STROFL": [
         "strophe",
         [
@@ -1607,6 +1656,27 @@
         [
             "SUS",
             "suce"
+        ]
+    ],
+    "SWAPBGS": [
+        "convention",
+        [
+            "SWAPBGS",
+            "subvention"
+        ]
+    ],
+    "SWOEU": [
+        "convoi",
+        [
+            "SWOEU",
+            "63"
+        ]
+    ],
+    "SWR-FL": [
+        "zelle",
+        [
+            "SWR-FL",
+            "79"
         ]
     ],
     "SWRAEUL": [
@@ -1868,6 +1938,13 @@
             "fasse"
         ]
     ],
+    "TPEUFL": [
+        "fiel",
+        [
+            "TPEUFL",
+            "photographie"
+        ]
+    ],
     "TPH*E": [
         "né",
         [
@@ -2076,6 +2153,13 @@
         [
             "WAPBT",
             "vante"
+        ]
+    ],
+    "WE": [
+        "v",
+        [
+            "WE",
+            "avez"
         ]
     ],
     "WEB": [
