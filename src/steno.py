@@ -178,20 +178,20 @@ class Steno:
 
         
         ORTHO_SUFFIXES = {
-                'babilité' : OrthoSuffix('babilite','-BLT'),
-                'cation' : OrthoSuffix('kasj§','-BGS'),
+                'babilité' : OrthoSuffix('babilite','-/BLT'),
+                'cation' : OrthoSuffix('kasj§','-/BGS'),
 
                 'lation' : OrthoSuffix('lasj§', '-/LGS'),
 
-                'bilité' : OrthoSuffix('bilite','-BLT'),
+                'bilité' : OrthoSuffix('bilite','-/BLT'),
                 'ilité' : OrthoSuffix('ilite','ILT|LT'),
-                'lité' : OrthoSuffix('lite','-LT'),
-                'bilise' : OrthoSuffix('biliz','BLZ'),
-                'ralise' : OrthoSuffix('Raliz','RALZ'),
-                'lise' : OrthoSuffix('liz','-LZ'),
+                'lité' : OrthoSuffix('lite','-/LT'),
+                'bilise' : OrthoSuffix('biliz','-/BLZ'),
+                'ralise' : OrthoSuffix('Raliz','/RALZ'),
+                'lise' : OrthoSuffix('liz','-/LZ'),
 
-                'rité' : OrthoSuffix('Rite', '-RT'), # securite
-                'bité' : OrthoSuffix('bite','-BT'),
+                'rité' : OrthoSuffix('Rite', '-/RT'), # securite
+                'bité' : OrthoSuffix('bite','-/BT'),
                 'tivité': OrthoSuffix('tivite', '/TEUFT'),
                 'vité': OrthoSuffix('vite', '-/FT'),
                 'cité': OrthoSuffix('site', '-/FT'),
@@ -201,7 +201,7 @@ class Steno:
                 'ience' : OrthoSuffix('j@s', 'AENS'),
 #                'ance' : OrthoSuffix('@s', '-NS'),
 #                'ence' : OrthoSuffix('@s', '-NS'),
-                'ande' : OrthoSuffix('@d', '-ND'),
+                'ande' : OrthoSuffix('@d', '-/PBD'),
                 'aux' : OrthoSuffix('o', 'O*EX'),
                 'ité' : OrthoSuffix('ite','ITD|T'),
                 'gueur' : OrthoSuffix('g9R' , '-RG'),
@@ -217,7 +217,7 @@ class Steno:
                 "ration" : OrthoSuffix("Rasj§", "-RGS"),
                 "ctrice" : OrthoSuffix("ktRis", "-/RTS") ,
                 "trice" : OrthoSuffix("tRis", "-/RTS") ,
-                'cienne' : OrthoSuffix('sjEn', '-GZ'),
+                'cienne' : OrthoSuffix('sjEn', '-/GZ'),
                 "telle" : OrthoSuffix("tEl" , "-/LGTS"),
                 "tel" : OrthoSuffix("tEl" , "-/LGTS"),
                 "velle" : OrthoSuffix("vEl", "-/FL"),
@@ -227,7 +227,7 @@ class Steno:
                 "ière"  : OrthoSuffix('jER', 'A*ER'),
                 "iée"  : OrthoSuffix('je', 'A*ED'),
                 "ié"  : OrthoSuffix('je', 'AE'),
-                "ier"  : OrthoSuffix('jER|je', 'AER'),
+                "ier"  : OrthoSuffix('jER|ije|je', '/AER'),
                 "iel"  : OrthoSuffix('jEl', 'AEL'),
                 'ive' : OrthoSuffix('iv|ive|iv', '/*EUF'),
                 'if' : OrthoSuffix('if', '/*EUFL'),
@@ -271,27 +271,27 @@ class Steno:
 
         # if start with / then dont convert
         # - for right hand
-
+        # | for multiple choices
         SUFFIXES = {
                 'm@tER' : '-MTS',
-                '@tER' : '-NTS|ANTS',
+                '@tER' : '-/PBTS|/APBTS',
                 'pasj§' :  '-PGS', # preocuppation
                 't82' : '/TWAO*', # fru-ctu-eux
                 'sjasj§': '/SRAGS', #ciation
                 '@sjOn' : "ANGZ", #mentionne
-                '5ksj§' : "PBGS", #distinction
+                '5ksj§' : "-/PBGS", #distinction
                 '§ksjOn' : "/OPBGS/*B", #fo-nctionne
-                "mEtR": "-PLTS",
+                "mEtR": "-/PLTS",
                 'st@s': '/STAPBS',
                 'ij@d' : 'IND',
-                'ksj§' : "*BGS", #friction
+                'ksj§' : "/*BGS", #friction
                 "zj§": "-GZ",
                 "vwaR" : "-/FRS",
                 "val" : "-/FL",
                 "vaj" : "-/FL",
                 "vEl" : "-/FL",
                 'Rnal' :'-RBL',
-                'sjOn' :'-GZ',
+                'sjOn' :'-/GZ',
                 't8ER' : 'TW*R', # portuaire
                 'ktyR' : '-TS', #ture
                 'tyR' : '-TS', #ture
@@ -300,7 +300,7 @@ class Steno:
                 '5gl' : '/EUFRLG',
                 'diR' : '-/DZ',
                 "win": "AOUB",    # oui
-                'nal' : '-NL', #canal
+                'nal' : '-/PBL', #canal
                 'mas' : 'MS', #amasse
 
 
@@ -309,7 +309,7 @@ class Steno:
 #                "EtR" : "-TS" , #fenetre
                 "jEm" : "/A*EPL",
 #                "jER" : "AER" , #caissiERE
-                "jasm" : "-/KWRAFPL",
+                "jasm" : "/KWRAFPL",
                 "jEn": "AEB",
                 "sj§" : "GS",
                 "lOZik" : "LOIK",
@@ -411,16 +411,16 @@ class Steno:
 
                 "ZE" : "G",
 
-                'ij' : '-/LZ|EULZ', #ille
+                'ij' : '-/EULZ|-/LZ', #ille
 
-                "t°m@" : "/-PLT",
-                "m@" : "/-PLT|/PLT",
+                "t°m@" : "-/PLT",
+                "m@" : "-/PLT",
                 "En" : "AIB",
                 "ER" : "AIR",
                 "@d" :"-/PBD",
 
-                "dR" : "DZ" ,# ajoin-dre
-                "@b": "AFRB",   # jambe
+                "dR" : "-/DZ" ,# ajoin-dre
+                "@b": "/AFRB",   # jambe
                 "tR": "-/TS", #tre - 
                 "bR":"-/BS",  #-bre
                 "pR":"-/PS", #-pre
@@ -606,6 +606,8 @@ class Steno:
                 
         def ortho_add_aloneR_infinitif_firstgroup(self, word, phonetics):
                 cutword=Cutword(phonetics)
+                if word.word.endswith('ier'):
+                        return cutword
                 verb_word = self.find_same_word_verb(word)
                 if verb_word.is_verb() and verb_word.is_infinitif()  and verb_word.word.endswith('er'):
                         if verb_word.word.endswith('iger'):
@@ -754,7 +756,10 @@ class Steno:
                                 self.ending = "/-RS"
 
                                 self.ending_syll = phonetics[:-2]
-                                return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                                cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                                cutword.mandatory=True
+                                return cutword
+
                         if verb_word.syll.endswith('RE') :
                                 self.ending_syll = phonetics[:-2]
 
@@ -845,13 +850,6 @@ class Steno:
                                 cutword = self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
                                 cutword.mandatory=True
                                 return cutword
-                if verb_word.ending_with('ait'):
-#                        if verb_word.is_third_person_singular():
-#                                self.ending = "/AEUT"
-                        if verb_word.syll.endswith('E') :
-                                self.ending_syll = phonetics[:-1]
-                        self.ending = "/-TS"
-                        return self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
 
 
                 if verb_word.ending_with('ent'):
@@ -1095,6 +1093,9 @@ class Steno:
         def add_star(self,word):
                 if ('*' in word):
                         return word
+                if ('-' in word):
+                        return word.replace('-','*', 1)
+                
                 splitted = word.split('E')
                 if len( splitted) > 1:
                          splitted[len(splitted)-2] = splitted[len(splitted)-2]+"*"
@@ -1115,7 +1116,7 @@ class Steno:
                          Log('splitted "A"',splitted)
                          return 'A'.join(splitted)
                 
-                return "*"+word
+                return word+"*"
 
         
         def simple_o_when_o_ortho(self, syllabe, ortho):

@@ -40,34 +40,6 @@ class Syllabe:
         }
 
 
-        SOUND_RHS_EXTRA = {
-                "En": "AIB",
-                "wan": "OIB",
-
-                "win": "AOUB",
-                "zj§": "GZ",
-                "sj§": "GZ",
-                "z§": "GZ",
-                "sjOn": "GZ",   # TODO This might conflict with "zj§" just above. The rule says "either `-GS/*B` or `-GZ`*
-                "zjOn": "GZ",
-                "@pR": "AFRPS",
-                "5pR": "EUFRPS",
-                "§pR": "OFRPS",
-                "5sj§": "EUPBGS",    # p_incions_
-                "§sj§": "OPBGS",    # pron_oncions_
-                "@ksj§": "APBGS",    # san_ction_
-                "5ksj§": "EUPBGS",    # dist_inction_
-                "§ksj§": "OPBGS",    # j_onction_
-                "ksj§": "*BGS",     # a_ction_
-                "isjOn": "EUGZ",
-                "tR": "TS",
-                "tER": "TS",
-                "tyR": "TS",
-                #  "Et": "*T",      # TODO: "Et" is covered by `AIT`, I don't get this. Maybe orthographic for "ette".
-                "isjOn": "EUGZ",
-
-        }
-
         LEFT_KEYS = '-/*STKPWHRAO*'
         RIGHT_KEYS = '-/*EUFRPBLGTSDZ'
         consume_woyels = 'AOEU'

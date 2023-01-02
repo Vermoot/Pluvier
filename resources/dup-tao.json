@@ -377,6 +377,13 @@
             "Cannes"
         ]
     ],
+    "KA*E": [
+        "skier",
+        [
+            "KA*E",
+            "qu'a"
+        ]
+    ],
     "KABG": [
         "caque",
         [
@@ -783,13 +790,6 @@
             "parfaite"
         ]
     ],
-    "P-LT": [
-        "man",
-        [
-            "P-LT",
-            "personnalité"
-        ]
-    ],
     "P*EUBG": [
         "spic",
         [
@@ -1028,6 +1028,13 @@
             "prie"
         ]
     ],
+    "PR*S": [
+        "perce",
+        [
+            "PR*S",
+            "pour cet"
+        ]
+    ],
     "PREU": [
         "pourri",
         [
@@ -1047,13 +1054,6 @@
         [
             "PROZ",
             "pour son"
-        ]
-    ],
-    "PRUS": [
-        "spruce",
-        [
-            "PRUS",
-            "processus"
         ]
     ],
     "PUBG": [
@@ -1420,6 +1420,13 @@
             "Germaine"
         ]
     ],
+    "SKWRAFRB": [
+        "jambes",
+        [
+            "SKWRAFRB",
+            "j'arrive"
+        ]
+    ],
     "SKWRAPB": [
         "gent",
         [
@@ -1586,6 +1593,13 @@
         [
             "STKPWHRAEU",
             "déblaie"
+        ]
+    ],
+    "STKROUPLT": [
+        "déroutement",
+        [
+            "STKROUPLT",
+            "déroulement"
         ]
     ],
     "STKWAEU": [
@@ -1924,6 +1938,13 @@
             "tout à coup"
         ]
     ],
+    "TPA*ER": [
+        "fier",
+        [
+            "TPA*ER",
+            "fière"
+        ]
+    ],
     "TPAFL": [
         "faf",
         [
@@ -2002,7 +2023,7 @@
         ]
     ],
     "TPORPLT": [
-        "formant",
+        "fortement",
         [
             "TPORPLT",
             "formalité"

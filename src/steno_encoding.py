@@ -8,7 +8,7 @@ class Steno_Encoding:
                 # start with / : already encoded
                 # start with - : right hand
 
-                'sjasj§': 'SRAGS', #ciation
+                'sjasj§': '/SRAGS', #ciation
                 '@v°n' : 'ENVH',
                 "aOR" : "ARP",
                 'ynik' : 'UBG',
@@ -27,22 +27,26 @@ class Steno_Encoding:
 
                 
 #                'ist' : '*EUS',
-
+                'm°n' : "/KH",#men
+                'min' : "/KH",#min
+                'm2n' : '/KH', #men
+                'mn' : '/KH', #menb
+                
                 'wan' : 'WOIB', #douane                
                 'bRe': '-BS',
                 "djO": "OD",
                 "zj§": "GZ",
 
-                'nal' : '-NL', 
+                'nal' : '-/PBL', 
                 '@kR' : '/AFRBGS', #cancre
-                "sj§": "GZ",
+                "sj§": "-/GZ",
                 'vul': '/WHR',
                 "fik" : "-/FBG",
                 "fEk" : "-/FBG",
                                 'kE' : 'KE',
                 'psjOn' :'-/PGS',
                 'ps' : 'S',
-                'sjOn' :'-GZ',
+                'sjOn' :'-/GZ',
                 'vERs' : '-/FRB', # divers
                 'ERv' : '-/FRB', #v-erve
                 'vEr' : '-/FRB', # cou-vert
@@ -54,30 +58,31 @@ class Steno_Encoding:
                 'j@' : 'AEN' , # son ian
                 '@l' : 'ANL', #enleve
                 "RSi" : "VRPB",
-                'REj' : '-RLZ' , #oreille
+                'REj' : '-/RLZ' , #oreille
 
-                "tER": "/-TS",  #notaire
-                "EtR" : "/-TS" , #fenetre
+                "tER": "-/TS",  #notaire
+                "EtR" : "-/TS" , #fenetre
                 "RS" : "VRPB",# -rche
                 "dZEk" : "-/PBLG",
                 "dZ" : "-/PBLG",
                 "bZEk" : "-/PBLG",
                 "bZ" : "-/PBLG",
                 "ps" : "S",
+                "pR":"PR|PS", #-pre
                 'En' : 'AIB',
                 'oi' : 'OEU',
                 
-                "vaj" : "/-FL",
-                "vEj" : "/-FL",
+                "vaj" : "-/FL",
+                "vEj" : "-/FL",
                 #'@v' : 'ENVH', #envenime
                 'vwa' : 'WOEU',# not in TAO rules..
                 't8' : 'TW', # fru-ctu-eux
 #                "kR" : "KR", 
-                "ks": "/-BGS",
+                "ks": "-/BGS",
                 '8a' : 'WA' , # ua in situation
 #                "kR" : "RK",#can-cre
                  "kR" : "KR|RBG",#skrute
-                'Ne'  : '-PGR',
+                'Ne'  : '-/PG',
                 'on' : 'ON',
 #                "di" : "D",
 #                "mi" : "M",k§t
@@ -368,6 +373,8 @@ class Steno_Encoding:
 
                 if self.word_encoded.startswith('/'):
                         self.word_encoded = self.word_encoded[1:]
+                if self.word_encoded.endswith('/'):
+                        self.word_encoded = self.word_encoded[:-1]
                 Log('WORD ENCODED ', self.word_encoded)
                 self.word_encoded = self.word_encoded.replace('//','/')
                 if self.needs_star  :
@@ -376,6 +383,7 @@ class Steno_Encoding:
                         self.word_encoded = '/'.join(splitted)
                 if self.word_encoded.endswith('/OU'):
                         self.word_encoded = self.word_encoded.replace('/OU','/O*U')
+                
                 return  self.word_encoded
         
 
@@ -473,16 +481,18 @@ class Steno_Encoding:
                         self.word_encoded = self.word_encoded.replace('/OU','/O*U')
                 return  self.word_encoded
         
-
         def add_star(self,word):
                 if ('*' in word):
                         return word
+                if ('-' in word):
+                        return word.replace('-','*', 1)
+                
                 splitted = word.split('E')
                 if len( splitted) > 1:
                          splitted[len(splitted)-2] = splitted[len(splitted)-2]+"*"
                          return 'E'.join(splitted)
                 splitted = word.split('U')
-                Log('add star', word)                
+                Log('add starx', word)                
                 if len( splitted) > 1:
                          splitted[len(splitted)-2] = splitted[len(splitted)-2]+"*"
                          return 'U'.join(splitted)
@@ -497,8 +507,7 @@ class Steno_Encoding:
                          Log('splitted "A"',splitted)
                          return 'A'.join(splitted)
                 
-                return "*"+word
-
+                return word+"*"
         def voyels(self, word):
                 new_word=''
                 for char in word:

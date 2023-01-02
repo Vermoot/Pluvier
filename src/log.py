@@ -1,5 +1,5 @@
 class Log:
-        activate = False
+        activate = True
 
         def __init__(self, message, value = '') :
                 if self.activate: 
