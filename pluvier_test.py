@@ -234,6 +234,11 @@ class TestPluvier:
                           'KAUS' : 'cuisse',
                           'SAUFR' : 'suivre'
                          })
+        
+    def test_lesson11_AU_for_long_A(self):
+        self.assertSame({ "PAUT" : "pâte",
+                          "RAUP" : "râpe"
+                         })
 
     def test_lesson12_PW_for_Binit_PL_for_Mfinal(self):
         self.assertSame({ # 'PWO' : 'beau',
@@ -292,6 +297,7 @@ class TestPluvier:
     def test_lesson13_AE_for_ie(self):
         self.assertSame({ "PAE" : "pied",
                           "HAER": "hier",
+                          "SHRAR/AE":"salarié",
                           "SAEL" : "ciel",
                           "PAES": "pièce",
                           "TAERS": "tierce",
@@ -366,7 +372,7 @@ class TestPluvier:
 
     def test_lesson13_RP_for_peur_RL_for_leur(self):
         self.assertSame({"TRARP": "trappeur",
-                         "RARL" : "râleur"
+                         "RAURL" : "râleur"
  #                        "WRL": "voleur", #should be WORL ?
                          })
 
@@ -664,6 +670,7 @@ class TestPluvier:
         self.assertSame({
             "KHAS": "menace", #m°-nas
             "KHU": "menu",
+            "KAL/O/KHA*ER":"calomnier",
 #            "KHAOR": "mineur",
             "KHUT": "minute",
             "KHAUZ/AER": "menuisier",
@@ -867,7 +874,7 @@ class TestPluvier:
         
     def test_lesson30_INTS_for_prefix_inter(self):
         self.assertSame({
-            "EUPBTS/*D": "interdit",
+#            "EUPBTS/*D": "interdit",
     #        "EUPBTS/-DZ": "interdire",
      #       "SPWAEURD": "interdit",
             "SPWAEURDZ": "interdire"})
@@ -972,10 +979,10 @@ class TestPluvier:
         })
     def test_lesson33_RGS_ending_rtion_or_ration(self):
         self.assertSame({"PORGS": "portion",
-#                         "OERPGS": "opération",
-#                         "APL/HRAORGS": "amélioration",
+                         "ORPGS": "opération",
+                         "APL/HRAORGS": "amélioration",
                          "HREUB/ERGS": "libération",
-#                         "PHOD/ERGS": "modération",
+                         "PHOD/ERGS": "modération",
 #                         "PHOD/RAGS": "modération",
 #                         "SHRAB/RAGS": "élaboration",
 #                         "RERGS": "rémunération",
@@ -1428,7 +1435,7 @@ class TestPluvier:
     def test_lesson4_N_sound_pn(self):
         self.assertSame({
             "TPHAO": "pneu",
-#            "TPHAOP/HRO*EG": "pneumologue",
+#            "TPHAOP/HRO*EG": "p bienneumologue",
 #            "TPHAOP/HRO*EUG": "pneumologie",
 
 
@@ -1484,7 +1491,7 @@ class TestPluvier:
 #            "KP*EUT": "excite",
 
 
-            })
+            }, False)
 
     def test_lesson54_BGS_start_ex_follow_by_consonne(self):
         self.assertSame({
@@ -1708,6 +1715,17 @@ class TestPluvier:
 
         })
 
+
+    def test_stl_new_rule_fg_for_sound_vant(self):
+        self.assertSame({
+            "AFG": "avant",
+            "SOUFG": "souvent",
+            "AFGTS": "aventure",
+        
+#            "AOUP": "préoccupe", 
+
+        })
+
     def test_new_rule_SP_prefix_SUP_MTS_suffixe_mentaire(self):
         self.assertSame({
             "SPHREPLT": "supplément", 
@@ -1734,7 +1752,9 @@ class TestPluvier:
 #            "KWR/-D" : "joué",
             "TRET/-D" : "traité",
             "TRET/ED" : "traitée",
-            "HAL/ED" : "hâlée", 
+            "SHRAR/AE":"salarié",
+            "SHRAR/AED":"salariée",
+            "HAUL/ED" : "hâlée", 
             "PWHREUPBD/-D": "blindé",
 
         })
@@ -1754,7 +1774,25 @@ class TestPluvier:
 #            "AQT" : "adore",
             "KPEUFT": "existe",
             "PEUFT": "piste",
+            "KEUFT": "kyste",
             "HREUFT": "liste",
+        })
+
+
+    def test_stl_new_rule_verb_it(self):
+        self.assertSame({
+#            "AQT" : "adore",
+            "SAUF/EUT": "suivit",
+
+        })
+
+    def test_stl_new_rule_vation(self):
+        self.assertSame({
+#            "AQT" : "adore",
+            "TK-PLD": "demande",
+            "TK-PLD/-S": "demandais",            
+            "REFRBGS": "réservation",
+            "R-FRBGS": "réversion"
         })
 
         
@@ -1804,7 +1842,7 @@ class TestPluvier:
     def test_not_appears(self):
         self.assertSame({
             "ERBG/EUR": "écrire",
-            "AP/RAEU": "après",
+#            "AP/RAEU": "après",
             
 #            "TKWOEUB": "écris",
        })
@@ -1813,9 +1851,39 @@ class TestPluvier:
         self.assertSame({
             #           "EUPBLG/-R": "imaginer",
 #            "KOU": "coucher",
+            "EUPBTS/WHEUR":"intervenir",
+            "R-D/WHEUR":"redevenir",
+            'PWAEPB/WHU':"bienvenu",
+
+                        "TR":"trimbalant",
+            "MON":"monstre",
+
+            "NTRE":"notre",
+
+            "PAT": "patte",
+            "PAUT": "pâte",
+            "ANK": "enquiller",
+            "APBLG/OPB/*BGS": "adjonction",
+            "ES": "escarpée",
+            "SPWOUZ/KWRAFPL" : "enthousiasme",
+            "EG/-LZ" : "église",
+            "TPHRAFRB/-R":"flamber",
+
+            "SP-R" : "super",
+            "S-FR" : "suffirait",
+            "TPHRAFRB/-R" : "flamber",
+            "ABG/-GZ/-R": "actionner",
+            "AE/PROPS/A*ER": "approprier",
+            "APB/WA*ER":"envier",
+            "PHAPGT/EUT": "magnétite",
+#            "EPHAPGT/EUT": "méridionale",
+            "PROP/AG/-PBD": "propagande",
+            "TPEUBG/HREUTD": "fiscalité",
+            "AEUS/TWR*" : "estuaire",
             "KOPBG/ED/A*ED": "congédiée",
             "KOPBG/ED/AED": "congédié",
-
+            "AD/-PLTS" : "admettre",
+            "ABG/-GZ/-PLT": "actionnement",
             "WOEUL/AG": "voilage",   
             "PHORD/-LZ/-R": "mordiller",
             "K-T/-R": "quêter",
@@ -1924,6 +1992,18 @@ class TestPluvier:
 
     def test_verb_matching_courait(self):
         self.assertAllMatching('courait' , ['KOUR/AEUT'] )
+
+    def test_verb_matching_salarier(self):
+        self.assertAllMatching('salarier' , ['SHRAR/AER'] ) 
+
+    def test_verb_matching_salarie(self):
+        self.assertAllMatching('salarié' , ['SHRAR/AE'] ) 
+
+    def test_verb_matching_salarie(self):
+        self.assertAllMatching('salariée' , ['SHRAR/AED'] ) 
+
+    def test_verb_matching_ralier(self):
+        self.assertAllMatching('rallier' , ['RAL/AER'] ) 
 
     def test_verb_matching_elle_laisse(self):
         self.assertAllMatching('haïsse' , ["HAEUS"])

@@ -42,7 +42,7 @@ class Dictionary:
         return words
     def append_tao(self, dico):
         dup = {}
-        with open('resources/tao_la_salle.json') as json_file:
+        with open('resources/tao_la_salle_simple.json') as json_file:
             data = json.load(json_file)
 
         for elem in data.items():
@@ -72,7 +72,7 @@ class Dictionary:
         self.words.sort(key=lambda x: x.frequence, reverse=True)
 #        for word in self.words :
 #            print(word.frequence)
-  #       self.words = self.words[:8000]
+#        self.words = self.words[:60000]
         with open('resources/alone.json') as json_file:
             tao = json.load(json_file)
 
@@ -91,10 +91,12 @@ class Dictionary:
                 if steno in translated_word  and (translated_word[steno] == word.word):
                     continue
                 if steno in translated_word and '*' not in steno:
+                    original = steno
                     steno = self.steno_class.add_star(steno)
                     if steno in translated_word :
                         if steno not in duplicated:
                             duplicated[steno] = []
+                            duplicated[steno].append(translated_word[original])
                         if word.word not in duplicated[steno]:
                             duplicated[steno].append(word.word)
                         if translated_word[steno]  not in duplicated[steno]:
@@ -104,7 +106,7 @@ class Dictionary:
                 translated_word[steno] = word.word
 
 #                    d.write("'"+steno + "':'"+ word.word+"',\n")
-        translated_word = self.append_tao(translated_word)
+#        translated_word = self.append_tao(translated_word)
         json_object = json.dumps(translated_word, indent = 4, ensure_ascii=False )
         dup_object = json.dumps(duplicated, indent = 4, ensure_ascii=False )
         with open('resources/dup.json', "w") as d:

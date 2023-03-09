@@ -7,23 +7,26 @@ class Steno_Encoding:
                 # separate by |  => right_hand|left_hand
                 # start with / : already encoded
                 # start with - : right hand
-
                 'sjasj§': '/SRAGS', #ciation
                 '@v°n' : 'ENVH',
+                'sal': 'sl',
                 "aOR" : "ARP",
+                "pRasj§":"/RPGS",
                 'ynik' : 'UBG',
                 "enER": "EBS",
                 '§ple' : '/OFRPL', # trompe
+                '5ba' : '/EUFRB', # trimb            
                 '§pli' : '/OFRPL', # trompe
 
-                'v°n' : 'VH',
+                'v°n' : 'WH|FPB',
                 'vin' : 'VH',
+
                 'vOl' :'VL',
                 "jEn": "AEB",
-                'Egze' : 'KP',
-                'Egzi' : 'KPEU',
-                'Eksi' : 'KPEU',
-                'Eks' : 'KP',
+                'Egze' : '/KP',
+                'Egzi' : '/KPEU',
+                'Eksi' : '/KPEU',
+                'Eks' : '/KP',
 
                 
 #                'ist' : '*EUS',
@@ -71,7 +74,7 @@ class Steno_Encoding:
                 "pR":"PR|PS", #-pre
                 'En' : 'AIB',
                 'oi' : 'OEU',
-                
+                'v@' : "WAPB|FG",
                 "vaj" : "-/FL",
                 "vEj" : "-/FL",
                 #'@v' : 'ENVH', #envenime
@@ -97,7 +100,7 @@ class Steno_Encoding:
 #                'jO' : 'AO',
 
                 "j2": "AOEU",   # vieux
-
+                'el': 'L',
                 "je": "AE",     # pied
                 "jE": "AE",     # ciel
                 "ja": "RA",     # cria
