@@ -94,6 +94,8 @@ class Steno:
                 "d°m@d" : "TK-PLD",
                 "sypER" : "SP-R/",
                 "sufR" : "STPR",
+                'k§f':'KW',
+                'Oto' : "AOT",
                 "tEknO" : "T",
                 "aREt" : "ART",
                 "apO" : "PAO",
@@ -232,7 +234,8 @@ class Steno:
                 "elle" : OrthoSuffix("El", "AEUL|/*EL"),
 
                 "ière"  : OrthoSuffix('jER', 'A*ER').set_mandatory(),
-                "ier"  : OrthoSuffix('jER|ije|je', '/AER').set_mandatory(),
+#                "ier"  : OrthoSuffix('jER|ije|je', '/AER').set_mandatory(),
+
                 "iée"  : OrthoSuffix('je', '/AED').set_mandatory(),
                 "ié"  : OrthoSuffix('je', 'AE').set_mandatory(),
 
@@ -281,7 +284,7 @@ class Steno:
         # - for right hand
         # | for multiple choices
         SUFFIXES = {
-                'm@tER' : '-MTS',
+                'm@tER' : '/PHAPBTS|-/PLTS',
                 'zERvasj§': '/FRBGS', #rvation
                 "pRasj§":"/RPGS",
                 '@tER' : '-/PBTS|/APBTS',
@@ -296,7 +299,7 @@ class Steno:
                 'st@s': '/STAPBS',
                 'ij@d' : 'IND',
                 'ksj§' : "/*BGS", #friction
-                "zj§": "-GZ",
+                "zj§": "-/GZ",
                 "vwaR" : "-/FRS",
                 "val" : "-/FL",
                 "vaj" : "-/FL",
@@ -309,6 +312,7 @@ class Steno:
                 '@gl' : '/AFRLG',
                 '§gl' : '/OFRLG',
                 '5gl' : '/EUFRLG',
+                'm°n' : "/KH",#men
                 'diR' : '-/DZ',
                 "win": "AOUB",    # oui
                 'nal' : '-/PBL', #canal
@@ -327,10 +331,11 @@ class Steno:
                 "lOZist" : "/HRO*EUS",
                 "lOZi" : "LO*IG",
                 "lOg" : "LO*EG",
-                "p9R" : "-RP",
-                "pORt" : "-RPT",
-                "poR" : "-RP",
-                "pOR" : "-RP",
+                "p9R" : "-/RP",
+                "pORt" : "-/RPT",
+                "poR" : "-/RP",
+                "pOR" : "-/RP",
+                "int" : "/EUPBT",
 
                 "pid" : "-PD",
 #                "fis" : "-WEUS",
@@ -390,6 +395,7 @@ class Steno:
                 "Ral" : "RAL|-/RL",
                 'kE' : 'KE',
                 'vERs' : '-/FRBS', # diverses
+                'vERn' : '-/FRB', # gouverne
                 'ERv' : '-/FRB', #v-erve
                 'vEr' : '-/FRB', # cou-vert
                 'vER' : '-/FRB', # travers
@@ -438,9 +444,11 @@ class Steno:
                 "pR":"-/PS", #-pre
                 "nEs" : "BS",
                 "Et" : "/AEUT",
+                "mn" : "/KH",
+                'El' :'-/FL',
                 "E" : "/AEU",
                 "e" : "E",
-                "n" : "B",
+                "n" : "-/B",
                 'j' : '-/LZ',
                 "§" : "OPB|/*PB",
 #                "sm" : "-/FP",
@@ -448,7 +456,7 @@ class Steno:
                 'O' : 'O',
 #                't' : 'T',
                 'N' : 'PG',
-                'El' :'-/FL',
+
                 "Z" : "G", # rage
                 'u' : 'O*U',
 #                "S" : "-/FRPBLG",
@@ -621,12 +629,12 @@ class Steno:
                 if word.word.endswith('ier'):
                         self.ending = "AER"
                         self.ending_syll = phonetics[:-2]
-
-                        if phonetics.endswith('jER'):
+                        Log('Fini par ier')
+                        if phonetics.endswith('jER') or phonetics.endswith('ije'):
                                 self.ending_syll = phonetics[:-3]
+                        Log('Fini par ier'+self.ending_syll)
                         cutword=self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
                         cutword.mandatory=True
-                        return cutword
 
                         return cutword
                 verb_word = self.find_same_word_verb(word)
@@ -763,7 +771,7 @@ class Steno:
                 if verb_word.is_conditionnel():
                         self.ending = "/-RS"
                         if verb_word.is_third_person_plural():
-                                self.ending = "RAEUPBT"
+                                self.ending = "/-RAEUPBT"
 #                                self.ending = "/-RPB"
                                 self.ending_syll = phonetics[:-2]
                                 cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
@@ -850,15 +858,6 @@ class Steno:
                         cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True,True)
                         cutword.mandatory=True
                         return cutword
-                if verb_word.ending_with('it'):
-#                if verb_word.is_imparfait():
-                        self.ending = "/EUT"
-#                        self.ending = "/AEUS"
-                        if verb_word.syll.endswith('i') :
-                                self.ending_syll = phonetics[:-1]
-                        cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True,True)
-                        cutword.mandatory=True
-                        return cutword
 
                 if verb_word.ending_with('ait'):
 #                        if verb_word.is_third_person_singular():
@@ -870,6 +869,15 @@ class Steno:
                         cutword.mandatory=True
                         return cutword
 
+                if verb_word.ending_with('it'):
+#                if verb_word.is_imparfait():
+                        self.ending = "/EUT"
+#                        self.ending = "/AEUS"
+                        if verb_word.syll.endswith('i') :
+                                self.ending_syll = phonetics[:-1]
+                        cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True,True)
+                        cutword.mandatory=True
+                        return cutword
 
                 if verb_word.ending_with('aient'):
 #                        if verb_word.is_third_person_plural():

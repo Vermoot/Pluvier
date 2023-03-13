@@ -670,7 +670,10 @@ class TestPluvier:
         self.assertSame({
             "KHAS": "menace", #m°-nas
             "KHU": "menu",
-            "KAL/O/KHA*ER":"calomnier",
+            "KAL/O/KHAER":"calomnier",
+            "APB/KH-R": "emmener",
+            "APB/PHL-R": "emmêler",
+            
 #            "KHAOR": "mineur",
             "KHUT": "minute",
             "KHAUZ/AER": "menuisier",
@@ -893,6 +896,7 @@ class TestPluvier:
     def test_lesson31_FT_for_ending_vite_or_cite(self):
         self.assertSame({ #"ABG/TEUFT": "activité",
                           "PAS/EUFT": "passivité",
+            "EUPB/WAPBT/EUFT": "inventivité",
                       #     "EBG/TREUFT": "électricité",
                          })
 
@@ -1037,6 +1041,7 @@ class TestPluvier:
     def test_lesson38_RB_ending_cis_ci_rbe_and_rne(self):
         self.assertSame({
             "PHORB": "morne",
+            "-FRB": "verne",
             "PRERB": "précis",
  #           "ARB": "assis",
             "WOEURB": "voici",
@@ -1469,9 +1474,12 @@ class TestPluvier:
         self.assertSame({
 #            "TOEUPG/-R": "témoigner",
             "SEUPG": "signe",
-#            "SEUPG/AEL": "signal",
+            "APG/OE": "agneau",
+            "AB/OE": "anneau",
+
+            "SEUPG/AL": "signal"
 #            "SHAEL": "signal",
-#            "SOEUPG/-R": "soigner",
+
 #            "SHATS": "signature",
 #            "SEUPG/TP*EU": "signifie",
 
@@ -1734,6 +1742,7 @@ class TestPluvier:
             "KPHAEUTS" : "commettre",
             "SOUPLTS": "soumettre", 
             "KPHAPBTS" : "commentaire",
+            "PARL/-PLTS": "parlementaire",
         })
 
     def test_new_rule_imparfaitoet_2p(self):
@@ -1768,6 +1777,14 @@ class TestPluvier:
 
         })
 
+    def test_stl_new_rule_aot_for_auto(self):
+        self.assertSame({
+#            "AQT" : "adore",
+#            "W" : "voyais",
+            "AOT/KAR" : "autocar",
+
+        })
+
 
     def test_stl_new_rule_FT_for_ste(self):
         self.assertSame({
@@ -1783,6 +1800,14 @@ class TestPluvier:
         self.assertSame({
 #            "AQT" : "adore",
             "SAUF/EUT": "suivit",
+
+        })
+
+    def test_stl_new_rule_AOU_for_eo(self):
+        self.assertSame({
+#            "AQT" : "adore",
+            "PRAOUBG/UP": "préoccupe",
+            "TPHAOUFL/EUT": "néophyte",
 
         })
 
@@ -1837,7 +1862,7 @@ class TestPluvier:
             "TKOEUB": "douane",
 # also work            "TKWAB": "douane",
             #"PHOEUB": "moine",
-            "PEU/O*EUB": "pivoine",
+            "PEU/O*EUB": "pivoine", 
                          })
     def test_not_appears(self):
         self.assertSame({
@@ -1851,6 +1876,9 @@ class TestPluvier:
         self.assertSame({
             #           "EUPBLG/-R": "imaginer",
 #            "KOU": "coucher",
+            "DES": "design",
+            "GANK": "gangrener",
+                        "ANK": "enquiller",
             "EUPBTS/WHEUR":"intervenir",
             "R-D/WHEUR":"redevenir",
             'PWAEPB/WHU':"bienvenu",
@@ -1862,7 +1890,7 @@ class TestPluvier:
 
             "PAT": "patte",
             "PAUT": "pâte",
-            "ANK": "enquiller",
+
             "APBLG/OPB/*BGS": "adjonction",
             "ES": "escarpée",
             "SPWOUZ/KWRAFPL" : "enthousiasme",
@@ -1986,6 +2014,11 @@ class TestPluvier:
 
     def test_verb_matching(self):
         self.assertAllMatching('parlez' , ["PARL/*EZ"])
+    def test_verb_matching_importee(self):
+        self.assertAllMatching('importée' ,['EUPB/-RPT/ED', 'KPWORT/ED'])
+
+    def test_stl_verb_matching_gouvern(self):
+        self.assertAllMatching('gouverne' , ["TKPWOUFRB"])
 
     def test_verb_matching_allais(self):
         self.assertAllMatching('allais' , ['AE/HR/-S', 'AL/-S', 'HR/-S'] )
@@ -1999,17 +2032,33 @@ class TestPluvier:
     def test_verb_matching_salarie(self):
         self.assertAllMatching('salarié' , ['SHRAR/AE'] ) 
 
+    def test_nom_matching_adhesion(self):
+        self.assertAllMatching('adhésion' , ['AD/EGZ', 'AD/-GZ'] ) 
+
+    def test_nom_matching_existerai(self):
+        self.assertAllMatching('existerais' , ['KPEUFT/-RS'] ) 
+
+    def test_nom_matching_escarpee(self):
+        self.assertAllMatching('escarpée' , ['AD/EGZ'] ) 
+
+    def test_nom_matching_anneau(self):
+        self.assertAllMatching('anneau' , ['AE/TPHOE', 'AB/OE'] ) 
+
+    def test_nom_matching_agneau(self):
+        self.assertAllMatching('agneau' , ['AE/-PG/OE', 'APG/OE'] ) 
+
+    def test_nom_matching_confirme(self):
+        self.assertAllMatching('confirme' , ['STPEURPL', 'KOPB/TPEURPL', 'KOEPB/TPEURPL', 'KWEURPL']) 
+
     def test_verb_matching_salarie(self):
         self.assertAllMatching('salariée' , ['SHRAR/AED'] ) 
 
     def test_verb_matching_ralier(self):
-        self.assertAllMatching('rallier' , ['RAL/AER'] ) 
+        self.assertAllMatching('rallier' , ['-RL/AER','RAL/AER'] ) 
 
     def test_verb_matching_elle_laisse(self):
         self.assertAllMatching('haïsse' , ["HAEUS"])
 
-    def test_plural_not_matching(self):
-        self.assertAllMatching('voitures' , [])
         
     def assertAllMatching(self,word, words) :
         steno_class=Steno(self.corpus)

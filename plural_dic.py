@@ -67,7 +67,7 @@ class Dictionary:
             for steno, val in dicofr.items():
                 if val != word.lemme:
                     continue
-                if steno[-1] == 'S':
+                if (steno[-1] == 'S') or ( steno[-1] == 'D'):
                     if (steno+'Z' in dicofr) or (steno+'Z' in verbs) :
                         duplicated[steno+'Z'] = word.word
                         continue

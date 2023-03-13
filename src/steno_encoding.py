@@ -10,7 +10,7 @@ class Steno_Encoding:
                 'sjasj§': '/SRAGS', #ciation
                 '@v°n' : 'ENVH',
                 'sal': 'sl',
-                "aOR" : "ARP",
+                "aOR" : "/ARP",
                 "pRasj§":"/RPGS",
                 'ynik' : 'UBG',
                 "enER": "EBS",
@@ -22,11 +22,13 @@ class Steno_Encoding:
                 'vin' : 'VH',
 
                 'vOl' :'VL',
+                'ekil' :'KL',
                 "jEn": "AEB",
                 'Egze' : '/KP',
                 'Egzi' : '/KPEU',
                 'Eksi' : '/KPEU',
                 'Eks' : '/KP',
+                'ek' : 'K',
 
                 
 #                'ist' : '*EUS',
@@ -36,9 +38,9 @@ class Steno_Encoding:
                 'mn' : '/KH', #menb
                 
                 'wan' : 'WOIB', #douane                
-                'bRe': '-BS',
+                'bRe': '-/BS',
                 "djO": "OD",
-                "zj§": "GZ",
+                "zj§": "-/GZ",
 
                 'nal' : '-/PBL', 
                 '@kR' : '/AFRBGS', #cancre
@@ -50,8 +52,11 @@ class Steno_Encoding:
                 'psjOn' :'-/PGS',
                 'ps' : 'S',
                 'sjOn' :'-/GZ',
+                'vERn' : '-/FRB', # gouverne
                 'vERs' : '-/FRB', # divers
                 'ERv' : '-/FRB', #v-erve
+
+                
                 'vEr' : '-/FRB', # cou-vert
                 'vER' : '-/FRB', # travers
                 'Rifi' : '-/FR', # bonus rifi
@@ -72,7 +77,10 @@ class Steno_Encoding:
                 "bZ" : "-/PBLG",
                 "ps" : "S",
                 "pR":"PR|PS", #-pre
+                'st' : 'ST|FT',#new rule
                 'En' : 'AIB',
+                'eO' : 'AOU',
+                'eo' : 'AOU',
                 'oi' : 'OEU',
                 'v@' : "WAPB|FG",
                 "vaj" : "-/FL",
@@ -139,7 +147,9 @@ class Steno_Encoding:
                 "sk" : "K",#skrute
                 "sp" : "P",#skrute
                 'S' : 'SH|FP',
-                "5" : "/EUPB"
+                "5" : "/EUPB",
+                'n' : 'TPH|B',
+                'N' : '-PG|PG',
         }
         VOWELS = {
                 "a": "A",       # chat
@@ -173,7 +183,7 @@ class Steno_Encoding:
                 "8": "U",       # huit
                 "§": "ON",
                 'd' : 'D',
-                'N' : 'N',
+
                 'p' : 'P',
                 'm' : 'M',
                 'k' : 'K',

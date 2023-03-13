@@ -17,7 +17,6 @@ class Syllabe:
                 "F":"FL",
                 "J" : "G",
                 'X' : 'BGS',
-
                 }
 
         SOUNDS_LH = {
@@ -237,6 +236,8 @@ class Syllabe:
                         if self.is_right_hand() and len(syllabe.split('|'))>1:
                                 syllabe_split = syllabe.split('|')[1]
                         if not self.syll_can_enter(syllabe_split, keys):
+                                if self.is_right_hand():
+                                        self.encoded_hand=self.encoded_hand+'/'
                                 self.change_hand()
                                 keys =self.keys_left
                                 sounds = self.SOUNDS_LH

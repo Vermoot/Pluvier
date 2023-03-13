@@ -86,6 +86,8 @@ class Dictionary:
             if word.is_verb() and not word.is_infinitif():
                 continue
             for steno in np.unique(self.steno(word)):
+                if steno in tao.keys():
+                    continue
 #                steno = steno.replace("'","\'")
                 #                    print(steno)
                 if steno in translated_word  and (translated_word[steno] == word.word):
