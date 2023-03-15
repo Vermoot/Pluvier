@@ -117,6 +117,7 @@ class Steno:
                 'm2n' : 'KH', #men
                 't°n' : 'TH', #tenace
                 'ten' : 'TH', #tenace
+
                 'ina' : 'TPHA',
                 "syp" : "SP",
                 'inE' : 'TPHAEU',
@@ -129,6 +130,7 @@ class Steno:
                 '5sa' : 'STPHA',
                 '5se' : 'STPHE',
                 "s@t" : "ST",
+                "tE": "TAEU",  #terminer
                 '5k' : '/EUFRPB',
                 "kR" : "KR", #craquait
                 "S°" : "SK",

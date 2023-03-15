@@ -2014,6 +2014,11 @@ class TestPluvier:
 
     def test_verb_matching(self):
         self.assertAllMatching('parlez' , ["PARL/*EZ"])
+
+
+    def test_verb_matching_ter(self):
+        self.assertAllMatching('terminer' , ['-TS/PHEUB/-R', 'TAEURPL/EUB/-R'])
+
     def test_verb_matching_importee(self):
         self.assertAllMatching('importée' ,['EUPB/-RPT/ED', 'KPWORT/ED'])
 

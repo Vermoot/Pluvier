@@ -68,7 +68,7 @@ class Steno_Encoding:
                 "RSi" : "VRPB",
                 'REj' : '-/RLZ' , #oreille
 
-                "tER": "-/TS",  #notaire
+                "tER": "TAEUR|TS",  #notaire
                 "EtR" : "-/TS" , #fenetre
                 "RS" : "VRPB",# -rche
                 "dZEk" : "-/PBLG",

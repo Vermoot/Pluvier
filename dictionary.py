@@ -80,8 +80,8 @@ class Dictionary:
         duplicated = {}
 
         for word in self.words:
-            if word.word  in tao.values():
-                continue
+#            if word.word  in tao.values():
+#                continue
  
             if word.is_verb() and not word.is_infinitif():
                 continue
@@ -93,6 +93,9 @@ class Dictionary:
                 if steno in translated_word  and (translated_word[steno] == word.word):
                     continue
                 if steno in translated_word and '*' not in steno:
+                    if word.word  in tao.values():
+                        continue
+ 
                     original = steno
                     steno = self.steno_class.add_star(steno)
                     if steno in translated_word :
