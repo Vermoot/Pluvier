@@ -442,8 +442,9 @@ class TestPluvier:
                          })
 
     def test_lesson16_KWR_for_y_and_G_for_j(self):
+        self.assertAllMatching("yacht", ["KWROT"]) #mistake in lesson : kwrat
         self.assertSame({
-#            "KWROT": "yacht", #mistake in lesson : kwrat
+            "KWROT": "yacht", #mistake in lesson : kwrat
 #            "KWRAT/US": "hiatus", #strange hier is not kwr...
             "PAG": "page",
             "PHARG": "marge", #'maRZ'
@@ -528,10 +529,11 @@ class TestPluvier:
             #
                          },False)
 
-    def test_lesson19_WstarEL_ending_uel(self):
+    def test_lesson19_WEL_ending_uel_stl_remove_star(self):
         self.assertSame({
-        "WEUZ/W*EL": "visuel",
-        "TKPWRAD/W*EL": "graduel",
+        "WEUZ/WEL": "visuel",
+        "TKPWRAD/WEL": "graduel",
+            "TKPWRAD/W*EL": "graduelle",
 #                         "ABT/W*EL": "habituel",
                          })
 
@@ -559,7 +561,11 @@ class TestPluvier:
 
                          })
         
-    def test_lesson21_starEL_el_ortho_final(self):
+    def test_lesson21_modify_stl_EL_el_ortho_final(self):
+        self.assertAllMatching("cruel", [ "KR-/WEL", "KRUL", "KRU/EL", "KRU/AEUL"])
+        self.assertAllMatching("cruelle", [ "KR*UL", "KRU/*EL", "KRU/A*EUL"])
+        
+    def test_lesson21_modify_stl_starEL_elle_ortho_final(self):
         self.assertSame({
 #            "KRU/*EL": "cruel",
 #            "K-PB/*EL": "conditionnel",
@@ -1027,7 +1033,7 @@ class TestPluvier:
 
         })
 
-    def test_lesson38_starL_suffixe_elle(self):
+    def test_lesson38_LGTS_suffixe_t_elle(self):
         self.assertSame({
 #            "TKEPBLGTS": "dentelle",
 #            "AT/*EL": "attelle",
@@ -1360,7 +1366,7 @@ class TestPluvier:
 
     def test_lesson50_LZ_sound_ille_RLZ_sound_reille(self):
         self.assertSame({
-            "HABLZ": "habille",
+            "HABLZ": "habille", 
 #            "AEUG/AULZ": "aiguille",
             "AB/AEULZ": "abeille",
             "PWEULZ": "bille",
@@ -1416,7 +1422,7 @@ class TestPluvier:
         self.assertSame({
 #            "PRAOUPGS": "préoccupation",
             "OPGS": "option",
-            "OPGS/*EL": "optionnel",
+            "OPGS/EL": "optionnel",
 #            "EUPBS/KREUPGS": "inscription",
 #            "STKREUPGS": "description",
             "KRUPGS": "corruption",
@@ -1516,7 +1522,7 @@ class TestPluvier:
     def test_lesson55_s_infrontof_c_or_p_can_be_omitted(self):
         self.assertSame({
             "AEUBG/HRAER": "escalier",
-
+            "AEUS/POEUR": "espoir",
             "AEUP/OEUR": "espoir",
             # "AEUP/*ER": "espère",
             # "SPOEUR": "espoir",
@@ -1597,6 +1603,7 @@ class TestPluvier:
 #            "SKWAL": "cheval",
 #            "SKWAOBGS": "cheveux",
  #           "SKHEUL": "chenil",
+
             "SKWAEU": "chevet",
             "SKHRAEU": "chalet",
             "SKWAL/AEU": "chevalet",
@@ -1757,8 +1764,10 @@ class TestPluvier:
 
 
     def test_new_rule_e_ee(self):
+        self.assertAllMatching("codé",[ "KOD/-D"])
         self.assertSame({
 #            "KWR/-D" : "joué",
+
             "TRET/-D" : "traité",
             "TRET/ED" : "traitée",
             "SHRAR/AE":"salarié",
@@ -1876,6 +1885,10 @@ class TestPluvier:
         self.assertSame({
             #           "EUPBLG/-R": "imaginer",
 #            "KOU": "coucher",
+            "R-FL/UZ": "refuse",
+            "DEUZ": "dire",
+            "EMMER": "pareil",
+            "DVEN": "devenu",
             "DES": "design",
             "GANK": "gangrener",
                         "ANK": "enquiller",
@@ -1936,7 +1949,7 @@ class TestPluvier:
             "HOERT": "hauteur", 
 #            "A/TRAFRPBLG/ "affranchir",
 #            "PL": "plaisez",
-            "-DZ": "dire",
+
             "R-PBTS/-R": "rentrer",
             "STK-FRLG/EUPBG": "déglingue",
 #            "OEA" : "entendaient",
@@ -2033,6 +2046,10 @@ class TestPluvier:
 
     def test_verb_matching_salarier(self):
         self.assertAllMatching('salarier' , ['SHRAR/AER'] ) 
+
+    def test_verb_matching_reconstruire(self):
+        self.assertAllMatching('reconstruire' , ['SHRAR/AER'] ) 
+
 
     def test_verb_matching_salarie(self):
         self.assertAllMatching('salarié' , ['SHRAR/AE'] ) 

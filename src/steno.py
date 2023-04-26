@@ -146,7 +146,7 @@ class Steno:
                 'sp' : 'SP',
                 'sn' : 'STPH',
 #                'k§' : '-KON', # conte
-                'k§' : 'KOEPB/', # content
+                'k§' : 'KOPB/', # content
                 'du' : 'TKOU',
                 "pn" : "TPH",
                 "@p" : "KPW",
@@ -181,6 +181,7 @@ class Steno:
                 'réu' : OrthoPrefix('Rey', 'REU'),
                 'fin'  : OrthoPrefix('fin', 'WH'),
                 'fen'  :OrthoPrefix('f°n', 'WH'),
+                'y'  :OrthoPrefix('j', 'KWR'),
                 
 #                "a" : OrthoPrefix('a-','AE-'), # sound
 
@@ -233,7 +234,6 @@ class Steno:
                 "velle" : OrthoSuffix("vEl", "-/FL"),
                 "quelle" : OrthoSuffix("kEl", "-/BLG"),
                 "quel" : OrthoSuffix("kEl", "-/BLG"),
-                "elle" : OrthoSuffix("El", "AEUL|/*EL"),
 
                 "ière"  : OrthoSuffix('jER', 'A*ER').set_mandatory(),
 #                "ier"  : OrthoSuffix('jER|ije|je', '/AER').set_mandatory(),
@@ -249,8 +249,9 @@ class Steno:
                 'cte' : OrthoSuffix('kt', 'KT'),
                 "ène" : OrthoSuffix("En","/*EB"),
 #                "eur" : OrthoSuffix("9R","-AO*R"),
-                "uel" : OrthoSuffix("yEl","/U*EL"),
-                "uel" : OrthoSuffix("8El","/W*EL"),
+
+                "uelle" : OrthoSuffix("yEl|8El","/*UL|/W*EL"),
+                "uel" : OrthoSuffix("yEl|8El","/UL|/WEL"),
                 "anche" : OrthoSuffix("@S","/AFRPBLG"),
                 "rche" : OrthoSuffix("RS","-/FRPB"),
                 "che" : OrthoSuffix("S","-/FP"),
@@ -265,7 +266,7 @@ class Steno:
                 "ci" : OrthoSuffix("si", "-/RB"),
                 "cet" : OrthoSuffix("sE", "SZAEU"),
                 "ce" : OrthoSuffix("s", "-SZ").alternative('ss'),
-                "el" : OrthoSuffix("El", "/*EL"),
+                "el" : OrthoSuffix("El", "/EL"),
                 "th" : OrthoSuffix("t", "-GT"),
                 "the" : OrthoSuffix("t", "-GT"),
                 "a" : OrthoSuffix("a", "/*Z"),
@@ -447,9 +448,9 @@ class Steno:
                 "nEs" : "BS",
                 "Et" : "/AEUT",
                 "mn" : "/KH",
-                'El' :'-/FL',
+#                'El' :'-/FL',
                 "E" : "/AEU",
-                "e" : "E",
+                "e" : "-/D",
                 "n" : "-/B",
                 'j' : '-/LZ',
                 "§" : "OPB|/*PB",
@@ -601,6 +602,12 @@ class Steno:
                                 replace ='dez' 
                                 by='STK'
                                 remains = phonetics[3:]
+                        if phonetics.startswith('dek'):
+                                self.prefix = {'STK':'dez'}
+                                replace ='dez' 
+                                by='STK'
+                                remains = phonetics[3:]
+
                         if phonetics.startswith('des'):
                                 self.prefix = {'STK':'des'}
                                 replace ='des' 
@@ -1228,9 +1235,9 @@ class Steno:
                                 final_word= Steno_Encoding(remains, prefix.get_steno(), suffix).encode()
                                 if ending :
                                         final_word = self.concat_ending(final_word, ending.get_steno())
-                                if has_homophone and initial_word.is_verb() and not prefix.has_ortho_rule() and not ending:
-                                        Log( 'is homophone',suffix.has_ortho_rule())
-                                        final_word = self.add_star(final_word)
+#                                if has_homophone and initial_word.is_verb() and not prefix.has_ortho_rule() and not ending:
+ #                                       Log( 'is homophone',suffix.has_ortho_rule())
+  #                                      final_word = self.add_star(final_word)
                                 results.append(final_word)
 #                        final_word = self.orth_ending_iere(initial_word.word, final_word)
 

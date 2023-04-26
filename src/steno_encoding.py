@@ -120,7 +120,7 @@ class Steno_Encoding:
 #                "jO": "RO",     # fjord
                 "j§": "AO",     # av_ion_
                 "kw": "KW",
-                'k§' : 'KOEPB', # content
+                'k§' : 'KOPB', # content
 #                "wE": "WAEU",
                 "wE" : "WE",
                 "fR" : "/TPR|/FR",
@@ -145,7 +145,7 @@ class Steno_Encoding:
                 'fl': "FL",
                 "ska" : "K",#skrute
                 "sk" : "K",#skrute
-                "sp" : "P",#skrute
+                "sp" : "P",#espoir
                 'S' : 'SH|FP',
                 "5" : "/EUPB",
                 'n' : 'TPH|B',

@@ -109,8 +109,10 @@ class Dictionary:
                 #                    print(steno)
                 if steno in translated_word  and (translated_word[steno] == word.word):
                     continue
-                if steno in translated_word and '*' not in steno:
-                    steno = self.steno_class.add_star(steno)
+
+                if steno in translated_word:
+                    if  '*' not in steno:
+                        steno = self.steno_class.add_star(steno)
                     if steno in translated_word :
                         if steno not in duplicated:
                             duplicated[steno] = []
