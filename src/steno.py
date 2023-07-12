@@ -250,7 +250,7 @@ class Steno:
                 "ène" : OrthoSuffix("En","/*EB"),
 #                "eur" : OrthoSuffix("9R","-AO*R"),
 
-                "uelle" : OrthoSuffix("yEl|8El","/*UL|/W*EL"),
+                "uelle" : OrthoSuffix("yEl|8El","/*UL|/W*EL").set_mandatory(),
                 "uel" : OrthoSuffix("yEl|8El","/UL|/WEL"),
                 "anche" : OrthoSuffix("@S","/AFRPBLG"),
                 "rche" : OrthoSuffix("RS","-/FRPB"),
@@ -266,7 +266,9 @@ class Steno:
                 "ci" : OrthoSuffix("si", "-/RB"),
                 "cet" : OrthoSuffix("sE", "SZAEU"),
                 "ce" : OrthoSuffix("s", "-SZ").alternative('ss'),
+                "elle" : OrthoSuffix("El", "/*EL").set_mandatory(),
                 "el" : OrthoSuffix("El", "/EL"),
+                
                 "th" : OrthoSuffix("t", "-GT"),
                 "the" : OrthoSuffix("t", "-GT"),
                 "a" : OrthoSuffix("a", "/*Z"),
@@ -412,7 +414,7 @@ class Steno:
                 'zm' : '-/FPL',
                 'sm' : '-/FPL',
                 'di' : '/*D',  #interdit ?
-                "tEkt" :  "-/T*K",
+                "tEkt" :  "/T*BG",
 #                "EtR" : "-/TS",
                 "SEt" : "-/FPT" , # achete
 #                "RZ" : "-/RPBLG",
@@ -461,7 +463,7 @@ class Steno:
                 'N' : 'PG',
 
                 "Z" : "G", # rage
-                'u' : 'O*U',
+                'u' : 'OU',
 #                "S" : "-/FRPBLG",
                 'k' : 'K',
 
@@ -756,7 +758,7 @@ class Steno:
                 self.ending_syll = phonetics
                 Log('ending syll',phonetics)
                 if  verb_word.is_passe_compose():
-                        if verb_word.word.endswith('ué') or verb_word.word.endswith('oué') :
+                        if verb_word.syll.endswith('8e') or verb_word.syll.endswith('wE') or verb_word.syll.endswith('we') :
                                 self.ending = "/W*E"
                                 self.ending_syll = phonetics[:-2]
                                 cutword=self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
@@ -780,7 +782,7 @@ class Steno:
                 if verb_word.is_conditionnel():
                         self.ending = "/-RS"
                         if verb_word.is_third_person_plural():
-                                self.ending = "/-RAEUPBT"
+                                self.ending = "RAEUPBT"
 #                                self.ending = "/-RPB"
                                 self.ending_syll = phonetics[:-2]
                                 cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
@@ -790,7 +792,7 @@ class Steno:
 #                                                        if verb_word.word.endswith('rait'):
 #                                        self.ending = "-RTS"
 
-                        if (verb_word.word.endswith('rais') or verb_word.word.endswith('rait')) and verb_word.syll.endswith('E') :
+                        if ( verb_word.word.endswith('rait')) and verb_word.syll.endswith('E') :
                                 self.ending = "/-RS"
 
                                 self.ending_syll = phonetics[:-2]
@@ -845,11 +847,30 @@ class Steno:
                         cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
                         cutword.mandatory=True
                         return cutword
-                
+                if verb_word.ending_with('erons'):
+                        self.ending = "ROPB"
+                        self.ending_syll = phonetics[:-3]
+                        cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                        cutword.mandatory=True
+                        return cutword
+                if verb_word.ending_with('ont'):
+                        self.ending = "OPBT"
+                        self.ending_syll = phonetics[:-1]
+                        cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                        cutword.mandatory=True
+                        return cutword
+                if verb_word.ending_with('ons'):
+                        self.ending = "OPB"
+                        self.ending_syll = phonetics[:-1]
+                        cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                        cutword.mandatory=True
+                        return cutword
+
+
                 if verb_word.ending_with('ais'):
 #                if verb_word.is_imparfait():
                         Log('imparfait')
-                        self.ending = "/-S"
+                        self.ending = "/AEUS"
 #                        self.ending = "/AEUS"
                         if verb_word.syll.endswith('E') :
                                 self.ending_syll = phonetics[:-1]
@@ -873,7 +894,7 @@ class Steno:
 #                                self.ending = "/AEUT"
                         if verb_word.syll.endswith('E') :
                                 self.ending_syll = phonetics[:-1]
-                        self.ending = "/AEUT"
+                        self.ending = "/-S"
                         cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending, True)
                         cutword.mandatory=True
                         return cutword
@@ -904,7 +925,7 @@ class Steno:
 #                                self.ending = "/AEUT"
                         if verb_word.syll.endswith('E') :
                                 self.ending_syll = phonetics[:-1]
-                        self.ending = "/-T"
+                        self.ending = "/-PBT"
                         cutword = self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
                         cutword.mandatory=True
                         return cutword
@@ -1199,7 +1220,10 @@ class Steno:
                 if '/' in word :
                          endstring = word.rsplit('/',1)[1]
                 Log('endstring',endstring)
+
                 if [char for char in   ['A', 'E', 'O' , 'U', '*' ,'-'] if  char in endstring]:
+                        return word+'/'+ending
+                if ending[0]=='R'and 'R' in endstring :
                         return word+'/'+ending
                 Log('wtor',endstring)
                 return word+ending

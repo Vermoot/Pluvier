@@ -120,15 +120,16 @@ class Syllabe:
         def is_left_hand(self):
                 return self.hand == 'L'
 
-        def contains_woyels(self, word) :
+        def contains_woyels(self, syll) :
+                word = syll.split('/')[-1]
                 return "*" in word or "A" in word or "O" in word or "E" in word or "U" in word
                 
         def add_hyphen(self, word):
-
+                Log('add hyphen : already encoded', word)
                 if self.already_encoded :
                         return word
-                Log('hand', self.hand)
-                Log('word', word)
+                Log('add hyphen : hand', self.hand)
+                Log('add hyphen : word', word)
                 if self.previous is None and self.hand == 'R'  and self.already_encoded == "" :
                         return '-'+word
                 
@@ -177,7 +178,7 @@ class Syllabe:
                                 
                         if not not_found:
 #                                self.encoded_hand = self.encoded_hand + self.add_hyphen(key_trans)
-                                encoded_hand=encoded_hand + key_trans
+                                encoded_hand=encoded_hand+key_trans
                 return [encoded_hand,keys,rest,not_found]
 
         
@@ -252,7 +253,8 @@ class Syllabe:
                 Log('hand:',self.hand)
                 Log('contains voyelles:',self.contains_woyels(syllabe))
                 if (self.is_right_hand() and not self.contains_woyels(encoded)  and not self.contains_woyels(self.encoded_hand) and  self.previous) and not syllabe.startswith( '-'):
-                        Log('previous:',self.previous.encoded_hand)
+                        Log('here previous:',self.previous.hand)
+                        Log('here previous:',self.previous.encoded_hand)
                         if self.previous.hand=='L' and not self.contains_woyels(self.previous.encoded_hand):
                                 self.encoded_hand =self.add_hyphen_after(self.encoded_hand)
 
@@ -271,6 +273,7 @@ class Syllabe:
                 return (rest,not_found)
 
         def add_hyphen_after(self,syllabe):
+                Log('add hyphen after', syllabe)
                 if '-' not in syllabe:
                         return syllabe + '-'
                 return syllabe
@@ -292,6 +295,7 @@ class Syllabe:
                         previous = previous.previous
                 return consume ==''
         def syll_can_enter(self, syll, keysleft) :
+                Log('> Function: syll_can_enter:'+syll)
                 for char in syll:
                         if not char in keysleft:
                                 Log('have to change')
@@ -323,7 +327,7 @@ class Syllabe:
                         if not self.already_encoded and ( key in sounds.keys()):
                                 key_trans = sounds[key]
 
-#                        Log('key_trans', key_trans)
+                        Log('key_trans', key_trans)
                         for key_trans_char in key_trans:
                                 if key_trans_char in keys :
                                         keys = keys.split(key_trans_char)[1]

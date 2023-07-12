@@ -67,3 +67,5 @@ tThese two resources are the backbone of Pluvier's dictionary generation, allowi
 ## Syllabification [WIP]
 
 Here be some blab about how syllables will be chopped up in written-out outlines, taking a lot from Aerick's Lapwing syllabification specs, and talking about how that could be achieved with the CVC info from Lexique
+
+

@@ -2,6 +2,7 @@ from src.log import Log
 from src.syllabe import Syllabe
 from src.cutword import Cutword
 class Steno_Encoding:
+        
         CHUNKS = {
                 # syllabe of sound
                 # separate by |  => right_hand|left_hand
@@ -77,6 +78,7 @@ class Steno_Encoding:
                 "bZ" : "-/PBLG",
                 "ps" : "S",
                 "pR":"PR|PS", #-pre
+                'stR' : '-/TS',#new rule
                 'st' : 'ST|FT',#new rule
                 'En' : 'AIB',
                 'eO' : 'AOU',
@@ -86,7 +88,7 @@ class Steno_Encoding:
                 "vaj" : "-/FL",
                 "vEj" : "-/FL",
                 #'@v' : 'ENVH', #envenime
-                'vwa' : 'WOEU',# not in TAO rules..
+#                'vwa' : 'WOEU',# not in TAO rules..
                 't8' : 'TW', # fru-ctu-eux
 #                "kR" : "KR", 
                 "ks": "-/BGS",
@@ -140,16 +142,22 @@ class Steno_Encoding:
 #                "vR": "VR",
                 'oo' : 'O',    #zoo
                 "ya": "WA",     # suave
-#                "ij": "LZ",    # bille # TODO Maybe not a diphtong, but a word ending/consonant thing
+#                "ij": "/LZ",    # bille # TODO Maybe not a diphtong, but a word ending/consonant thing
 
                 'fl': "FL",
                 "ska" : "K",#skrute
                 "sk" : "K",#skrute
-                "sp" : "P",#espoir
+                "sp" : "SP|P",#espoir
                 'S' : 'SH|FP',
                 "5" : "/EUPB",
                 'n' : 'TPH|B',
                 'N' : '-PG|PG',
+                "@": "/APB",     # pluie
+        }
+        ALONE_SUFFIXES = {
+                'OU' : 'O*U',
+                '-PB': '-*PB',
+                'OEUB' : 'O*EUB'
         }
         VOWELS = {
                 "a": "A",       # chat
@@ -163,7 +171,7 @@ class Steno_Encoding:
 
                 '1' : 'U',
 #                'e' : '',
-                "@": "AN",     # pluie
+
                 "e": "E",       # clé
                 "E" : "AEU", #collecte
 #                "e" : "AEU", #collecte
@@ -244,33 +252,34 @@ class Steno_Encoding:
                 Log('find match word', word)
                 list_tuple=[]
                 for sound, steno in self.CHUNKS.items():
-                        if sound in word:
-                                Log('find sound', sound)
-#                                self.found_sound = diphtong[1]
-                                if word.startswith(sound):
-                                        list_tuple.append((sound,steno)) 
-                                        end = word[len(sound):]
-                                        if end :
-                                                for  newkey, value in self.find_matching(syll,end):
-                                                        list_tuple.append((newkey,value)) 
-                                        return list_tuple
-                                if word.endswith(sound):
-                                        start = word[:-len(sound)]
-                                        if start :
-                                                for  key, value in self.find_matching(syll,start):
-                                                        list_tuple.append((key,value)) 
-                                        list_tuple.append((key,steno))
-                                        return list_tuple
-
-                                splitted = word.split(sound)
-                                start  =splitted[0]
-                                for  newkey,value in self.find_matching(syll,start):
-                                        list_tuple.append((newkey,value)) 
-                                list_tuple.append((sound,steno))     
-                                end = splitted[1]
-                                for  newkey,value in self.find_matching(syll,end):
-                                        list_tuple.append((newkey,value)) 
+                        if not sound in word:
+                                continue
+                        Log('Find sound:', sound)
+                         #                                self.found_sound = diphtong[1]
+                        if word.startswith(sound):
+                                list_tuple.append((sound,steno)) 
+                                end = word[len(sound):]
+                                if end :
+                                        for  newkey, value in self.find_matching(syll,end):
+                                                list_tuple.append((newkey,value)) 
                                 return list_tuple
+                        if word.endswith(sound):
+                                start = word[:-len(sound)]
+                                if start :
+                                        for  key, value in self.find_matching(syll,start):
+                                                list_tuple.append((key,value)) 
+                                list_tuple.append((key,steno))
+                                return list_tuple
+
+                        splitted = word.split(sound)
+                        start  =splitted[0]
+                        for  newkey,value in self.find_matching(syll,start):
+                                list_tuple.append((newkey,value)) 
+                        list_tuple.append((sound,steno))     
+                        end = splitted[1]
+                        for  newkey,value in self.find_matching(syll,end):
+                                list_tuple.append((newkey,value)) 
+                        return list_tuple
                 list_tuple.append((word, ""))
 
                 return list_tuple
@@ -370,7 +379,7 @@ class Steno_Encoding:
                                 if encoded and syllabe.is_left_hand() and not '/' in syllabe.encoded_hand and (previous and  previous.is_right_hand()):
                                         self.word_encoded = self.word_encoded+ '/'+encoded
                                 else:
-                                        self.word_encoded = self.word_encoded+ encoded               
+                                        self.word_encoded = self.word_encoded+encoded
                                 Log('encoded word', self.word_encoded)
                                 previous = syllabe
                         next_syll = self.syllabes[count_syll:]
@@ -394,8 +403,9 @@ class Steno_Encoding:
                         splitted = self.word_encoded.split('/')
                         splitted[len(splitted)-1]= self.add_star(splitted[len(splitted)-1])
                         self.word_encoded = '/'.join(splitted)
-                if self.word_encoded.endswith('/OU'):
-                        self.word_encoded = self.word_encoded.replace('/OU','/O*U')
+                for alone, replaced_by in self.ALONE_SUFFIXES.items():
+                        if self.word_encoded.endswith('/'+alone):
+                                self.word_encoded = self.word_encoded.replace('/'+alone,'/'+replaced_by)
                 
                 return  self.word_encoded
         
