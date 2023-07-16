@@ -174,7 +174,7 @@ class Steno:
                 "comm" : OrthoPrefix('kom|kOm','KPH'),
 #                "cont" : OrthoPrefix('k§t','KOEPB/T|KOPB/T|ST'),
                 "com" : OrthoPrefix('k§','K*/|K'),
-                "con" : OrthoPrefix('k§','KOEPB|KOPB|S'),
+                "con" : OrthoPrefix('k§','KOEPB/|KOPB|S'),
                 'inter' : OrthoPrefix('5tER', 'EUPBTS'), #SPWR
                 'ind' : OrthoPrefix('5d', 'SPW'),
                 'end' : OrthoPrefix('@d', 'SPW'),
@@ -206,7 +206,7 @@ class Steno:
                 'tivité': OrthoSuffix('tivite', '/TEUFT'),
                 'vité': OrthoSuffix('vite', '-/FT'),
                 'cité': OrthoSuffix('site', '-/FT'),
-                'sité': OrthoSuffix('site', 'ST*E'),
+                'sité': OrthoSuffix('site', '/ST*E'),
                 'igé': OrthoSuffix('iZe', 'EG'),
                 'iger': OrthoSuffix('iZe', '*EG'),
                 'ience' : OrthoSuffix('j@s', 'AENS'),
@@ -271,7 +271,7 @@ class Steno:
                 
                 "th" : OrthoSuffix("t", "-GT"),
                 "the" : OrthoSuffix("t", "-GT"),
-                "a" : OrthoSuffix("a", "/*Z"),
+                "a" : OrthoSuffix("a", "-Z|/*Z"),
                 
 
         }
@@ -447,7 +447,7 @@ class Steno:
                 "tR": "-/TS", #tre - 
                 "bR":"-/BS",  #-bre
                 "pR":"-/PS", #-pre
-                "nEs" : "BS",
+                "nEs" : "/BS",
                 "Et" : "/AEUT",
                 "mn" : "/KH",
 #                'El' :'-/FL',
@@ -458,6 +458,7 @@ class Steno:
                 "§" : "OPB|/*PB",
 #                "sm" : "-/FP",
                 'o' : 'OE',
+                'a' : '-Z|/*Z',
                 'O' : 'O',
 #                't' : 'T',
                 'N' : 'PG',
@@ -1257,6 +1258,7 @@ class Steno:
                                 Log('trouve suffixes', remains)
 
                                 final_word= Steno_Encoding(remains, prefix.get_steno(), suffix).encode()
+                                Log('ending', ending)
                                 if ending :
                                         final_word = self.concat_ending(final_word, ending.get_steno())
 #                                if has_homophone and initial_word.is_verb() and not prefix.has_ortho_rule() and not ending:

@@ -353,7 +353,7 @@
         "centrale",
         "centrales"
     ],
-    "STR*L": [
+    "ST*RL": [
         "central",
         "centrale",
         "centrales"
@@ -751,6 +751,10 @@
         "ney",
         "né"
     ],
+    "HR/W*E": [
+        "levé",
+        "loué"
+    ],
     "W*EUPB/KU": [
         "vaincu",
         "vaincue"
@@ -835,7 +839,7 @@
         "dessus",
         "déçue"
     ],
-    "HOR/*EUZ/OFL/RPT/AL": [
+    "HOR/EUZ/OFL/R*PT/AL": [
         "horizontal",
         "horizontale"
     ],
@@ -963,11 +967,6 @@
         "boulot",
         "bouleaux",
         "bouleau"
-    ],
-    "SKR*T": [
-        "secteur",
-        "charte",
-        "charité"
     ],
     "TPHA*Z": [
         "naze",
@@ -1145,7 +1144,7 @@
         "lacs",
         "lack"
     ],
-    "AE/P*BL": [
+    "AE/*PBL": [
         "anal",
         "annales",
         "anale"
@@ -1190,7 +1189,7 @@
         "ter",
         "taire"
     ],
-    "KOEPBT/*EUB/APBT/AL": [
+    "KOEPB/T*EUB/APBT/AL": [
         "continental",
         "continentale"
     ],
@@ -1373,10 +1372,6 @@
         "hom",
         "home"
     ],
-    "TPR-LZ/AO*R": [
-        "frayeur",
-        "ferrailleur"
-    ],
     "AEUBG/EUPL/O*E": [
         "esquimau",
         "esquimaux"
@@ -1433,10 +1428,6 @@
     "KPW*UBGD": [
         "embuscade",
         "embusqué"
-    ],
-    "HR*/WE": [
-        "lever",
-        "levé"
     ],
     "PEUT/*PB": [
         "python",
@@ -1631,7 +1622,7 @@
         "ran",
         "errant"
     ],
-    "R*/W-LZ/AL": [
+    "R/W*LZ/AL": [
         "royal",
         "royale"
     ],
@@ -2184,10 +2175,6 @@
         "acuponcteur",
         "acupuncteur"
     ],
-    "ABG/UP/OPB/KT/AO*R": [
-        "acuponcteur",
-        "acupuncteur"
-    ],
     "AE/KUP/OPB/K-T/AO*R": [
         "acuponcteur",
         "acupuncteur"
@@ -2610,11 +2597,6 @@
         "délacer",
         "délasser"
     ],
-    "TKPWR*L": [
-        "grill",
-        "graal",
-        "gril"
-    ],
     "SKWRAPL/AEUBG/*EUPB": [
         "jamaïcain",
         "jamaïquain"
@@ -2835,7 +2817,7 @@
         "focal",
         "focale"
     ],
-    "TKPWAFT/RO/APBT/ER/OL/O*EG": [
+    "TKPWA-/TS/O/APBT/ER/OL/O*EG": [
         "gastro-entérologue",
         "gastroentérologue"
     ],
@@ -3321,7 +3303,7 @@
         "biftèque",
         "beefsteak"
     ],
-    "PW*EUZ/PWS": [
+    "PWEUZ/*BS": [
         "business",
         "biseness",
         "bizness",
@@ -3380,7 +3362,7 @@
         "comtal",
         "comtale"
     ],
-    "KOEPBT/R*FP/APB": [
+    "KOEPB/TR*FP/APB": [
         "contrechamp",
         "contre-chant",
         "contre-champ"
@@ -3573,7 +3555,7 @@
         "merrain",
         "plain"
     ],
-    "PH-/HO*PB": [
+    "PH/HO*PB": [
         "mignon",
         "mi-gnon"
     ],
@@ -3630,7 +3612,7 @@
         "rigaudon",
         "rigodon"
     ],
-    "R-/W*EL": [
+    "R/W*EL": [
         "ruelle",
         "rouelle"
     ],

@@ -78,7 +78,7 @@ class Steno_Encoding:
                 "bZ" : "-/PBLG",
                 "ps" : "S",
                 "pR":"PR|PS", #-pre
-                'stR' : '-/TS',#new rule
+                'stR' : 'STR|-/TS',#new rule
                 'st' : 'ST|FT',#new rule
                 'En' : 'AIB',
                 'eO' : 'AOU',
@@ -321,12 +321,14 @@ class Steno_Encoding:
                                 one_hand = True
                                 self.prefix = self.prefix.replace('/','')
                         previous = Syllabe(self.prefix, None, self.prefix).prefix()
-                        if (one_hand):
-                                previous.set_one_hand()
+
+
                         self.word_encoded = previous.encoded()
-                        Log('prefix encoded', self.word_encoded)
                         if (one_hand):
-                                self.hand='L'
+                                previous.change_hand_to_left(True)
+                                self.word_encoded=self.word_encoded+'/'
+
+                        Log('prefix encoded', self.word_encoded)
                         count_syll = 2
                 i=0;
                 cutword=Cutword(self.syllabes)
@@ -338,48 +340,25 @@ class Steno_Encoding:
                         Log('one piece',piece)
                         sylls = {}
                         sylls = self.find_matching(sylls, piece)
-                        Log('sylls' , sylls)
+                        Log('find matching sylls: ' , sylls)
 
-
-#                        piece = self.diphtongs(piece)
-                        Log('word encoded' , self.word_encoded)
-#                        Log('found sound dif' , self.found_sound)
-
-                        Log('dif',piece)
-#                        piece = self.voyels(piece)
-                        Log('voyel',piece)
                         
                         if piece == "":
                                 continue
 
                         for key,new_piece in sylls :
-
-                            #    new_piece = mysyll[0]
-                                Log('syllabe',new_piece)
+                                Log(f'key:{key}, new_piece:{new_piece}')
                                 if new_piece == "":
                                         new_piece = self.voyels(key)
                                         new_piece = new_piece.upper()
-#                        for new_piece in piece.split('+'):
-                                Log('syllabe',new_piece)
+                                one_hand = False
                                 syllabe = Syllabe(new_piece.upper(), previous,next_syll)
                                 encoded = syllabe.encoded()
-                                Log('mysyll',vars(syllabe))
+                                Log('Encoded syllabe',encoded)
                                 if previous:
                                         Log('previous',vars(previous))
                                 Log('encoded syllabe', encoded)
-#                                if self.found_sound and self.found_sound.endswith("RK") and self.word_encoded.endswith('PB'):
-
-#                                        Log('found sound', self.found_sound)
-#                                        self.word_encoded = self.word_encoded[:2]
-#                                        encoded = 'KS'
-#b                                         or self.found_sound.endswith("BGS")) 
-
-
-                                Log('bef encoded word', self.word_encoded)
-                                if encoded and syllabe.is_left_hand() and not '/' in syllabe.encoded_hand and (previous and  previous.is_right_hand()):
-                                        self.word_encoded = self.word_encoded+ '/'+encoded
-                                else:
-                                        self.word_encoded = self.word_encoded+encoded
+                                self.word_encoded = self.word_encoded+encoded
                                 Log('encoded word', self.word_encoded)
                                 previous = syllabe
                         next_syll = self.syllabes[count_syll:]
@@ -428,8 +407,7 @@ class Steno_Encoding:
                                 previous.set_one_hand()
                         self.word_encoded = previous.encoded()
                         Log('prefix encoded', self.word_encoded)
-                        if (one_hand):
-                                self.hand='L'
+
                         count_syll = 2
                         previous.keys_left= ''
                 i=0;
@@ -441,15 +419,7 @@ class Steno_Encoding:
                         sylls = {}
                         sylls = self.find_matching(sylls, piece)
                         Log('sylls' , sylls)
-
-
-#                        piece = self.diphtongs(piece)
                         Log('word encoded' , self.word_encoded)
-#                        Log('found sound dif' , self.found_sound)
-
-                        Log('dif',piece)
-#                        piece = self.voyels(piece)
-                        Log('voyel:',piece)
                         
                         if piece == "":
                                 continue
@@ -462,19 +432,12 @@ class Steno_Encoding:
                                 else:
                                         new_piece = self.voyels(new_piece)
                                         new_piece = new_piece.upper()
-#                        for new_piece in piece.split('+'):
 
                                 Log('syllabe ici :',new_piece)
                                 syllabe = Syllabe(new_piece.upper(), previous,next_syll)
                                 encoded = syllabe.encoded()
 
                                 Log('encoded syllabe', encoded)
-#                                if self.found_sound and self.found_sound.endswith("RK") and self.word_encoded.endswith('PB'):
-
-#                                        Log('found sound', self.found_sound)
-#                                        self.word_encoded = self.word_encoded[:2]
-#                                        encoded = 'KS'
-#b                                         or self.found_sound.endswith("BGS")) 
                                 
                                 self.word_encoded = self.word_encoded+ encoded
                                 

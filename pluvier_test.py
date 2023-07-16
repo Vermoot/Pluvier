@@ -538,8 +538,8 @@ class TestPluvier:
 
     def test_lesson19_separate_starZ_ending_a_sound(self):
         self.assertSame({
-#            "R-P/*Z": "repas",
-            "SAG/A": "saga",
+            "R-PZ": "repas",
+            "SAGZ": "saga",
                          "SAG/*Z": "saga",
                          "KOUP/*Z": "coupa",
 #                         "WOBGZ": "avocat",
@@ -559,8 +559,8 @@ class TestPluvier:
                          })
         
     def test_lesson21_modify_stl_EL_el_ortho_final(self):
-        self.assertAllMatching("cruel", [ "KR-/WEL", "KRUL", "KRU/EL", "KRU/AEUL"])
-        self.assertAllMatching("cruelle", [ "KR-/W*EL", "KR*UL", "KRU/*EL", "KRU/A*EUL"])
+        self.assertAllMatching("cruel", [ "KR/WEL", "KRUL", "KRU/EL", "KRU/AEUL"])
+        self.assertAllMatching("cruelle", [ "KR/W*EL", "KR*UL", "KRU/*EL", "KRU/A*EUL"])
         
     def test_lesson21_modify_stl_starEL_elle_ortho_final(self):
         self.assertSame({
@@ -1811,15 +1811,14 @@ class TestPluvier:
 
     def test_stl_ont(self):
         self.assertSame({
-        "AD/KHEUTS/ROPB": "administrerons",
-
-                        "SROPBT": "seront",
-                         "WEUFR/OPB": "vivrons",
+            "AD/KHEUTS/ROPB": "administrerons",
+            "SROPBT": "seront",
+            "WEUFR/OPB": "vivrons",
             "SAPB/PWHR-R/OPBT" : "sembleront",
             "WEUFR/OPBT": "vivront",
-                         "SKR-G/ROPB" : "chargerons",
-                         "SKR-G/ROPBT" : "chargeront",
-                        "AEUL/W-LZ/OPB": "élevions",
+            "SKR-G/ROPB" : "chargerons",
+            "SKR-G/ROPBT" : "chargeront",
+            "AEUL/W-LZ/OPB": "élevions",
                          })
 
 
@@ -1827,7 +1826,7 @@ class TestPluvier:
         self.assertSame({
 #            "AQT" : "
             #'APB/PH-L/-R': "emmêler",
-            'AEUBG/RPED': "escarpée",
+            'AEUBG/R-P/ED': "escarpée",
 
         })
 
@@ -1908,12 +1907,17 @@ class TestPluvier:
             "STKOR": "dehors",
             "R-FL/UZ": "refuse",
             "-DZ": "dire",
+
             "PARLZ": "pareil",
             "STKWHU": "devenu",
-            "STK-Z/-LZ/-B": "design",
+                        "STK-Z/-LZ/-B": "design",
+            "PHAB/EUFL/AEUS/-PLT": "manifestement",
+            "EUPBTS/WHEUR":"intervenir",
+
+                                    "PHORD/-LZ/R/*Z": "mordillera",
             "GANK": "gangrener",
                         "ANK": "enquiller",
-            "EUPBTS/WHEUR":"intervenir",
+
             "R-D/WHEUR":"redevenir",
             'PWAEPB/WHU':"bienvenu",
 
@@ -1947,7 +1951,7 @@ class TestPluvier:
             "AD/-PLTS" : "admettre",
             "ABG/-GZ/-PLT": "actionnement",
             "WOEUL/AG": "voilage",   
-            "PHORD/-LZ/-R": "mordiller",
+
             "K-T/-R": "quêter",
             "KH": "min",
             "KH-R": "miner",
@@ -1955,7 +1959,7 @@ class TestPluvier:
             "PWOUL/-FRBS/ED" :"bouleversée",
             "EUPB/TPRA*BGS": "infraction",
             "PWOL/SH-F/EUFT" : "bolcheviste",
-            "PHAPB/EUFL/AEUS/-PLT": "manifestement",
+
             "PWUL" :"bulle",
             "STKPHRAS/-T" :"déplacent",
             "SHAEUFRPB/-G" :"cherchant",
@@ -2088,7 +2092,7 @@ class TestPluvier:
         self.assertAllMatching('existerais' , ['KPEUFT/-RS'] ) 
 
     def test_nom_matching_escarpee(self):
-        self.assertAllMatching('escarpée' , ['AEUBG/RPED'] ) 
+        self.assertAllMatching('escarpée' , ['AEUBG/R-P/ED'] ) 
 
     def test_nom_matching_anneau(self):
         self.assertAllMatching('anneau' , ['AE/TPHOE', 'AB/OE'] ) 
