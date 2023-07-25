@@ -51,6 +51,7 @@ class Steno_Encoding:
                 "fEk" : "-/FBG",
                                 'kE' : 'KE',
                 'psjOn' :'-/PGS',
+                'sw' : 'SW',
                 'ps' : 'S',
                 'sjOn' :'-/GZ',
                 'vERn' : '-/FRB', # gouverne
@@ -126,7 +127,7 @@ class Steno_Encoding:
 #                "wE": "WAEU",
                 "wE" : "WE",
                 "fR" : "/TPR|/FR",
-                "§t" : "OFRPT",
+                "§t" : "ONT",
                 "@S" : "/AFRPBLG",
                 "5S" : "/EUFRPBLG",
                 '@p' : '/AFRP' , #campe
@@ -168,7 +169,7 @@ class Steno_Encoding:
 
                 'u' : 'OU',
                 'l' : 'L',
-
+                'w' : 'OU',
                 '1' : 'U',
 #                'e' : '',
 
@@ -362,7 +363,7 @@ class Steno_Encoding:
                                 Log('encoded word', self.word_encoded)
                                 previous = syllabe
                         next_syll = self.syllabes[count_syll:]
-                        count_syll = count_syll+1
+                count_syll = count_syll+1
                 Log('WORD ENCODED BEFORE SUFFIX', self.word_encoded)
                 if self.suffix and self.suffix.has_separate_stroke() :
                         self.word_encoded = self.word_encoded + self.suffix.get_steno()

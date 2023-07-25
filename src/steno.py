@@ -396,7 +396,7 @@ class Steno:
                 'Ribl' : '-/RBL',
                 'Rbal' : '-/RBL' , #verbal
                 '5bal' : '/EUFRB', # trimb          
-                'bal' : '-/RB' , #global
+                'bal' : '-/BL' , #global
                 "Ral" : "RAL|-/RL",
                 'kE' : 'KE',
                 'vERs' : '-/FRBS', # diverses
@@ -426,7 +426,7 @@ class Steno:
                 'sk°'  : '-/FBG', #puisque
                 'sk' : '-/FBG',
 
-
+                'wa' : '/WA|/OEU',
                 "Re":"/R*E|RE",
                 'z§':'-/GZ',
                 "@S" : "/AFRPBLG",
@@ -458,7 +458,7 @@ class Steno:
                 "§" : "OPB|/*PB",
 #                "sm" : "-/FP",
                 'o' : 'OE',
-                'a' : '-Z|/*Z',
+                'a' : 'A|-Z|/*Z',
                 'O' : 'O',
 #                't' : 'T',
                 'N' : 'PG',

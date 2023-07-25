@@ -125,7 +125,7 @@ class TestPluvier:
                          'PAS': 'passe'
                          })
     def test_lesson3_r(self):
-        self.assertSame({'RA' : 'ras',
+        self.assertSame({
                          'RU' : 'rue',
                          'TRAP' : 'trappe',
                          'PART' : 'parte',
@@ -1256,7 +1256,8 @@ class TestPluvier:
     def test_TODO_lesson44_SRAGS_sound_ciation(self):
         self.assertSame({
 #            "AORBGS": "association",
- #           "EUB/EUGS": "initial",
+            "EUB/EU/SRAGS": "initiation",
+            #todo EUB/SRAGS
  #           "TPHEGS": "négociation",
 
 
@@ -1285,9 +1286,10 @@ class TestPluvier:
     def test_lesson46_ending_RL_rural_BL_bla_ble_RBL_rbal_rible_RT_rite(self):
         self.assertSame({
             "RURL": "rural",
-#            "TKPWHROBL": "global",
+            "TKPWHROBL": "global",
             "PHURL": "mural",
             "WEURL": "viral",
+            "KABL": "cabale",
             "WAEURBL": "verbal",
 #            "RABL": "raisonnable",
 #            "ORBL": "honorable",
@@ -1700,7 +1702,7 @@ class TestPluvier:
 
     def test_new_rule_imparfait_3p(self):
         self.assertSame({
-            "SRAEUPBT": "seraient", #todo SRAEUPBT
+            "SRAEUPBT": "seraient", 
             "AL/AEUPBT" : "allaient",
             "KPHR/RAEUPBT" : "excelleraient",
         })
@@ -1903,7 +1905,8 @@ class TestPluvier:
         self.assertSame({
             #           "EUPBLG/-R": "imaginer",
 #            "KOU": "coucher",
-
+            "SKWROU/AO*R": "joueur",
+            "PHOPBT-après": "montagne",
             "STKOR": "dehors",
             "R-FL/UZ": "refuse",
             "-DZ": "dire",
