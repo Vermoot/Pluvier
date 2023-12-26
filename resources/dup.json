@@ -33,7 +33,7 @@
         "meilleur",
         "meilleure"
     ],
-    "TPHO*UF/O": [
+    "TPHOUF/O*": [
         "nouveau",
         "nouveaux"
     ],
@@ -90,7 +90,7 @@
         "don",
         "dom"
     ],
-    "SKWREB/*E/RAL": [
+    "SKWREB/E/RA*L": [
         "général",
         "générale"
     ],
@@ -138,11 +138,11 @@
         "auteur",
         "auteure"
     ],
-    "*EUFRPB/OB/U": [
+    "EUFRBG/OB/*U": [
         "inconnu",
         "inconnue"
     ],
-    "*EUPB/KOB/U": [
+    "EUPB/KOB/*U": [
         "inconnu",
         "inconnue"
     ],
@@ -179,7 +179,7 @@
         "bain",
         "ben"
     ],
-    "A*EUP/APG/OL": [
+    "AEUP/APG/O*L": [
         "espagnol",
         "espagnole"
     ],
@@ -202,7 +202,7 @@
         "pairie",
         "paierie"
     ],
-    "HR*EG/AL": [
+    "HREG/A*L": [
         "illégal",
         "légale",
         "illégale"
@@ -333,9 +333,13 @@
         "mûre",
         "mûr"
     ],
-    "TK*EUP/AR/U": [
+    "TKEUP/AR/*U": [
         "disparu",
         "disparue"
+    ],
+    "W-B/*U": [
+        "venu",
+        "venue"
     ],
     "KR*EU": [
         "cri",
@@ -389,7 +393,7 @@
         "quant",
         "camp"
     ],
-    "PREUPBS/*EUP/AL": [
+    "PREUPBS/EUP/A*L": [
         "principal",
         "principale"
     ],
@@ -430,7 +434,7 @@
         "coeur",
         "choeur"
     ],
-    "KAP/*EUT/AL": [
+    "KAP/EUT/A*L": [
         "capitale",
         "capital"
     ],
@@ -530,7 +534,7 @@
         "lustre",
         "illustre"
     ],
-    "TPHO*RPL/AL": [
+    "TPHORPL/A*L": [
         "normal",
         "normale"
     ],
@@ -634,11 +638,23 @@
         "je",
         "j"
     ],
+    "A*BGS": [
+        "action",
+        "axe"
+    ],
+    "AE/*BGS": [
+        "action",
+        "axe"
+    ],
     "KOBG/*U": [
         "cocu",
         "cocue"
     ],
-    "*FGD/U": [
+    "-FGD/*U": [
+        "vendu",
+        "vendue"
+    ],
+    "WAPBD/*U": [
         "vendu",
         "vendue"
     ],
@@ -728,7 +744,7 @@
         "anaux",
         "anneaux"
     ],
-    "PWA*EPB/WHU": [
+    "PWAEPB/WH*U": [
         "bienvenue",
         "bienvenu"
     ],
@@ -737,7 +753,7 @@
         "dense",
         "dansante"
     ],
-    "*TS/PHEUPBL": [
+    "-TS/PH*EUPBL": [
         "terminal",
         "terminale"
     ],
@@ -753,6 +769,15 @@
         "lieu",
         "lieue",
         "lieux"
+    ],
+    "WHR*ED": [
+        "vallée",
+        "volée"
+    ],
+    "RA*EUD": [
+        "raide",
+        "radis",
+        "raid"
     ],
     "SHR*R": [
         "saler",
@@ -782,11 +807,11 @@
         "écrier",
         "courrier"
     ],
-    "*BGS/TRAT/RAEUTS": [
+    "-BGS/TRAT/RA*EUTS": [
         "extraterrestre",
         "extra-terrestre"
     ],
-    "KP*T/RAT/RAEUTS": [
+    "KP-T/RAT/RA*EUTS": [
         "extraterrestre",
         "extra-terrestre"
     ],
@@ -803,7 +828,7 @@
         "levé",
         "loué"
     ],
-    "W*EUPB/KU": [
+    "WEUPB/K*U": [
         "vaincu",
         "vaincue"
     ],
@@ -816,7 +841,7 @@
         "senne",
         "cène"
     ],
-    "STK*T/TPHU": [
+    "STK-T/TPH*U": [
         "détenu",
         "détenue"
     ],
@@ -841,6 +866,10 @@
         "bestiau",
         "bestiaux"
     ],
+    "TPA*BGS": [
+        "fax",
+        "faction"
+    ],
     "PWHRABL/*Z": [
         "bla bla",
         "bla-bla",
@@ -856,7 +885,7 @@
         "vaudoue",
         "vodou"
     ],
-    "HREUB/*E/RAL": [
+    "HREUB/E/RA*L": [
         "libéral",
         "libérale"
     ],
@@ -887,7 +916,7 @@
         "dessus",
         "déçue"
     ],
-    "HOR/*EUZ/OPBT/AL": [
+    "HOR/EUZ/OPBT/A*L": [
         "horizontal",
         "horizontale"
     ],
@@ -897,11 +926,11 @@
         "écru",
         "écrue"
     ],
-    "APBG/OUR/*D": [
+    "EPBG/OUR/*D": [
         "engourdi",
         "engourdie"
     ],
-    "A*EUS/K": [
+    "AEUS/K*": [
         "est-ce que",
         "est-ce-que",
         "est-ce qu"
@@ -917,11 +946,11 @@
         "scooter",
         "écouteur"
     ],
-    "AB/O*RPL/AL": [
+    "AB/ORPL/A*L": [
         "anormal",
         "anormale"
     ],
-    "A*E/TPHORPL/AL": [
+    "AE/TPHORPL/A*L": [
         "anormal",
         "anormale"
     ],
@@ -954,15 +983,15 @@
         "prompt",
         "perron"
     ],
-    "*BGS/KHRU": [
+    "-BGS/KHR*U": [
         "exclu",
         "exclue"
     ],
-    "KP*BG/HRU": [
+    "KP-BLG/*U": [
         "exclu",
         "exclue"
     ],
-    "KO*PB/TAPB": [
+    "KOPB/TA*PB": [
         "content",
         "comptant"
     ],
@@ -985,7 +1014,7 @@
         "tune",
         "thune"
     ],
-    "*EUPL/ORLGTS": [
+    "EUPL/O*RLGTS": [
         "immortel",
         "immortelle"
     ],
@@ -1029,7 +1058,7 @@
         "neuvième",
         "neuvièmes"
     ],
-    "PWO*UL/O": [
+    "PWOUL/O*": [
         "boulot",
         "bouleaux",
         "bouleau"
@@ -1051,7 +1080,7 @@
         "pieu",
         "pieux"
     ],
-    "R*L/ABGS": [
+    "R-L/A*BGS": [
         "relax",
         "relaxe"
     ],
@@ -1065,14 +1094,9 @@
         "étourdi",
         "étourdie"
     ],
-    "EUPBG/*EB/U": [
+    "EUPBG/EB/*U": [
         "ingénu",
         "ingénue"
-    ],
-    "A*FRBGS": [
-        "encre",
-        "aversion",
-        "ancre"
     ],
     "TA*LZ": [
         "taille",
@@ -1086,7 +1110,7 @@
         "minière",
         "meunière"
     ],
-    "A*E/R": [
+    "AE/R*": [
         "art",
         "ars",
         "are"
@@ -1096,9 +1120,15 @@
         "ars",
         "are"
     ],
-    "OBGS/*EUD/APBT/AL": [
+    "OBGS/EUD/APBT/A*L": [
         "occidental",
         "occidentale"
+    ],
+    "SK*U": [
+        "sécu",
+        "conçu",
+        "chahut",
+        "conçue"
     ],
     "PWA*EU": [
         "baie",
@@ -1113,7 +1143,8 @@
     ],
     "OD/EU/OEF/EUZ/*UL": [
         "audio-visuelle",
-        "audiovisuelle"
+        "audiovisuelle",
+        "audio-visuel"
     ],
     "OD/EU/OEF/EUZ/U/*EL": [
         "audio-visuelle",
@@ -1144,11 +1175,11 @@
         "tau",
         "taux"
     ],
-    "*EUPBTS/TPHAS/AOPBL": [
+    "EUPBTS/TPHAS/AO*PBL": [
         "international",
         "internationale"
     ],
-    "SPWA*EURB/AS/AOPBL": [
+    "SPWAEURB/AS/AO*PBL": [
         "international",
         "internationale"
     ],
@@ -1157,7 +1188,7 @@
         "allant",
         "élan"
     ],
-    "ST*EUPL/APBT/AL": [
+    "STEUPL/APBT/A*L": [
         "sentimental",
         "sentimentale"
     ],
@@ -1192,12 +1223,19 @@
         "kadi",
         "cadi"
     ],
+    "KA*EUD": [
+        "caïd",
+        "caddy",
+        "caddie",
+        "kadi",
+        "cadi"
+    ],
     "TKA*PB": [
         "dans",
         "dam",
         "dent"
     ],
-    "SP*ES/RAL": [
+    "SPES/RA*L": [
         "spécial",
         "spéciale"
     ],
@@ -1230,7 +1268,7 @@
         "mixeur",
         "mixer"
     ],
-    "OR/A*EPBT/AL": [
+    "OR/AEPBT/A*L": [
         "oriental",
         "orientale"
     ],
@@ -1252,6 +1290,10 @@
         "tant",
         "tan"
     ],
+    "ET/OUR/*EUD": [
+        "étourdi",
+        "étourdie"
+    ],
     "ETS/ET/ER/*Z": [
         "et cetera",
         "et caetera"
@@ -1261,19 +1303,19 @@
         "ter",
         "taire"
     ],
-    "KOEPB/T*EUB/APBT/AL": [
+    "KOEPB/TEUB/APBT/A*L": [
         "continental",
         "continentale"
     ],
-    "KOPB/T*EUB/APBT/AL": [
+    "KOPB/TEUB/APBT/A*L": [
         "continental",
         "continentale"
     ],
-    "KOPBT/*EUB/APBT/AL": [
+    "KOPBT/EUB/APBT/A*L": [
         "continental",
         "continentale"
     ],
-    "ST*EUB/APBT/AL": [
+    "STEUB/APBT/A*L": [
         "continental",
         "continentale"
     ],
@@ -1287,7 +1329,7 @@
         "plaine",
         "plèbe"
     ],
-    "PRA*EUFPB/U": [
+    "PRAEUFPB/*U": [
         "prévenu",
         "prévenue"
     ],
@@ -1337,7 +1379,7 @@
         "mors",
         "more"
     ],
-    "KPHA*EURS/RAL": [
+    "KPHAEURS/RA*L": [
         "commercial",
         "commerciale"
     ],
@@ -1346,7 +1388,7 @@
         "kip",
         "skip"
     ],
-    "P*EUT/PWOUL": [
+    "PEUT/PWO*UL": [
         "pitbull",
         "pit-bull",
         "pit bull"
@@ -1387,6 +1429,10 @@
     "AR/OPB/*D": [
         "arrondi",
         "arrondie"
+    ],
+    "AFRPL/*T": [
+        "amulette",
+        "emplette"
     ],
     "PAR/WH*U": [
         "parvenu",
@@ -1477,7 +1523,12 @@
         "hai",
         "haïe"
     ],
-    "*FRB/EU": [
+    "-FRB/*EU": [
+        "vernis",
+        "vernie",
+        "verni"
+    ],
+    "WAEURB/*EU": [
         "vernis",
         "vernie",
         "verni"
@@ -1486,7 +1537,16 @@
         "cabine",
         "canine"
     ],
+    "*EUD": [
+        "dit",
+        "ide",
+        "die"
+    ],
     "WHRAT/*EUL": [
+        "volatil",
+        "volatile"
+    ],
+    "WOL/AT/*EUL": [
         "volatil",
         "volatile"
     ],
@@ -1506,7 +1566,7 @@
         "intégral",
         "intégrale"
     ],
-    "EUPBT/*EG/RAL": [
+    "EUPBT/EG/RA*L": [
         "intégral",
         "intégrale"
     ],
@@ -1514,11 +1574,11 @@
         "intégral",
         "intégrale"
     ],
-    "SPW*EG/RAL": [
+    "SPWEG/RA*L": [
         "intégral",
         "intégrale"
     ],
-    "R*EG/AOPBL": [
+    "REG/AO*PBL": [
         "régional",
         "régionale"
     ],
@@ -1581,23 +1641,23 @@
         "click",
         "clic"
     ],
-    "KOEPB/*FRBT/EU": [
+    "KOEPB/-FRBT/*EU": [
         "converti",
         "convertie"
     ],
-    "KOPB/*FRBT/EU": [
+    "KOPB/-FRBT/*EU": [
         "converti",
         "convertie"
     ],
-    "S*FRBT/EU": [
+    "S-FRBT/*EU": [
         "converti",
         "convertie"
     ],
-    "APB/K*Z": [
+    "EPB/K*Z": [
         "en-cas",
         "encas"
     ],
-    "H*EB/RAO": [
+    "HEB/RAO*": [
         "hébreu",
         "hébreux"
     ],
@@ -1640,7 +1700,7 @@
         "refroidi",
         "refroidie"
     ],
-    "TR*EUB/U": [
+    "TREUB/*U": [
         "tribu",
         "tribun",
         "tribut"
@@ -1650,7 +1710,7 @@
         "curie",
         "curry"
     ],
-    "*PBLG/EUB": [
+    "-PBLG/*EUB": [
         "jean",
         "djinn",
         "gin"
@@ -1695,7 +1755,7 @@
         "ran",
         "errant"
     ],
-    "RO*ULZ/AL": [
+    "ROULZ/A*L": [
         "royal",
         "royale"
     ],
@@ -1801,7 +1861,7 @@
         "cella",
         "salat"
     ],
-    "KO*EUPL/OT": [
+    "KOEUPL/O*T": [
         "copilote",
         "co-pilote"
     ],
@@ -1824,11 +1884,6 @@
         "bourrichon",
         "berrichon"
     ],
-    "TKPW*": [
-        "j",
-        "geai",
-        "jais"
-    ],
     "EUPBT/ROFRBT/*EU": [
         "introverti",
         "introvertie"
@@ -1850,11 +1905,11 @@
         "coraux",
         "choraux"
     ],
-    "PA*EURS/APB": [
+    "PAEURS/A*PB": [
         "perçant",
         "persan"
     ],
-    "PR*S/APB": [
+    "PR-S/A*PB": [
         "perçant",
         "persan"
     ],
@@ -1901,6 +1956,11 @@
         "tender",
         "tendeur"
     ],
+    "HREG/A*PLT": [
+        "légalement",
+        "élégamment",
+        "illégalement"
+    ],
     "AE/HR*D": [
         "aller",
         "alde",
@@ -1921,6 +1981,10 @@
     "WHO*E": [
         "finaux",
         "finaud"
+    ],
+    "WA*EURT": [
+        "verte",
+        "vecteur"
     ],
     "TKPWA*GZ": [
         "gazon",
@@ -1943,7 +2007,7 @@
         "travailleur",
         "traveller"
     ],
-    "PW*EUG/O": [
+    "PWEUG/O*": [
         "bingo",
         "bigot",
         "bigo"
@@ -1994,7 +2058,7 @@
         "cyan",
         "sciant"
     ],
-    "SKWR*R/EUBG/AB": [
+    "SKWR-R/EUBG/A*B": [
         "jerrycan",
         "jerricane",
         "jerrican"
@@ -2012,7 +2076,7 @@
         "piqueur",
         "picker"
     ],
-    "R*P/APBT/EU": [
+    "R-P/APBT/*EU": [
         "repenti",
         "repentie"
     ],
@@ -2020,15 +2084,19 @@
         "bouillie",
         "bouilli"
     ],
-    "*FRBT/EUBG/AL": [
+    "-FRBT/EUBG/A*L": [
         "verticale",
         "vertical"
     ],
-    "A*E/PHOB/RABG": [
+    "WAEURT/EUBG/A*L": [
+        "verticale",
+        "vertical"
+    ],
+    "AE/PHOB/RA*BG": [
         "ammoniaque",
         "ammoniac"
     ],
-    "APL/O*B/RABG": [
+    "APL/OB/RA*BG": [
         "ammoniaque",
         "ammoniac"
     ],
@@ -2080,11 +2148,11 @@
         "ampleur",
         "emballeur"
     ],
-    "EUPB/PR*R/AL": [
+    "EUPB/PR-R/A*L": [
         "impérial",
         "impériale"
     ],
-    "KPWR*R/AL": [
+    "KPWR-R/A*L": [
         "impérial",
         "impériale"
     ],
@@ -2167,7 +2235,7 @@
         "tore",
         "tors"
     ],
-    "T*S/EUG/AB": [
+    "T-S/EUG/A*B": [
         "tzigane",
         "tsigane"
     ],
@@ -2187,7 +2255,7 @@
         "field",
         "filé"
     ],
-    "H*LZ/TAEUBG": [
+    "H-LZ/TA*EUBG": [
         "high tech",
         "high-tech"
     ],
@@ -2198,7 +2266,7 @@
         "cascher",
         "cachère"
     ],
-    "PHO*PBD/RAL": [
+    "PHOPBD/RA*L": [
         "mondial",
         "mondiale"
     ],
@@ -2211,21 +2279,26 @@
         "sélecte",
         "sélect"
     ],
-    "APBT/*EUG/APBG": [
+    "APBT/EUG/A*PBG": [
         "anti-gang",
         "antigang"
     ],
-    "SPW*EUG/APBG": [
+    "SPWEUG/A*PBG": [
         "anti-gang",
         "antigang"
     ],
-    "AE/*ER/OP/AS/RAL": [
+    "AE/ER/OP/AS/RA*L": [
         "aérospatial",
         "aérospatiale"
     ],
-    "A*ER/OP/AS/RAL": [
+    "AER/OP/AS/RA*L": [
         "aérospatial",
         "aérospatiale"
+    ],
+    "PWA*EUPLT": [
+        "bêtement",
+        "bêlement",
+        "bellement"
     ],
     "KO/OET/AO*R": [
         "co-auteur",
@@ -2247,11 +2320,11 @@
         "freelance",
         "free-lance"
     ],
-    "TPR*EUL/APBS": [
+    "TPREUL/A*PBS": [
         "freelance",
         "free-lance"
     ],
-    "TPR*EUL/APBSZ": [
+    "TPREUL/A*PBSZ": [
         "freelance",
         "free-lance"
     ],
@@ -2266,7 +2339,7 @@
         "parr",
         "part"
     ],
-    "PAFT/O*R/AL": [
+    "PAFT/OR/A*L": [
         "pastoral",
         "pastorale"
     ],
@@ -2313,7 +2386,7 @@
         "carène",
         "caraïbe"
     ],
-    "SHA*EUD/AOFR": [
+    "SHAEUD/AO*FR": [
         "chef-d'oeuvre",
         "chef-d'oeuvres",
         "chefs-d'oeuvre"
@@ -2326,7 +2399,7 @@
         "killer",
         "colleur"
     ],
-    "KO*BG/AR": [
+    "KOBG/A*R": [
         "coquard",
         "coquart",
         "cocard"
@@ -2343,7 +2416,7 @@
         "irakien",
         "iraquien"
     ],
-    "KAT/R*F/EUPB": [
+    "KAT/R-F/*EUPB": [
         "quatre-vingt",
         "quatre-vingt-treize",
         "quatre-vingts"
@@ -2353,7 +2426,7 @@
         "ram",
         "rams"
     ],
-    "TO*BG/AR": [
+    "TOBG/A*R": [
         "tocard",
         "toquard"
     ],
@@ -2365,11 +2438,11 @@
         "alpha",
         "alfa"
     ],
-    "A*E/SOS/RAL": [
+    "AE/SOS/RA*L": [
         "asocial",
         "asociale"
     ],
-    "AS/O*S/RAL": [
+    "AS/OS/RA*L": [
         "asocial",
         "asociale"
     ],
@@ -2385,6 +2458,10 @@
         "kana",
         "khanat"
     ],
+    "STK-G/OUR/*EUD": [
+        "dégourdi",
+        "dégourdie"
+    ],
     "TPAT/PH*Z": [
         "fatma",
         "fathma"
@@ -2393,7 +2470,7 @@
         "casaque",
         "kazakh"
     ],
-    "HRA*EUT/OPB": [
+    "HRAEUT/O*PB": [
         "laiton",
         "letton"
     ],
@@ -2428,7 +2505,7 @@
         "balèze",
         "balaise"
     ],
-    "TKEUG/*EUT/AL": [
+    "TKEUG/EUT/A*L": [
         "digital",
         "digitale"
     ],
@@ -2463,15 +2540,15 @@
         "vair",
         "verne"
     ],
-    "AE/PH*EUBG/AL": [
+    "AE/PHEUBG/A*L": [
         "amical",
         "amicale"
     ],
-    "APL/*EUBG/AL": [
+    "APL/EUBG/A*L": [
         "amical",
         "amicale"
     ],
-    "SH*B/OBG": [
+    "SH-B/O*BG": [
         "schnock",
         "chnoque",
         "schnoque"
@@ -2493,11 +2570,11 @@
         "mouffette",
         "moufette"
     ],
-    "RAD/*EUBG/AL": [
+    "RAD/EUBG/A*L": [
         "radical",
         "radicale"
     ],
-    "R*U/RAL": [
+    "RU/RA*L": [
         "rural",
         "rurale"
     ],
@@ -2527,19 +2604,19 @@
         "anti-tabac",
         "antitabac"
     ],
-    "TKO*RS/HR": [
+    "TKORS/HR*": [
         "dorsal",
         "dorsale"
     ],
-    "*BGS/TRAFRBT/EU": [
+    "-BGS/TRAFRBT/*EU": [
         "extraverti",
         "extravertie"
     ],
-    "KP*T/RAFRBT/EU": [
+    "KP-T/RAFRBT/*EU": [
         "extraverti",
         "extravertie"
     ],
-    "TPAPL/*EUL/RAL": [
+    "TPAPL/EUL/RA*L": [
         "familial",
         "familiale"
     ],
@@ -2565,7 +2642,7 @@
         "mea culpa",
         "mea-culpa"
     ],
-    "PO*L/ABG": [
+    "POL/A*BG": [
         "polack",
         "polak",
         "polaque"
@@ -2586,10 +2663,14 @@
         "écailler"
     ],
     "-BGS/TRAS/APBS/OR/EU/*EL": [
+        "extrasensoriel",
+        "extra-sensoriel",
         "extrasensorielle",
         "extra-sensorielle"
     ],
     "KP-T/RAS/APBS/OR/EU/*EL": [
+        "extrasensoriel",
+        "extra-sensoriel",
         "extrasensorielle",
         "extra-sensorielle"
     ],
@@ -2623,6 +2704,11 @@
     "R-BG/R*E/-R": [
         "recréer",
         "récréer"
+    ],
+    "KR*": [
+        "courre",
+        "scare",
+        "cré"
     ],
     "K*T": [
         "compte",
@@ -2669,6 +2755,16 @@
         "a capella",
         "a cappella"
     ],
+    "AE/*PLT": [
+        "allemand",
+        "aman",
+        "amant"
+    ],
+    "A*PLT": [
+        "allemand",
+        "aman",
+        "amant"
+    ],
     "APBT/EUS/OS/EU/O*EBGS": [
         "antisociaux",
         "anti-sociaux"
@@ -2712,7 +2808,7 @@
         "chamane",
         "shaman"
     ],
-    "SHOU/*EU/A": [
+    "SHOU/EU/A*": [
         "chouia",
         "chouya",
         "chouïa"
@@ -2727,7 +2823,7 @@
         "cob",
         "scone"
     ],
-    "KO*B/AR": [
+    "KOB/A*R": [
         "connard",
         "conard"
     ],
@@ -2764,6 +2860,11 @@
         "mariol",
         "mariole"
     ],
+    "PHO*PLT": [
+        "moment",
+        "moman",
+        "mollement"
+    ],
     "PHULT/TPOPB/*BGS": [
         "multifonctions",
         "multifonction"
@@ -2778,7 +2879,7 @@
         "pacson",
         "paqson"
     ],
-    "P*LZ/AR": [
+    "P-LZ/A*R": [
         "pillard",
         "paillard"
     ],
@@ -2805,7 +2906,7 @@
         "skeet",
         "kit"
     ],
-    "S*E/APB": [
+    "SE/A*PB": [
         "céans",
         "séant"
     ],
@@ -2844,12 +2945,12 @@
         "empli",
         "embellie"
     ],
-    "APBT/R*G/AFRB": [
+    "EPBT/R-G/A*FRB": [
         "entrejambe",
         "entre-jambe",
         "entre-jambes"
     ],
-    "SPWR*G/AFRB": [
+    "SPWR-G/A*FRB": [
         "entrejambe",
         "entre-jambe",
         "entre-jambes"
@@ -2882,7 +2983,7 @@
         "mahousse",
         "maous"
     ],
-    "P*EUT/SHOUB": [
+    "PEUT/SHO*UB": [
         "pitchoun",
         "pitchoune"
     ],
@@ -2917,7 +3018,7 @@
         "sprinter",
         "sprinteur"
     ],
-    "*TS/AER": [
+    "-TS/A*ER": [
         "trier",
         "strier",
         "terrier"
@@ -2975,6 +3076,11 @@
         "décan",
         "sedan"
     ],
+    "KPWA*PLT": [
+        "empattement",
+        "empalement",
+        "emballement"
+    ],
     "RAT/*Z": [
         "rata",
         "errata"
@@ -2985,7 +3091,7 @@
         "est-ce",
         "ès"
     ],
-    "TPO*BG/AL": [
+    "TPOBG/A*L": [
         "focal",
         "focale"
     ],
@@ -3027,7 +3133,7 @@
         "naga",
         "naja"
     ],
-    "OUT/R*PL/AEUR": [
+    "OUT/R-PL/A*EUR": [
         "outre-mer",
         "outremer"
     ],
@@ -3044,7 +3150,7 @@
         "patte",
         "pat"
     ],
-    "PO*FT/TPHAT/AL": [
+    "POFT/TPHAT/A*L": [
         "post-natal",
         "postnatal",
         "post-natale",
@@ -3062,7 +3168,7 @@
         "seigneur",
         "saigneur"
     ],
-    "SH*L/AO": [
+    "SH-L/AO*": [
         "chleuh",
         "schleu"
     ],
@@ -3085,11 +3191,15 @@
         "verdi",
         "verdie"
     ],
-    "W*EUD/AOUBG/HRAOB": [
+    "WAEUR/*D": [
+        "verdi",
+        "verdie"
+    ],
+    "WEUD/AOUBLG/AO*B": [
         "vidéoclub",
         "vidéo-club"
     ],
-    "*ET/AL": [
+    "ET/A*L": [
         "étal",
         "étale"
     ],
@@ -3141,16 +3251,16 @@
         "bellot",
         "blot"
     ],
-    "PWO*B/AR": [
+    "PWOB/A*R": [
         "bobard",
         "bonard",
         "bonnard"
     ],
-    "PWR*LZ/AR": [
+    "PWR-LZ/A*R": [
         "braillard",
         "briard"
     ],
-    "PWO*ULD/OG": [
+    "PWOULD/O*G": [
         "bouledogue",
         "bull-dog",
         "bulldog"
@@ -3195,7 +3305,7 @@
         "chiens",
         "chiant"
     ],
-    "KO*R/AL": [
+    "KOR/A*L": [
         "chorale",
         "choral"
     ],
@@ -3211,7 +3321,7 @@
         "cornu",
         "cornue"
     ],
-    "KOURS/*EURBG/AU": [
+    "KOURS/EURBG/A*U": [
         "court-circuit",
         "court-circuits"
     ],
@@ -3225,7 +3335,7 @@
         "croît",
         "courroie"
     ],
-    "KULT/*U/RAL": [
+    "KULT/U/RA*L": [
         "sculptural",
         "cultural",
         "sculpturale"
@@ -3268,11 +3378,11 @@
         "fy",
         "phi"
     ],
-    "TKPWO*UT/AOZ": [
+    "TKPWOUT/AO*Z": [
         "goûteuse",
         "goutteuse"
     ],
-    "TKPWO*UT/AO": [
+    "TKPWOUT/AO*": [
         "goûteux",
         "goutteux"
     ],
@@ -3324,7 +3434,7 @@
         "minute",
         "mn"
     ],
-    "PHO*L/AS": [
+    "PHOL/A*S": [
         "mollasse",
         "molasse"
     ],
@@ -3360,7 +3470,7 @@
         "piu",
         "più"
     ],
-    "P*B/AOPL/O": [
+    "P-B/AOPL/O*": [
         "pneumonie",
         "pneumonectomie",
         "pneumo"
@@ -3379,7 +3489,7 @@
         "quette",
         "ket"
     ],
-    "R*L/AE": [
+    "R-L/A*E": [
         "relié",
         "rallié"
     ],
@@ -3387,11 +3497,11 @@
         "réflexe",
         "reflex"
     ],
-    "REZ/*EUD/APB": [
+    "REZ/EUD/A*PB": [
         "résident",
         "résidant"
     ],
-    "SH*B/OUFL": [
+    "SH-B/O*UFL": [
         "chnouf",
         "schnouff",
         "schnouf"
@@ -3413,6 +3523,10 @@
         "tec",
         "teck"
     ],
+    "TRA*BGS": [
+        "traction",
+        "trax"
+    ],
     "WA*EURBL": [
         "verbal",
         "vernal",
@@ -3422,7 +3536,7 @@
         "abbatial",
         "abbatiale"
     ],
-    "A*E/PWAS/RAL": [
+    "AE/PWAS/RA*L": [
         "abbatial",
         "abbatiale"
     ],
@@ -3431,12 +3545,12 @@
         "accore",
         "accort"
     ],
-    "A*E/KOR": [
+    "AE/KO*R": [
         "accord",
         "accore",
         "accort"
     ],
-    "A*E/KRU": [
+    "AE/KR*U": [
         "accru",
         "accrue"
     ],
@@ -3448,7 +3562,7 @@
         "combat",
         "aixois"
     ],
-    "HRO*BG/AGS": [
+    "HROBG/A*GS": [
         "location",
         "allocations",
         "allocation"
@@ -3516,7 +3630,7 @@
         "boxon",
         "bocson"
     ],
-    "PWO*RT/SH": [
+    "PWORT/SH*": [
         "bortsch",
         "borchtch",
         "bortch"
@@ -3525,7 +3639,7 @@
         "cageot",
         "cagot"
     ],
-    "KAP/OUT/SH*EUB/O": [
+    "KAP/OUT/SHEUB/O*": [
         "cappuccino",
         "capucino",
         "capuccino"
@@ -3539,7 +3653,7 @@
         "chand",
         "chant"
     ],
-    "SH*T/EUPL/EU": [
+    "SH-T/EUPL/*EU": [
         "ch'timi",
         "chtimi"
     ],
@@ -3548,7 +3662,7 @@
         "cloc",
         "colloque"
     ],
-    "KHR*EG/RAL": [
+    "KHREG/RA*L": [
         "collégial",
         "collégiale"
     ],
@@ -3556,22 +3670,22 @@
         "comtal",
         "comtale"
     ],
-    "KOEPB/TR*FP/APB": [
+    "KOEPB/TR-FP/A*PB": [
         "contrechamp",
         "contre-chant",
         "contre-champ"
     ],
-    "KOPB/TR*FP/APB": [
+    "KOPB/TR-FP/A*PB": [
         "contrechamp",
         "contre-chant",
         "contre-champ"
     ],
-    "KOPBT/R*FP/APB": [
+    "KOPBT/R-FP/A*PB": [
         "contrechamp",
         "contre-chant",
         "contre-champ"
     ],
-    "STR*FP/APB": [
+    "STR-FP/A*PB": [
         "contrechamp",
         "contre-chant",
         "contre-champ"
@@ -3612,7 +3726,7 @@
         "desserre",
         "dessert"
     ],
-    "STK*FRB/APB": [
+    "STK-FRB/A*PB": [
         "déversant",
         "desservant"
     ],
@@ -3624,7 +3738,7 @@
         "disquette",
         "diskette"
     ],
-    "STK*G/OUT/APBT": [
+    "STK-G/OUT/A*PBT": [
         "dégoûtante",
         "dégouttante"
     ],
@@ -3638,15 +3752,11 @@
         "embu",
         "imbue"
     ],
-    "APB/TKPWHR*EUFP": [
-        "angliche",
-        "engliche"
-    ],
     "SPWAPBD/A*PB": [
         "intendant",
         "entendant"
     ],
-    "AEUTS/ET/*ER/A": [
+    "AEUTS/ET/ER/A*": [
         "etc",
         "etcetera",
         "etc."
@@ -3689,6 +3799,15 @@
         "graphe",
         "gravelle",
         "graff"
+    ],
+    "TKPWR-B/*EUFP": [
+        "grébiche",
+        "gribiche"
+    ],
+    "TKPWR-FL/*ED": [
+        "greffée",
+        "grivelée",
+        "griffée"
     ],
     "HA*EUR": [
         "haïr",
@@ -3836,7 +3955,7 @@
         "rouf",
         "roof"
     ],
-    "R*EG/AL": [
+    "REG/A*L": [
         "régal",
         "régale"
     ],
@@ -3853,7 +3972,12 @@
         "sofa",
         "sopha"
     ],
-    "S*EFL/AR/AD": [
+    "SKO*": [
+        "conso",
+        "sécot",
+        "secco"
+    ],
+    "SEFL/AR/A*D": [
         "séfarade",
         "sépharade"
     ],
@@ -3865,7 +3989,7 @@
         "ténia",
         "taenia"
     ],
-    "T*EUFP/AORT": [
+    "TEUFP/AO*RT": [
         "t-shirt",
         "ticheurte",
         "tee-shirt"

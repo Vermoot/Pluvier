@@ -1,5 +1,6 @@
 {
     "APBLG/TEUFL": "adjectif",
     "OPBLG/TEUFL": "objectif",
-    "R-G": "rejet"
+    "R-G": "rejet",
+    "SUPBLG": "sujet"
 }

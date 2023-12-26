@@ -112,7 +112,7 @@ class Dictionary:
 
                 if steno in translated_word:
                     if  '*' not in steno:
-                        steno = self.steno_class.add_star(steno)
+                        steno = self.steno_class.add_star_on_word(steno)
                     if steno in translated_word :
                         if steno not in duplicated:
                             duplicated[steno] = []

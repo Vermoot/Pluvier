@@ -459,6 +459,7 @@ class TestPluvier:
             "APBLG/TEUFL" : "adjectif",
             "OPBLG/TEUFL": "objectif",
             "R-G": "rejet",
+            "SUPBLG": "sujet"
                          })
 
     def test_lesson17_SKWR_for_J_initial_and_SWR_for_Z_initial(self):
@@ -560,13 +561,14 @@ class TestPluvier:
         
     def test_lesson21_modify_stl_EL_el_ortho_final(self):
         self.assertAllMatching("cruel", [ "KR/WEL", "KRUL", "KRU/EL", "KRU/AEUL"])
-        self.assertAllMatching("cruelle", [ "KR/W*EL", "KR*UL", "KRU/*EL", "KRU/A*EUL"])
+        self.assertAllMatching("cruelle", [ "KR/W*EL", "KR*UL", "KRU/*EL"])
         
     def test_lesson21_modify_stl_starEL_elle_ortho_final(self):
         self.assertSame({
 #            "KRU/*EL": "cruel",
 #            "K-PB/*EL": "conditionnel",
 #           "K-PBL": "conditionnel",
+            "SAEUBGS/WEPLT":"sexuellement",
             "TPEUS/*EL": "ficelle",
                          })
 
@@ -623,7 +625,7 @@ class TestPluvier:
 #            "SPHREUD": "splendide",
 #            "SPH-": "semaine",
             "SPREUPBT": "sprint",
-#            "SRA": "sera",
+#            "SRA": "serait",
             "TKPWHRAS": "glace",
 #            "TKPWREU": "gris", conflit avec agricole
             "TKREUPB": "drain", #'dR5'
@@ -915,8 +917,8 @@ class TestPluvier:
 
     def test_lesson31_rightW_is_F_after_SD(self):
         self.assertSame({"STKWOE": "défaut",
-                         "STKWAPB": "défend",
-                         "STKWOUL": "défoule",
+                         "STKWAPB": "défend", 
+                        "STKWOUL": "défoule",
                          "STKWAEURL": "déferle",
 #                         "STKWEURB": "définir",
 
@@ -1104,8 +1106,8 @@ class TestPluvier:
 #TODO
     def test_lesson40_inverted_words(self):
         self.assertSame({
-#            "KOEUL": "colis",
- #           "SKWROEUL": "joli",
+            "KOEUL": "colis",
+           "SKWROEUL": "joli",
             "KOEUP": "copie",
             "TPOEUL": "folie",
         })
@@ -1122,6 +1124,21 @@ class TestPluvier:
 
         })
 
+
+    def test_lesson41_add_stl_others(self):
+        self.assertSame({
+            'R-FZ':'refuse',
+            'R-FL/UZ':'refuse',
+            
+            })
+        
+    def test_lesson41_add_stl_PLT_for_lement(self):
+        self.assertSame({
+            "WHAPLT": "finalement",
+            "PROB/APLT" : "probablement",
+            "PWREUFPLT": "brièvement",
+            })
+        
     def test_lesson41_inverse_ending_word(self):
         self.assertSame({
             "TPHREUPL": "film",
@@ -1155,6 +1172,7 @@ class TestPluvier:
 #            "KEPBT": "enquête",
 #            "KPAOEU": "anxieux",
             "OFRBLG": "oncle",
+            "EUFRBLG/U" : "inclus",
  #           "EUFRBG/A*E": "inquiet",
 #            "PET/OFRBG": "pétoncle", shoube : ?
             "PET/OFRBLG": "pétoncle",
@@ -1310,7 +1328,7 @@ class TestPluvier:
 #            "AGS/KURT": "agriculteur",
 #            "AGS/TPHOPL": "agronome",
             "ABS/WRAGS": "abréviation",
-
+            "AGS/ABL": "agréable",
 
             })
 
@@ -1469,9 +1487,16 @@ class TestPluvier:
             "WHEUPB": "venin",
             "WHU": "venu",
             "EPB/WHEUPL": "envenime",
-            "APB/WEU": "envie",
+            "EPB/WEU": "envie",
 
             })
+
+    def test_lesson41_add_stl_start_with_en_is_en_not_an(self):
+            self.assertSame({
+            'EPB/WEU':'envie',
+            'AFRBGS':'ancre',
+            })
+
 
     def test_lesson53_PG_sound_gne(self):
         self.assertSame({
@@ -1707,6 +1732,17 @@ class TestPluvier:
             "KPHR/RAEUPBT" : "excelleraient",
         })
 
+
+    def test_new_rule_from_josiah_umule(self):
+        self.assertSame({
+            "ABG/UFRPL": "accumule",
+            "TUFRPLT": "tumulte",
+            "STEUFRLGS": "stimulation", 
+
+        })
+
+
+        
     def test_stl_new_rule_PR_pre_prefix(self):
         self.assertSame({
             "PR-PLTS": "permettre",
@@ -1717,6 +1753,19 @@ class TestPluvier:
 #            "PRAOUP": "préoccupe", 
 
         })
+
+    def test_stl_new_rule_inverse_dit_suffixe(self):
+        self.assertSame({
+              'KREUD':'crédit',
+            'KRAPBS':'créance',
+
+            })
+
+    def test_stl_new_rule_SWR_for_SURV(self):
+        self.assertSame({
+              'SWRAEULZ':'surveille',
+            'SWREUPBS':'surveillance',
+            })
 
     def test_stl_new_rule_inverse_ap_prefix(self):
         self.assertSame({
@@ -1730,6 +1779,12 @@ class TestPluvier:
         })
 
 
+    def test_stl_new_rule_cle(self):
+        self.assertSame({
+            "SAEBLG": "siècle",
+        })
+
+
     def test_stl_new_rule_fg_for_sound_vant(self):
         self.assertSame({
             "AFG": "avant",
@@ -1740,9 +1795,14 @@ class TestPluvier:
 
         })
 
+    def test_new_rule_FR_for_fer(self) :
+        self.assertSame({
+            'PREFR/*EZ': 'préférez',
+            'PREFR/R*EZ': 'préférerez'
+            })
     def test_new_rule_SP_prefix_SUP_MTS_suffixe_mentaire(self):
         self.assertSame({
-            "SPHREPLT": "supplément", 
+            "SPHREPLT": "supplément",
             "SPHREPLTS": "supplémentaire", 
             "KPHREPLTS": "complémentaire",
             "KPHAEUTS" : "commettre",
@@ -1766,13 +1826,14 @@ class TestPluvier:
         self.assertAllMatching("codé",[ "KOD/-D"])
         self.assertSame({
 #            "KWR/-D" : "joué",
-
+#            "ABD": "année",
             "TRET/-D" : "traité",
             "TRET/ED" : "traitée",
             "SHRAR/AE":"salarié",
             "SHRAR/AED":"salariée",
             "HAUL/ED" : "hâlée", 
             "PWHREUPBD/-D": "blindé",
+
 
         })
 
@@ -1846,6 +1907,7 @@ class TestPluvier:
             "TK-PLD": "demande",
             "TK-PLD/-S": "demandait",            
             "REFRBGS": "réservation",
+            "SHRAEUBGS": "sélection",
 #            "REFRBGS": "réversion"
         })
 
@@ -1905,21 +1967,19 @@ class TestPluvier:
         self.assertSame({
             #           "EUPBLG/-R": "imaginer",
 #            "KOU": "coucher",
-            "SKWROU/AO*R": "joueur",
-            "PHOPBT-après": "montagne",
+
             "STKOR": "dehors",
             "R-FL/UZ": "refuse",
             "-DZ": "dire",
 
             "PARLZ": "pareil",
             "STKWHU": "devenu",
-                        "STK-Z/-LZ/-B": "design",
+            "STK-Z/-LZ/-B": "design",
             "PHAB/EUFL/AEUS/-PLT": "manifestement",
             "EUPBTS/WHEUR":"intervenir",
 
-                                    "PHORD/-LZ/R/*Z": "mordillera",
-            "GANK": "gangrener",
-                        "ANK": "enquiller",
+            "PHORD/-LZ/R/*Z": "mordillera",
+            "ANK": "enquiller",
 
             "R-D/WHEUR":"redevenir",
             'PWAEPB/WHU':"bienvenu",
@@ -1984,7 +2044,7 @@ class TestPluvier:
             "SKR-PL/-D" :"charmé",
         })
             
-    def todo_vio_WR_WA(self):
+    def test_vio_WR_WA(self):
         self.assertSame( {"WROLGS": "violation"})
         
     def assertSame(self, words, force_verb=True):
@@ -2088,6 +2148,9 @@ class TestPluvier:
     def test_verb_matching_salarie(self):
         self.assertAllMatching('salarié' , ['SHRAR/AE'] ) 
 
+    def test_verb_matching_somnolait(self):
+        self.assertAllMatching('somnolait' , ['SO/KHOL/-S', 'SOPL/TPHOL/-S'] ) 
+
     def test_nom_matching_adhesion(self):
         self.assertAllMatching('adhésion' , ['AD/EGZ', 'AD/-GZ'] ) 
 
@@ -2102,6 +2165,13 @@ class TestPluvier:
 
     def test_nom_matching_agneau(self):
         self.assertAllMatching('agneau' , ['AE/-PG/OE', 'APG/OE'] ) 
+
+    def test_nom_matching_vallee(self):
+        self.assertSame({ 'WHRED': 'vallée' }) 
+
+
+    def test_nom_matching_SK_for_cons(self):
+        self.assertSame({ 'SKAEULZ/-S': 'conseillait' }) 
 
     def test_nom_matching_confirme(self):
         self.assertAllMatching('confirme' , ['STPEURPL', 'KOPB/TPEURPL', 'KOEPB/TPEURPL', 'KWEURPL']) 
@@ -2119,7 +2189,12 @@ class TestPluvier:
     def assertAllMatching(self,word, words) :
         steno_class=Steno(self.corpus)
         print(steno_class)
-        for elem in self.steno(word):
+        stenod = self.steno(word)
+        if (not len(words) == len(stenod)):
+            assert False
+            return False 
+        print(len(words))        
+        for elem in stenod:
             assert elem in words
         return True
                 

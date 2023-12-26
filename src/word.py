@@ -69,7 +69,10 @@ class Word:
                 return self.is_verb() and self.word.endswith('ant')
 
         def is_vous_ind_present(self):
-                return 'ind' in self.info_verb and self.word.endswith('ez')
+                return 'ind:pre:2p' in self.info_verb or 'imp:pre:2p' in self.info_verb
+
+        def is_vous_futur(self):
+                return 'fut:2p' in self.info_verb
 
         def is_indicatif(self):
                 return 'ind' in self.info_verb

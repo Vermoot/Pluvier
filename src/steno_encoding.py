@@ -2,7 +2,7 @@ from src.log import Log
 from src.syllabe import Syllabe
 from src.cutword import Cutword
 class Steno_Encoding:
-        
+
         CHUNKS = {
                 # syllabe of sound
                 # separate by |  => right_hand|left_hand
@@ -18,19 +18,21 @@ class Steno_Encoding:
                 '§ple' : '/OFRPL', # trompe
                 '5ba' : '/EUFRB', # trimb            
                 '§pli' : '/OFRPL', # trompe
-
+                'myl' : '/FRPL',
                 'v°n' : 'WH|FPB',
                 'vin' : 'VH',
 
                 'vOl' :'VL',
+
                 'ekil' :'KL',
                 "jEn": "AEB",
                 'Egze' : '/KP',
                 'Egzi' : '/KPEU',
                 'Eksi' : '/KPEU',
                 'Eks' : '/KP',
+                'syRv' : 'SWR|SURW',
                 'ek' : 'K',
-
+                'kl' : 'KHR|BLG',
                 
 #                'ist' : '*EUS',
                 'm°n' : "/KH",#men
@@ -48,11 +50,13 @@ class Steno_Encoding:
                 "sj§": "-/GZ",
                 'vul': '/WHR',
                 "fik" : "-/FBG",
+                'feR' : "-/FR",
                 "fEk" : "-/FBG",
                                 'kE' : 'KE',
                 'psjOn' :'-/PGS',
                 'sw' : 'SW',
                 'ps' : 'S',
+                '8E' : 'WE',
                 'sjOn' :'-/GZ',
                 'vERn' : '-/FRB', # gouverne
                 'vERs' : '-/FRB', # divers
@@ -101,6 +105,7 @@ class Steno_Encoding:
 #                "di" : "D",
 #                "mi" : "M",k§t
                 'gRi' : 'TKPWR|GS',
+                'gRe' : 'TKPWR|GS',
                 'gR' : 'TKPWR|GS',
 #                "tR": "-TS", #tre
                 "tR": "TR", #strate
@@ -229,26 +234,6 @@ class Steno_Encoding:
                 Log('> not eat voyel: ', syll)
                 return syll
 
-        def diphtongs_try(self, word):
-                new_word=word
-                final_word = ''
-                items = self.CHUNKS
-                keys = self.CHUNKS.keys()
-#                self.found_sound = ''
-                nb_char = len(word)
-                while new_word != '' :
-                        Log(nb_char,word[:nb_char])
-                        if items.get(word[:nb_char]) is not None:
-#                                self.found_sound=diphtong[1]
-                                final_word = final_word + "+"+items[word[:nb_char]]+"+"
-                                break
-                        nb_char = nb_char-1
-                        if new_word :
-                                new_word = new_word[nb_char:]
-                                                        
-
-                return final_word
-
         def find_matching(self, syll, word) :
                 Log('find match word', word)
                 list_tuple=[]
@@ -285,28 +270,6 @@ class Steno_Encoding:
 
                 return list_tuple
                                 
-                                
-        def diphtongs(self, word):
-                before = ''
-                after = ''
-                new_word=word
-                syll_dict = {}
-                final_word = word
-                items = self.CHUNKS
-                keys = self.CHUNKS.keys()
-#                self.found_sound = ''
-                nb_char = len(word)
-                for diphtong in self.CHUNKS.items():
-                        
-                        if diphtong[0] in new_word :
-                                final_word = final_word.replace(diphtong[0], "+"+diphtong[1]+"+")
-                                Log('final_word',final_word)
-
-                                new_word = new_word.replace(diphtong[1],'')
-                                Log('new_word',new_word)
-#                        self.found_sound=diphtong[1]
-
-    
                 
         def encode(self):
                 Log('-- Encode :',self.syllabes)
@@ -379,7 +342,8 @@ class Steno_Encoding:
                         self.word_encoded = self.word_encoded[:-1]
                 Log('WORD ENCODED ', self.word_encoded)
                 self.word_encoded = self.word_encoded.replace('//','/')
-                if self.needs_star  :
+                
+                if self.needs_star :
                         splitted = self.word_encoded.split('/')
                         splitted[len(splitted)-1]= self.add_star(splitted[len(splitted)-1])
                         self.word_encoded = '/'.join(splitted)
@@ -467,7 +431,9 @@ class Steno_Encoding:
                 if self.word_encoded.endswith('/OU'):
                         self.word_encoded = self.word_encoded.replace('/OU','/O*U')
                 return  self.word_encoded
-        
+
+
+
         def add_star(self,word):
                 if ('*' in word):
                         return word

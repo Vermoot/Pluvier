@@ -94,6 +94,7 @@ class Steno:
                 "d°m@d" : "TK-PLD",
                 "sypER" : "SP-R/",
                 "sufR" : "STPR",
+                "seks" : "SAEUBGS",
                 'k§f':'KW',
                 'Oto' : "AOT",
                 "tEknO" : "T",
@@ -131,7 +132,9 @@ class Steno:
                 '5se' : 'STPHE',
                 "s@t" : "ST",
                 "tE": "TAEU",  #terminer
-                '5k' : '/EUFRPB',
+                '5kl' : 'EUFRBLG',
+                '5k' : 'EUFRBG',
+                "kRe" : "KR|KRE", #craquait
                 "kR" : "KR", #craquait
                 "S°" : "SK",
                 "@t" :"SPW",
@@ -146,7 +149,10 @@ class Steno:
                 'sp' : 'SP',
                 'sn' : 'STPH',
 #                'k§' : '-KON', # conte
+                'k§s' : 'SK', # content
                 'k§' : 'KOPB/', # content
+
+                
                 'du' : 'TKOU',
                 "pn" : "TPH",
                 "@p" : "KPW",
@@ -161,7 +167,8 @@ class Steno:
 #                'd' : 'DAOE',
                 'z' : 'SWR',
                 'a':'A|AE/',
-                'e':'E'
+                'e':'E',
+                'v':'W'
         }
 
         ORTHO_PREFIXES = {
@@ -173,6 +180,7 @@ class Steno:
                 'coll' : OrthoPrefix('kOl', 'KHR'),
                 "comm" : OrthoPrefix('kom|kOm','KPH'),
 #                "cont" : OrthoPrefix('k§t','KOEPB/T|KOPB/T|ST'),
+
                 "com" : OrthoPrefix('k§','K*/|K'),
                 "con" : OrthoPrefix('k§','KOEPB/|KOPB|S'),
                 'inter' : OrthoPrefix('5tER', 'EUPBTS'), #SPWR
@@ -182,6 +190,7 @@ class Steno:
                 'fin'  : OrthoPrefix('fin', 'WH'),
                 'fen'  :OrthoPrefix('f°n', 'WH'),
                 'y'  :OrthoPrefix('j', 'KWR'),
+                'en' : OrthoPrefix('@', 'EPB')
                 
 #                "a" : OrthoPrefix('a-','AE-'), # sound
 
@@ -191,7 +200,8 @@ class Steno:
         ORTHO_SUFFIXES = {
                 'babilité' : OrthoSuffix('babilite','-/BLT'),
                 'cation' : OrthoSuffix('kasj§','-/BGS'),
-
+                'ction' : OrthoSuffix('ksj§','-/BGS'),
+                'mulation' : OrthoSuffix('mylasj§', '-/FRLGS'),
                 'lation' : OrthoSuffix('lasj§', '-/LGS'),
 
                 'bilité' : OrthoSuffix('bilite','-/BLT'),
@@ -305,7 +315,9 @@ class Steno:
                 'ij@d' : 'IND',
                 'ksj§' : "/*BGS", #friction
                 "zj§": "-/GZ",
+                "fyz" : "-/FZ|FUZ",
                 "vwaR" : "-/FRS",
+                
                 "val" : "-/FL",
                 "vaj" : "-/FL",
                 "vEl" : "-/FL",
@@ -354,6 +366,7 @@ class Steno:
 #                "l9R" : "-RL",
 #                "d9R" : "RD",
                 "dabl" : "/TKABL",
+                "jEv°m@":"-/FPLT",
                 "v°m@" : "-/FPLT",
                 "@sj§": "/APBS",    # p_ension_
                 "jast" : "YA*S|/KWRAFT|/RAFT",
@@ -413,7 +426,7 @@ class Steno:
                 '@l' : 'ANL', #branle
                 'zm' : '-/FPL',
                 'sm' : '-/FPL',
-                'di' : '/*D',  #interdit ?
+                'di' : 'EUD|/*D',  #interdit ?
                 "tEkt" :  "/T*BG",
 #                "EtR" : "-/TS",
                 "SEt" : "-/FPT" , # achete
@@ -432,11 +445,14 @@ class Steno:
                 "@S" : "/AFRPBLG",
                 "@s" : "/APBS|-/PBS",
 
-                "ZE" : "G",
+                "ZE" : "-/PBLG|/G",
 
                 'ij' : '-/EULZ|-/LZ', #ille
 
+                "bl°m@" : "-/PLT",
                 "t°m@" : "-/PLT",
+                "l°m@" : "-/PLT",
+
                 "m@" : "-/PLT",
                 "En" : "AIB",
                 "ER" : "AIR",
@@ -449,7 +465,7 @@ class Steno:
                 "pR":"-/PS", #-pre
                 "nEs" : "/BS",
                 "Et" : "/AEUT",
-                "mn" : "/KH",
+                "mn" : "/KH|MN",
 #                'El' :'-/FL',
                 "E" : "/AEU",
                 "e" : "-/D",
@@ -813,6 +829,12 @@ class Steno:
                 if verb_word.is_vous_ind_present():
                         self.ending = "/*EZ"
 
+                        if verb_word.syll.endswith('e') :
+                                self.ending_syll = phonetics[:-1]
+                                cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                                cutword.mandatory=True
+                                return cutword
+                if verb_word.is_vous_futur():
                         if verb_word.syll.endswith('Re') :
                                 Log('indic')
                                 self.ending = "/R*EZ"
@@ -820,13 +842,6 @@ class Steno:
                                 cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
                                 cutword.mandatory=True
                                 return cutword
-
-                        if verb_word.syll.endswith('e') :
-                                self.ending_syll = phonetics[:-1]
-                                cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
-                                cutword.mandatory=True
-                                return cutword
-
                 if verb_word.is_participe_present():
                         Log('participe present')
                         self.ending = "-G"
@@ -840,6 +855,7 @@ class Steno:
                                 cutword=self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending, True, True)
                                 cutword.mandatory=True
                                 return cutword
+                        
 
 
                 if verb_word.ending_with('a'):
@@ -1162,7 +1178,14 @@ class Steno:
                 #and not syll.startswith('8') and not syll.startswith('a') and not syll.startswith('E') and not syll.startswith('1') :
                         return ''
                 return ''
-        
+
+
+        def add_star_on_word(self,word):
+                splitted = word.split('/')
+                splitted[len(splitted)-1]= self.add_star(splitted[len(splitted)-1])
+                word_encoded = '/'.join(splitted)
+                return word_encoded
+
         def add_star(self,word):
                 if ('*' in word):
                         return word
