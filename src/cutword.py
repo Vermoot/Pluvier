@@ -1,6 +1,8 @@
 import sys
 import copy
 import re
+from src.log import Log
+
 class Cutword:
         remains = ''
         steno  = ''
@@ -42,17 +44,19 @@ class Cutword:
                         return mylist
                 splitted = self.steno.split('|')
 
-                for sound in splitted:
-                        newcut=Cutword(self.phoneme)
-                        newcut.set_remains(self.remains)
-                        newcut.set_replaced_by(self.replace, sound)
-
-                        if self.has_ortho_rule():
-                                newcut.set_ortho_rule()
-                        if self.has_separate_stroke():
-                                newcut.set_separate_stroke()
-
-                        mylist.append(newcut)
+                for options in splitted:
+                        for sound in options.split(';'):
+                                Log('>>>> option',sound)
+                                newcut=Cutword(self.phoneme)
+                                newcut.set_remains(self.remains)
+                                newcut.set_replaced_by(self.replace, sound)
+	
+                                if self.has_ortho_rule():
+                                        newcut.set_ortho_rule()
+                                if self.has_separate_stroke():
+                                        newcut.set_separate_stroke()
+	
+                                mylist.append(newcut)
                 return mylist
         def get_remains(self):
                 return self.remains

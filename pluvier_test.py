@@ -261,7 +261,9 @@ class TestPluvier:
 
 
     def test_lesson12_ortho_rightR_infinitif(self):
-        self.assertSame({'PARL/-R' : 'parler',
+        self.assertSame({
+            'PAPBS/-R' : 'penser',
+            'PARL/-R' : 'parler',
                          "SOUL/W-R" :"soulever",
                          "TW-R" : "tuer",
                          "TWED" : "tuée"
@@ -307,6 +309,9 @@ class TestPluvier:
                          "WOEUL/AER": "voilier",
                          "TE/A*ER": "théière",
                          })
+        self.assertNotIn( {
+                         "K-S/AER": "caissière",
+            })
 
     #TODO
     def test_lesson13_inversion_ses_son(self):
@@ -435,6 +440,7 @@ class TestPluvier:
     def test_lesson15_ez_star_EZ_and_REZ_for_rez(self):
         self.assertSame({"TROUF/*EZ": "trouvez",
                          "PARL/*EZ": "parlez",
+                         "APS/TPHAEZ": "appreniez",
                          "PARL/R*EZ": "parlerez",
                          })
 
@@ -569,6 +575,7 @@ class TestPluvier:
 #            "K-PB/*EL": "conditionnel",
 #           "K-PBL": "conditionnel",
             "SAEUBGS/WEPLT":"sexuellement",
+            "TKPWROUPLT":"groupement",
             "TPEUS/*EL": "ficelle",
                          })
 
@@ -698,6 +705,7 @@ class TestPluvier:
     def test_lesson26_AEN_for_sound_ian(self):
         self.assertSame({
             "SAEPBS": "science", #'sj@s'
+            'KHRAEPB':  'client',
         })
         
     def test_lesson26_final_NS_for_ortho_ance_or_ence(self):
@@ -1104,7 +1112,7 @@ class TestPluvier:
         })
 
 #TODO
-    def test_lesson40_inverted_words(self):
+    def test_lesson40_inverted_words_ie(self):
         self.assertSame({
             "KOEUL": "colis",
            "SKWROEUL": "joli",
@@ -1112,10 +1120,19 @@ class TestPluvier:
             "TPOEUL": "folie",
         })
 
+    def test_lesson40_inverted_words_o(self):
+        self.assertSame({
+            "PWAOT": "bateau",
+            "KAOD": "cadeau",
+            "TKPWAOT": "gâteau",
+        })
+
+
     def test_lesson41_PLT_for_sound_ment_FPLT_for_sound_vement(self):
         self.assertSame({
             "WRAEUPLT": "vraiment",
             "THR-PLT": "tellement",
+            "EPLT": "élément",
 #            "TKOPLT": "document",
 #            "TKPW-PLT": "gouvernement",
             "WEUFPLT": "vivement",
@@ -1145,7 +1162,9 @@ class TestPluvier:
 #            "TKOPLT": "document",
 #            "TKPW-PLT": "gouvernement",
             "PWHRUB": "bulbe",
+            "PWUL/PW": "bulbe",
             "WHRAF": "valve",
+            "WAL/W": "valve",
             "SEULG": "sigle",
 
         })
@@ -1901,6 +1920,15 @@ class TestPluvier:
 
         })
 
+
+    def test_stl_new_rule_FPL_for_cial(self):
+        self.assertSame({
+#            "AQT" : "adore",
+            "SPEFPL": "spécial",
+            "KOPB/WEUF/RAL/EUZ/*EZ": "convivialisez",
+            "SPES/RAL": "spécial",
+        })
+
     def test_stl_new_rule_vation(self):
         self.assertSame({
 #            "AQT" : "adore",
@@ -1967,7 +1995,7 @@ class TestPluvier:
         self.assertSame({
             #           "EUPBLG/-R": "imaginer",
 #            "KOU": "coucher",
-
+            'AF/AEZ':'aviez',
             "STKOR": "dehors",
             "R-FL/UZ": "refuse",
             "-DZ": "dire",
@@ -2059,31 +2087,6 @@ class TestPluvier:
                 d.write(elem[1]+'	'+elem[0]+"\n")
 
         return self.assertAll(words, force_verb)
-        self.assertSounds(words)
-
-        for elem in words.items():
-            first_elem =""
-
-            stenos = self.steno(elem[1], force_verb)
-            assert elem[0] in stenos
-            return True
-            if elem[0] in stenos:
-#                found = True
-#                assert elem[0] in stenos
-                continue
-
-                print('test found' , sten_str)               
-#            for sten_str in self.steno(elem[1], force_verb):
-                first_elem = sten_str
-                
- 
-#                if  elem[0] == sten_str:
-
-            if not found :
-                assert elem[0] in stenos
-
-            found = False
-#            return True
     def assertAll(self, words, force_verb=True):
         found = False
 
@@ -2111,6 +2114,17 @@ class TestPluvier:
 
             found = False
 #            return True
+
+    def assertNotIn(self, words, force_verb=True):
+        found = False
+
+        self.assertSounds(words)
+
+        for elem in words.items():
+            first_elem =""
+
+            stenos = self.steno(elem[1], force_verb)
+            assert elem[0] not in stenos
 
 
     def test_verb_matching(self):
@@ -2142,7 +2156,7 @@ class TestPluvier:
         self.assertAllMatching('salarier' , ['SHRAR/AER'] ) 
 
     def test_verb_matching_reconstruire(self):
-        self.assertAllMatching('reconstruire' , ['R-BG/OPB/STRAUR'] ) 
+        self.assertAllMatching('reconstruire' , ['R-BG/OPBS/TRAUR', 'R-BG/OPB/STRAUR'] ) 
 
 
     def test_verb_matching_salarie(self):

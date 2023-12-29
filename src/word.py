@@ -4,16 +4,19 @@ import re
 class Word:
         def __init__(self, word, phonetics, lemme, cgram, cgramortho,genre, number, info_verb, syll, orthosyll, frequence = 0):
             self.word = word
-            self.phonetics = phonetics.replace('oli','oil')
-            self.phonetics = self.phonetics.replace('opi','oip')
+            self.phonetics=phonetics
+#            self.phonetics = phonetics.replace('oli','oil')
+#            self.phonetics = self.phonetics.replace('opi','oip')
             self.lemme = lemme
             self.cgram = cgram
             self.cgramortho = cgramortho
             self.genre = genre
             self.number = number
             self.info_verb = info_verb
-            self.syll = syll.replace('o-li','oil')
-            self.syll = self.syll.replace('o-pi','oip')
+            self.syll = syll
+#            self.syll = self.syll.replace('o-pi','oip')
+#            self.syll = syll.replace('o-li','oil')
+
             self.orthosyll = orthosyll
             self.frequence = float(frequence)
         def __str__(self):
@@ -69,10 +72,11 @@ class Word:
                 return self.is_verb() and self.word.endswith('ant')
 
         def is_vous_ind_present(self):
-                return 'ind:pre:2p' in self.info_verb or 'imp:pre:2p' in self.info_verb
+                return ('imp' in self.info_verb
+                        or 'ind' in self.info_verb) and self.word.endswith('ez')
 
         def is_vous_futur(self):
-                return 'fut:2p' in self.info_verb
+                return 'fut:2p' in self.info_verb and self.word.endswith('ez')
 
         def is_indicatif(self):
                 return 'ind' in self.info_verb

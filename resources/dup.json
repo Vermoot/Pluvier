@@ -130,6 +130,10 @@
         "supérieur",
         "supérieure"
     ],
+    "SUP/REU/AO*R": [
+        "supérieur",
+        "supérieure"
+    ],
     "SUPS/EU/AO*R": [
         "supérieur",
         "supérieure"
@@ -180,6 +184,10 @@
         "ben"
     ],
     "AEUP/APG/O*L": [
+        "espagnol",
+        "espagnole"
+    ],
+    "AEUS/PAPG/O*L": [
         "espagnol",
         "espagnole"
     ],
@@ -248,6 +256,11 @@
     "PA*RLZ": [
         "pareil",
         "pareille"
+    ],
+    "SHAO*T": [
+        "château",
+        "chiotte",
+        "châteaux"
     ],
     "PH*PB": [
         "mon",
@@ -337,6 +350,10 @@
         "disparu",
         "disparue"
     ],
+    "TKEUS/PAR/*U": [
+        "disparu",
+        "disparue"
+    ],
     "W-B/*U": [
         "venu",
         "venue"
@@ -358,9 +375,17 @@
         "mineure",
         "meneur"
     ],
+    "PHEUB/AO*R": [
+        "mineur",
+        "mineure"
+    ],
     "PWEUG/O*U": [
         "bijoux",
         "bijou"
+    ],
+    "EUPB/-FR/EU/AO*R": [
+        "inférieur",
+        "inférieure"
     ],
     "EUPB/TPER/EU/AO*R": [
         "inférieur",
@@ -744,9 +769,18 @@
         "anaux",
         "anneaux"
     ],
+    "PWAEPB/W-B/*U": [
+        "bienvenue",
+        "bienvenu"
+    ],
     "PWAEPB/WH*U": [
         "bienvenue",
         "bienvenu"
+    ],
+    "SPA*FPL": [
+        "spatial",
+        "spasme",
+        "spatiale"
     ],
     "TKA*PBS": [
         "danse",
@@ -866,6 +900,10 @@
         "bestiau",
         "bestiaux"
     ],
+    "PWAEUS/TEU/O*E": [
+        "bestiau",
+        "bestiaux"
+    ],
     "TPA*BGS": [
         "fax",
         "faction"
@@ -894,6 +932,10 @@
         "libérale"
     ],
     "AE/PROFL/OPB/*D": [
+        "approfondi",
+        "approfondie"
+    ],
+    "AP/ROFL/OPB/*D": [
         "approfondi",
         "approfondie"
     ],
@@ -956,7 +998,8 @@
     ],
     "TA*EPB": [
         "tiens",
-        "tien"
+        "tien",
+        "tian"
     ],
     "KOPB/TAO*R": [
         "compteur",
@@ -1009,6 +1052,11 @@
         "bodhi",
         "body"
     ],
+    "KR*EUPT": [
+        "script",
+        "scripte",
+        "crypte"
+    ],
     "T*UB": [
         "tube",
         "tune",
@@ -1019,6 +1067,10 @@
         "immortelle"
     ],
     "TPHAS/AO*PBL": [
+        "national",
+        "nationale"
+    ],
+    "TPHAS/RO*PBL": [
         "national",
         "nationale"
     ],
@@ -1072,6 +1124,11 @@
         "scellé"
     ],
     "KPWO*EUL": [
+        "impoli",
+        "embolie",
+        "impolie"
+    ],
+    "KPWOL/*EU": [
         "impoli",
         "embolie",
         "impolie"
@@ -1160,6 +1217,10 @@
         "festival",
         "festif"
     ],
+    "TPAEUS/T*EUFL": [
+        "festival",
+        "festif"
+    ],
     "HR*EU": [
         "lit",
         "lie",
@@ -1179,7 +1240,15 @@
         "international",
         "internationale"
     ],
+    "EUPBTS/TPHAS/RO*PBL": [
+        "international",
+        "internationale"
+    ],
     "SPWAEURB/AS/AO*PBL": [
+        "international",
+        "internationale"
+    ],
+    "SPWAEURB/AS/RO*PBL": [
         "international",
         "internationale"
     ],
@@ -1235,6 +1304,10 @@
         "dam",
         "dent"
     ],
+    "SP*EFPL": [
+        "spécial",
+        "spéciale"
+    ],
     "SPES/RA*L": [
         "spécial",
         "spéciale"
@@ -1284,6 +1357,11 @@
         "chah",
         "schah"
     ],
+    "PAEUR/W*": [
+        "pervertir",
+        "pervertie",
+        "perverti"
+    ],
     "TA*PB": [
         "temps",
         "taon",
@@ -1329,6 +1407,10 @@
         "plaine",
         "plèbe"
     ],
+    "PRAEUFB/*U": [
+        "prévenu",
+        "prévenue"
+    ],
     "PRAEUFPB/*U": [
         "prévenu",
         "prévenue"
@@ -1346,6 +1428,10 @@
         "mongole"
     ],
     "POFT/ER/EU/AO*R": [
+        "postérieur",
+        "postérieure"
+    ],
+    "POS/TER/EU/AO*R": [
         "postérieur",
         "postérieure"
     ],
@@ -1379,6 +1465,10 @@
         "mors",
         "more"
     ],
+    "KPHAEUR/*FPL": [
+        "commercial",
+        "commerciale"
+    ],
     "KPHAEURS/RA*L": [
         "commercial",
         "commerciale"
@@ -1394,6 +1484,10 @@
         "pit bull"
     ],
     "EUPB/PO*EUL": [
+        "impoli",
+        "impolie"
+    ],
+    "EUPB/POL/*EU": [
         "impoli",
         "impolie"
     ],
@@ -1433,6 +1527,10 @@
     "AFRPL/*T": [
         "amulette",
         "emplette"
+    ],
+    "PAR/W-B/*U": [
+        "parvenu",
+        "parvenue"
     ],
     "PAR/WH*U": [
         "parvenu",
@@ -1501,6 +1599,12 @@
         "banni",
         "bannie",
         "babi"
+    ],
+    "PHA/AR/AD/SKWR*Z": [
+        "maharadjah",
+        "maharajah",
+        "maharadja",
+        "maharaja"
     ],
     "PHA/AR/APBLG/*Z": [
         "maharadjah",
@@ -1582,6 +1686,10 @@
         "régional",
         "régionale"
     ],
+    "REG/RO*PBL": [
+        "régional",
+        "régionale"
+    ],
     "TPHOPB/TPUPL/AO*R": [
         "non-fumeur",
         "non-fumeurs"
@@ -1632,6 +1740,10 @@
         "abasourdi",
         "abasourdie"
     ],
+    "EG/R*EU": [
+        "aigri",
+        "aigrie"
+    ],
     "*EGS": [
         "aigri",
         "aigrie"
@@ -1645,11 +1757,23 @@
         "converti",
         "convertie"
     ],
+    "KOEPB/WAEURT/*EU": [
+        "converti",
+        "convertie"
+    ],
     "KOPB/-FRBT/*EU": [
         "converti",
         "convertie"
     ],
+    "KOPB/WAEURT/*EU": [
+        "converti",
+        "convertie"
+    ],
     "S-FRBT/*EU": [
+        "converti",
+        "convertie"
+    ],
+    "SWAEURT/*EU": [
         "converti",
         "convertie"
     ],
@@ -1711,6 +1835,11 @@
         "curry"
     ],
     "-PBLG/*EUB": [
+        "jean",
+        "djinn",
+        "gin"
+    ],
+    "TK-G/*EUB": [
         "jean",
         "djinn",
         "gin"
@@ -1807,9 +1936,18 @@
         "illettré",
         "lettré"
     ],
+    "AEUG/R-D/O*U": [
+        "aigre-doux",
+        "aigres-doux"
+    ],
     "AEUGSD/O*U": [
         "aigre-doux",
         "aigres-doux"
+    ],
+    "POL/*EU": [
+        "poli",
+        "poly",
+        "polie"
     ],
     "ROBG/AO*R": [
         "rocker",
@@ -1865,6 +2003,10 @@
         "copilote",
         "co-pilote"
     ],
+    "KOP/EUL/O*T": [
+        "copilote",
+        "co-pilote"
+    ],
     "KHRA*EU": [
         "minerai",
         "colley",
@@ -1884,7 +2026,15 @@
         "bourrichon",
         "berrichon"
     ],
+    "EUPBT/ROF/AEURT/*EU": [
+        "introverti",
+        "introvertie"
+    ],
     "EUPBT/ROFRBT/*EU": [
+        "introverti",
+        "introvertie"
+    ],
+    "SPWROF/AEURT/*EU": [
         "introverti",
         "introvertie"
     ],
@@ -1995,6 +2145,11 @@
         "gri-gri",
         "gris-gris"
     ],
+    "TKPWREUG/R*EU": [
+        "grigri",
+        "gri-gri",
+        "gris-gris"
+    ],
     "SPORT/AO*R": [
         "supporter",
         "supporteur"
@@ -2084,6 +2239,10 @@
         "bouillie",
         "bouilli"
     ],
+    "TPH*": [
+        "n",
+        "n'"
+    ],
     "-FRBT/EUBG/A*L": [
         "verticale",
         "vertical"
@@ -2107,6 +2266,10 @@
     "TPHAPBT/*EU": [
         "nanti",
         "nantie"
+    ],
+    "SO/OUP/OP/R*Z": [
+        "soap opéra",
+        "soap-opéra"
     ],
     "SO/OUP/OPS/*Z": [
         "soap opéra",
@@ -2148,11 +2311,11 @@
         "ampleur",
         "emballeur"
     ],
-    "EUPB/PR-R/A*L": [
+    "EUPB/PR-/R/A*L": [
         "impérial",
         "impériale"
     ],
-    "KPWR-R/A*L": [
+    "KPWR-/R/A*L": [
         "impérial",
         "impériale"
     ],
@@ -2177,7 +2340,15 @@
         "yakuza",
         "yakusa"
     ],
+    "APBT/EUF/O*L": [
+        "anti-vol",
+        "antivol"
+    ],
     "APBT/*EUFL": [
+        "anti-vol",
+        "antivol"
+    ],
+    "SPWEUF/O*L": [
         "anti-vol",
         "antivol"
     ],
@@ -2203,6 +2374,12 @@
         "laiton",
         "letton"
     ],
+    "PHA/AR/AD/SKWRA*": [
+        "maharadjah",
+        "maharadja",
+        "maharajah",
+        "maharaja"
+    ],
     "PHA/AR/APBLG/A*": [
         "maharadjah",
         "maharadja",
@@ -2212,6 +2389,10 @@
     "PHEURPL/EUD/*PB": [
         "myrmidon",
         "mirmidon"
+    ],
+    "OBG/R*": [
+        "oscar",
+        "ocre"
     ],
     "O*RBG": [
         "orque",
@@ -2287,11 +2468,19 @@
         "anti-gang",
         "antigang"
     ],
-    "AE/ER/OP/AS/RA*L": [
+    "AE/ER/OP/A*FPL": [
         "aérospatial",
         "aérospatiale"
     ],
-    "AER/OP/AS/RA*L": [
+    "AE/ER/OS/PAS/RA*L": [
+        "aérospatial",
+        "aérospatiale"
+    ],
+    "AER/OP/A*FPL": [
+        "aérospatial",
+        "aérospatiale"
+    ],
+    "AER/OS/PAS/RA*L": [
         "aérospatial",
         "aérospatiale"
     ],
@@ -2347,6 +2536,14 @@
         "pastoral",
         "pastorale"
     ],
+    "PAS/TOR/A*L": [
+        "pastoral",
+        "pastorale"
+    ],
+    "PAS/TO*RL": [
+        "pastoral",
+        "pastorale"
+    ],
     "POEUPBT/AO*R": [
         "pointeur",
         "pointer"
@@ -2390,6 +2587,10 @@
         "chef-d'oeuvre",
         "chef-d'oeuvres",
         "chefs-d'oeuvre"
+    ],
+    "KOP/ROD/U/*BGS": [
+        "coproduction",
+        "co-production"
     ],
     "KOPS/OD/U/*BGS": [
         "coproduction",
@@ -2438,7 +2639,15 @@
         "alpha",
         "alfa"
     ],
+    "AE/SO*FPL": [
+        "asocial",
+        "asociale"
+    ],
     "AE/SOS/RA*L": [
+        "asocial",
+        "asociale"
+    ],
+    "AS/O*FPL": [
         "asocial",
         "asociale"
     ],
@@ -2518,6 +2727,10 @@
         "illustré",
         "lustré"
     ],
+    "HRUS/TR*E": [
+        "illustré",
+        "lustré"
+    ],
     "RA*FL": [
         "rafle",
         "raff",
@@ -2556,6 +2769,10 @@
     "TPOUFL/O*U": [
         "foufou",
         "fou-fou"
+    ],
+    "TKPWR-LZ/*PB": [
+        "grillon",
+        "graillon"
     ],
     "TKPWOUR/O*U": [
         "gourou",
@@ -2608,7 +2825,15 @@
         "dorsal",
         "dorsale"
     ],
+    "-BGS/TRAF/AEURT/*EU": [
+        "extraverti",
+        "extravertie"
+    ],
     "-BGS/TRAFRBT/*EU": [
+        "extraverti",
+        "extravertie"
+    ],
+    "KP-T/RAF/AEURT/*EU": [
         "extraverti",
         "extravertie"
     ],
@@ -2677,6 +2902,10 @@
     "HREUD/AO*R": [
         "leader",
         "lieder"
+    ],
+    "PHAB/RABG/OD/EP/RES/*EUFL": [
+        "maniaco-dépressif",
+        "maniacodépressif"
     ],
     "PHAB/RABG/OD/EPS/ES/*EUFL": [
         "maniaco-dépressif",
@@ -2860,6 +3089,11 @@
         "mariol",
         "mariole"
     ],
+    "PHAR/RO*L": [
+        "mariolle",
+        "mariol",
+        "mariole"
+    ],
     "PHO*PLT": [
         "moment",
         "moman",
@@ -2901,6 +3135,11 @@
         "reinette",
         "rainette"
     ],
+    "R-BG/RE/A*GS": [
+        "récréation",
+        "recréation",
+        "re-création"
+    ],
     "K*EUT": [
         "quitte",
         "skeet",
@@ -2911,6 +3150,11 @@
         "séant"
     ],
     "ULT/RAF/AOL/A*EU": [
+        "ultraviolet",
+        "ultra-violets",
+        "ultra-violet"
+    ],
+    "ULT/RAFR/OL/A*EU": [
         "ultraviolet",
         "ultra-violets",
         "ultra-violet"
@@ -2935,6 +3179,11 @@
         "déconnection"
     ],
     "AFRPL/*EU": [
+        "ampli",
+        "emplie",
+        "empli"
+    ],
+    "APB/PHR*EU": [
         "ampli",
         "emplie",
         "empli"
@@ -3001,6 +3250,10 @@
         "cela",
         "salat",
         "cella"
+    ],
+    "SAPB/KR*EU": [
+        "sanskrit",
+        "sanscrit"
     ],
     "SAPBS/KR*EU": [
         "sanskrit",
@@ -3099,9 +3352,18 @@
         "gastro-entérologue",
         "gastroentérologue"
     ],
+    "TKPWAS/TRO/APBT/ER/OL/O*EG": [
+        "gastro-entérologue",
+        "gastroentérologue"
+    ],
     "HA*Z": [
         "haha",
         "hase"
+    ],
+    "AEUBG/R*EUPL": [
+        "escrime",
+        "ice-cream",
+        "ice cream"
     ],
     "AEUS/KR*EUPL": [
         "escrime",
@@ -3156,7 +3418,17 @@
         "post-natale",
         "postnatale"
     ],
+    "POS/T-B/AT/A*L": [
+        "post-natal",
+        "postnatal",
+        "post-natale",
+        "postnatale"
+    ],
     "POFT/PROD/U/*BGS": [
+        "post-production",
+        "postproduction"
+    ],
+    "POS/TPROD/U/*BGS": [
         "post-production",
         "postproduction"
     ],
@@ -3349,6 +3621,11 @@
         "condenseur",
         "descenseur"
     ],
+    "STKWA*PB": [
+        "devant",
+        "défens",
+        "défends"
+    ],
     "SPW*": [
         "ante",
         "ente",
@@ -3408,6 +3685,10 @@
         "joli",
         "jolie"
     ],
+    "SKWROL/*EU": [
+        "joli",
+        "jolie"
+    ],
     "KEUP/*Z": [
         "kippa",
         "kipa"
@@ -3434,6 +3715,10 @@
         "minute",
         "mn"
     ],
+    "PHEUB/*UT": [
+        "minute",
+        "mn"
+    ],
     "PHOL/A*S": [
         "mollasse",
         "molasse"
@@ -3453,6 +3738,10 @@
     "PA*RBL": [
         "pare-balles",
         "pare-balle"
+    ],
+    "PAO*T": [
+        "putt",
+        "pataud"
     ],
     "PAEURS/OB/AGS/AT/*Z": [
         "persona non grata",
@@ -3532,7 +3821,15 @@
         "vernal",
         "verbale"
     ],
+    "AB/A*FPL": [
+        "abbatial",
+        "abbatiale"
+    ],
     "AB/AS/RA*L": [
+        "abbatial",
+        "abbatiale"
+    ],
+    "AE/PWA*FPL": [
         "abbatial",
         "abbatiale"
     ],
@@ -3549,6 +3846,10 @@
         "accord",
         "accore",
         "accort"
+    ],
+    "ABG/R*U": [
+        "accru",
+        "accrue"
     ],
     "AE/KR*U": [
         "accru",
@@ -3648,6 +3949,10 @@
         "catarrhe",
         "cathare"
     ],
+    "KAFLZ/*PB": [
+        "cavaillon",
+        "cavillon"
+    ],
     "SHA*PB": [
         "champ",
         "chand",
@@ -3702,6 +4007,10 @@
         "cossu",
         "cossus",
         "cossue"
+    ],
+    "KRO/ABG/RO*Z": [
+        "croa croa",
+        "croa-croa"
     ],
     "KRO/ARBG/O*Z": [
         "croa croa",
@@ -3826,11 +4135,19 @@
         "interviewer",
         "intervieweur"
     ],
+    "SPWAEUR/WEU/OUF/AO*R": [
+        "interviewer",
+        "intervieweur"
+    ],
     "EUBGS/A*EPL": [
         "xième",
         "ixième"
     ],
     "-PBLG/HRAB/*Z": [
+        "djellaba",
+        "jellaba"
+    ],
+    "TK-G/HRAB/*Z": [
         "djellaba",
         "jellaba"
     ],
@@ -3850,6 +4167,11 @@
     "KOR/*E": [
         "coré",
         "koré"
+    ],
+    "HRABG/REUPL/ABG/REUS/T*EU": [
+        "lacrima-christi",
+        "lacryma-christi",
+        "lacryma christi"
     ],
     "HRARBG/EUPL/AFT/*EU": [
         "lacrima-christi",
@@ -3877,6 +4199,10 @@
         "mare"
     ],
     "PHAFT/A*R": [
+        "mastard",
+        "mastar"
+    ],
+    "PHAS/TA*R": [
         "mastard",
         "mastar"
     ],
@@ -3942,6 +4268,10 @@
         "puy",
         "pât"
     ],
+    "RAD/SKWR*Z": [
+        "radja",
+        "radjah"
+    ],
     "RAPBLG/*Z": [
         "radja",
         "radjah"
@@ -3960,6 +4290,11 @@
         "régale"
     ],
     "SHAFRP/O*EUPB": [
+        "shampooing",
+        "schampooing",
+        "shampoing"
+    ],
+    "SHAPB/PO*EUPB": [
         "shampooing",
         "schampooing",
         "shampoing"
@@ -3994,7 +4329,16 @@
         "ticheurte",
         "tee-shirt"
     ],
+    "WAPBD/AO*R": [
+        "vendeur",
+        "vendangeur"
+    ],
     "WAO*BG": [
+        "vioque",
+        "viocque",
+        "vioc"
+    ],
+    "WRO*BG": [
         "vioque",
         "viocque",
         "vioc"
@@ -4007,7 +4351,15 @@
         "aglagla",
         "à glagla"
     ],
+    "AE/TKPWHRAG/HR*Z": [
+        "aglagla",
+        "à glagla"
+    ],
     "AFRLG/AFRLG/*Z": [
+        "aglagla",
+        "à glagla"
+    ],
+    "AG/HRAG/HR*Z": [
         "aglagla",
         "à glagla"
     ],

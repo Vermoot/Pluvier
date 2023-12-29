@@ -10,6 +10,7 @@ class Steno_Encoding:
                 # start with - : right hand
                 'sjasj§': '/SRAGS', #ciation
                 '@v°n' : 'ENVH',
+                'sjal' : '-/FPL',
                 'sal': 'sl',
                 "aOR" : "/ARP",
                 "pRasj§":"/RPGS",
@@ -21,10 +22,13 @@ class Steno_Encoding:
                 'myl' : '/FRPL',
                 'v°n' : 'WH|FPB',
                 'vin' : 'VH',
+                'Oli' : '/OEUL',# inversion oli
+                'Opi' : '/OEUP',# inversion opi
+                'ato' : '/AOT',# inversion ato
+                'ado' : '/AOD',# inversion ado
+                'vOl' :'VL', 
 
-                'vOl' :'VL',
-
-                'ekil' :'KL',
+                'EKIL' :'KL',
                 "jEn": "AEB",
                 'Egze' : '/KP',
                 'Egzi' : '/KPEU',
@@ -67,8 +71,9 @@ class Steno_Encoding:
                 'vER' : '-/FRB', # travers
                 'Rifi' : '-/FR', # bonus rifi
                 'ijO' : 'AO',
-#                'jO' : 'RO|AO',
+                'jO' : 'RO',
 #                'jO' : 'AO', # conflit viol et myope RO
+                'ij@' : 'AEN' , # son ian
                 'j@' : 'AEN' , # son ian
                 '@l' : 'ANL', #enleve
                 "RSi" : "VRPB",
@@ -119,9 +124,8 @@ class Steno_Encoding:
                 'el': 'L',
                 "je": "AE",     # pied
                 "jE": "AE",     # ciel
-                "ja": "RA",     # cria
+                "ja": "/RA|/RA",     # cria
                 "rjO": "RAO",     # griotte
-                "jO": "AO",     # kiosque
 
 #                "jO": "ROE",    # fjord # TODO unsure
 #                "jo": "AO",     # bio # TODO Some conflict there. "-R can be read as i" (above), but the diphtongs are more important I guess?
@@ -159,6 +163,99 @@ class Steno_Encoding:
                 'n' : 'TPH|B',
                 'N' : '-PG|PG',
                 "@": "/APB",     # pluie
+        }
+
+        MANDATORY_CHUNKS = {
+                # syllabe of sound
+                # separate by |  => right_hand|left_hand
+                # start with / : already encoded
+                # start with - : right hand
+                'sal': 'sl',
+                "aOR" : "/ARP",
+                "pRasj§":"/RPGS",
+                'ekil' :'KL',
+                "jEn": "AEB",
+                'Egze' : '/KP',
+                'Egzi' : '/KPEU',
+                'Eksi' : '/KPEU',
+                'Eks' : '/KP',
+                'syRv' : 'SWR|SURW',
+                'ek' : 'K',
+                'kl' : 'KHR|BLG',
+                
+#                'ist' : '*EUS',
+                'wan' : 'WOIB', #douane                
+                'bRe': '-/BS',
+                "djO": "OD",
+                "zj§": "-/GZ",
+
+
+                'kE' : 'KE',
+                'psjOn' :'-/PGS',
+                'sw' : 'SW',
+                'ps' : 'S',
+                '8E' : 'WE',
+
+                'ijO' : 'AO',
+                'ij@' : 'AEN' , # son ian
+                'j@' : 'AEN' , # son ian
+                '@l' : 'ANL', #enleve
+                "RSi" : "VRPB",
+                'En' : 'AIB',
+                'eO' : 'AOU',
+                'eo' : 'AOU',
+                'oi' : 'OEU',
+
+                #'@v' : 'ENVH', #envenime
+#                'vwa' : 'WOEU',# not in TAO rules..
+                't8' : 'TW', # fru-ctu-eux
+#                "kR" : "KR", 
+                "ks": "-/BGS",
+                '8a' : 'WA' , # ua in situation
+#                "kR" : "RK",#can-cre
+                'on' : 'ON',
+                'st' : '/ST',#new rule
+                "tR": "TR", #strate
+                "8i": "AU",     # pluie
+                'ij' : '-/LZ', #ille
+                'aj' : '-/LZ', #paille
+
+                "j2": "AOEU",   # vieux
+                'el': 'L',
+                "je": "AE",     # pied
+                "jE": "AE",     # ciel
+                "ja": "/RA|/RA",     # cria
+                "jO": "AO",     # kiosque
+
+#                "jO": "ROE",    # fjord # TODO unsure
+#                "jo": "AO",     # bio # TODO Some conflict there. "-R can be read as i" (above), but the diphtongs are more important I guess?
+#                "jO": "RO",     # fjord
+                "j§": "AO",     # av_ion_
+                "kw": "KW",
+                'k§' : 'KOPB', # content
+#                "wE": "WAEU",
+                "wE" : "WE",
+                "fR" : "/TPR|/FR",
+                "§t" : "ONT",
+                "@S" : "/AFRPBLG",
+                "5S" : "/EUFRPBLG",
+                'pl' : 'PL',
+                "ER" : "AIR",
+                "wa": "OEU",    # froid
+                "w5": "OEUPB",  # loin
+                "wi": "AOU",    # oui
+                "j5": "AEPB",   # chien
+                "ey": "EU",     # r_éu_nion
+                'oo' : 'O',    #zoo
+                "ya": "WA",     # suave
+                'fl': "FL",
+                "ska" : "K",#skrute
+                "sk" : "K",#skrute
+                'S' : 'SH|FP',
+                "5" : "/EUPB",
+                'n' : 'TPH|B',
+                'N' : '-PG|PG',
+                "@": "/APB",     
         }
         ALONE_SUFFIXES = {
                 'OU' : 'O*U',
@@ -234,10 +331,11 @@ class Steno_Encoding:
                 Log('> not eat voyel: ', syll)
                 return syll
 
-        def find_matching(self, syll, word) :
+        def find_matching(self, syll, word, chunks) :
                 Log('find match word', word)
                 list_tuple=[]
-                for sound, steno in self.CHUNKS.items():
+
+                for sound, steno in chunks.items():
                         if not sound in word:
                                 continue
                         Log('Find sound:', sound)
@@ -246,24 +344,24 @@ class Steno_Encoding:
                                 list_tuple.append((sound,steno)) 
                                 end = word[len(sound):]
                                 if end :
-                                        for  newkey, value in self.find_matching(syll,end):
+                                        for  newkey, value in self.find_matching(syll,end, chunks):
                                                 list_tuple.append((newkey,value)) 
                                 return list_tuple
                         if word.endswith(sound):
                                 start = word[:-len(sound)]
                                 if start :
-                                        for  key, value in self.find_matching(syll,start):
+                                        for  key, value in self.find_matching(syll,start, chunks):
                                                 list_tuple.append((key,value)) 
                                 list_tuple.append((key,steno))
                                 return list_tuple
 
                         splitted = word.split(sound)
                         start  =splitted[0]
-                        for  newkey,value in self.find_matching(syll,start):
+                        for  newkey,value in self.find_matching(syll,start, chunks):
                                 list_tuple.append((newkey,value)) 
                         list_tuple.append((sound,steno))     
                         end = splitted[1]
-                        for  newkey,value in self.find_matching(syll,end):
+                        for  newkey,value in self.find_matching(syll,end, chunks):
                                 list_tuple.append((newkey,value)) 
                         return list_tuple
                 list_tuple.append((word, ""))
@@ -271,7 +369,7 @@ class Steno_Encoding:
                 return list_tuple
                                 
                 
-        def encode(self):
+        def encode(self, chunks):
                 Log('-- Encode :',self.syllabes)
 
                 self.word_encoded = ""
@@ -303,7 +401,7 @@ class Steno_Encoding:
                                 continue
                         Log('one piece',piece)
                         sylls = {}
-                        sylls = self.find_matching(sylls, piece)
+                        sylls = self.find_matching(sylls, piece, chunks)
                         Log('find matching sylls: ' , sylls)
 
                         
@@ -382,7 +480,7 @@ class Steno_Encoding:
                                 continue
                         Log('piece',piece)
                         sylls = {}
-                        sylls = self.find_matching(sylls, piece)
+                        sylls = self.find_matching(sylls, piece, self.CHUNKS)
                         Log('sylls' , sylls)
                         Log('word encoded' , self.word_encoded)
                         

@@ -317,7 +317,9 @@ class Steno:
                 "zj§": "-/GZ",
                 "fyz" : "-/FZ|FUZ",
                 "vwaR" : "-/FRS",
-                
+                "ato" : "AOT", # inversion
+                "8ito" : "AOT", # inversion
+                "ado" : "AOD", # inversion
                 "val" : "-/FL",
                 "vaj" : "-/FL",
                 "vEl" : "-/FL",
@@ -368,6 +370,7 @@ class Steno:
                 "dabl" : "/TKABL",
                 "jEv°m@":"-/FPLT",
                 "v°m@" : "-/FPLT",
+                "p°m@" : "-/PLT",
                 "@sj§": "/APBS",    # p_ension_
                 "jast" : "YA*S|/KWRAFT|/RAFT",
                 "vwaR" : "-/FRS",
@@ -402,8 +405,8 @@ class Steno:
                 "je": "AE",     # pied
                 '@p' : '/AFRP' , #campe
                 'ilm' : 'LIM' , #film -> flim
-                'ylb' : 'LUB' , #bulbe -> blub
-                'alv' : 'LAV' , #valve -> vlav
+                'ylb' : 'LUB|ULB' , #bulbe -> blub
+                'alv' : 'LAV|ALV' , #valve -> vlav
                 'gl' : 'LG' , #sigle -> silge
                 '§p' : '/OFRP', # trompe
                 'Ribl' : '-/RBL',
@@ -451,7 +454,8 @@ class Steno:
 
                 "bl°m@" : "-/PLT",
                 "t°m@" : "-/PLT",
-                "l°m@" : "-/PLT",
+                "l°m@" : "LEMT|-/PLT",
+                "lem@" : "LEMT|-/PLT",
 
                 "m@" : "-/PLT",
                 "En" : "AIB",
@@ -469,7 +473,7 @@ class Steno:
 #                'El' :'-/FL',
                 "E" : "/AEU",
                 "e" : "-/D",
-                "n" : "-/B",
+                "n" : "n",
                 'j' : '-/LZ',
                 "§" : "OPB|/*PB",
 #                "sm" : "-/FP",
@@ -485,25 +489,6 @@ class Steno:
                 'k' : 'K',
 
         }
-
-        SYLLABE_PLACES = {
-                "u-z" : "uz-",
-                "R-Si" : "-RSi",
-                "@-sj§" : "-@sj§",
-                "d-ZEk": "-dZ",
-                "b-ZEk": "-bZ",
-                "d-Z": "-dZ",
-                "S°-" : "S°",
-                "vo-l": "vl-",
-                "-y-" : "-y",
-                "@-t" :"@t-",
-                "5-t" :"5t-",
-#                'i-j' : 'i',
-                'de' : 'd',
-
-        }
-
-
         words = []
         suffix = ""
         needs_star = False
@@ -825,6 +810,12 @@ class Steno:
                         cutword.mandatory=True
                         return cutword
 
+                if verb_word.word.endswith('iez'):
+                        self.ending = "AEZ"
+                        self.ending_syll = phonetics[:-2]
+                        cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                        cutword.mandatory=True
+                        return cutword
 
                 if verb_word.is_vous_ind_present():
                         self.ending = "/*EZ"
@@ -997,12 +988,6 @@ class Steno:
                 if finds:
                         return copy.copy(finds[0])
                 return False
-
-        def change_syllabes(self, word):
-                new_word=word
-                for syll in self.SYLLABE_PLACES.items():
-                        new_word = new_word.replace(syll[0], syll[1])
-                return new_word
 
 
         def prefixes(self, phoneme, word_class):
@@ -1254,7 +1239,22 @@ class Steno:
 
         def only_plural(self):
                 self.only_plural=true
-        
+
+
+        def encode_with_suffix( self, initial_word, prefix, suffix, ending, chunks):
+                
+                Log('trouve suffixes', suffix)
+                remains = self.double_consonant_remove_woyel(initial_word.word, suffix.get_remains())
+                Log('trouve suffixes', remains)
+                
+                final_word= Steno_Encoding(remains, prefix.get_steno(), suffix).encode(chunks)
+                if ending :
+                        final_word = self.concat_ending(final_word, ending.get_steno())
+                return final_word
+#                                if has_homophone and initial_word.is_verb() and not prefix.has_ortho_rule() and not ending:
+ #                                       Log( 'is homophone',suffix.has_ortho_rule())
+  #                                      final_word = self.add_star(final_word)
+
         def newtransform(self,initial_word):
                 all_sylls = self.adapt_phonetics(initial_word.phonetics , initial_word.word)
  #                all_sylls = phonetic.replace('-','')
@@ -1275,20 +1275,8 @@ class Steno:
                         all_suffixes=self.check_suffixes(initial_word,nextword)
 
                         for suffix in all_suffixes:
-
-                                Log('trouve suffixes', initial_word.word)
-                                remains = self.double_consonant_remove_woyel(initial_word.word, suffix.get_remains())
-                                Log('trouve suffixes', remains)
-
-                                final_word= Steno_Encoding(remains, prefix.get_steno(), suffix).encode()
-                                Log('ending', ending)
-                                if ending :
-                                        final_word = self.concat_ending(final_word, ending.get_steno())
-#                                if has_homophone and initial_word.is_verb() and not prefix.has_ortho_rule() and not ending:
- #                                       Log( 'is homophone',suffix.has_ortho_rule())
-  #                                      final_word = self.add_star(final_word)
-                                results.append(final_word)
-#                        final_word = self.orth_ending_iere(initial_word.word, final_word)
+                                results.append(self.encode_with_suffix( initial_word,  prefix, copy.copy(suffix), ending, Steno_Encoding.CHUNKS))
+                                results.append(self.encode_with_suffix( initial_word,  prefix, copy.copy(suffix), ending, Steno_Encoding.MANDATORY_CHUNKS))
 
                         if ending and not ending.mandatory:
                                 Log('not mandatory')
@@ -1298,7 +1286,9 @@ class Steno:
                                         Log('trouve suffixes', initial_word.word)
                                         remains = self.double_consonant_remove_woyel(initial_word.word, suffix.get_remains())
                                         Log('trouve suffixes', remains)
-                                        final_word= Steno_Encoding(remains, prefix.get_steno(), suffix).encode()
+                                        final_word= Steno_Encoding(remains, prefix.get_steno(), suffix).encode(Steno_Encoding.CHUNKS)
+                                        results.append(final_word)
+                                        final_word= Steno_Encoding(remains, prefix.get_steno(), suffix).encode(Steno_Encoding.MANDATORY_CHUNKS)
                                         results.append(final_word)
                                 
                 Log(results)

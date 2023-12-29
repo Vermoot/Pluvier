@@ -122,3 +122,5 @@ class Dictionary:
             d.write(json_object)
 
 Dictionary().generate()
+
+# replace all /TPH' by /-B'

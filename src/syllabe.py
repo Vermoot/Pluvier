@@ -17,6 +17,7 @@ class Syllabe:
                 "I": "EU",
                 "F":"FL",
                 "J" : "G",
+                "n" : "B",
                 'X' : 'BGS',
                 }
 
@@ -31,10 +32,10 @@ class Syllabe:
                 "Y" : "KWR",
                 "G" : "TKPW",
                 "J" : "SKWR",
-                "N" : "TPH",
+                "n" : "TPH",
                 "Q" : "KW",
                 'X' : 'KP',
-
+                "N": "TPH",
                 "Z" : "SWR"
 
         }
