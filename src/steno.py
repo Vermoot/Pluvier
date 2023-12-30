@@ -213,6 +213,12 @@ class Steno:
 
                 'rité' : OrthoSuffix('Rite', '-/RT'), # securite
                 'bité' : OrthoSuffix('bite','-/BT'),
+                
+                'ionale' : OrthoSuffix('jOnal','/AOEBL').set_mandatory(),
+                'ional' : OrthoSuffix('jOnal','/AOBL'),
+                'orale' : OrthoSuffix('ORal','/OERL').set_mandatory(),
+                'oral' : OrthoSuffix('ORal','/ORL'),
+                'ale' :OrthoSuffix('al','/AEL').set_mandatory(),
                 'tivité': OrthoSuffix('tivite', '/TEUFT'),
                 'vité': OrthoSuffix('vite', '-/FT'),
                 'cité': OrthoSuffix('site', '-/FT'),
@@ -334,7 +340,7 @@ class Steno:
                 'm°n' : "/KH",#men
                 'diR' : '-/DZ',
                 "win": "AOUB",    # oui
-                'nal' : '-/PBL', #canal
+#                'nal' : '-/PBL', #canal
                 'mas' : 'MS', #amasse
 
 
@@ -816,20 +822,20 @@ class Steno:
                         cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
                         cutword.mandatory=True
                         return cutword
+                if verb_word.is_vous_futur():
+                        if verb_word.syll.endswith('Re') :
+                                Log('indic')
+                                self.ending = "/R*EZ"
+                                self.ending_syll = phonetics[:-2]
+                                cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                                cutword.mandatory=True
+                                return cutword
 
                 if verb_word.is_vous_ind_present():
                         self.ending = "/*EZ"
 
                         if verb_word.syll.endswith('e') :
                                 self.ending_syll = phonetics[:-1]
-                                cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
-                                cutword.mandatory=True
-                                return cutword
-                if verb_word.is_vous_futur():
-                        if verb_word.syll.endswith('Re') :
-                                Log('indic')
-                                self.ending = "/R*EZ"
-                                self.ending_syll = phonetics[:-2]
                                 cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
                                 cutword.mandatory=True
                                 return cutword
@@ -1251,9 +1257,6 @@ class Steno:
                 if ending :
                         final_word = self.concat_ending(final_word, ending.get_steno())
                 return final_word
-#                                if has_homophone and initial_word.is_verb() and not prefix.has_ortho_rule() and not ending:
- #                                       Log( 'is homophone',suffix.has_ortho_rule())
-  #                                      final_word = self.add_star(final_word)
 
         def newtransform(self,initial_word):
                 all_sylls = self.adapt_phonetics(initial_word.phonetics , initial_word.word)
@@ -1294,7 +1297,6 @@ class Steno:
                 Log(results)
 
                 for final_word in  results:
-                                                
                         Log('final_word' , final_word)
                         results.remove(final_word)
                         

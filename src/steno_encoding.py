@@ -356,13 +356,15 @@ class Steno_Encoding:
                                 return list_tuple
 
                         splitted = word.split(sound)
-                        start  =splitted[0]
-                        for  newkey,value in self.find_matching(syll,start, chunks):
-                                list_tuple.append((newkey,value)) 
-                        list_tuple.append((sound,steno))     
-                        end = splitted[1]
-                        for  newkey,value in self.find_matching(syll,end, chunks):
-                                list_tuple.append((newkey,value)) 
+                        print('splitted' , splitted)
+                        count=0
+                                                        
+                        for split_word in splitted:
+                                for  newkey,value in self.find_matching(syll,split_word, chunks):
+                                        list_tuple.append((newkey,value))
+                                if count%2==0 :
+                                        list_tuple.append((sound,steno))
+                                count=count+1
                         return list_tuple
                 list_tuple.append((word, ""))
 

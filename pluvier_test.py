@@ -892,8 +892,9 @@ class TestPluvier:
         self.assertSame({
 #            "EUPBTS/*D": "interdit",
     #        "EUPBTS/-DZ": "interdire",
-     #       "SPWAEURD": "interdit",
-            "SPWAEURDZ": "interdire"})
+#            "SPWAEURD": "interdit",
+            "SPWAEURDZ": "interdire",
+            })
         
     def test_lesson30_W_for_F_initial(self):
         self.assertSame({"WHEU": "fini",
@@ -1339,7 +1340,15 @@ class TestPluvier:
 
 
             })
+    def test_stl_ale_AEL_ional_AOBL_orale_OERL(self) :
+        self.assertSame({
+            "SPWAEURB/AS/AOBL" : "international",
+            "SPWAEURB/AS/AOEBL" : "internationale",
+            'PHORL': 'moral',
+            'PHOERL': 'morale',
+            'STEUPL/APBT/AEL': 'sentimentale',
 
+            })
 
     def test_lesson47_GS_sound_gr_BS_sound_bre(self):
         self.assertSame({
@@ -1986,15 +1995,19 @@ class TestPluvier:
     def test_not_appears(self):
         self.assertSame({
             "ERBG/EUR": "écrire",
+            "R-PS/EZ/APBT/TAPB":"représentante",
 #            "AP/RAEU": "après",
             
 #            "TKWOEUB": "écris",
        })
+
+        
 #            "iu": "congédié" could be ED without LZ,
     def test_wrong_words(self):
         self.assertSame({
             #           "EUPBLG/-R": "imaginer",
 #            "KOU": "coucher",
+
             'AF/AEZ':'aviez',
             "STKOR": "dehors",
             "R-FL/UZ": "refuse",
