@@ -80,7 +80,7 @@ H- + bar = 4
 
 ### Lesson 10 : Initial `L` and final `K`
 
-Keys `KR` designate the initial L (IPA `l`)  
+Keys `HR` designate the initial L (IPA `l`)
 Keys `BG` designate the final K (IPA `k`)
 
 Vowel: Keys `OU` designate the sound "ou" (IPA `u`) (loupe, tout, sous, tour, clou)
