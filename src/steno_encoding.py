@@ -1,6 +1,7 @@
 from src.log import Log
 from src.syllabe import Syllabe
 from src.cutword import Cutword
+import re
 class Steno_Encoding:
 
         CHUNKS = {
@@ -23,17 +24,20 @@ class Steno_Encoding:
                 'v°n' : 'WH|FPB',
                 'vin' : 'VH',
                 'Oli' : '/OEUL',# inversion oli
+                'ati' : '/AEUT',# inversion ati
                 'Opi' : '/OEUP',# inversion opi
                 'ato' : '/AOT',# inversion ato
                 'ado' : '/AOD',# inversion ado
                 'vOl' :'VL', 
 
                 'EKIL' :'KL',
-                "jEn": "AEB",
+                "jEn": "/AEB",
                 'Egze' : '/KP',
+                'Egz' : '/KP',
                 'Egzi' : '/KPEU',
                 'Eksi' : '/KPEU',
                 'Eks' : '/KP',
+                'ej' :'/ELZ',
                 'syRv' : 'SWR|SURW',
                 'ek' : 'K',
                 'kl' : 'KHR|BLG',
@@ -79,7 +83,7 @@ class Steno_Encoding:
                 "RSi" : "VRPB",
                 'REj' : '-/RLZ' , #oreille
 
-                "tER": "TAEUR|TS",  #notaire
+                "tER": "/TAEUR|TS",  #notaire
                 "EtR" : "-/TS" , #fenetre
                 "RS" : "VRPB",# -rche
                 "dZEk" : "-/PBLG",
@@ -91,8 +95,8 @@ class Steno_Encoding:
                 'stR' : 'STR|-/TS',#new rule
                 'st' : 'ST|FT',#new rule
                 'En' : 'AIB',
-                'eO' : 'AOU',
-                'eo' : 'AOU',
+                'eO' : 'OE',
+                'eo' : 'OE',
                 'oi' : 'OEU',
                 'v@' : "WAPB|FG",
                 "vaj" : "-/FL",
@@ -114,23 +118,23 @@ class Steno_Encoding:
                 'gR' : 'TKPWR|GS',
 #                "tR": "-TS", #tre
                 "tR": "TR", #strate
-                "8i": "AU",     # pluie
+                "8i": "/AU",     # pluie
 #                'ij': 'AO', # before jO
                 'ij' : '-/LZ', #ille
                 'aj' : '-/LZ', #paille
 #                'jO' : 'AO',
 
-                "j2": "AOEU",   # vieux
+                "j2": "/AOEU",   # vieux
                 'el': 'L',
-                "je": "AE",     # pied
-                "jE": "AE",     # ciel
+                "je": "/AE",     # pied
+                "jE": "/AE",     # ciel
                 "ja": "/RA|/RA",     # cria
                 "rjO": "RAO",     # griotte
 
 #                "jO": "ROE",    # fjord # TODO unsure
 #                "jo": "AO",     # bio # TODO Some conflict there. "-R can be read as i" (above), but the diphtongs are more important I guess?
 #                "jO": "RO",     # fjord
-                "j§": "AO",     # av_ion_
+                "j§": "/AO",     # av_ion_
                 "kw": "KW",
                 'k§' : 'KOPB', # content
 #                "wE": "WAEU",
@@ -142,12 +146,12 @@ class Steno_Encoding:
                 '@p' : '/AFRP' , #campe
                 '§p' : '/OFRP', # trompe
                 'pl' : 'PL',
-                "ER" : "AIR",
+                "ER" : "/AEUR",
                 'gl' : 'TKPWHR|FRLG', #glace or angle
                 "wa": "OEU",    # froid
                 "w5": "OEUPB",  # loin
-                "wi": "AOU",    # oui
-                "j5": "AEPB",   # chien
+                "wi": "/AOU",    # oui
+                "j5": "/AEPB",   # chien
                 "ey": "EU",     # r_éu_nion
 #                "vR": "VR",
                 'oo' : 'O',    #zoo
@@ -174,7 +178,7 @@ class Steno_Encoding:
                 "aOR" : "/ARP",
                 "pRasj§":"/RPGS",
                 'ekil' :'KL',
-                "jEn": "AEB",
+                "jEn": "/AEB",
                 'Egze' : '/KP',
                 'Egzi' : '/KPEU',
                 'Eksi' : '/KPEU',
@@ -202,8 +206,8 @@ class Steno_Encoding:
                 '@l' : 'ANL', #enleve
                 "RSi" : "VRPB",
                 'En' : 'AIB',
-                'eO' : 'AOU',
-                'eo' : 'AOU',
+                'eO' : 'OE',
+                'eo' : 'OE',
                 'oi' : 'OEU',
 
                 #'@v' : 'ENVH', #envenime
@@ -216,21 +220,21 @@ class Steno_Encoding:
                 'on' : 'ON',
                 'st' : '/ST',#new rule
                 "tR": "TR", #strate
-                "8i": "AU",     # pluie
+                "8i": "/AU",     # pluie
                 'ij' : '-/LZ', #ille
                 'aj' : '-/LZ', #paille
-
-                "j2": "AOEU",   # vieux
+                'ej' : '-/LZ', #paille
+                "j2": "/AOEU",   # vieux
                 'el': 'L',
-                "je": "AE",     # pied
-                "jE": "AE",     # ciel
+                "je": "/AE",     # pied
+                "jE": "/AE",     # ciel
                 "ja": "/RA|/RA",     # cria
-                "jO": "AO",     # kiosque
+                "jO": "/AO",     # kiosque
 
 #                "jO": "ROE",    # fjord # TODO unsure
 #                "jo": "AO",     # bio # TODO Some conflict there. "-R can be read as i" (above), but the diphtongs are more important I guess?
 #                "jO": "RO",     # fjord
-                "j§": "AO",     # av_ion_
+                "j§": "/AO",     # av_ion_
                 "kw": "KW",
                 'k§' : 'KOPB', # content
 #                "wE": "WAEU",
@@ -251,6 +255,9 @@ class Steno_Encoding:
                 'fl': "FL",
                 "ska" : "K",#skrute
                 "sk" : "K",#skrute
+                "s°" : "S",
+                
+                
                 'S' : 'SH|FP',
                 "5" : "/EUPB",
                 'n' : 'TPH|B',
@@ -258,8 +265,14 @@ class Steno_Encoding:
                 "@": "/APB",     
         }
         ALONE_SUFFIXES = {
+                'Z' : '*Z',
+                'A' : '*Z',
+#                'T' : '*TE',
                 'OU' : 'O*U',
                 '-PB': '-*PB',
+#                'AE': '-D',
+                'AE': 'A*E',
+                'AET': 'A*ET',
                 'OEUB' : 'O*EUB'
         }
         VOWELS = {
@@ -449,7 +462,7 @@ class Steno_Encoding:
                         self.word_encoded = '/'.join(splitted)
                 for alone, replaced_by in self.ALONE_SUFFIXES.items():
                         if self.word_encoded.endswith('/'+alone):
-                                self.word_encoded = self.word_encoded.replace('/'+alone,'/'+replaced_by)
+                                self.word_encoded = re.sub(alone+ '$',replaced_by, self.word_encoded)
                 
                 return  self.word_encoded
         
@@ -564,11 +577,9 @@ class Steno_Encoding:
         def voyels(self, word):
                 new_word=''
                 for char in word:
-
-                        Log('replace',char)
                         transform_char=char.upper()
                         if char in self.VOWELS:
                                 transform_char=self.VOWELS[char]
-                        Log('by',transform_char)
+                        Log('replace '+char+' by ',transform_char)
                         new_word = new_word+transform_char
                 return new_word

@@ -15,6 +15,7 @@ class Ortho:
         replace_by = ''
         steno_str =''
         prefix = False
+        closure = lambda self,word: True
         check_alternative = False
         alternative_str = ''
         one_hand = False
@@ -47,6 +48,10 @@ class Ortho:
                 self.mandatory = True
                 return self
 
+        def with_condition(self, closure) :
+                self.closure = closure
+                return self
+
         def get_alternative_str(self, word, suffix_str) :
                 return word.replace(suffix_str, self.alternative_str)
 
@@ -62,9 +67,10 @@ class OrthoSuffix(Ortho):
                                 return syll
                 return False
 
-        def can_be_converted(self, syll):
+        def can_be_converted(self, word, syll):
                 for sound in self.sounds:
-                        if syll.endswith(sound) :
+                        print('closure', self.closure(word))
+                        if syll.endswith(sound) and self.closure(word):
                                 self.sound = sound
                                 return True
                                 
@@ -81,7 +87,7 @@ class OrthoPrefix(Ortho):
                                 return syll
                 return False
 
-        def can_be_converted(self, syll):
+        def can_be_converted(self, word, syll):
                 for sound in self.sounds:
                         if syll.startswith(sound) :
                                 self.sound = sound
@@ -109,6 +115,7 @@ class Steno:
                 'Egze' : 'KP',
                 'Egzi' : 'KPEU',
                 'Eksi' : 'KPEU',
+                'ela' : "ELZ",
                 'pER' : 'PR',
 
                 'Eks' : "KP|-/BGS",
@@ -118,7 +125,7 @@ class Steno:
                 'm2n' : 'KH', #men
                 't°n' : 'TH', #tenace
                 'ten' : 'TH', #tenace
-
+                'k§sej' : 'SK-LZ', # content
                 'ina' : 'TPHA',
                 "syp" : "SP",
                 'inE' : 'TPHAEU',
@@ -130,6 +137,7 @@ class Steno:
                 '5si' : 'STPHEU',
                 '5sa' : 'STPHA',
                 '5se' : 'STPHE',
+                '5sE' : 'STPHAEU',
                 "s@t" : "ST",
                 "tE": "TAEU",  #terminer
                 '5kl' : 'EUFRBLG',
@@ -149,7 +157,7 @@ class Steno:
                 'sp' : 'SP',
                 'sn' : 'STPH',
 #                'k§' : '-KON', # conte
-                'k§s' : 'SK', # content
+
                 'k§' : 'KOPB/', # content
 
                 
@@ -180,9 +188,10 @@ class Steno:
                 'coll' : OrthoPrefix('kOl', 'KHR'),
                 "comm" : OrthoPrefix('kom|kOm','KPH'),
 #                "cont" : OrthoPrefix('k§t','KOEPB/T|KOPB/T|ST'),
-
+                "cons" : OrthoPrefix('k§s','KOEPBS/|KOPBS|SK'),
+                "cont" : OrthoPrefix('k§t','KOEPBT/|KOPBT|ST'),
                 "com" : OrthoPrefix('k§','K*/|K'),
-                "con" : OrthoPrefix('k§','KOEPB/|KOPB|S'),
+                "con" : OrthoPrefix('k§','KOEPB/|KOPB'),
                 'inter' : OrthoPrefix('5tER', 'EUPBTS'), #SPWR
                 'ind' : OrthoPrefix('5d', 'SPW'),
                 'end' : OrthoPrefix('@d', 'SPW'),
@@ -214,15 +223,16 @@ class Steno:
                 'rité' : OrthoSuffix('Rite', '-/RT'), # securite
                 'bité' : OrthoSuffix('bite','-/BT'),
                 
-                'ionale' : OrthoSuffix('jOnal','/AOEBL').set_mandatory(),
+                'ionale' : OrthoSuffix('jOnal','/AOEBL').with_condition(lambda word: word.is_adj()).set_mandatory(),
                 'ional' : OrthoSuffix('jOnal','/AOBL'),
-                'orale' : OrthoSuffix('ORal','/OERL').set_mandatory(),
+                'orale' : OrthoSuffix('ORal','/OERL').with_condition(lambda word: word.is_adj()).set_mandatory(),
                 'oral' : OrthoSuffix('ORal','/ORL'),
-                'ale' :OrthoSuffix('al','/AEL').set_mandatory(),
+                'ale' :OrthoSuffix('al','/AEL').with_condition(lambda word: word.is_adj()).set_mandatory(),
                 'tivité': OrthoSuffix('tivite', '/TEUFT'),
                 'vité': OrthoSuffix('vite', '-/FT'),
                 'cité': OrthoSuffix('site', '-/FT'),
                 'sité': OrthoSuffix('site', '/ST*E'),
+                'pathie' : OrthoSuffix('pati', '/PAEUT'),
                 'igé': OrthoSuffix('iZe', 'EG'),
                 'iger': OrthoSuffix('iZe', '*EG'),
                 'ience' : OrthoSuffix('j@s', 'AENS'),
@@ -287,7 +297,8 @@ class Steno:
                 
                 "th" : OrthoSuffix("t", "-GT"),
                 "the" : OrthoSuffix("t", "-GT"),
-                "a" : OrthoSuffix("a", "-Z|/*Z"),
+#                "ra" : OrthoSuffix("Ra", "-/RZ"),
+#                "a" : OrthoSuffix("a", "-Z"),
                 
 
         }
@@ -337,6 +348,8 @@ class Steno:
                 '@gl' : '/AFRLG',
                 '§gl' : '/OFRLG',
                 '5gl' : '/EUFRLG',
+                'k§f':  'KONF|-/STP',
+
                 'm°n' : "/KH",#men
                 'diR' : '-/DZ',
                 "win": "AOUB",    # oui
@@ -351,6 +364,7 @@ class Steno:
 #                "jER" : "AER" , #caissiERE
                 "jasm" : "/KWRAFPL",
                 "jEn": "AEB",
+                "jEt": "AET",
                 "sj§" : "GS",
                 "lOZik" : "LOIK",
                 "lOZist" : "/HRO*EUS",
@@ -395,6 +409,7 @@ class Steno:
                 "5b": "/EUFRB",  # limbe
                 "§b": "/OFRB",  # comble
                 "ks": "-/BGS",
+                "jE": "AE",     
                 'st' : '-/FT',#new rule
 #                "st" : "-*S",
                 "t@" : "TAN", #content
@@ -467,7 +482,8 @@ class Steno:
                 "En" : "AIB",
                 "ER" : "AIR",
                 "@d" :"-/PBD",
-
+                "dRa" : "-/DZ/*Z",
+#                "Ra" : "-/RZ",
                 "dR" : "-/DZ" ,# ajoin-dre
                 "@b": "/AFRB",   # jambe
                 "tR": "-/TS", #tre - 
@@ -484,7 +500,7 @@ class Steno:
                 "§" : "OPB|/*PB",
 #                "sm" : "-/FP",
                 'o' : 'OE',
-                'a' : 'A|-Z|/*Z',
+                'a' : 'A',
                 'O' : 'O',
 #                't' : 'T',
                 'N' : 'PG',
@@ -725,7 +741,7 @@ class Steno:
                                 ortho = orth[1]
                                 ortho.prefix = True
 
-                                if (ortho.can_be_converted(syll)):
+                                if (ortho.can_be_converted(word,syll)):
                                         syll = ortho.convert(word,syll)
                                         cutword.set_remains(syll)
                                         cutword.set_ortho_rule()
@@ -785,10 +801,18 @@ class Steno:
                                 cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
                                 cutword.mandatory=True
                                 return cutword
+                if verb_word.ending_with('ions'):
+                        self.ending = "AOPB"
+                        self.ending_syll = phonetics[:-2]
+                        if phonetics.endswith('ij§'):
+                                self.ending_syll = phonetics[:-3]
+                        cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                        cutword.mandatory=True
+                        return cutword
 
 
                 if verb_word.is_conditionnel():
-                        self.ending = "/-RS"
+                        self.ending = "RAEUS"
                         if verb_word.is_third_person_plural():
                                 self.ending = "RAEUPBT"
 #                                self.ending = "/-RPB"
@@ -797,11 +821,10 @@ class Steno:
                                 cutword.mandatory=True
                                 return cutword
 
-#                                                        if verb_word.word.endswith('rait'):
-#                                        self.ending = "-RTS"
+
 
                         if ( verb_word.word.endswith('rait')) and verb_word.syll.endswith('E') :
-                                self.ending = "/-RS"
+                                self.ending = "-RS"
 
                                 self.ending_syll = phonetics[:-2]
                                 cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
@@ -855,12 +878,12 @@ class Steno:
                         
 
 
-                if verb_word.ending_with('a'):
-                        self.ending = "/*Z"
-                        self.ending_syll = phonetics[:-1]
-                        cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
-                        cutword.mandatory=True
-                        return cutword
+                # if verb_word.ending_with('a'):
+                #         self.ending = "/*Z"
+                #         self.ending_syll = phonetics[:-1]
+                #         cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
+                #         cutword.mandatory=True
+                #         return cutword
                 if verb_word.ending_with('erons'):
                         self.ending = "ROPB"
                         self.ending_syll = phonetics[:-3]
@@ -906,14 +929,15 @@ class Steno:
                 if verb_word.ending_with('ait'):
 #                        if verb_word.is_third_person_singular():
 #                                self.ending = "/AEUT"
-                        if verb_word.syll.endswith('E') :
+                        if verb_word.syll.endswith('E')  or verb_word.syll.endswith('e') :
                                 self.ending_syll = phonetics[:-1]
                         self.ending = "/-S"
                         cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending, True)
                         cutword.mandatory=True
                         return cutword
 
-                if verb_word.ending_with('it'):
+
+                if verb_word.ending_with('it') and not verb_word.ending_with('oit'):
 #                if verb_word.is_imparfait():
                         self.ending = "/EUT"
 #                        self.ending = "/AEUS"
@@ -1134,8 +1158,8 @@ class Steno:
                                                 Log('continue check alternative')
                                                 continue
                                 Log(vars(ortho))
-                                Log('ORTHO SUFFIXE can be ' , ortho.can_be_converted(phoneme))
-                                if (ortho.can_be_converted(phoneme)):
+                                Log('ORTHO SUFFIXE can be ' , ortho.can_be_converted(word,phoneme))
+                                if (ortho.can_be_converted(word,phoneme)):
                                         syll = ortho.convert(word,phoneme)
                                         cutword.mandatory=ortho.mandatory
                                         mandatory=ortho.mandatory
@@ -1170,7 +1194,7 @@ class Steno:
                         return ''
                 return ''
 
-
+                
         def add_star_on_word(self,word):
                 splitted = word.split('/')
                 splitted[len(splitted)-1]= self.add_star(splitted[len(splitted)-1])

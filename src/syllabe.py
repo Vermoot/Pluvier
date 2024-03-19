@@ -18,6 +18,7 @@ class Syllabe:
                 "F":"FL",
                 "J" : "G",
                 "n" : "B",
+#                "A" : "Z",
                 'X' : 'BGS',
                 }
 

@@ -43,8 +43,13 @@ class Dictionary:
     def add_pronoun_je(self, steno,word):
         if word.is_first_person_singular():
                     pronoun='je '
-                    if re.match("^[aeiouyh]",word.word):
-                        pronoun="j'"
+                    print('iici'+steno)
+                    if word.is_imparfait() and steno.endswith('/AEUS'):
+
+                        steno=steno[5:]+'/-S'
+
+                    if re.match("^[aeéiouyh]",word.word):
+                        pronoun="j'" 
                     if steno[0] in ['E','A','U','O','-']: 
                         translated_word["SKWR"+steno] = pronoun+word.word
                     else:
@@ -83,9 +88,9 @@ class Dictionary:
             tao = json.load(json_file)
 
 
-#        for word in self.words :
-#            print(word.frequence)
-#         self.words = self.words[:80000]
+        for word in self.words :
+            print(word.frequence)
+#        self.words = self.words[:800]
 
 
         translated_word = {}
@@ -125,16 +130,36 @@ class Dictionary:
                 if word.frequence<10:
                     continue
                 if word.is_first_person_singular():
-                    
+                    newsteno=steno
                     pronoun='je '
-                    if re.match("^[aeiouyh]",word.word):
+                    if  steno.endswith('RAEUS'):
+                        newsteno=steno[:-5]+'R-S'
+                        
+                    if  steno.endswith('/AEUS'):
+                        newsteno=steno[:-5]+'/-S'
+                    if  steno.endswith('/AEU'):
+                        newsteno=steno[:-4]+'/-S'
+                    if  steno.endswith('T/-S'):
+                        newsteno=steno[:-4]+'TS'
+
+                    if re.match("^[aeéiouyh]",word.word):
                         pronoun="j'"
-                    if steno[0] in ['E','A','U','O','-']: 
-                        translated_word["SKWR"+steno] = pronoun+word.word
+                    if newsteno[0] in ['E','A','U','O','-']: 
+                        translated_word["SKWR"+newsteno] = pronoun+word.word
                     else:
-                        translated_word["SKWR/"+steno] = pronoun+word.word
+                        translated_word["SKWR/"+newsteno] = pronoun+word.word
                 if word.is_second_person_singular():
                     pronoun='tu '
+                    newsteno=steno
+                    if  steno.endswith('RAEUS'):
+                        newsteno=steno[:-5]+'R-S'
+                        
+                    if  steno.endswith('/AEUS'):
+                        newsteno=steno[:-5]+'/-S'
+                    if  steno.endswith('/AEU'):
+                        newsteno=steno[:-4]+'/-S'
+                    if  steno.endswith('T/-S'):
+                        newsteno=steno[:-4]+'TS'
 
                     if steno[0] in ['R','E','A','U','O','-']: 
                         translated_word["TW"+steno] = pronoun+word.word

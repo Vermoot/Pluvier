@@ -536,6 +536,7 @@ class TestPluvier:
     def test_lesson19_WEL_ending_uel_stl_remove_star(self):
         self.assertSame({
         "WEUZ/WEL": "visuel",
+#            "TKWHR": "duel",
         "TKPWRAD/WEL": "graduel",
             "TKPWRAD/W*EL": "graduelle",
 #                         "ABT/W*EL": "habituel",
@@ -545,14 +546,24 @@ class TestPluvier:
 
     def test_lesson19_separate_starZ_ending_a_sound(self):
         self.assertSame({
-            "R-PZ": "repas",
-            "SAGZ": "saga",
-                         "SAG/*Z": "saga",
-                         "KOUP/*Z": "coupa",
+            "R-P/*Z": "repas",
+# post prod:             "SAGZ": "saga",
+            "SHRA": "cela",
+#            "EURZ": "ira",
+            "RA": "rat",
+ #           "PRAPBD/-RZ": "prendra",
+            "PRAPBDZ/*Z": "prendra",
+            "SAG/*Z": "saga",
+            "KOUP/*Z": "coupa",
 #                         "WOBGZ": "avocat",
 #                         "WEUFR/*Z": "vivra",#removed i
                          })
+        self.assertNotIn({ 'OER/A' : "auras",
+                           'PRAPBD/RA': "prendra"})
 
+    def test_cons_not_S_P(self):
+        self.assertNotIn( { 'S-P/EURGS' : 'conspiration' })
+        
     def test_lesson21_CH_init_is_SH_final_is_FP(self):
         self.assertSame({
  #           "SHAER": "cher",
@@ -584,7 +595,7 @@ class TestPluvier:
             "HRAEURT": "lecteur",
             "ARTS": "actrice", # ABG/*RTS
 #            "HRAEUBG/RTS": "lectrice",
-#            "HRAEURTS": "lectrice",
+            "HRAEURTS": "lectrice",
                          })
 
     def test_lesson22_B_is_final_ne(self):
@@ -1013,6 +1024,7 @@ class TestPluvier:
 
  #??           "SWAR/E": "soirée",
            "SWAEU": "souhait",
+            "SWAR": "soir",
             "SWAEUT": "souhaite",
 
 #"TKWORS": "divorce",
@@ -1078,6 +1090,7 @@ class TestPluvier:
     def test_K_starting_con_2_ways_to_write(self):
         self.assertSame({
             "STAPB": "content",
+            "STRA": "contrat",
             "KOPB/TAPB": "content",
 #            "KOPBT/APB": "content",
  
@@ -1118,6 +1131,7 @@ class TestPluvier:
             "KOEUL": "colis",
            "SKWROEUL": "joli",
             "KOEUP": "copie",
+            "SEUPB/PAEUT" : "sympathie",
             "TPOEUL": "folie",
         })
 
@@ -1193,7 +1207,9 @@ class TestPluvier:
 #            "KPAOEU": "anxieux",
             "OFRBLG": "oncle",
             "EUFRBLG/U" : "inclus",
- #           "EUFRBG/A*E": "inquiet",
+           "EUFRBG/A*E": "inquiet",
+            "EUPB/KAET": "inquiète",
+            "EUFRBG/A*ET": "inquiète",
 #            "PET/OFRBG": "pétoncle", shoube : ?
             "PET/OFRBLG": "pétoncle",
 
@@ -1346,8 +1362,9 @@ class TestPluvier:
             "SPWAEURB/AS/AOEBL" : "internationale",
             'PHORL': 'moral',
             'PHOERL': 'morale',
+            'AFL': 'avale',
             'STEUPL/APBT/AEL': 'sentimentale',
-
+        
             })
 
     def test_lesson47_GS_sound_gr_BS_sound_bre(self):
@@ -1547,8 +1564,9 @@ class TestPluvier:
             "KPAEUPGS": "exception",
 
  #           "KPAEUS/*EUFL": "excessif",
-
-  #          "KPEBG/RA*BL": "exécrable",
+            "KPAL": "exhale",
+            "KPAFRPL": "exemple",
+            "KPRABL": "exécrable",
             "KP*EL": "excelle",
             "KPEUGZ": "excision",
             "KPEUT": "exit",
@@ -1560,7 +1578,6 @@ class TestPluvier:
     def test_lesson54_BGS_start_ex_follow_by_consonne(self):
         self.assertSame({
             "-BGS/PAPBGS": "expansion",
-#            "-BGS/PEU/-R": "expier",
             "-BGS/TEURP/-R": "extirper",
 #            "-BGS/KWAGS": "excavation",
             })
@@ -1699,6 +1716,7 @@ class TestPluvier:
     def test_lesson59_STPH_start_ins_ens_followed_by_woyel(self):
         self.assertSame({
             "STPHULT": "insulte",
+            "STPHAEURGS": "insertion",
 #            "STPH*U": "insinue",
 #            "STPHEUB/U": "insinue",
  #           "STPHER/-R": "insérer",
@@ -1711,9 +1729,8 @@ class TestPluvier:
     def test_lesson60_star_ending_word_ou(self):
         self.assertSame({
             "PHAT/O*U": "matou",
-            "KHOU" : "minou"
+            "KHOU" : "minou",
 #            "KOUR/O*U": "courroux",
-
 
             })
 
@@ -1816,6 +1833,7 @@ class TestPluvier:
     def test_stl_new_rule_fg_for_sound_vant(self):
         self.assertSame({
             "AFG": "avant",
+            "WHEUS/-G": "finissant",
             "SOUFG": "souvent",
             "AFGTS": "aventure",
         
@@ -1852,6 +1870,7 @@ class TestPluvier:
 
     def test_new_rule_e_ee(self):
         self.assertAllMatching("codé",[ "KOD/-D"])
+        self.assertAllMatching("coder",[ "KOD/-R"])
         self.assertSame({
 #            "KWR/-D" : "joué",
 #            "ABD": "année",
@@ -1897,7 +1916,9 @@ class TestPluvier:
         self.assertSame({
 #            "AQT" : "adore",
             "SAUF/EUT": "suivit",
-
+            "SAUF/EU": "suivi", 
+            "SWA": "soit",
+            "S-RS": "serait"
         })
 
     def test_stl_ont(self):
@@ -1909,7 +1930,8 @@ class TestPluvier:
             "WEUFR/OPBT": "vivront",
             "SKR-G/ROPB" : "chargerons",
             "SKR-G/ROPBT" : "chargeront",
-            "AEUL/W-LZ/OPB": "élevions",
+            "WEUFR/AOPB": "vivrions",
+            "AEUL/WAOPB": "élevions",
                          })
 
 
@@ -1921,11 +1943,13 @@ class TestPluvier:
 
         })
 
-    def test_stl_new_rule_AOU_for_eo(self):
+    def test_stl_new_rule_OE_for_eo(self):
         self.assertSame({
 #            "AQT" : "adore",
-            "PRAOUBG/UP": "préoccupe",
-            "TPHAOUFL/EUT": "néophyte",
+            "PROEBG/UP": "préoccupe", 
+            "TPHOEFL/EUT": "néophyte",
+            "TOER/EU" : "théorie",
+            "OFT/OE/PAEUT": "ostéopathie", 
 
         })
 
@@ -1945,6 +1969,7 @@ class TestPluvier:
             "TK-PLD/-S": "demandait",            
             "REFRBGS": "réservation",
             "SHRAEUBGS": "sélection",
+
 #            "REFRBGS": "réversion"
         })
 
@@ -2008,7 +2033,7 @@ class TestPluvier:
             #           "EUPBLG/-R": "imaginer",
 #            "KOU": "coucher",
 
-            'AF/AEZ':'aviez',
+            'AF/AEZ':'regretter',
             "STKOR": "dehors",
             "R-FL/UZ": "refuse",
             "-DZ": "dire",
@@ -2073,6 +2098,7 @@ class TestPluvier:
             "A*E/KOFRPL" :"accomplit",
 #            "ME" :"modèle",
             "OERT" :"auteur",
+
             "KO*U": "coup",
             "HOET/AO*R": "hauteur",
             "HOERT": "hauteur", 
@@ -2092,10 +2118,11 @@ class TestPluvier:
         found = False
         namefunc=str(sys._getframe().f_back.f_code.co_name).replace('test_','')
 #        namefunc=inspect.stack()[1][3]
-        with open('lessons/json/'+str(namefunc)+'.json', "w") as d:
+        namefile=namefunc.split('_')[0]
+        with open('lessons/json/'+str(namefile)+'.json', "a") as d:
             myjson=json.dumps(words, indent = 4, ensure_ascii=False )
             d.write(myjson)
-        with open('lessons/typey_type/'+str(namefunc)+'.type', "w") as d:
+        with open('lessons/typey_type/'+str(namefile)+'.type', "a") as d:
             for elem in words.items():
                 d.write(elem[1]+'	'+elem[0]+"\n")
 
@@ -2181,8 +2208,12 @@ class TestPluvier:
     def test_nom_matching_adhesion(self):
         self.assertAllMatching('adhésion' , ['AD/EGZ', 'AD/-GZ'] ) 
 
+    def test_verb_matching_est(self):
+        self.assertAllMatching('ait' , ['-S'] ) 
+
     def test_nom_matching_existerai(self):
-        self.assertAllMatching('existerais' , ['KPEUFT/-RS'] ) 
+        self.assertAllMatching('existerait' , ['KPEUS/T-RS', 'KPEUFT/-RS'] )
+        self.assertAllMatching('existerais' , ['KPEUS/TRAEUS', 'KPEUFT/RAEUS'] ) 
 
     def test_nom_matching_escarpee(self):
         self.assertAllMatching('escarpée' , ['AEUBG/R-P/ED'] ) 
@@ -2194,7 +2225,11 @@ class TestPluvier:
         self.assertAllMatching('agneau' , ['AE/-PG/OE', 'APG/OE'] ) 
 
     def test_nom_matching_vallee(self):
-        self.assertSame({ 'WHRED': 'vallée' }) 
+        self.assertSame({ 'WHRED': 'vallée',
+                          'SK-LZ/-D': 'conseillé'}) 
+
+    def test_nom_la_LZ_on_right_hand(self):
+        self.assertSame({ "ELZ/PWORGS": "élaboration",}) 
 
 
     def test_nom_matching_SK_for_cons(self):

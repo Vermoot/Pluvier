@@ -31,6 +31,9 @@ class Word:
         def is_verb(self):
                 return "VER" in self.cgram  or "AUX" in self.cgram #and "AUX" not in self.cgramortho
         #                return "VER" in self.cgramortho and not ("NOM" in self.cgramortho  or "ADJ"  in self.cgramortho)
+
+        def is_adj(self):
+                return 'ADJ' in self.cgramortho
         
         def is_infinitif(self):
                 return 'inf' in self.info_verb
@@ -45,7 +48,6 @@ class Word:
                 return 'pas' in self.info_verb and self.word.endswith('é')
 
         def is_imparfait(self):
-                Log(self.info_verb)
                 return ':imp' in self.info_verb
         #and self.word.endswith('ait')
 
