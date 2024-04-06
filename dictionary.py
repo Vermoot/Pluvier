@@ -13,7 +13,7 @@ class Dictionary:
     picked = []
     words = []
 
-    source = "resources/Lexique383.tsv"
+    source = "resources/LexiqueClean-byfreqfilms.csv"
     def read_corpus(self):
         words = []
         first_line = True
@@ -83,8 +83,8 @@ class Dictionary:
 #            if word.word  in tao.values():
 #                continue
  
-            if word.is_verb() and not word.is_infinitif():
-                continue
+#            if word.is_verb() and not word.is_infinitif():
+#                continue
             for steno in np.unique(self.steno(word)):
                 if steno in tao.keys():
                     continue
@@ -98,8 +98,8 @@ class Dictionary:
                         continue
  
                     original = steno
-                    if  '*' not in steno:
-                        steno = self.steno_class.add_star_on_word(steno)
+                    #if  '*' not in steno:
+                     #   steno = self.steno_class.add_star_on_word(steno)
                     if steno in translated_word :
                         if steno not in duplicated:
                             duplicated[steno] = []

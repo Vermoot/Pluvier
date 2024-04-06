@@ -277,8 +277,8 @@ class Steno:
 #                "eur" : OrthoSuffix("9R","-AO*R"),
 
                 "uelle" : OrthoSuffix("yEl|8El","/*UL|/W*EL").set_mandatory(),
-                "uel" : OrthoSuffix("yEl|8El","/UL|/WEL"),
-                "anche" : OrthoSuffix("@S","/AFRPBLG"),
+                "uel" : OrthoSuffix("yEl|8El","/UL|/WEL").set_mandatory(),
+                "anche" : OrthoSuffix("@S|@S°","/AFRPBLG"),
                 "rche" : OrthoSuffix("RS","-/FRPB"),
                 "che" : OrthoSuffix("S","-/FP"),
                 "chage" : OrthoSuffix("SaZ","-/FPG"),
@@ -457,7 +457,7 @@ class Steno:
 #                "RZ" : "-/RPBLG",
                 "RZ" : "RG",
                 "bl" : "-/BL",
-                "@S°" : "AFRPBLG",
+                "@S°" : "-/AFRPBLG",
                 "fR" : "-/FR", #souffre
                 "fl" : "-/FL", #souffle
                 'sk°'  : '-/FBG', #puisque
@@ -466,6 +466,7 @@ class Steno:
                 'wa' : '/WA|/OEU',
                 "Re":"/R*E|RE",
                 'z§':'-/GZ',
+                "@S°" : "/AFRPBLG",
                 "@S" : "/AFRPBLG",
                 "@s" : "/APBS|-/PBS",
 
@@ -786,28 +787,28 @@ class Steno:
                                 self.ending = "/W*E"
                                 self.ending_syll = phonetics[:-2]
                                 cutword=self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
-                                cutword.mandatory=True
+#                                cutword.mandatory=True
                                 return cutword
                         if verb_word.syll.endswith('je') :
                                 self.ending = "/AE"
                                 self.ending_syll = phonetics[:-2]
                                 cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
-                                cutword.mandatory=True
+ #                               cutword.mandatory=True
                                 return cutword
                         
                         if verb_word.syll.endswith('e') :
                                 self.ending = "/-D"
                                 self.ending_syll = phonetics[:-1]
                                 cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
-                                cutword.mandatory=True
+  #                              cutword.mandatory=True
                                 return cutword
-                if verb_word.ending_with('ions'):
+                if verb_word.ending_with('iont'):
                         self.ending = "AOPB"
                         self.ending_syll = phonetics[:-2]
                         if phonetics.endswith('ij§'):
                                 self.ending_syll = phonetics[:-3]
                         cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
-                        cutword.mandatory=True
+   #                     cutword.mandatory=True
                         return cutword
 
 
@@ -818,7 +819,7 @@ class Steno:
 #                                self.ending = "/-RPB"
                                 self.ending_syll = phonetics[:-2]
                                 cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
-                                cutword.mandatory=True
+    #                            cutword.mandatory=True
                                 return cutword
 
 
@@ -828,7 +829,7 @@ class Steno:
 
                                 self.ending_syll = phonetics[:-2]
                                 cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
-                                cutword.mandatory=True
+     #                           cutword.mandatory=True
                                 return cutword
 
                         if verb_word.syll.endswith('RE') :
@@ -843,7 +844,7 @@ class Steno:
                         self.ending = "AEZ"
                         self.ending_syll = phonetics[:-2]
                         cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
-                        cutword.mandatory=True
+      #                  cutword.mandatory=True
                         return cutword
                 if verb_word.is_vous_futur():
                         if verb_word.syll.endswith('Re') :
@@ -851,7 +852,7 @@ class Steno:
                                 self.ending = "/R*EZ"
                                 self.ending_syll = phonetics[:-2]
                                 cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
-                                cutword.mandatory=True
+       #                         cutword.mandatory=True
                                 return cutword
 
                 if verb_word.is_vous_ind_present():
@@ -860,7 +861,7 @@ class Steno:
                         if verb_word.syll.endswith('e') :
                                 self.ending_syll = phonetics[:-1]
                                 cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
-                                cutword.mandatory=True
+        #                        cutword.mandatory=True
                                 return cutword
                 if verb_word.is_participe_present():
                         Log('participe present')
@@ -868,12 +869,12 @@ class Steno:
                         if verb_word.syll.endswith('j@')  :
                                 self.ending_syll = phonetics[:-2]
                                 cutword=self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending, True, True)
-                                cutword.mandatory=True
+         #                       cutword.mandatory=True
                                 return cutword
                         if verb_word.syll.endswith('@') :
                                 self.ending_syll = phonetics[:-1]
                                 cutword=self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending, True, True)
-                                cutword.mandatory=True
+          #                      cutword.mandatory=True
                                 return cutword
                         
 
@@ -888,42 +889,42 @@ class Steno:
                         self.ending = "ROPB"
                         self.ending_syll = phonetics[:-3]
                         cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
-                        cutword.mandatory=True
+           #             cutword.mandatory=True
                         return cutword
                 if verb_word.ending_with('ont'):
                         self.ending = "OPBT"
                         self.ending_syll = phonetics[:-1]
                         cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
-                        cutword.mandatory=True
+            #            cutword.mandatory=True
                         return cutword
                 if verb_word.ending_with('ons'):
                         self.ending = "OPB"
                         self.ending_syll = phonetics[:-1]
                         cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
-                        cutword.mandatory=True
+             #           cutword.mandatory=True
                         return cutword
 
 
                 if verb_word.ending_with('ais'):
 #                if verb_word.is_imparfait():
                         Log('imparfait')
-                        self.ending = "/AEUS"
+                        self.ending = "/-S"
 #                        self.ending = "/AEUS"
                         if verb_word.syll.endswith('E') :
                                 self.ending_syll = phonetics[:-1]
                         cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True,True)
-                        cutword.mandatory=True
+              #          cutword.mandatory=True
                         return cutword
 
                 if verb_word.ending_with('ai'):
 #                if verb_word.is_imparfait():
                         Log('futur')
-                        self.ending = "/AEU"
-#                        self.ending = "/AEUS"
+                        self.ending = "/-S"
+#                        self.ending = "/AEU"
                         if verb_word.syll.endswith('E') :
                                 self.ending_syll = phonetics[:-1]
                         cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True,True)
-                        cutword.mandatory=True
+               #         cutword.mandatory=True
                         return cutword
 
                 if verb_word.ending_with('ait'):
@@ -933,7 +934,7 @@ class Steno:
                                 self.ending_syll = phonetics[:-1]
                         self.ending = "/-S"
                         cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending, True)
-                        cutword.mandatory=True
+                #        cutword.mandatory=True
                         return cutword
 
 
@@ -944,7 +945,7 @@ class Steno:
                         if verb_word.syll.endswith('i') :
                                 self.ending_syll = phonetics[:-1]
                         cutword= self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True,True)
-                        cutword.mandatory=True
+                 #       cutword.mandatory=True
                         return cutword
 
                 if verb_word.ending_with('aient'):
@@ -954,7 +955,7 @@ class Steno:
                         if verb_word.syll.endswith('E') :
                                 self.ending_syll = phonetics[:-1]
                                 cutword = self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
-                                cutword.mandatory=True
+                  #              cutword.mandatory=True
                                 return cutword
 
 
@@ -965,7 +966,7 @@ class Steno:
                                 self.ending_syll = phonetics[:-1]
                         self.ending = "/-PBT"
                         cutword = self.create_cutword(phonetics,self.ending_syll,self.ending_syll,self.ending,True)
-                        cutword.mandatory=True
+                   #     cutword.mandatory=True
                         return cutword
 
 
