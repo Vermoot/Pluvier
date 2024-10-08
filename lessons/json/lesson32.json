@@ -13,4 +13,210 @@
     "PAS/*EUFL": "passif",
     "PHAS/*EUFL": "massif",
     "SPORT/*EUF": "sportive"
+}{
+    "WHROUR": "velours",
+    "WHROEUR": "vouloir"
+}{
+    "TRAFRBL": "tremble",
+    "TOFRB": "tombe",
+    "PHAFRBS": "membre",
+    "PWOFRB": "bombe",
+    "TEUFRBS": "timbre",
+    "PHROFRB": "plombe",
+    "ROFRPS": "rompre"
+}{
+    "PAS/*EUFL": "passif",
+    "PHAS/*EUFL": "massif",
+    "SPORT/*EUF": "sportive"
+}{
+    "TRAFRBL": "tremble",
+    "TOFRB": "tombe",
+    "PHAFRBS": "membre",
+    "PWOFRB": "bombe",
+    "TEUFRBS": "timbre",
+    "PHROFRB": "plombe",
+    "ROFRPS": "rompre",
+    "PHOPBT/-R": "monter"
+}{
+    "TRAFRBL": "tremble",
+    "TOFRB": "tombe",
+    "PHAFRBS": "membre",
+    "PWOFRB": "bombe",
+    "TEUFRBS": "timbre",
+    "PHROFRB": "plombe",
+    "ROFRPS": "rompre",
+    "PHOPBT/-R": "monter",
+    "PHOPBR": "ment"
+}{
+    "TRAFRBL": "tremble",
+    "TOFRB": "tombe",
+    "PHAFRBS": "membre",
+    "PWOFRB": "bombe",
+    "TEUFRBS": "timbre",
+    "PHROFRB": "plombe",
+    "ROFRPS": "rompre",
+    "PHOPBT/-R": "monter",
+    "PHOPBR": "ment"
+}{
+    "TRAFRBL": "tremble",
+    "TOFRB": "tombe",
+    "PHAFRBS": "membre",
+    "PWOFRB": "bombe",
+    "TEUFRBS": "timbre",
+    "PHROFRB": "plombe",
+    "ROFRPS": "rompre",
+    "PHOPBT/-R": "monter",
+    "PHOPBR": "ment"
+}{
+    "TRAFRBL": "tremble",
+    "TOFRB": "tombe",
+    "PHAFRBS": "membre",
+    "PWOFRB": "bombe",
+    "TEUFRBS": "timbre",
+    "PHROFRB": "plombe",
+    "ROFRPS": "rompre",
+    "PHOPBT/-R": "monter",
+    "PHOPBR": "ment"
+}{
+    "TRAFRBL": "tremble",
+    "TOFRB": "tombe",
+    "PHAFRBS": "membre",
+    "PWOFRB": "bombe",
+    "TEUFRBS": "timbre",
+    "PHROFRB": "plombe",
+    "ROFRPS": "rompre",
+    "PHOPBT/-R": "monter",
+    "PHOPBR": "ment",
+    "SE": "seillon"
+}{
+    "TRAFRBL": "tremble",
+    "TOFRB": "tombe",
+    "PHAFRBS": "membre",
+    "PWOFRB": "bombe",
+    "TEUFRBS": "timbre",
+    "PHROFRB": "plombe",
+    "ROFRPS": "rompre",
+    "PHOPBT/-R": "monter",
+    "PHAPB": "ment",
+    "SE": "seillon"
+}{
+    "TRAFRBL": "tremble",
+    "TOFRB": "tombe",
+    "PHAFRBS": "membre",
+    "PWOFRB": "bombe",
+    "TEUFRBS": "timbre",
+    "PHROFRB": "plombe",
+    "ROFRPS": "rompre",
+    "PHOPBT/-R": "monter",
+    "PHAPB": "ment",
+    "ASE": "avion",
+    "SE": "seillon"
+}{
+    "TRAFRBL": "tremble",
+    "TOFRB": "tombe",
+    "PHAFRBS": "membre",
+    "PWOFRB": "bombe",
+    "TEUFRBS": "timbre",
+    "PHROFRB": "plombe",
+    "ROFRPS": "rompre",
+    "PHOPBT/-R": "monter",
+    "PHAPB": "ment",
+    "ASE": "avion",
+    "SE": "seillon"
+}{
+    "TRAFRBL": "tremble",
+    "TOFRB": "tombe",
+    "PHAFRBS": "membre",
+    "PWOFRB": "bombe",
+    "TEUFRBS": "timbre",
+    "PHROFRB": "plombe",
+    "ROFRPS": "rompre",
+    "PHOPBT/-R": "monter",
+    "PHAPB": "ment",
+    "SE": "seillon"
+}{
+    "WHROUR": "velours",
+    "WHROEUR": "vouloir"
+}{
+    "TRAFRBL": "tremble",
+    "TOFRB": "tombe",
+    "PHAFRBS": "membre",
+    "PWOFRB": "bombe",
+    "TEUFRBS": "timbre",
+    "PHROFRB": "plombe",
+    "ROFRPS": "rompre",
+    "PHOPBT/-R": "monter",
+    "PHAPB": "ment"
+}{
+    "PAS/*EUFL": "passif",
+    "PHAS/*EUFL": "massif",
+    "SPORT/*EUF": "sportive"
+}{
+    "WHROUR": "velours",
+    "WHROEUR": "vouloir"
+}{
+    "TRAFRBL": "tremble",
+    "TOFRB": "tombe",
+    "PHAFRBS": "membre",
+    "PWOFRB": "bombe",
+    "TEUFRBS": "timbre",
+    "PHROFRB": "plombe",
+    "ROFRPS": "rompre",
+    "PHOPBT/-R": "monter",
+    "PHAPB": "ment"
+}{
+    "PAS/*EUFL": "passif",
+    "PHAS/*EUFL": "massif",
+    "SPORT/*EUF": "sportive"
+}{
+    "WHROUR": "velours",
+    "WHROEUR": "vouloir"
+}{
+    "TRAFRBL": "tremble",
+    "TOFRB": "tombe",
+    "PHAFRBS": "membre",
+    "PWOFRB": "bombe",
+    "TEUFRBS": "timbre",
+    "PHROFRB": "plombe",
+    "ROFRPS": "rompre",
+    "PHOPBT/-R": "monter",
+    "PHAPB": "ment"
+}{
+    "PAS/*EUFL": "passif",
+    "PHAS/*EUFL": "massif",
+    "SPORT/*EUF": "sportive"
+}{
+    "WHROUR": "velours",
+    "WHROEUR": "vouloir"
+}{
+    "TRAFRBL": "tremble",
+    "TOFRB": "tombe",
+    "PHAFRBS": "membre",
+    "PWOFRB": "bombe",
+    "TEUFRBS": "timbre",
+    "PHROFRB": "plombe",
+    "ROFRPS": "rompre",
+    "PHOPBT/-R": "monter",
+    "PHAPB": "ment"
+}{
+    "PAS/*EUFL": "passif",
+    "PHAS/*EUFL": "massif",
+    "SPORT/*EUF": "sportive"
+}{
+    "WHROUR": "velours",
+    "WHROEUR": "vouloir"
+}{
+    "TRAFRBL": "tremble",
+    "TOFRB": "tombe",
+    "PHAFRBS": "membre",
+    "PWOFRB": "bombe",
+    "TEUFRBS": "timbre",
+    "PHROFRB": "plombe",
+    "ROFRPS": "rompre",
+    "PHOPBT/-R": "monter",
+    "PHAPB": "ment"
+}{
+    "PAS/*EUFL": "passif",
+    "PHAS/*EUFL": "massif",
+    "SPORT/*EUF": "sportive"
 }

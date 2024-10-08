@@ -13,7 +13,8 @@ class Dictionary:
     picked = []
     words = []
 
-    source = "resources/LexiqueClean-byfreqfilms.csv"
+#    source = "resources/LexiqueClean-byfreqfilms.csv"
+    source = "resources/LexiqueMixtebyfreqfilms.csv"
     def read_corpus(self):
         words = []
         first_line = True
@@ -25,18 +26,18 @@ class Dictionary:
                     first_line = False
                     continue
                 entry = line.split("\t")
-                word = Word(word = entry[0],
-                            phonetics = entry[1],
-                            lemme = entry[2],
-                            cgram = entry[3],
-                            cgramortho = entry[28],
-                            genre = entry[4],
-                            number = entry[5],
-                            info_verb = entry[10],
-                            syll = entry[22],
-                            orthosyll = entry[27],
-                            frequence = entry[6]
-                            )
+                word = Word(
+                    word = entry[0],
+                    phonetics = entry[1],
+                    lemme = entry[2],
+                    cgram = entry[3],
+                    cgramortho = entry[4],
+                    genre = entry[5],
+                    number = entry[6],
+                    info_verb = entry[7],
+                    syll = entry[8],
+                    orthosyll = entry[9]
+                )
                 words.append(word)
                 
         return words
@@ -86,8 +87,8 @@ class Dictionary:
 #            if word.is_verb() and not word.is_infinitif():
 #                continue
             for steno in np.unique(self.steno(word)):
-                if steno in tao.keys():
-                    continue
+#                if steno in tao.keys():
+#                    continue
 #                steno = steno.replace("'","\'")
                 #                    print(steno)
                 if steno in translated_word  and (translated_word[steno] == word.word):
@@ -98,8 +99,8 @@ class Dictionary:
                         continue
  
                     original = steno
-                    #if  '*' not in steno:
-                     #   steno = self.steno_class.add_star_on_word(steno)
+                    if  '*' not in steno and word.is_feminin():
+                        steno = self.steno_class.add_star_on_word(steno)
                     if steno in translated_word :
                         if steno not in duplicated:
                             duplicated[steno] = []

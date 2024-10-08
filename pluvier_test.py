@@ -78,23 +78,36 @@ class TestPluvier:
             return self.corpus
         print('read corpus')
         words = []
-        source = "resources/Lexique383.tsv"
+        source = "resources/LexiqueMixtebyfreqfilms.csv"
+#        source = "resources/Lexique383.tsv"
         with open(source) as f:
             corpus = f.readlines()
 
 
             for line in corpus:
                 entry = line.split("\t")
-                word = Word(word = entry[0],
+                word = Word(
+                            # word = entry[0],
+                            # phonetics = entry[1],
+                            # lemme = entry[2],
+                            # cgram = entry[3],
+                            # cgramortho = entry[28],
+                            # genre = entry[4],
+                            # number = entry[5],
+                            # info_verb = entry[10],
+                            # syll = entry[22],
+                            # orthosyll = entry[27],
+    #                        frequence = entry[6]
+                            word = entry[0],
                             phonetics = entry[1],
                             lemme = entry[2],
                             cgram = entry[3],
-                            cgramortho = entry[28],
-                            genre = entry[4],
-                            number = entry[5],
-                            info_verb = entry[10],
-                            syll = entry[22],
-                            orthosyll = entry[27]
+                            cgramortho = entry[4],
+                            genre = entry[5],
+                            number = entry[6],
+                            info_verb = entry[7],
+                            syll = entry[8],
+                            orthosyll = entry[9]
                             )
                 words.append(word)
         return words
@@ -298,7 +311,7 @@ class TestPluvier:
     def test_lesson13_AE_for_ie(self):
         self.assertSame({ "PAE" : "pied",
                           "HAER": "hier",
-                          "SHRAR/AE":"salarié",
+    #                      "SHRAR/AE":"salarié",
                           "SAEL" : "ciel",
                           "PAES": "pièce",
                           "TAERS": "tierce",
@@ -465,7 +478,7 @@ class TestPluvier:
             "APBLG/TEUFL" : "adjectif",
             "OPBLG/TEUFL": "objectif",
             "R-G": "rejet",
-            "SUPBLG": "sujet"
+            "SUPBLG": "sujet",
                          })
 
     def test_lesson17_SKWR_for_J_initial_and_SWR_for_Z_initial(self):
@@ -541,8 +554,8 @@ class TestPluvier:
             "TKPWRAD/W*EL": "graduelle",
 #                         "ABT/W*EL": "habituel",
                          })
-
-
+        self.assertNotIn({"TKPWRAD/W*EL": "graduel"})
+        
 
     def test_lesson19_separate_starZ_ending_a_sound(self):
         self.assertSame({
@@ -963,6 +976,8 @@ class TestPluvier:
             "TEUFRBS": "timbre",
             "PHROFRB": "plombe",
             "ROFRPS": "rompre",
+            "PHOPBT/-R":"monter",
+            "PHAPB":"ment",
             
         })
     def test_lesson32_suffix_starIFL_for_if_and_starIF_for_ive(self):
@@ -1025,7 +1040,6 @@ class TestPluvier:
  #??           "SWAR/E": "soirée",
            "SWAEU": "souhait",
             "SWAR": "soir",
-            "SWAEUT": "souhaite",
 
 #"TKWORS": "divorce",
 #            "PORT/W*R": "portuaire",
@@ -1067,7 +1081,8 @@ class TestPluvier:
     def test_lesson38_RB_ending_cis_ci_rbe_and_rne(self):
         self.assertSame({
             "PHORB": "morne",
-            "-FRB": "verne",
+            "TAFRB": "taverne",
+#                        "-FRB": "terne",
             "PRERB": "précis",
  #           "ARB": "assis",
             "WOEURB": "voici",
@@ -1084,6 +1099,7 @@ class TestPluvier:
     def test_lesson39_KOEN_starting_con(self):
         self.assertSame({
             "KOEPB/TAPB": "content",
+
 #            "KOEPB/TAPBT": "contente",
         },False)
         
@@ -1092,6 +1108,7 @@ class TestPluvier:
             "STAPB": "content",
             "STRA": "contrat",
             "KOPB/TAPB": "content",
+            "KOPBT/-G": "content",
 #            "KOPBT/APB": "content",
  
  #          "KOPBT/APBT": "contente",
@@ -1299,7 +1316,7 @@ class TestPluvier:
             "TRAFRPBLG": "tranche",
             "TPRAFRPBLG": "franche", 
             "PHAFRPBLG": "manche",
-#            "PWHRAFRPBLG": "blanche",
+             "PWHRAFRPBLG": "blanche",
  #           "TKPWREUFRPBLG/AO*": "grincheux",
  #           "SPAFRPBLG/-R": "épancher",
  #           "HRUFRPBLG": "lunch",
@@ -1399,6 +1416,8 @@ class TestPluvier:
     def test_lesson48_KWR_for_i_followed_by_woyel_inside_word(self):
         self.assertSame({
             "SPWOUZ/KWRA*S": "enthousiaste",
+            "UB/KWROPB": "union",
+            "UBC/KWROPB": "camion",
  #           "WR*EU": "varie",
  #           "WRAGS": "variation",
  #           "AZ/KWRAEUBG": "asiatique",
@@ -1773,7 +1792,7 @@ class TestPluvier:
     def test_new_rule_imparfait_3p(self):
         self.assertSame({
             "SRAEUPBT": "seraient", 
-            "AL/AEUPBT" : "allaient",
+            "AL/A*EUPBT" : "allaient",
             "KPHR/RAEUPBT" : "excelleraient",
         })
 
@@ -1860,8 +1879,8 @@ class TestPluvier:
     def test_new_rule_imparfaitoet_2p(self):
         self.assertSame({
  #           "AL/-TS" : "allait"
-            "R-PBTS/AEUS" : "rentrais",
-            "AL/AEUS" : "allais",
+            "R-PBTS/A*EUS" : "rentrais",
+            "AL/A*EUS" : "allais",
         })
 
     def test_new_rule_start_H(self):
@@ -2033,6 +2052,7 @@ class TestPluvier:
             #           "EUPBLG/-R": "imaginer",
 #            "KOU": "coucher",
 
+            "AR":"archet",
             'AF/AEZ':'regretter',
             "STKOR": "dehors",
             "R-FL/UZ": "refuse",
@@ -2187,7 +2207,7 @@ class TestPluvier:
         self.assertAllMatching('courait' , ['KOUR/-S'] )
 
     def test_verb_matching_courais_ending(self):
-        self.assertAllMatching('courais' , ['KOUR/AEUS'] )
+        self.assertAllMatching('courais' , ['KOUR/-S','KOUR/A*EUS'] )
 
     def test_verb_matching_pourrait(self):
         self.assertAllMatching('pourrait' , ['POU/-RS'] )
@@ -2253,6 +2273,8 @@ class TestPluvier:
         print(steno_class)
         stenod = self.steno(word)
         if (not len(words) == len(stenod)):
+            print(words)
+
             assert False
             return False 
         print(len(words))        

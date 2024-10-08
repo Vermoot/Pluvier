@@ -80,12 +80,12 @@ class Steno_Encoding:
                 'ij@' : 'AEN' , # son ian
                 'j@' : 'AEN' , # son ian
                 '@l' : 'ANL', #enleve
-                "RSi" : "VRPB",
+                "RSi" : "-/FRPB",
                 'REj' : '-/RLZ' , #oreille
 
                 "tER": "/TAEUR|TS",  #notaire
                 "EtR" : "-/TS" , #fenetre
-                "RS" : "VRPB",# -rche
+                "RS" : "-/FRPB",# -rche
                 "dZEk" : "-/PBLG",
                 "dZ" : "-/PBLG",
                 "bZEk" : "-/PBLG",
@@ -140,7 +140,7 @@ class Steno_Encoding:
 #                "wE": "WAEU",
                 "wE" : "WE",
                 "fR" : "/TPR|/FR",
-                "§t" : "ONT",
+                "§t" : "/OPBT",
                 "@S" : "/AFRPBLG",
                 "5S" : "/EUFRPBLG",
                 '@p' : '/AFRP' , #campe
@@ -204,7 +204,6 @@ class Steno_Encoding:
                 'ij@' : 'AEN' , # son ian
                 'j@' : 'AEN' , # son ian
                 '@l' : 'ANL', #enleve
-                "RSi" : "VRPB",
                 'En' : 'AIB',
                 'eO' : 'OE',
                 'eo' : 'OE',
@@ -234,7 +233,8 @@ class Steno_Encoding:
 #                "jO": "ROE",    # fjord # TODO unsure
 #                "jo": "AO",     # bio # TODO Some conflict there. "-R can be read as i" (above), but the diphtongs are more important I guess?
 #                "jO": "RO",     # fjord
-                "j§": "/AO",     # av_ion_
+#                "j§": "/AO",     # av_ion_
+                "j§": "/KWROPB",     # un_ion_
                 "kw": "KW",
                 'k§' : 'KOPB', # content
 #                "wE": "WAEU",
@@ -270,6 +270,9 @@ class Steno_Encoding:
 #                'T' : '*TE',
                 'OU' : 'O*U',
                 '-PB': '-*PB',
+                'OPB': 'O*PB',
+                'AOPB': 'KWROPB',
+
 #                'AE': '-D',
                 'AE': 'A*E',
                 'AET': 'A*ET',
@@ -453,7 +456,7 @@ class Steno_Encoding:
                         self.word_encoded = self.word_encoded[1:]
                 if self.word_encoded.endswith('/'):
                         self.word_encoded = self.word_encoded[:-1]
-                Log('WORD ENCODED ', self.word_encoded)
+                Log('ici WORD ENCODED ', self.word_encoded)
                 self.word_encoded = self.word_encoded.replace('//','/')
                 
                 if self.needs_star :

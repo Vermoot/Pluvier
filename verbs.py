@@ -90,7 +90,7 @@ class Dictionary:
 
         for word in self.words :
             print(word.frequence)
-#        self.words = self.words[:800]
+        self.words = self.words[:80]
 
 
         translated_word = {}
@@ -102,41 +102,55 @@ class Dictionary:
                         
             # if word.is_first_person_singular():
             #     word.syll ='Z°' + word.syll
-            #     word.phonetics ='Z°' + word.phonetics
+            #     word.phonetics ='Z°' + word.phoneticsbien
             #     word.word ='je ' + word.word
 
-            stenowords = self.steno(word)
-            if len(stenowords)==0:
-                continue
+            if word.is_first_person_singular():
+                word.syll ='Z' + word.syll
+                word.phonetics ='Z' + word.phonetics
+ #               word.word ='je ' + word.word
+                stenowords = self.steno(word)
+                if len(stenowords)==0:
+                    continue
+            if word.is_second_person_singular():
+                word.syll ='tw' + word.syll
+                stenowords = self.steno(word)
 
+            if word.is_third_person_singular():
+                word.syll ='l' + word.syll
+                stenowords = self.steno(word)
+            
+            
             for steno in np.unique(stenowords):
 #                steno = steno.replace("'","\'")
                 #                    print(steno)
                 if steno in translated_word  and (translated_word[steno] == word.word):
                     continue
 
-                if steno in translated_word:
-                    if  '*' not in steno:
-                        steno = self.steno_class.add_star_on_word(steno)
-                    if steno in translated_word :
-                        if steno not in duplicated:
-                            duplicated[steno] = []
-                        if word.word not in duplicated[steno]:
-                            duplicated[steno].append(word.word)
-                        if translated_word[steno]  not in duplicated[steno]:
-                            duplicated[steno].append(translated_word[steno])
-                        continue
-                translated_word[steno] = word.word
-                if word.frequence<10:
-                    continue
+                # if steno in translated_word:
+                #     if  '*' not in steno:
+                #         steno = self.steno_class.add_star_on_word(steno)
+                #     if steno in translated_word :
+                #         if steno not in duplicated:
+                #             duplicated[steno] = []
+                #         if word.word not in duplicated[steno]:
+                #             duplicated[steno].append(word.word)
+                #         if translated_word[steno]  not in duplicated[steno]:
+                #             duplicated[steno].append(translated_word[steno])
+                #         continue
+#                translated_word[steno] = word.word
+
                 if word.is_first_person_singular():
                     newsteno=steno
                     pronoun='je '
                     if  steno.endswith('RAEUS'):
                         newsteno=steno[:-5]+'R-S'
                         
-                    if  steno.endswith('/AEUS'):
+                    if  steno.endswith('/AEUS')  :
                         newsteno=steno[:-5]+'/-S'
+                    if  steno.endswith('/A*EUS')  :
+                        newsteno=steno[:-6]+'/-S'
+
                     if  steno.endswith('/AEU'):
                         newsteno=steno[:-4]+'/-S'
                     if  steno.endswith('T/-S'):
@@ -144,10 +158,10 @@ class Dictionary:
 
                     if re.match("^[aeéiouyh]",word.word):
                         pronoun="j'"
-                    if newsteno[0] in ['E','A','U','O','-']: 
-                        translated_word["SKWR"+newsteno] = pronoun+word.word
-                    else:
-                        translated_word["SKWR/"+newsteno] = pronoun+word.word
+#                    if newsteno[0] in ['E','A','U','O','-']: 
+                    translated_word[newsteno] = pronoun+word.word
+ #                   else:
+  #                      translated_word["SKWR/"+newsteno] = pronoun+word.word
                 if word.is_second_person_singular():
                     pronoun='tu '
                     newsteno=steno

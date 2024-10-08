@@ -13,11 +13,14 @@ class Word:
             self.genre = genre
             self.number = number
             self.info_verb = info_verb
-            self.syll = syll
+#            self.syll = syll
+            self.syll = syll.replace('_','').replace('#','')
 #            self.syll = self.syll.replace('o-pi','oip')
 #            self.syll = syll.replace('o-li','oil')
 
-            self.orthosyll = orthosyll
+#            self.orthosyll = orthosyll
+            self.orthosyll = self.syll
+            self.orthosyll = orthosyll.replace('_','').replace('#','')
             self.frequence = float(frequence)
         def __str__(self):
                 print("word", self.word)
@@ -38,6 +41,8 @@ class Word:
         def is_infinitif(self):
                 return 'inf' in self.info_verb
 
+        def is_feminin(self):
+                return 'f' in self.genre
 
         def has_noinfoverb(self):
                 return ''  == self.info_verb
