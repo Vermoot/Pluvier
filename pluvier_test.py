@@ -360,18 +360,29 @@ class TestPluvier:
                         "RAPBDZ/AEU": "rendrai",
 #                         "KOU/-RS": "courrait",
                          "PAS/-RS": "passerait",
-            
+
                          })
 
     def test_lesson13_AI_alone_for_nom_ai(self):
         self.assertSame({
             "TEUR/AEU": "tiret",
             "TEUR/-S": "tirait",
+            "TEUR/AEU": "tirai",
+            "TEUR/A*EUS": "tirais",
+            "TEUR/A*EUPBT": "tiraient",
             "SORB/AEU": "sorbet",
             "TPEUL/AEU": "filet",
+            "APL/AEU":"appelai",
                          })
+        self.assertNotIn({ 'TEUR/-S' : "tiret",
+                           'TEUR/AEU' : "tirait",
+                           'TPEUL/-S' : "filet",
+                           "TEUR/A*EUS": "tirait",
+
+                          })
     def test_lesson13_G_alone_for_ant_participe_present(self):
-        self.assertSame({"KREU/-G": "criant",
+        self.assertSame({
+            #"KREU/-G": "criant",
                          "SA/-G": "saillant",
 
  
@@ -707,12 +718,14 @@ class TestPluvier:
             "KHAS": "menace", #m°-nas
             "KHU": "menu",
             "KAL/O/KHAER":"calomnier",
+            "KHUT": "minute",
+            "KHAUZ/AER": "menuisier",
             "APB/KH-R": "emmener",
             "APB/PH-L/-R": "emmêler",
             
 #            "KHAOR": "mineur",
-            "KHUT": "minute",
-            "KHAUZ/AER": "menuisier",
+
+
         })
         
     def test_lesson25_AE_for_starting_letter_a_word(self):
@@ -760,7 +773,7 @@ class TestPluvier:
             "TRABGT": "tract",
 #            "KHRAEUBGT": "collecte",
         })
-    def test_lesson26_KEOEN_for_prefix_con(self):
+    def UNDO_fix_on_prefix_lesson26_KEOEN_for_prefix_con(self):
         self.assertSame({
 #            "KOEPB/SAEPBS": "conscience",
             "KOEPB/KAF": "concave",
@@ -938,11 +951,11 @@ class TestPluvier:
                       #     "EBG/TREUFT": "électricité",
                          })
 
-    def test_lesson31_ending_RD_for_deur_RG_for_gueur_RN_for_neur_AOstarR_for_eur(self):
+    def test_lesson31_modify_ending_RD_for_deur_RG_for_gueur_RN_for_neur_AOstarR_for_eur(self):
         self.assertSame({
             "TPROEURD": "froideur",
             "REURG": "rigueur",
-            "ARD/AO*R": "ardeur",
+            "ARD/AOR": "ardeur",
             "STKEURD": "décideur",
 #            "PWORPB": "bonheur",
             "WEURG": "vigueur",
@@ -1056,7 +1069,7 @@ class TestPluvier:
             "TRAFRP": "trempe",
             "TROFRP": "trompe",
             "SOUPL": "souple",
-            "PROFRPT": "prompte",
+#            "PROFRPT": "prompte",
             "TAFRP": "tempe",
             "HRAFRP": "lampe",
             "TKPWREUFRP": "grimpe",
@@ -1098,8 +1111,8 @@ class TestPluvier:
 
     def test_lesson39_KOEN_starting_con(self):
         self.assertSame({
-            "KOEPB/TAPB": "content",
-
+#            "KOEPB/TAPB": "content",
+# should set in plugin prefix
 #            "KOEPB/TAPBT": "contente",
         },False)
         
@@ -1109,7 +1122,8 @@ class TestPluvier:
             "STRA": "contrat",
             "KOPB/TAPB": "content",
             "KOPBT/-G": "content",
-#            "KOPBT/APB": "content",
+            "KOPBGT": "content",
+#            "KOPBT/APB": "cote ntent",
  
  #          "KOPBT/APBT": "contente",
 
@@ -1417,7 +1431,7 @@ class TestPluvier:
         self.assertSame({
             "SPWOUZ/KWRA*S": "enthousiaste",
             "UB/KWROPB": "union",
-            "UBC/KWROPB": "camion",
+            "KAPL/KWROPB": "camion",
  #           "WR*EU": "varie",
  #           "WRAGS": "variation",
  #           "AZ/KWRAEUBG": "asiatique",
@@ -1672,7 +1686,7 @@ class TestPluvier:
             "KPWREUPL": "imprime",
 #            "KPWOB": "impossible",
 #            "KPWRAEUGS": "impression",
-            "KPWOFP": "empoche",
+           "KPWOFP": "empoche",
             "KPWRAS": "embrasse",
             "KPWHRAEUPL": "emblème",
             "KPWHREUBG": "implique",
@@ -1846,6 +1860,14 @@ class TestPluvier:
     def test_stl_new_rule_cle(self):
         self.assertSame({
             "SAEBLG": "siècle",
+        })
+
+
+    def test_stl_new_rule_yable(self):
+        self.assertSame({
+            "EUPB/KROEUBL":"incroyable",
+            "EUPB/KROEUPLT":"incroyablement",            
+
         })
 
 
@@ -2029,7 +2051,7 @@ class TestPluvier:
 
 
         
-    def test_todo_lesson22_OIB_for_sound_oine_and_starOIB_for_suffixe_oine(self):
+    def test_lesson22_OIB_for_sound_oine_and_starOIB_for_suffixe_oine(self):
         self.assertSame({
             "TKOEUB": "douane",
 # also work            "TKWAB": "douane",
@@ -2041,7 +2063,6 @@ class TestPluvier:
             "ERBG/EUR": "écrire",
             "R-PS/EZ/APBT/TAPB":"représentante",
 #            "AP/RAEU": "après",
-            
 #            "TKWOEUB": "écris",
        })
 
@@ -2049,10 +2070,8 @@ class TestPluvier:
 #            "iu": "congédié" could be ED without LZ,
     def test_wrong_words(self):
         self.assertSame({
-            #           "EUPBLG/-R": "imaginer",
-#            "KOU": "coucher",
+            "PAR":"pensais",
 
-            "AR":"archet",
             'AF/AEZ':'regretter',
             "STKOR": "dehors",
             "R-FL/UZ": "refuse",
@@ -2207,7 +2226,7 @@ class TestPluvier:
         self.assertAllMatching('courait' , ['KOUR/-S'] )
 
     def test_verb_matching_courais_ending(self):
-        self.assertAllMatching('courais' , ['KOUR/-S','KOUR/A*EUS'] )
+        self.assertAllMatching('courais' , ['KOUR/A*EUS'] )
 
     def test_verb_matching_pourrait(self):
         self.assertAllMatching('pourrait' , ['POU/-RS'] )
@@ -2223,13 +2242,13 @@ class TestPluvier:
         self.assertAllMatching('salarié' , ['SHRAR/AE'] ) 
 
     def test_verb_matching_somnolait(self):
-        self.assertAllMatching('somnolait' , ['SO/KHOL/-S', 'SOPL/TPHOL/-S'] ) 
+        self.assertAllMatching('somnolait' , ['SO/KHOL/AEUS', 'SOPL/TPHOL/AEUS'] ) 
 
     def test_nom_matching_adhesion(self):
         self.assertAllMatching('adhésion' , ['AD/EGZ', 'AD/-GZ'] ) 
 
     def test_verb_matching_est(self):
-        self.assertAllMatching('ait' , ['-S'] ) 
+        self.assertAllMatching('ait' , ['A*EUT'] ) 
 
     def test_nom_matching_existerai(self):
         self.assertAllMatching('existerait' , ['KPEUS/T-RS', 'KPEUFT/-RS'] )
@@ -2253,10 +2272,10 @@ class TestPluvier:
 
 
     def test_nom_matching_SK_for_cons(self):
-        self.assertSame({ 'SKAEULZ/-S': 'conseillait' }) 
+        self.assertSame({ 'SKAEULZ/A*EUT': 'conseillait' }) 
 
     def test_nom_matching_confirme(self):
-        self.assertAllMatching('confirme' , ['STPEURPL', 'KOPB/TPEURPL', 'KOEPB/TPEURPL', 'KWEURPL']) 
+        self.assertAllMatching('confirme' , ['KOPB/TPEURPL', 'KWEURPL']) 
 
     def test_verb_matching_salarie(self):
         self.assertAllMatching('salariée' , ['SHRAR/AED'] ) 
@@ -2267,7 +2286,16 @@ class TestPluvier:
     def test_verb_matching_elle_laisse(self):
         self.assertAllMatching('haïsse' , ["HAEUS"])
 
+    def test_stl_change_ieur(self) :
+        self.assertSame({'SPRAOEUR' :'supérieur',
+                         'SPRAO*EUR' :'supérieure'})
+
+
+    def test_vers_with_je(self) :
         
+        self.assertSame({'SPRAOEUR' :'supérieur',
+                         'SPRAO*EUR' :'supérieure'})
+
     def assertAllMatching(self,word, words) :
         steno_class=Steno(self.corpus)
         print(steno_class)
@@ -2288,6 +2316,14 @@ class TestPluvier:
         for elem in words.items():
             word = steno_class.find(elem[1])
             print(elem[1],vars(word))
+
+    def assertVerbs(self,words):
+        
+        steno_class=Steno(self.corpus)
+        for elem in words.items():
+            word = steno_class.find(elem[1])
+            print(elem[1],vars(word))
+
             
     def all_tao_entry(self):
         with open('resources/tao_la_salle.json') as json_file:

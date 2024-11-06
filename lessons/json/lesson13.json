@@ -342,4 +342,503 @@
 }{
     "TRARP": "trappeur",
     "RAURL": "râleur"
+}{
+    "TPEUL": "fil",
+    "TPAUT": "fuite",
+    "TPRAEU": "frais",
+    "TOPB": "ton",
+    "TPOPB": "fond"
+}{
+    "R-L/WE": "relevé",
+    "R-LGS": "relation"
+}{
+    "PAE": "pied",
+    "HAER": "hier",
+    "SAEL": "ciel",
+    "PAES": "pièce",
+    "TAERS": "tierce"
+}{
+    "K-S/A*ER": "caissière",
+    "WOEUL/AER": "voilier",
+    "TE/A*ER": "théière"
+}{
+    "TKRABL": "diable"
+}{
+    "KRABG/-S": "craquait",
+    "PAS/-S": "passait",
+    "KOUR/-S": "courait"
+}{
+    "KRABG/-RS": "craquerait",
+    "KOU/-RS": "courrait",
+    "PAS/-RS": "passerait"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tirait",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet"
+}{
+    "KREU/-G": "criant",
+    "SA/-G": "saillant",
+    "KOUR/-G": "courant"
+}{
+    "SEBLG": "séquelle",
+    "HR-BLG": "lequel"
+}{
+    "TRARP": "trappeur",
+    "RAURL": "râleur"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tirait",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tirait",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tirait",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tirait",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tirait",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tirait",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tirais",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tiraient",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tiraient",
+    "TEUR/AEUT": "tirait",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tiraient",
+    "TEUR/AEUS": "tirais",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tiraient",
+    "TEUR/A*EUS": "tiraient",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tiraient",
+    "TEUR/A*EUS": "tirais",
+    "TEUR/A*EUPBT": "tiraient",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tiraient",
+    "TEUR/A*EUS": "tirais",
+    "TEUR/A*EUPBT": "tiraient",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tiraient",
+    "TEUR/A*EUS": "tirais",
+    "TEUR/A*EUPBT": "tiraient",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet",
+    "APL/AEU": "appelai"
+}{
+    "TPEUL": "fil",
+    "TPAUT": "fuite",
+    "TPRAEU": "frais",
+    "TOPB": "ton",
+    "TPOPB": "fond"
+}{
+    "R-L/WE": "relevé",
+    "R-LGS": "relation"
+}{
+    "PAE": "pied",
+    "HAER": "hier",
+    "SAEL": "ciel",
+    "PAES": "pièce",
+    "TAERS": "tierce"
+}{
+    "K-S/A*ER": "caissière",
+    "WOEUL/AER": "voilier",
+    "TE/A*ER": "théière"
+}{
+    "TKRABL": "diable"
+}{
+    "KRABG/-S": "craquait",
+    "PAS/-S": "passait",
+    "KOUR/-S": "courait"
+}{
+    "KRABG/-RS": "craquerait",
+    "KOU/-RS": "courrait",
+    "PAS/-RS": "passerait"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tiraient",
+    "TEUR/A*EUS": "tirais",
+    "TEUR/A*EUPBT": "tiraient",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet",
+    "APL/AEU": "appelai"
+}{
+    "KREU/-G": "criant",
+    "SA/-G": "saillant",
+    "KOUR/-G": "courant"
+}{
+    "SEBLG": "séquelle",
+    "HR-BLG": "lequel"
+}{
+    "TRARP": "trappeur",
+    "RAURL": "râleur"
+}{
+    "KREU/-G": "criant",
+    "SA/-G": "saillant",
+    "KOUR/-G": "courant"
+}{
+    "SA/-G": "saillant",
+    "KOUR/-G": "courant"
+}{
+    "TPEUL": "fil",
+    "TPAUT": "fuite",
+    "TPRAEU": "frais",
+    "TOPB": "ton",
+    "TPOPB": "fond"
+}{
+    "R-L/WE": "relevé",
+    "R-LGS": "relation"
+}{
+    "PAE": "pied",
+    "HAER": "hier",
+    "SAEL": "ciel",
+    "PAES": "pièce",
+    "TAERS": "tierce"
+}{
+    "K-S/A*ER": "caissière",
+    "WOEUL/AER": "voilier",
+    "TE/A*ER": "théière"
+}{
+    "TKRABL": "diable"
+}{
+    "KRABG/-S": "craquait",
+    "PAS/-S": "passait",
+    "KOUR/-S": "courait"
+}{
+    "KRABG/-RS": "craquerait",
+    "KOU/-RS": "courrait",
+    "PAS/-RS": "passerait"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tiraient",
+    "TEUR/A*EUS": "tirais",
+    "TEUR/A*EUPBT": "tiraient",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet",
+    "APL/AEU": "appelai"
+}{
+    "SA/-G": "saillant",
+    "KOUR/-G": "courant"
+}{
+    "SEBLG": "séquelle",
+    "HR-BLG": "lequel"
+}{
+    "TRARP": "trappeur",
+    "RAURL": "râleur"
+}{
+    "TPEUL": "fil",
+    "TPAUT": "fuite",
+    "TPRAEU": "frais",
+    "TOPB": "ton",
+    "TPOPB": "fond"
+}{
+    "R-L/WE": "relevé",
+    "R-LGS": "relation"
+}{
+    "PAE": "pied",
+    "HAER": "hier",
+    "SAEL": "ciel",
+    "PAES": "pièce",
+    "TAERS": "tierce"
+}{
+    "K-S/A*ER": "caissière",
+    "WOEUL/AER": "voilier",
+    "TE/A*ER": "théière"
+}{
+    "TKRABL": "diable"
+}{
+    "KRABG/-S": "craquait",
+    "PAS/-S": "passait",
+    "KOUR/-S": "courait"
+}{
+    "KRABG/-RS": "craquerait",
+    "KOU/-RS": "courrait",
+    "PAS/-RS": "passerait"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tiraient",
+    "TEUR/A*EUS": "tirais",
+    "TEUR/A*EUPBT": "tiraient",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet",
+    "APL/AEU": "appelai"
+}{
+    "SA/-G": "saillant",
+    "KOUR/-G": "courant"
+}{
+    "SEBLG": "séquelle",
+    "HR-BLG": "lequel"
+}{
+    "TRARP": "trappeur",
+    "RAURL": "râleur"
+}{
+    "TPEUL": "fil",
+    "TPAUT": "fuite",
+    "TPRAEU": "frais",
+    "TOPB": "ton",
+    "TPOPB": "fond"
+}{
+    "R-L/WE": "relevé",
+    "R-LGS": "relation"
+}{
+    "PAE": "pied",
+    "HAER": "hier",
+    "SAEL": "ciel",
+    "PAES": "pièce",
+    "TAERS": "tierce"
+}{
+    "K-S/A*ER": "caissière",
+    "WOEUL/AER": "voilier",
+    "TE/A*ER": "théière"
+}{
+    "TKRABL": "diable"
+}{
+    "KRABG/-S": "craquait",
+    "PAS/-S": "passait",
+    "KOUR/-S": "courait"
+}{
+    "KRABG/-RS": "craquerait",
+    "KOU/-RS": "courrait",
+    "PAS/-RS": "passerait"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tiraient",
+    "TEUR/A*EUS": "tirais",
+    "TEUR/A*EUPBT": "tiraient",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet",
+    "APL/AEU": "appelai"
+}{
+    "SA/-G": "saillant",
+    "KOUR/-G": "courant"
+}{
+    "SEBLG": "séquelle",
+    "HR-BLG": "lequel"
+}{
+    "TRARP": "trappeur",
+    "RAURL": "râleur"
+}{
+    "TPEUL": "fil",
+    "TPAUT": "fuite",
+    "TPRAEU": "frais",
+    "TOPB": "ton",
+    "TPOPB": "fond"
+}{
+    "R-L/WE": "relevé",
+    "R-LGS": "relation"
+}{
+    "PAE": "pied",
+    "HAER": "hier",
+    "SAEL": "ciel",
+    "PAES": "pièce",
+    "TAERS": "tierce"
+}{
+    "K-S/A*ER": "caissière",
+    "WOEUL/AER": "voilier",
+    "TE/A*ER": "théière"
+}{
+    "TKRABL": "diable"
+}{
+    "KRABG/-S": "craquait",
+    "PAS/-S": "passait",
+    "KOUR/-S": "courait"
+}{
+    "KRABG/-RS": "craquerait",
+    "KOU/-RS": "courrait",
+    "PAS/-RS": "passerait"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tiraient",
+    "TEUR/A*EUS": "tirais",
+    "TEUR/A*EUPBT": "tiraient",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet",
+    "APL/AEU": "appelai"
+}{
+    "SA/-G": "saillant",
+    "KOUR/-G": "courant"
+}{
+    "SEBLG": "séquelle",
+    "HR-BLG": "lequel"
+}{
+    "TRARP": "trappeur",
+    "RAURL": "râleur"
+}{
+    "TPEUL": "fil",
+    "TPAUT": "fuite",
+    "TPRAEU": "frais",
+    "TOPB": "ton",
+    "TPOPB": "fond"
+}{
+    "R-L/WE": "relevé",
+    "R-LGS": "relation"
+}{
+    "PAE": "pied",
+    "HAER": "hier",
+    "SAEL": "ciel",
+    "PAES": "pièce",
+    "TAERS": "tierce"
+}{
+    "K-S/A*ER": "caissière",
+    "WOEUL/AER": "voilier",
+    "TE/A*ER": "théière"
+}{
+    "TKRABL": "diable"
+}{
+    "KRABG/-S": "craquait",
+    "PAS/-S": "passait",
+    "KOUR/-S": "courait"
+}{
+    "KRABG/-RS": "craquerait",
+    "KOU/-RS": "courrait",
+    "PAS/-RS": "passerait"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tiraient",
+    "TEUR/A*EUS": "tirais",
+    "TEUR/A*EUPBT": "tiraient",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet",
+    "APL/AEU": "appelai"
+}{
+    "SA/-G": "saillant",
+    "KOUR/-G": "courant"
+}{
+    "SEBLG": "séquelle",
+    "HR-BLG": "lequel"
+}{
+    "TRARP": "trappeur",
+    "RAURL": "râleur"
+}{
+    "KRABG/-S": "craquait",
+    "PAS/-S": "passait",
+    "KOUR/-S": "courait"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tiraient",
+    "TEUR/A*EUS": "tirais",
+    "TEUR/A*EUPBT": "tiraient",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet",
+    "APL/AEU": "appelai"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tiraient",
+    "TEUR/A*EUS": "tirais",
+    "TEUR/A*EUPBT": "tiraient",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet",
+    "APL/AEU": "appelai"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tirait",
+    "TEUR/A*EUS": "tirais",
+    "TEUR/A*EUPBT": "tiraient",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet",
+    "APL/AEU": "appelai"
+}{
+    "TEUR/AEU": "tirai",
+    "TEUR/-S": "tirait",
+    "TEUR/A*EUS": "tirais",
+    "TEUR/A*EUPBT": "tiraient",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet",
+    "APL/AEU": "appelai"
+}{
+    "TEUR/AEU": "tiret",
+    "TEUR/-S": "tirait",
+    "TEUR/A*EU": "tirai",
+    "TEUR/A*EUS": "tirais",
+    "TEUR/A*EUPBT": "tiraient",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet",
+    "APL/AEU": "appelai"
+}{
+    "TPEUL": "fil",
+    "TPAUT": "fuite",
+    "TPRAEU": "frais",
+    "TOPB": "ton",
+    "TPOPB": "fond"
+}{
+    "R-L/WE": "relevé",
+    "R-LGS": "relation"
+}{
+    "PAE": "pied",
+    "HAER": "hier",
+    "SAEL": "ciel",
+    "PAES": "pièce",
+    "TAERS": "tierce"
+}{
+    "K-S/A*ER": "caissière",
+    "WOEUL/AER": "voilier",
+    "TE/A*ER": "théière"
+}{
+    "TKRABL": "diable"
+}{
+    "KRABG/-S": "craquait",
+    "PAS/-S": "passait",
+    "KOUR/-S": "courait"
+}{
+    "KRABG/-RS": "craquerait",
+    "KOU/-RS": "courrait",
+    "PAS/-RS": "passerait"
+}{
+    "TEUR/AEU": "tirai",
+    "TEUR/-S": "tirait",
+    "TEUR/A*EUS": "tirais",
+    "TEUR/A*EUPBT": "tiraient",
+    "SORB/AEU": "sorbet",
+    "TPEUL/AEU": "filet",
+    "APL/AEU": "appelai"
+}{
+    "SA/-G": "saillant",
+    "KOUR/-G": "courant"
+}{
+    "SEBLG": "séquelle",
+    "HR-BLG": "lequel"
+}{
+    "TRARP": "trappeur",
+    "RAURL": "râleur"
 }

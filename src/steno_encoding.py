@@ -10,12 +10,15 @@ class Steno_Encoding:
                 # start with / : already encoded
                 # start with - : right hand
                 'sjasj§': '/SRAGS', #ciation
+                'wajabl': '/OEUBL',
                 '@v°n' : 'ENVH',
                 'sjal' : '-/FPL',
                 'sal': 'sl',
                 "aOR" : "/ARP",
                 "pRasj§":"/RPGS",
                 'ynik' : 'UBG',
+
+
                 "enER": "EBS",
                 '§ple' : '/OFRPL', # trompe
                 '5ba' : '/EUFRB', # trimb            
@@ -166,7 +169,7 @@ class Steno_Encoding:
                 "5" : "/EUPB",
                 'n' : 'TPH|B',
                 'N' : '-PG|PG',
-                "@": "/APB",     # pluie
+                "@": "-/G",     # pluie
         }
 
         MANDATORY_CHUNKS = {
@@ -221,6 +224,7 @@ class Steno_Encoding:
                 "tR": "TR", #strate
                 "8i": "/AU",     # pluie
                 'ij' : '-/LZ', #ille
+                'waja' : 'OEU', #paille
                 'aj' : '-/LZ', #paille
                 'ej' : '-/LZ', #paille
                 "j2": "/AOEU",   # vieux
@@ -387,7 +391,7 @@ class Steno_Encoding:
                 return list_tuple
                                 
                 
-        def encode(self, chunks):
+        def encode(self, chunks, initial_word):
                 Log('-- Encode :',self.syllabes)
 
                 self.word_encoded = ""
@@ -466,7 +470,9 @@ class Steno_Encoding:
                 for alone, replaced_by in self.ALONE_SUFFIXES.items():
                         if self.word_encoded.endswith('/'+alone):
                                 self.word_encoded = re.sub(alone+ '$',replaced_by, self.word_encoded)
-                
+#                if initial_word.is_verb() and self.word_encoded.endswith('/AEU'):
+#                        self.word_encoded = re.sub('AEU$','-S', self.word_encoded)
+
                 return  self.word_encoded
         
 

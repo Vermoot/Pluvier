@@ -73,7 +73,7 @@ class Dictionary:
         self.words.sort(key=lambda x: x.frequence, reverse=True)
 #        for word in self.words :
 #            print(word.frequence)
-#        self.words = self.words[:60000]
+#        self.words = self.words[:1000]
         with open('resources/alone.json') as json_file:
             tao = json.load(json_file)
 
@@ -99,6 +99,12 @@ class Dictionary:
                         continue
  
                     original = steno
+                    
+                    if (steno.endswith('-S') and word.word.endswith('t') and translated_word[steno].endswith('s')):
+                        original_word  = translated_word[original]
+                        translated_word[original]=word.word
+                        word.word=original_word
+
                     if  '*' not in steno and word.is_feminin():
                         steno = self.steno_class.add_star_on_word(steno)
                     if steno in translated_word :
